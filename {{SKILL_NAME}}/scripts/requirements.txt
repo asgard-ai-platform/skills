@@ -1,0 +1,9 @@
+# Python dependencies for {{PLUGIN_NAME}}
+#
+# Add packages required by scripts in this directory.
+#
+# Common examples:
+# numpy>=1.24
+# scipy>=1.10
+# pandas>=2.0
+# matplotlib>=3.7
