@@ -56,7 +56,7 @@ Add directional paths among latent constructs based on theory. Estimate path coe
 
 ### Step 4 — Report and Interpret
 
-Report standardized path coefficients, R² for endogenous constructs, and overall fit. Discuss indirect effects if mediation is hypothesized. See `references/` for mathematical notation and estimation details.
+Report standardized path coefficients, R² for endogenous constructs, and overall fit. Discuss indirect effects if mediation is hypothesized. See `references/estimation.md` for mathematical notation and estimation details.
 
 ## Output Format
 

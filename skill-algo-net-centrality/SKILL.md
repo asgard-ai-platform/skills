@@ -64,8 +64,26 @@ Return centrality scores with multi-metric comparison.
 ## Examples
 
 ### Sample I/O
-**Input:** Social network of 100 people, 300 friendships
-**Expected:** High-degree node = popular person. High-betweenness = person connecting different friend groups. These may be different people.
+**Input:** 5-node undirected graph (bridge topology): edges = {(A,B), (A,C), (B,C), (C,D), (D,E)}
+```
+    A --- B
+     \  /
+      C
+      |
+      D --- E
+```
+
+**Expected centralities (normalized by N-1 = 4):**
+
+| Node | Degree | Betweenness | Closeness | Eigenvector |
+|------|--------|-------------|-----------|-------------|
+| A | 0.50 (2/4) | 0.000 | 0.571 (4/7) | 0.452 |
+| B | 0.50 (2/4) | 0.000 | 0.571 (4/7) | 0.452 |
+| **C** | **0.75 (3/4)** | **0.667** | **0.800 (4/5)** | **0.628** |
+| D | 0.50 (2/4) | 0.500 | 0.667 (4/6) | 0.386 |
+| E | 0.25 (1/4) | 0.000 | 0.500 (4/8) | 0.201 |
+
+Verify: **C is the bridge** — highest in ALL four metrics. E is the periphery — lowest in all metrics. A and B are symmetric (identical scores). D has nonzero betweenness (bridges C to E) but lower degree than C.
 
 ### Edge Cases
 | Input | Expected | Why |

@@ -65,8 +65,19 @@ Return VaR estimate with backtest results.
 ## Examples
 
 ### Sample I/O
-**Input:** Portfolio $50M, 250 days of daily returns, 95% confidence
-**Expected:** Historical VaR ≈ 2-3% of portfolio = $1-1.5M
+**Input:** Portfolio value = $1,000,000. Last 20 sorted daily returns (descending loss): 
+```
+[-0.050, -0.040, -0.035, -0.030, -0.025, -0.020, -0.015, -0.010, -0.005, 0.000,
+  0.005,  0.010,  0.015,  0.020,  0.025,  0.030,  0.035,  0.040,  0.045,  0.050]
+```
+Confidence = 95%, horizon = 1 day.
+
+**Expected (Historical Simulation):**
+- 5th percentile index = floor(20 × 0.05) = 1 → return[1] = -0.040
+- VaR = $1,000,000 × 0.040 = **$40,000**
+- CVaR (Expected Shortfall) = mean of returns worse than VaR = (-0.050) × $1M = **$50,000**
+
+Verify: VaR ≤ CVaR always (tail loss ≥ threshold loss). Count of losses > VaR should be ≤ 5% of observations (1 of 20).
 
 ### Edge Cases
 | Input | Expected | Why |

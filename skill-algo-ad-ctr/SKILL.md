@@ -64,8 +64,19 @@ Return predicted CTR with confidence interval and top contributing features.
 ## Examples
 
 ### Sample I/O
-**Input:** User: age 25-34, mobile; Query: "running shoes"; Ad: Nike Running, position 2
-**Expected:** pCTR = 0.042 (4.2%)
+**Input:** Trained logistic regression with 3 features and these coefficients:
+```
+intercept: -3.0
+position_1:  0.8
+query_ad_match: 1.5
+user_is_mobile: 0.3
+```
+Features for current request: position_1=1, query_ad_match=1, user_is_mobile=1
+
+**Expected:** logit = -3.0 + 0.8 + 1.5 + 0.3 = -0.4
+pCTR = sigmoid(-0.4) = 1/(1 + e^0.4) ≈ 0.401 → **40.1%**
+
+Verify: for features all 0 (baseline), pCTR = sigmoid(-3.0) ≈ 0.047 (4.7%). Calibration is checked by bucketing predictions and comparing to actual CTR in each bucket.
 
 ### Edge Cases
 | Input | Expected | Why |

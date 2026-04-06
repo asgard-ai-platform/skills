@@ -1,141 +1,107 @@
 ---
 name: "skill-prompt-engineering"
-description: "Design effective LLM prompts using structured techniques including few-shot, chain-of-thought, role-playing, and output format control. Use this skill when the user needs to improve AI output quality, design system prompts, build LLM-powered features, or debug why an AI gives bad responses — even if they say 'the AI gives wrong answers', 'how do I write better prompts', 'build an AI feature', or 'why does ChatGPT keep making this mistake'."
+description: "Debug and harden production LLM prompts — handle prompt injection, output format drift, instruction forgetting in long contexts, and cross-model portability issues. Use this skill when the user ships an LLM-powered feature to production and needs to diagnose why outputs are inconsistent, unsafe, or regressed after model updates — NOT for basic 'write a better prompt' questions."
 metadata:
   category: "WP-11 通用技術"
-  tags: ["technology", "prompt-engineering", "llm", "ai"]
+  tags: ["technology", "llm", "production", "debugging", "security"]
 ---
 
-# Prompt Engineering
+# Production Prompt Engineering
+
+## Overview
+
+This skill addresses the failure modes that appear ONLY in production LLM applications: prompt injection, output format drift, silent regression across model versions, instruction decay in long contexts, and hallucination under pressure. It is NOT a tutorial on few-shot or chain-of-thought — assume the agent already knows basic prompting techniques.
+
+## When to Use
+
+**Trigger conditions:**
+- A production LLM feature is misbehaving (inconsistent, unsafe, format-drifting)
+- Designing a system prompt for a multi-tenant application
+- Hardening prompts against injection or jailbreak attempts
+- Diagnosing regression after a model version update
+
+**When NOT to use:**
+- Basic "how do I write a prompt" — the agent already knows few-shot, CoT, role-play
+- One-off content generation (just write the prompt directly)
+- RAG architecture design (use a RAG-specific skill)
 
 ## Framework
 
 ```
-IRON LAW: Be Specific, Structured, and Show Examples
+IRON LAW: Treat User Input as Hostile by Default
 
-Vague prompt → vague output. The LLM does not read your mind.
-"Write something good" → garbage.
-"Write a 200-word product description for [product], targeting [audience],
-emphasizing [benefit], in a [tone] tone. Follow this template: [template]" → quality.
-
-Specificity, structure, and examples are the three levers.
+In production, user input WILL be used to attempt prompt injection.
+The only reliable defense is structural separation:
+1. System prompt carries ALL rules and behavior (never trust user input to override)
+2. User input is NEVER concatenated directly into instructions
+3. Output is validated against an expected schema BEFORE being used downstream
+A prompt that works in dev with clean input will fail in production with adversarial input.
 ```
 
-### Core Techniques
+## Production Failure Modes
 
-| Technique | What It Does | When to Use |
-|-----------|-------------|------------|
-| **Role/Persona** | "You are a senior tax accountant..." | Domain-specific tasks, tone control |
-| **Few-shot examples** | Provide 2-3 input→output examples | Format control, pattern matching |
-| **Chain-of-thought** | "Think step by step..." or "Show your reasoning" | Complex reasoning, math, logic |
-| **Output format** | "Respond in JSON/Markdown/Table format" | Structured data extraction, API responses |
-| **Constraints** | "Maximum 100 words", "Only use information from the text" | Length control, hallucination reduction |
-| **System prompt** | Set persistent behavior and rules | Application-level prompt design |
+| Failure Mode | Observable Symptom | Root Cause | Fix |
+|--------------|-------------------|-----------|-----|
+| **Prompt injection** | User input overrides system instructions | Instructions concatenated with untrusted input | Structural separation: use ChatML roles; validate outputs against schema; never use "ignore previous instructions" susceptible templates |
+| **Format drift** | JSON response breaks 1/1000 calls | Model temperature > 0 + unconstrained output | Constrained decoding (JSON mode, grammar), schema validation + retry, lower temperature |
+| **Instruction decay** | Rules followed early, ignored after N turns | Long context pushes system prompt out of attention | Reinforce critical rules in EACH user message; use model's native tool/system role; shorter contexts |
+| **Silent regression** | Same prompt, worse output after model update | Provider updated model weights | Pin model version; maintain regression test suite; A/B test before rolling upgrades |
+| **Hallucination under pressure** | Model invents facts when uncertain | No explicit "I don't know" escape hatch | Add "If uncertain, respond with {null}. Do not guess." + grounding constraint |
+| **Cross-model portability** | Works on GPT-4, fails on Claude/Gemini | Model-specific prompt conventions | Test on all target models; avoid model-specific jailbreaks; use common-denominator patterns |
 
-### Prompt Structure Template
+## Methodology
 
-```
-[ROLE] You are a {role} with expertise in {domain}.
+### Phase 1: Reproduce the Failure
+Collect: exact input, exact output, expected output, model + version, temperature. Reproduce in isolation (outside the app) to rule out application bugs.
+**Gate:** Failure reproduces consistently in a minimal test case.
 
-[CONTEXT] The user is {situation}. They need {what}.
+### Phase 2: Classify the Failure Mode
+Match against the table above. Most production failures fall into one of 6 categories. Don't guess — identify which mode applies.
+**Gate:** Failure mode classified with evidence.
 
-[TASK] {Specific instruction with clear deliverable}
+### Phase 3: Apply the Targeted Fix
+Fix the SPECIFIC failure mode. Don't rewrite the whole prompt. Generic rewrites often introduce new failure modes.
+**Gate:** Fix addresses root cause, not symptom.
 
-[FORMAT] Respond in the following format:
-{Template or structure}
-
-[CONSTRAINTS]
-- {Constraint 1}
-- {Constraint 2}
-
-[EXAMPLES] (few-shot)
-Input: {example input}
-Output: {example output}
-```
-
-### Output Format Control
-
-| Desired Output | Technique |
-|---------------|-----------|
-| JSON | "Respond with valid JSON matching this schema: {...}" |
-| Markdown table | "Format as a markdown table with columns: X, Y, Z" |
-| Bullet list | "List as bullet points, maximum 5 items" |
-| Specific length | "In exactly 3 sentences" or "Under 200 words" |
-| Classification | "Classify as one of: [A, B, C]. Output only the label." |
-
-### Prompt Debugging
-
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| Output too verbose | No length constraint | Add "Be concise. Maximum X words." |
-| Output hallucinated facts | No grounding constraint | "Only use information from the provided text. Say 'I don't know' if unsure." |
-| Output ignores instructions | Instructions buried in long prompt | Move critical instructions to the START and END of the prompt |
-| Output format wrong | No format specification or example | Add explicit format template + 1 example |
-| Inconsistent outputs | Temperature too high or prompt too ambiguous | Lower temperature, add more specific instructions |
-
-### System Prompt Design (for Applications)
-
-```
-[Identity] You are {role} for {application}.
-
-[Behavior rules]
-- Always {do X}
-- Never {do Y}
-- When unsure, {default behavior}
-
-[Output rules]
-- Format: {JSON/Markdown/etc.}
-- Language: {always respond in user's language}
-- Length: {concise/detailed depending on query}
-
-[Safety]
-- Do not {restricted action}
-- If asked about {sensitive topic}, respond with {safe response}
-```
-
-### Context Window Management
-
-| Strategy | How | When |
-|----------|-----|------|
-| **Truncation** | Keep most recent N tokens | Chat applications |
-| **Summarization** | Summarize old context, keep recent | Long conversations |
-| **RAG** | Retrieve relevant context from a database | Knowledge-intensive tasks |
-| **Chunking** | Split large documents into overlapping chunks | Document analysis |
+### Phase 4: Build a Regression Test
+Add the failing case to a regression test suite. Run the suite before every prompt change or model version update.
+**Gate:** Test suite catches the original failure AND any reintroduction.
 
 ## Output Format
 
 ```markdown
-# Prompt Design: {Use Case}
+# Prompt Debug Report: {Feature Name}
 
-## Task Definition
-- Input: {what the user provides}
-- Output: {what the AI should produce}
-- Quality criteria: {what "good" looks like}
+## Failure Reproduction
+- Input: {exact input}
+- Observed: {what happened}
+- Expected: {what should have happened}
+- Model: {name + version + temperature}
 
-## Prompt
-```
-{The complete prompt}
-```
+## Failure Mode
+{One of: injection, format drift, instruction decay, silent regression, hallucination, cross-model}
 
-## Test Cases
-| Input | Expected Output | Actual Output | Pass? |
-|-------|----------------|--------------|-------|
-| {test 1} | {expected} | {actual} | ✓/✗ |
+## Root Cause
+{Specific mechanism, not generic "prompt was bad"}
 
-## Iteration Notes
-- V1: {what was tried, what went wrong}
-- V2: {what was changed, result}
+## Fix
+{Targeted change with before/after prompt diff}
+
+## Regression Test
+{Test case added to prevent reintroduction}
 ```
 
 ## Gotchas
 
-- **Prompt injection is a real security threat**: If user input is concatenated into a prompt, users can override your instructions. Sanitize inputs and use system prompts for rules.
-- **Temperature affects consistency**: Temperature 0 = deterministic (same input → same output). Temperature 1 = creative but unpredictable. Use 0-0.3 for factual tasks, 0.7-1.0 for creative tasks.
-- **Models have recency bias**: Instructions at the beginning and end of a long prompt get more attention than the middle. Put critical rules at both start AND end.
-- **Few-shot examples set the pattern**: If all your examples show long responses, the model will produce long responses even if you say "be concise." Examples override instructions.
-- **Different models need different prompts**: A prompt optimized for GPT-4 may not work well for Claude or Gemini. Test across models if you need portability.
+- **"Ignore previous instructions" is only the beginning**: Modern injection uses role-play ("Pretend you are DAN..."), language switching, Unicode tricks, and encoded payloads. Defense requires input validation AND output validation, not just instruction phrasing.
+- **Temperature 0 is not deterministic across calls**: Even at T=0, outputs can vary across API calls due to backend GPU non-determinism (batch effects). Don't rely on exact string equality in tests; use semantic or schema equality.
+- **Few-shot examples override your instructions**: If your examples show 500-word responses and you say "be concise", the model follows the examples. Examples are STRONGER than instructions.
+- **System prompts are NOT absolute**: Even with a system prompt, sufficiently adversarial user input can override behavior. System prompts are a strong hint, not a security boundary. For real security, use output validation and sandboxing.
+- **Provider model updates are silent**: OpenAI's "gpt-4" alias changes weights without notice. Pin to dated versions (gpt-4-0613) for stability. Rerun regression tests after every update.
+- **Context window size ≠ effective context**: A 128K context model may only attend well to the first 32K and last 4K. Put critical instructions at START and END, not in the middle ("lost in the middle" effect).
 
 ## References
 
-- For RAG (Retrieval-Augmented Generation) architecture, see `references/rag-guide.md`
-- For prompt injection prevention, see `references/prompt-security.md`
+- For prompt injection attack patterns, see `references/injection-patterns.md`
+- For regression testing frameworks, see `references/regression-testing.md`
+- For cross-model prompt portability, see `references/cross-model-testing.md`

@@ -49,7 +49,7 @@ Key assumptions:
 
 ### Step 2 — Compute Expected Return
 
-E(Ri) = Rf + Bi x (E(Rm) - Rf). See `references/` for derivation from mean-variance optimization.
+E(Ri) = Rf + Bi x (E(Rm) - Rf). See `references/derivation.md` for the derivation from mean-variance optimization.
 
 ### Step 3 — Plot on Security Market Line
 

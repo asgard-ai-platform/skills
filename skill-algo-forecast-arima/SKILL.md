@@ -67,8 +67,18 @@ Return forecasts with confidence intervals.
 ## Examples
 
 ### Sample I/O
-**Input:** 48 months of monthly sales data with upward trend and yearly seasonality
-**Expected:** SARIMA(1,1,1)(1,1,1,12), forecast continues trend with seasonal pattern, widening CI.
+**Input:** 12 monthly observations with upward trend: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32]
+
+**Step 1:** First difference = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] (constant → stationary, d=1 sufficient)
+
+**Step 2:** ARIMA(0,1,0) random walk with drift μ=2 is the simplest fitting model.
+
+**Expected forecast (ARIMA(0,1,0) with drift=2):**
+- Period 13: 32 + 2 = **34**
+- Period 14: 32 + 4 = **36**
+- Period 15: 32 + 6 = **38**
+
+Verify: differenced series is constant (2) → no AR/MA terms needed. Residuals are exactly 0 → perfect fit (toy example). On real data, residuals should pass Ljung-Box (p > 0.05).
 
 ### Edge Cases
 | Input | Expected | Why |
