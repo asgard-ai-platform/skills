@@ -1,0 +1,23 @@
+{
+  "skill_name": "biz-swot",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我們是一家台灣的中型 SaaS 公司，主要做餐飲 POS 系統，目前有 2000 家客戶。最近在考慮要不要進軍東南亞市場，老闆要我做一份策略評估報告。可以幫我分析一下我們的優勢劣勢和外部環境嗎？",
+      "expected_output": "A complete SWOT analysis with clearly separated internal (S/W) and external (O/T) factors, followed by a TOWS matrix crossing all four quadrants to generate SO/ST/WO/WT strategies, with actionable recommendations for the SEA expansion decision.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "hey i need to do a competitive analysis for my startup pitch deck. we're building an AI-powered resume screening tool. investors keep asking about our positioning vs big players like LinkedIn and Indeed. can you help me figure out where we stand?",
+      "expected_output": "A SWOT analysis scoped to the competitive positioning of the AI resume screening startup, with internal factors about the startup's own capabilities vs weaknesses, external factors about market trends and competitor threats, and TOWS strategies that directly address the investor positioning question.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我們學校的學生會想要辦一個大型音樂祭，預算大概 50 萬台幣，之前沒辦過這種大型活動。想請你幫我們做個分析，看看有什麼風險跟機會，我們有什麼優勢可以用",
+      "expected_output": "A SWOT analysis adapted to a non-business context (student organization event planning), with internal factors about the student council's resources and capabilities, external factors about venue, weather, regulations, and sponsorship opportunities, followed by practical TOWS strategies within the 500K NTD budget constraint.",
+      "files": []
+    }
+  ]
+}
