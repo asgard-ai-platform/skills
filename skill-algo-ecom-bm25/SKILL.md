@@ -82,6 +82,14 @@ Return ranked results with scores.
 - **Numeric attributes**: BM25 doesn't handle numeric filtering (price range, ratings). Use it for text relevance, then combine with numeric filters.
 - **Zero-result queries**: When BM25 returns nothing, fall back to fuzzy matching or semantic search rather than showing empty results.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/bm25.py` | Score documents against a query using BM25 ranking function | `python scripts/bm25.py --help` |
+
+Run `python scripts/bm25.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For BM25F multi-field extension, see `references/bm25f.md`

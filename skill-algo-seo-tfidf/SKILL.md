@@ -79,6 +79,14 @@ Return scored terms per document or ranked documents per query.
 - **Not semantic**: "car" and "automobile" are treated as completely different terms. TF-IDF has no concept of synonymy.
 - **Corpus dependency**: IDF values change when the corpus changes. Adding documents alters all scores.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/tfidf.py` | Compute TF-IDF vectors, top terms per document, and query scoring | `python scripts/tfidf.py --help` |
+
+Run `python scripts/tfidf.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For BM25 (improved TF-IDF), see `references/bm25-comparison.md`

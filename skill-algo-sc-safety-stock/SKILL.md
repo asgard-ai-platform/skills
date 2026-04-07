@@ -86,6 +86,14 @@ Return safety stock with cost impact and service level analysis.
 - **Lead time data quality**: Lead time variability is often poorly tracked. Underestimating σ_LT leads to insufficient safety stock.
 - **ABC segmentation**: Don't apply the same service level to all SKUs. A-items (high revenue) deserve 99%; C-items may be fine at 90%.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/safety_stock.py` | Compute safety stock and reorder point with combined demand/lead-time variability | `python scripts/safety_stock.py --help` |
+
+Run `python scripts/safety_stock.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For multi-echelon safety stock optimization, see `references/multi-echelon.md`

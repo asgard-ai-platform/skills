@@ -107,6 +107,14 @@ Prove unit economics are positive BEFORE investing in growth.
 - **Blended vs cohort**: Blended unit economics across all customers hides that early customers (organic) may be profitable while recent customers (paid acquisition) are not.
 - **Negative unit economics can be strategic**: Temporarily, in land-grab markets with network effects (ride-sharing, marketplaces). But the path to positive must be explicit.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/unit_economics.py` | Compute SaaS unit economics (NRR, GRR, LTV, CAC payback, magic number, burn multiple) | `python scripts/unit_economics.py --help` |
+
+Run `python scripts/unit_economics.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For CAC-LTV deep dive, see the skill-biz-cac-ltv skill

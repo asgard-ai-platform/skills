@@ -83,6 +83,14 @@ Return capability indices with defect rate estimates.
 - **Sample size confidence**: Cpk from 30 samples has wide confidence intervals. Report confidence intervals alongside point estimates.
 - **Cpk ≠ defect-free**: Even Cpk=2.0 has a theoretical defect rate (~0.002 PPM). For ultra-critical applications, higher Cpk or process validation is required.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/cpk.py` | Compute Cp, Cpk, Cpm, and PPM defective from process data | `python scripts/cpk.py --help` |
+
+Run `python scripts/cpk.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For Cp/Cpk/Pp/Ppk comparison, see `references/capability-indices.md`

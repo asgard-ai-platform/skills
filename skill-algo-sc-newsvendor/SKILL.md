@@ -84,6 +84,14 @@ Return optimal order quantity with profit analysis.
 - **Multi-product constraints**: With a shared budget constraint across products, solve the constrained newsvendor (Lagrangian relaxation).
 - **Salvage value assumption**: Assumes all excess can be salvaged at v. If disposal has a cost (v < 0), the model still works but Q* drops further.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/newsvendor.py` | Compute newsvendor optimal quantity, expected profit, and fill rate | `python scripts/newsvendor.py --help` |
+
+Run `python scripts/newsvendor.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For multi-product constrained newsvendor, see `references/constrained-newsvendor.md`

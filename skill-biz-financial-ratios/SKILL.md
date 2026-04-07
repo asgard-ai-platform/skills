@@ -145,6 +145,14 @@ Synthesis: Profitability weakening + inventory building up + leverage rising = p
 - **Off-balance-sheet items**: Operating leases (pre-IFRS 16), special purpose vehicles, and contingent liabilities may not appear in standard ratios. Check footnotes.
 - **Growth companies look "unhealthy"**: High-growth companies often have low profitability, high leverage, and negative cash flow by design. Context matters.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/financial_ratios.py` | Compute standard liquidity, leverage, profitability, and efficiency ratios | `python scripts/financial_ratios.py --help` |
+
+Run `python scripts/financial_ratios.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For industry-specific benchmark ranges, see `references/industry-benchmarks.md`

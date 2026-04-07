@@ -80,6 +80,14 @@ Return sorted ratings with confidence indicators.
 - **Not designed for teams**: Standard Elo is for 1v1. For teams, average team ratings or use TrueSkill which models individual contribution within teams.
 - **Rating ≠ win probability**: A 200-point rating gap implies ~76% expected win rate, but actual outcomes depend on context, form, and luck.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/elo.py` | Update Elo ratings (single match or batch) with zero-sum verification | `python scripts/elo.py --help` |
+
+Run `python scripts/elo.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For Bradley-Terry model (batch Elo), see `references/bradley-terry.md`

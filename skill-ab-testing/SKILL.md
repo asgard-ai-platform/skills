@@ -91,6 +91,14 @@ Changing {variable} from {A} to {B} will increase {metric} by {X%} because {reas
 - **Winner's curse**: The estimated lift from a test is often larger than the true lift due to statistical noise. Expect the actual impact after deployment to be smaller.
 - **Don't test everything — test what matters**: Running 20 small tests on button colors while ignoring the pricing page is misallocating effort. Test high-impact elements first.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/ab_test.py` | Two-proportion z-test with effect size and sample-size planning | `python scripts/ab_test.py --help` |
+
+Run `python scripts/ab_test.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For statistical methodology (sample size, p-values), see the skill-ab-testing-stats skill

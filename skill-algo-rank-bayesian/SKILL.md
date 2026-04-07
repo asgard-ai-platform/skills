@@ -81,6 +81,14 @@ Return ranked items with Bayesian scores.
 - **Temporal bias**: Old items accumulate reviews. Unless you weight recent reviews more, established items permanently dominate "top" lists.
 - **Review gaming**: Bayesian average doesn't prevent review manipulation — it only mitigates small-sample extremes. Pair with fraud detection.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/bayesian_avg.py` | Rank items using Bayesian average to handle small-sample extremes | `python scripts/bayesian_avg.py --help` |
+
+Run `python scripts/bayesian_avg.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For IMDB weighted rating formula, see `references/imdb-formula.md`
