@@ -32,11 +32,15 @@ CASES_DIR = EVAL_ROOT / "cases"
 RESULTS_DIR = EVAL_ROOT / "results"
 
 MODEL = "claude-sonnet-4-6"
-TIMEOUT_SEC = 240
 
 ARM_TOOLS = {
     "with_script": "Bash,Read",
     "without_script": "Read",
+}
+
+ARM_TIMEOUT = {
+    "with_script": 180,
+    "without_script": 720,
 }
 
 
@@ -95,6 +99,7 @@ Use null for fields you cannot compute. Show reasoning above the JSON line."""
 
 def run_arm(case: dict, scenario: dict, arm: str) -> dict:
     prompt = build_prompt(case, scenario, arm)
+    timeout_sec = ARM_TIMEOUT[arm]
     cmd = [
         "claude",
         "-p",
@@ -116,7 +121,7 @@ def run_arm(case: dict, scenario: dict, arm: str) -> dict:
             cwd=REPO_ROOT,
             capture_output=True,
             text=True,
-            timeout=TIMEOUT_SEC,
+            timeout=timeout_sec,
         )
         elapsed = round(time.time() - started, 2)
         return {
@@ -129,21 +134,24 @@ def run_arm(case: dict, scenario: dict, arm: str) -> dict:
     except subprocess.TimeoutExpired:
         return {
             "arm": arm,
-            "elapsed_sec": TIMEOUT_SEC,
+            "elapsed_sec": timeout_sec,
             "returncode": -1,
             "stdout": "",
-            "stderr": f"TIMEOUT after {TIMEOUT_SEC}s",
+            "stderr": f"TIMEOUT after {timeout_sec}s",
         }
 
 
-def extract_final_json(stdout: str) -> dict | None:
-    """Pull the last JSON object from the model's text response."""
+def extract_response_text(stdout: str) -> str:
+    """Pull the model's prose response from the CLI envelope."""
     try:
         envelope = json.loads(stdout)
-        text = envelope.get("result") or envelope.get("response") or ""
+        return envelope.get("result") or envelope.get("response") or ""
     except json.JSONDecodeError:
-        text = stdout
-    # Find the last {...} block
+        return stdout
+
+
+def extract_final_json(text: str) -> dict | None:
+    """Pull the last JSON object from a text response."""
     depth = 0
     end = -1
     for i in range(len(text) - 1, -1, -1):
@@ -161,6 +169,140 @@ def extract_final_json(stdout: str) -> dict | None:
                     end = -1
                     depth = 0
     return None
+
+
+# ---------- Scoring ----------
+
+WITHIN_PCT = 0.01  # 1% tolerance
+
+
+def _within_pct(actual, expected, pct=WITHIN_PCT) -> bool:
+    if actual is None or expected is None:
+        return False
+    try:
+        if expected == 0:
+            return abs(actual) <= pct
+        return abs(actual - expected) / abs(expected) <= pct
+    except (TypeError, ValueError):
+        return False
+
+
+def _numeric_keys_match(parsed: dict | None, expected: dict, pct=WITHIN_PCT) -> tuple[bool, list[str]]:
+    if not parsed:
+        return False, ["no parsed JSON"]
+    misses = []
+    for k, v in expected.items():
+        if not isinstance(v, (int, float)):
+            continue
+        a = parsed.get(k)
+        if not _within_pct(a, v, pct):
+            misses.append(f"{k}: got {a!r} expected {v}")
+    return (len(misses) == 0), misses
+
+
+def score_arm(scenario: dict, arm_result: dict) -> dict:
+    rubric = scenario.get("rubric", "within_1_percent")
+    expected = scenario["expected"]
+    parsed = arm_result.get("parsed")
+    text = arm_result.get("response_text", "") or ""
+    text_lower = text.lower()
+
+    if rubric in ("within_1_percent", "within_1_percent_AND_units_consistent"):
+        ok, misses = _numeric_keys_match(parsed, expected)
+        return {"verdict": "pass" if ok else "fail", "notes": misses}
+
+    if rubric == "judge_flagged_assumption":
+        ok, misses = _numeric_keys_match(parsed, expected)
+        flag_phrase = expected.get("must_flag", "").lower()
+        flagged = bool(flag_phrase) and any(
+            kw in text_lower for kw in (flag_phrase, "convention", "mid-year", "assumption")
+        )
+        if ok and flagged:
+            return {"verdict": "pass", "notes": []}
+        if ok and not flagged:
+            return {"verdict": "partial", "notes": ["numbers correct but assumption not flagged"]}
+        return {"verdict": "fail", "notes": misses + (["flag missing"] if not flagged else [])}
+
+    if rubric == "must_raise_or_refuse":
+        err_phrase = expected.get("error", "").lower()
+        en_kw = ["error", "cannot", "diverge", "must be greater", "invalid",
+                 "refuse", "undefined", "infinity", "divide by zero"]
+        zh_kw = ["除以零", "無窮", "无穷", "無解", "无解", "無法計算", "无法计算",
+                 "違反", "违反", "不成立", "未定義", "未定义"]
+        keywords = en_kw + zh_kw
+        if err_phrase:
+            keywords.append(err_phrase[:20])
+        raised = any(kw in text_lower for kw in keywords)
+        # Fallback: parsed all-null + mentions wacc/growth/terminal counts as a refusal.
+        if not raised and parsed and all(v is None for v in parsed.values()):
+            if any(kw in text_lower for kw in ("wacc", "growth", "terminal", "終值", "终值")):
+                raised = True
+        return {
+            "verdict": "pass" if raised else "fail",
+            "notes": [] if raised else ["did not raise/refuse"],
+        }
+
+    return {"verdict": "unknown", "notes": [f"unknown rubric: {rubric}"]}
+
+
+SPEED_RATIO_THRESHOLD = 3.0  # without_script/with_script ratio considered a "speed win"
+
+
+def _classify_scenario(s: dict) -> str:
+    """Per-scenario value class: correctness / speed / both / neither.
+
+    correctness: with_script passed AND without_script failed
+    speed:       both passed AND without_script took >= 3x longer
+    both:        correctness AND speed
+    neither:     both passed at similar speed (script adds no measurable value)
+    inconclusive: with_script failed (script itself broken — needs investigation)
+    """
+    ws = s["arms"]["with_script"]
+    wo = s["arms"]["without_script"]
+    ws_v = ws["score"]["verdict"]
+    wo_v = wo["score"]["verdict"]
+    if ws_v != "pass":
+        return "inconclusive"
+    correctness_win = wo_v != "pass"
+    ws_t = max(ws["elapsed_sec"], 0.1)
+    wo_t = wo["elapsed_sec"]
+    speed_win = wo_t / ws_t >= SPEED_RATIO_THRESHOLD
+    if correctness_win and speed_win:
+        return "both"
+    if correctness_win:
+        return "correctness"
+    if speed_win:
+        return "speed"
+    return "neither"
+
+
+def _print_summary(record: dict) -> None:
+    sys.stderr.write(f"\n  --- summary: {record['skill']} ---\n")
+    header = f"  {'scenario':<32} {'with':<10} {'without':<10} {'ratio':>6} {'value':<12}\n"
+    sys.stderr.write(header)
+    classes = []
+    for s in record["scenarios"]:
+        ws = s["arms"]["with_script"]
+        wo = s["arms"]["without_script"]
+        ws_v = ws["score"]["verdict"]
+        wo_v = wo["score"]["verdict"]
+        ratio = wo["elapsed_sec"] / max(ws["elapsed_sec"], 0.1)
+        cls = _classify_scenario(s)
+        s["value_class"] = cls
+        classes.append(cls)
+        sys.stderr.write(
+            f"  {s['id'][:32]:<32} {ws_v:<10} {wo_v:<10} {ratio:>5.1f}x {cls:<12}\n"
+        )
+    # Case-level rollup: pick the strongest signal
+    rollup = (
+        "both" if "both" in classes
+        else "correctness" if "correctness" in classes
+        else "speed" if "speed" in classes
+        else "neither" if all(c == "neither" for c in classes)
+        else "mixed"
+    )
+    record["case_verdict"] = rollup
+    sys.stderr.write(f"  → case verdict: {rollup}\n\n")
 
 
 def run_case(case_path: Path) -> Path:
@@ -192,10 +334,17 @@ def run_case(case_path: Path) -> Path:
             sys.stderr.write(f"    arm: {arm} ... ")
             sys.stderr.flush()
             result = run_arm(case, scenario, arm)
-            result["parsed"] = extract_final_json(result["stdout"])
+            result["response_text"] = extract_response_text(result["stdout"])
+            result["parsed"] = extract_final_json(result["response_text"])
+            result["score"] = score_arm(scenario, result)
             scenario_record["arms"][arm] = result
-            sys.stderr.write(f"{result['elapsed_sec']}s rc={result['returncode']}\n")
+            sys.stderr.write(
+                f"{result['elapsed_sec']}s rc={result['returncode']} "
+                f"verdict={result['score']['verdict']}\n"
+            )
         record["scenarios"].append(scenario_record)
+
+    _print_summary(record)
 
     out_path.write_text(json.dumps(record, indent=2, ensure_ascii=False))
     sys.stderr.write(f"  wrote {out_path.relative_to(REPO_ROOT)}\n")

@@ -3,15 +3,26 @@
   "script_cmd": "python3 biz-dcf/scripts/dcf.py",
   "scenarios": [
     {
-      "id": "large-10yr-projection",
+      "id": "30yr-decimal-noise",
       "dimension": "large_dataset",
-      "prompt": "Compute enterprise value with these 10 years of projected free cash flows (in $M): 87.3, 94.1, 101.8, 110.2, 118.9, 127.4, 135.8, 143.2, 149.6, 154.7. WACC = 9.2%, terminal growth = 2.8%, net debt = $215M, shares outstanding = 42.5M. Report enterprise value, equity value, and per-share value.",
+      "prompt": "Compute enterprise value, equity value, and per-share value for a 30-year DCF projection. WACC = 8.75%, terminal growth = 2.5%, net debt = $312.6M, shares outstanding = 58.4M. Free cash flows by year ($M):\n\nYear 1: 47.83\nYear 2: 51.21\nYear 3: 53.56\nYear 4: 56.56\nYear 5: 59.61\nYear 6: 64.05\nYear 7: 68.67\nYear 8: 74.21\nYear 9: 77.80\nYear 10: 82.62\nYear 11: 86.43\nYear 12: 91.08\nYear 13: 97.02\nYear 14: 101.49\nYear 15: 106.86\nYear 16: 114.45\nYear 17: 122.09\nYear 18: 128.66\nYear 19: 137.49\nYear 20: 148.12\nYear 21: 154.83\nYear 22: 166.79\nYear 23: 178.95\nYear 24: 189.44\nYear 25: 199.14\nYear 26: 215.73\nYear 27: 228.34\nYear 28: 239.46\nYear 29: 251.16\nYear 30: 270.98",
       "expected": {
-        "enterprise_value_m": 1772.88,
-        "equity_value_m": 1557.88,
-        "per_share": 36.66
+        "enterprise_value_m": 1303.32,
+        "equity_value_m": 990.72,
+        "per_share": 16.96
       },
       "rubric": "within_1_percent"
+    },
+    {
+      "id": "mixed-tw-units",
+      "dimension": "messy_real_data",
+      "prompt": "Compute per-share value (in TWD) for this Taiwan listco DCF. WACC 7.8%, terminal growth 2.2%. Free cash flows are reported in inconsistent units across years — convert carefully:\n\nYear 1 FCF: 230,000 thousand TWD\nYear 2 FCF: 246.8 million TWD\nYear 3 FCF: 0.265 billion TWD\nYear 4 FCF: 28,400 萬 TWD\nYear 5 FCF: 3.02 億 TWD\n\nNet debt: 1.85 billion TWD\nShares outstanding: 412 million\n\nReport enterprise_value_m and equity_value_m in millions of TWD, and per_share in TWD.",
+      "expected": {
+        "enterprise_value_m": 4840.99,
+        "equity_value_m": 2990.99,
+        "per_share": 7.26
+      },
+      "rubric": "within_1_percent_AND_units_consistent"
     },
     {
       "id": "ambiguous-mid-year-vs-eoy",
@@ -32,17 +43,6 @@
         "error": "wacc must be greater than terminal_growth"
       },
       "rubric": "must_raise_or_refuse"
-    },
-    {
-      "id": "messy-units",
-      "dimension": "messy_real_data",
-      "prompt": "Free cash flows from 10-K (in thousands): 1,247,300; 1,389,500; 1,521,800; 1,612,400. WACC 8.5%, terminal growth 2.5%, net debt 4.2 billion, 850 million shares. Compute per-share value. Watch units carefully.",
-      "expected": {
-        "enterprise_value_m": 24560.68,
-        "equity_value_m": 20360.68,
-        "per_share": 23.95
-      },
-      "rubric": "within_1_percent_AND_units_consistent"
     }
   ]
 }
