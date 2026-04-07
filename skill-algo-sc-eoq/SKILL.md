@@ -85,6 +85,14 @@ Return EOQ with cost breakdown and reorder point.
 - **Lead time variability**: EOQ doesn't address when to order, only how much. Add safety stock: SS = z × σ_demand × √(lead time).
 - **Multi-item coordination**: When multiple items share ordering costs (same supplier), use joint replenishment models, not individual EOQs.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/eoq.py` | Compute Economic Order Quantity and cost breakdown | `python scripts/eoq.py --help` |
+
+Run `python scripts/eoq.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For EOQ with quantity discounts, see `references/eoq-discounts.md`

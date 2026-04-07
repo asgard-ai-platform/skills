@@ -81,6 +81,14 @@ Return elasticity estimate with revenue impact projection.
 - **Asymmetric elasticity**: Consumers may react differently to price increases vs decreases. Don't assume symmetry.
 - **Small sample noise**: With few observations, elasticity estimates have wide confidence intervals. Report intervals, not just point estimates.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/arc_elasticity.py` | Compute arc elasticity and revenue impact | `python scripts/arc_elasticity.py --help` |
+
+Run `python scripts/arc_elasticity.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For regression-based elasticity estimation, see `references/regression-estimation.md`

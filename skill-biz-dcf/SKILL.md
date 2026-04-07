@@ -147,6 +147,14 @@ Test key assumptions: WACC (±1%), terminal growth (±0.5%), revenue growth (±2
 - **Country risk premium**: For Taiwan/emerging market companies, add a country risk premium to WACC (typically 1-3%).
 - **Negative FCF in early years**: Growth companies may have negative FCF initially. This is fine — the value comes from later years and terminal value.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/dcf.py` | Compute DCF enterprise value with terminal value | `python scripts/dcf.py --help` |
+
+Run `python scripts/dcf.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For WACC calculation details, see `references/wacc-calculation.md`

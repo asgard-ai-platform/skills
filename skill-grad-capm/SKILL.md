@@ -93,6 +93,14 @@ Assets above the SML are undervalued (positive alpha); below are overvalued (neg
 - Beta estimation is sensitive to return frequency (daily vs monthly) and sample period
 - CAPM fails to explain the low-beta anomaly (low-beta stocks outperform predictions)
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/capm.py` | Compute CAPM expected return and alpha | `python scripts/capm.py --help` |
+
+Run `python scripts/capm.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - Sharpe, W. (1964). Capital asset prices. *Journal of Finance*, 19(3), 425-442.

@@ -123,6 +123,14 @@ Diagnosis: Company A is turnover-driven (high-volume, low-margin retail). Compan
 - **One-time items distort margin**: Use normalized/adjusted net income to avoid single-year spikes from asset sales, write-downs, or legal settlements.
 - **Turnover varies wildly by industry**: Asset-light businesses (SaaS) have naturally high turnover. Capital-heavy businesses (manufacturing) have low turnover. Compare within industry only.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/dupont.py` | Decompose ROE into 3-factor or 5-factor DuPont components | `python scripts/dupont.py --help` |
+
+Run `python scripts/dupont.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For 5-factor DuPont extension, see `references/extended-dupont.md`

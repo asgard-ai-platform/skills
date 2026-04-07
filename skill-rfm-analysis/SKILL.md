@@ -104,6 +104,14 @@ assumptions.
 - **B2B vs B2C frequency differs**: A B2B customer buying quarterly is "frequent." A B2C customer buying quarterly may be "at risk." Calibrate to business context.
 - **Don't over-message At Risk customers**: Bombarding dormant customers with emails can increase unsubscribes. One well-crafted win-back campaign is better than weekly emails.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/rfm_score.py` | Score customers on R/F/M and assign segment labels | `python scripts/rfm_score.py --help` |
+
+Run `python scripts/rfm_score.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For Python/SQL implementation code, see `references/rfm-implementation.md`

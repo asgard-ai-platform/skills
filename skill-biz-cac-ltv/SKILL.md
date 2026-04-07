@@ -191,6 +191,14 @@ New customers in month: 300
 - **Payback period matters for cash flow**: Even with LTV:CAC of 5:1, if payback takes 24 months, you need significant upfront capital. Fast-growing companies can die from long payback periods despite great unit economics.
 - **Negative churn is a superpower**: If expansion revenue (upsells) exceeds lost revenue (churn), Net Revenue Retention > 100%. This means LTV grows over time — the best possible scenario.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/cac_ltv.py` | Compute CAC, LTV, LTV/CAC ratio, and payback period | `python scripts/cac_ltv.py --help` |
+
+Run `python scripts/cac_ltv.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For cohort-based LTV calculation methods, see `references/cohort-ltv.md`

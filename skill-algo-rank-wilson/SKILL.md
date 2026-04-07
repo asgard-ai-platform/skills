@@ -79,6 +79,14 @@ Return ranked items with scores and confidence intervals.
 - **Confidence level choice**: Higher confidence (99%) penalizes small samples more aggressively. 95% is standard but tune for your use case.
 - **Sorting by lower bound is conservative**: This approach favors well-known items. For discovery/exploration, consider also boosting items with high upper bounds (potential hidden gems).
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/wilson_score.py` | Compute Wilson score interval and rank items | `python scripts/wilson_score.py --help` |
+
+Run `python scripts/wilson_score.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For Bayesian average alternative, see `references/bayesian-average.md`

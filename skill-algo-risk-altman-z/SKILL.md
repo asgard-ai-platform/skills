@@ -84,6 +84,14 @@ Return Z-score with component breakdown and zone classification.
 - **Trend matters more than level**: A company moving from Z=3.5 to Z=2.1 over two years is concerning even though 2.1 is still in the grey zone.
 - **Private firm variant**: Z' replaces X₄ with Book Equity / Total Liabilities and re-weights: Z' = 0.717X₁ + 0.847X₂ + 3.107X₃ + 0.420X₄ + 0.998X₅.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/altman_z.py` | Compute Altman Z-Score and classify zone | `python scripts/altman_z.py --help` |
+
+Run `python scripts/altman_z.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For Z' and Z'' variant formulas, see `references/z-score-variants.md`

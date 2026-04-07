@@ -100,6 +100,14 @@ Test: What happens if price drops 10%? If volume drops 20%? If fixed costs incre
 - **Break-even ignores time value**: BEP tells you the volume, not when you'll reach it. A business that breaks even at 10,000 units but takes 3 years to get there may run out of cash.
 - **Contribution margin is not gross margin**: Gross margin uses COGS (which may include fixed manufacturing overhead). CM uses only variable costs.
 
+## Scripts
+
+| Script | Description | Usage |
+|--------|-------------|-------|
+| `scripts/breakeven.py` | Compute break-even quantity, revenue, and contribution margin | `python scripts/breakeven.py --help` |
+
+Run `python scripts/breakeven.py --verify` to execute built-in sanity tests.
+
 ## References
 
 - For multi-product break-even methodology, see `references/multi-product-bep.md`
