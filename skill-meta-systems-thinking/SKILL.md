@@ -1,6 +1,6 @@
 ---
 name: "skill-meta-systems-thinking"
-description: "Apply systems thinking to analyze complex problems through feedback loops, emergence, and interconnections. Use this skill when the user faces a problem where cause and effect are separated in time or space, when fixing one thing breaks another, or when linear thinking fails — even if they say 'everything is connected', 'why does fixing this make it worse', 'unintended consequences', or 'this problem keeps coming back'."
+description: "Apply systems thinking — causal loop diagrams, stock-and-flow models, system archetypes, and leverage-point analysis — to problems where feedback loops, delays, or emergent behavior drive recurring failure. Use this skill when the user describes a problem that resists linear fixes: interventions that backfire, fixes that break other things, recurring symptoms that return after being solved, or time-lagged consequences, even if they say 'why does fixing X make Y worse', 'this problem keeps coming back after we fix it', or 'identify the leverage points in this system'."
 metadata:
   category: "WP-22 跨學科"
   tags: ["meta-thinking", "systems-thinking", "complexity"]

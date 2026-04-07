@@ -1,6 +1,6 @@
 ---
 name: "skill-hum-ethics"
-description: "Apply ethical frameworks — deontology, utilitarianism, virtue ethics, and justice theory — to analyze moral dilemmas and make principled decisions. Use this skill when the user faces an ethical dilemma, needs to evaluate a decision's moral implications, or wants a structured ethical analysis — even if they say 'is this the right thing to do', 'what are the ethical implications', or 'help me think through this moral question'."
+description: "Apply ethical frameworks — deontology, utilitarianism, virtue ethics, and justice theory — to analyze moral dilemmas and make principled decisions. Use this skill when the user presents a concrete moral dilemma, a decision with ethical implications, or needs a structured multi-framework ethical analysis, even if they say 'is this the right thing to do', 'what are the ethical implications of this decision', or 'evaluate this dilemma through different ethical lenses'."
 metadata:
   category: "WP-19 文學院/人文"
   tags: ["humanities", "ethics", "moral-philosophy", "decision-making"]

@@ -1,6 +1,6 @@
 ---
 name: "skill-hum-critical-thinking"
-description: "Apply structured critical thinking to evaluate arguments by identifying claims, evidence, reasoning, and assumptions. Use this skill when the user needs to assess the validity of an argument, detect logical fallacies, evaluate evidence quality, or construct a well-reasoned argument — even if they say 'is this argument valid', 'poke holes in this', 'what am I missing', or 'help me think through this'."
+description: "Apply structured critical thinking — identifying claims, evidence, reasoning chains, hidden assumptions, and logical fallacies — to evaluate or construct specific arguments rigorously. Use this skill when the user presents a concrete argument, claim, or piece of reasoning to be analyzed for validity or flaws, even if they say 'is this argument valid', 'poke holes in this claim', 'what logical fallacies are in this', or 'what assumptions am I making'."
 metadata:
   category: "WP-19 文學院/人文"
   tags: ["humanities", "critical-thinking", "logic", "argumentation"]
