@@ -48,8 +48,6 @@ fin-       Finance practical
 xborder-   Cross-border commerce
 ```
 
-The `{{SKILL_NAME}}/` directory is a template skeleton — leave it untouched.
-
 ## SKILL.md Rules
 
 1. **Frontmatter** (`name`, `description` required; `metadata` optional)
