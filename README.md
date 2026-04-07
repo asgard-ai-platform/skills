@@ -19,7 +19,7 @@ A skill encodes **methodology + judgment + gotchas** for one well-defined task �
 │   ├── examples/          ← (always present, populated as needed)
 │   ├── references/        ← (heavy/long content offloaded here)
 │   └── scripts/           ← (only when deterministic calculator exists)
-└── {{SKILL_NAME}}/        ← Template skeleton for new skills
+└── ...
 ```
 
 ## Categories (21 prefixes, 263 skills)
