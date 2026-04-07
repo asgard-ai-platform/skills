@@ -1,6 +1,6 @@
 ---
 name: "hum-socratic"
-description: "Apply Socratic questioning — systematic inquiry via clarification, assumption-probing, evidence-testing, perspective-shifting, implication-tracing, and meta-questions — to coach learning or surface hidden assumptions. Use this skill when the user is explicitly facilitating learning, coaching a person, or needs a structured questioning sequence, even if they say 'what questions should I ask to probe this', 'play devil's advocate on this claim', or 'how should I coach my team through this problem via questions'."
+description: "Apply Socratic questioning — systematic inquiry via clarification, assumption-probing, evidence-testing, perspective-shifting, implication-tracing, and meta-questions — to coach learning or surface hidden assumptions in a person's reasoning. Use this skill when the user is explicitly facilitating learning, coaching a person through their own thinking, or needs a structured questioning sequence to probe a held belief, even if they say 'play devil's advocate on this claim' or 'how should I coach my team through this problem via questions'. Do NOT use for open-ended brainstorming, information gathering, or requirements-discovery question lists where no belief is being probed."
 metadata:
   category: "WP-19 文學院/人文"
   tags: ["humanities", "socratic-method", "questioning", "pedagogy"]

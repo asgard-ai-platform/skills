@@ -127,15 +127,7 @@ The user wanted to first improve skills themselves (deterministic scripts, repo 
 
 ## ⚪ Low Priority / Watch List
 
-### 5. Phase 4 residual phantom trigger risks
-
-QA validation flagged 3 low-residual risks but they were within acceptable range:
-
-- `hum-socratic` — could over-trigger on "what questions should I ask" (non-coaching brainstorming)
-- `meta-systems-thinking` — could over-trigger on "this bug keeps coming back" (non-systems context)
-- `hum-critical-thinking` — could over-trigger on "poke holes in my travel plan"
-
-### 6. Subagent sandbox limitation
+### 5. Subagent sandbox limitation
 
 In Phase 1.7 and Tier 1 evals, 4/5 with_script subagents could not execute Bash. They fell back to reading the script source and simulating the output. This is a Claude Code subagent sandbox limitation, not a skill problem. When publishing plugins, ensure target environments allow Python execution.
 

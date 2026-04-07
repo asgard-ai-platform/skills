@@ -1,6 +1,6 @@
 ---
 name: "meta-systems-thinking"
-description: "Apply systems thinking — causal loop diagrams, stock-and-flow models, system archetypes, and leverage-point analysis — to problems where feedback loops, delays, or emergent behavior drive recurring failure. Use this skill when the user describes a problem that resists linear fixes: interventions that backfire, fixes that break other things, recurring symptoms that return after being solved, or time-lagged consequences, even if they say 'why does fixing X make Y worse', 'this problem keeps coming back after we fix it', or 'identify the leverage points in this system'."
+description: "Apply systems thinking — causal loop diagrams, stock-and-flow models, system archetypes, and leverage-point analysis — to organizational, economic, or social problems where feedback loops, delays, or emergent behavior drive recurring failure across multiple interacting actors. Use this skill when the user describes a multi-actor situation that resists linear fixes: policy interventions that backfire, org-level fixes that break other teams, market symptoms that return after being solved, or time-lagged second-order consequences, even if they say 'why does fixing X make Y worse' or 'identify the leverage points in this system'. Do NOT use for single-cause software bugs, flaky tests, or regressions — those are debugging problems, not systems-thinking problems, even when phrased as 'this keeps coming back'."
 metadata:
   category: "WP-22 跨學科"
   tags: ["meta-thinking", "systems-thinking", "complexity"]
