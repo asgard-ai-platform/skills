@@ -30,8 +30,23 @@ _Last updated: 2026-04-07. Model: `claude-sonnet-4-6`._
 | `algo-mfg-cpk` | neither | 0/3 | Off-center process, single-sided spec (USL only), zero-sd refusal — Sonnet handles all three by hand. Strong candidate for **removal**. |
 | `algo-rank-bayesian` | neither | 0/3 | All 3 scenarios pass on both arms after fixing scorer to require exact key names. Notably, small-n-trap shows ratio 0.2× — `with_script` is 5× SLOWER than hand because Bash/tool overhead dominates trivial arithmetic. Strong candidate for **removal**. |
 | `algo-sc-eoq` | neither | 0/3 | Both arms compute basic EOQ, holding-cost-from-percentage, and edge zero-H refusal correctly. Strong candidate for **removal**. |
+| `mkt-ab-testing` | **speed (strong)** | 3/3 (4.2× / 4.5× / 11.0×) | Two-proportion z-test arithmetic — especially p-value via normal CDF — is slow enough by hand (80–228s) that the script is uniformly faster across scenarios. Best speed result so far. **Keep**. |
+| `algo-rank-elo` | speed | 1/3 (draw-higher-rated-loses-points: 3.1×) | Basic win/loss updates and elite-upset-low-K both pass with no delta. Only the draw scenario (where the higher-rated player loses points) showed a meaningful speed advantage. |
+| `biz-cac-ltv` | neither | 0/3 | Sonnet correctly handles basic SaaS, annual-vs-monthly time conversion, and the margin-vs-revenue trap. Marginal removal candidate. |
+| `biz-dupont` | neither | 0/2 | Both 3-factor and 5-factor decompositions hand-computed correctly. Marginal removal candidate. |
+| `algo-sc-newsvendor` | neither | 0/3 | All three critical-ratio scenarios (Q\*>mean, Q\*<mean, Q\*>>mean) pass on both arms. Marginal removal candidate. |
 
-_15 more scripts pending fan-out._
+_9 more scripts pending fan-out._
+
+## Cumulative tally (11/20)
+
+| Verdict class | Count | Skills |
+|---------------|------:|--------|
+| correctness ⭐ | 1 | `algo-risk-altman-z` |
+| speed | 4 | `algo-rank-wilson`, `biz-dcf`, `algo-rank-elo`, `mkt-ab-testing` |
+| neither | 6 | `algo-mfg-cpk`, `algo-rank-bayesian`, `algo-sc-eoq`, `biz-cac-ltv`, `biz-dupont`, `algo-sc-newsvendor` |
+
+**Hit rate so far: ~45% provide some measurable value.**
 
 ## Batch 1 take-aways
 
