@@ -36,17 +36,74 @@ _Last updated: 2026-04-07. Model: `claude-sonnet-4-6`._
 | `biz-dupont` | neither | 0/2 | Both 3-factor and 5-factor decompositions hand-computed correctly. Marginal removal candidate. |
 | `algo-sc-newsvendor` | neither | 0/3 | All three critical-ratio scenarios (Q\*>mean, Q\*<mean, Q\*>>mean) pass on both arms. Marginal removal candidate. |
 
-_9 more scripts pending fan-out._
+| `algo-ecom-bm25` | **correctness** ⭐ | 1/1 (rank-4-docs) | `top_doc_id` correct on both arms but `without_script` produced `top_score = 1.9785` vs script's `2.0484` — 3.5% off, exceeding the 1% tolerance. Likely a BM25/IDF formula-variant mismatch (BM25+/BM25L/different IDF smoothing). Script forces a single canonical formula. |
+| `biz-financial-ratios` | **correctness** ⭐ | 1/1 (full-ratio-pack) | `without_script` computed `debt_to_equity = 0.827` (long_term_debt/equity) where script returned `1.467` (total_liabilities/equity). The "debt to equity" definition is genuinely ambiguous in textbooks; script forces the canonical interpretation. (Three other ratios were also wrong but only because of decimal-vs-percent unit choice — not a real formula error.) |
+| `ecom-rfm-analysis` | speed | 1/1 (10-customer-segmentation: 4.8×) | Quantile-edge computation across 10 customers and segment label assignment is mechanically correct on both arms, but `without_script` takes 235s vs script's 49s. |
+| `algo-sc-safety-stock` | neither | 0/2 | Both 95% and 99% service levels (with combined demand + lead-time variance) computed correctly by hand. |
+| `algo-seo-tfidf` | neither | 0/1 | 3-doc top-term ranking handled correctly. |
+| `biz-unit-economics` | neither | 0/1 | NRR/GRR/Magic Number/Burn Multiple all computed correctly by hand. |
+| `algo-price-elasticity` | neither | 0/2 | Arc midpoint formula and point elasticity both computed correctly. (Initial run showed "both" verdict; that was an Anthropic API 529 overload during the without_script call — corrected after retry-with-backoff was added to runner.) |
+| `biz-breakeven` | neither | 0/2 | Basic and target-profit cases both pass. (Initial run showed "both"; same API 529 issue as elasticity — corrected after retry.) |
+| `grad-capm` | neither | 0/2 | Basic + alpha and negative-beta cases both pass. (Initial run showed "mixed"; same API issue.) |
 
-## Cumulative tally (11/20)
+## Cumulative tally — final (20/20)
 
 | Verdict class | Count | Skills |
 |---------------|------:|--------|
-| correctness ⭐ | 1 | `algo-risk-altman-z` |
-| speed | 4 | `algo-rank-wilson`, `biz-dcf`, `algo-rank-elo`, `mkt-ab-testing` |
-| neither | 6 | `algo-mfg-cpk`, `algo-rank-bayesian`, `algo-sc-eoq`, `biz-cac-ltv`, `biz-dupont`, `algo-sc-newsvendor` |
+| correctness ⭐ | **3** | `algo-risk-altman-z`, `algo-ecom-bm25`, `biz-financial-ratios` |
+| speed | **5** | `algo-rank-wilson`, `biz-dcf`, `algo-rank-elo`, `mkt-ab-testing`, `ecom-rfm-analysis` |
+| neither | **12** | `algo-mfg-cpk`, `algo-rank-bayesian`, `algo-sc-eoq`, `biz-cac-ltv`, `biz-dupont`, `algo-sc-newsvendor`, `algo-sc-safety-stock`, `algo-seo-tfidf`, `biz-unit-economics`, `algo-price-elasticity`, `biz-breakeven`, `grad-capm` |
 
-**Hit rate so far: ~45% provide some measurable value.**
+**Hit rate: 8/20 = 40% of scripts provide measurable value.**
+
+## Final recommendations
+
+### Keep — strong value (3 scripts)
+The three correctness winners stop the agent from making concrete, hard-to-detect formula
+mistakes. Recommended to keep regardless of cost:
+
+- `algo-risk-altman-z` — variant selection (Z / Z' / Z'') under implicit firm-type cues
+- `algo-ecom-bm25` — multiple BM25 / IDF formula variants in the wild
+- `biz-financial-ratios` — debt/leverage definition ambiguity (book vs total liabilities)
+
+### Keep — speed value (5 scripts)
+These provide cost / latency wins on hand-intractable cases. Keep, but document that the
+value is purely operational (not correctness):
+
+- `mkt-ab-testing` — strongest speed result; uniformly 4–11× faster
+- `biz-dcf` — long-horizon projections (10+ years) become 10× slower by hand
+- `ecom-rfm-analysis` — quantile assignment over many customers
+- `algo-rank-wilson` — high-confidence intervals
+- `algo-rank-elo` — draw scenarios
+
+### Consider removing or downgrading — no measurable value (12 scripts)
+Sonnet 4.6 hand-computes these reliably and (often) faster than calling the script. The
+script costs maintenance with no validated upside at the difficulties tested:
+
+`algo-mfg-cpk`, `algo-rank-bayesian`, `algo-sc-eoq`, `biz-cac-ltv`, `biz-dupont`,
+`algo-sc-newsvendor`, `algo-sc-safety-stock`, `algo-seo-tfidf`, `biz-unit-economics`,
+`algo-price-elasticity`, `biz-breakeven`, `grad-capm`.
+
+Caveat: this list reflects Sonnet 4.6 capabilities at the scenario difficulties used.
+A script in this list might still provide value if (a) the model used is weaker, (b) the
+calculation is part of a much larger pipeline where hand-math compounds errors, or (c) cases
+not covered here would discriminate. **Suggest spot-checking 2–3 of these against
+harder/longer scenarios before final removal.**
+
+## Method-level lessons learned
+
+- **Anthropic API 529 overload** during eval runs causes false-positive correctness/speed
+  verdicts. Runner now retries transient failures (timeout, 5xx, "Overloaded") with
+  exponential backoff (15s × attempt, max 2 retries). Three Batch 3 cases were initially
+  misclassified as "both" or "mixed" before this fix.
+- **Strict key naming in prompts is essential.** Agents will invent natural-language key
+  variants (`top_item_bayesian_avg` vs `top_bayesian_avg`); the runner now templates the
+  exact expected keys into the prompt.
+- **Decimal vs percent ambiguity** is a recurring scoring pitfall. Always specify "report
+  as decimal (0.05 not 5)" in CAPM-style prompts.
+- **Tool overhead can dominate trivial math.** Several scripts show ratios well below 1.0×
+  — calling Bash to run a one-line formula is slower than computing it directly. This is
+  a structural disadvantage for any script whose computation is itself trivial.
 
 ## Batch 1 take-aways
 

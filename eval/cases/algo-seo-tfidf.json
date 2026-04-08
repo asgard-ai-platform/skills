@@ -1,0 +1,18 @@
+{
+  "skill": "algo-seo-tfidf",
+  "script_cmd": "python3 algo-seo-tfidf/scripts/tfidf.py",
+  "scenarios": [
+    {
+      "id": "3-doc-tfidf",
+      "dimension": "messy_real_data",
+      "prompt": "Compute TF-IDF scores for 3 documents using raw term frequency and smoothed IDF: IDF(t) = log(N / (1 + df(t))) + 1.\n\n  d1: 'apple banana apple cherry apple'\n  d2: 'banana cherry date elderberry'\n  d3: 'apple date date fig grape'\n\nReport:\n- top_term_d1 (the highest-scoring term in d1)\n- top_tfidf_d1 (its score)\n- top_term_d3 (the highest-scoring term in d3)\n- top_tfidf_d3 (its score)",
+      "expected": {
+        "top_term_d1": "apple",
+        "top_tfidf_d1": 3.0,
+        "top_term_d3": "date",
+        "top_tfidf_d3": 2.0
+      },
+      "rubric": "within_1_percent_AND_units_consistent"
+    }
+  ]
+}

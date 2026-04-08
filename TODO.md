@@ -30,17 +30,20 @@ From the 28-skill quality audit (`eval-workspace/qa-report.md` in skill-template
 
 **Populate `examples/` directories** (systemic): currently every `examples/` directory exists only with `.gitignore`. CLAUDE.md says examples are "always required." Inline examples in SKILL.md partially compensate but the standalone files are still missing.
 
-### 2. Strict eval of Tier 1 + 2 scripts
+### 2. Strict eval of Tier 1 + 2 scripts ✅ DONE
 
-The initial Tier 1 eval (5 skills × with/without script) showed all 5 without_script agents got correct answers manually. The test set was too clean. **Need a harder eval** to actually measure script value:
+Completed 2026-04-08. See [`eval/eval-report.md`](eval/eval-report.md) for full results.
 
-- **Large datasets** (1000+ rows where hand calculation is impractical)
-- **Ambiguous inputs** requiring judgment on which formula/variant to use
-- **Messy real data** (CSVs with missing fields, date ranges, etc.)
-- **Edge cases** (division by zero, negative values, extreme parameters)
-- **Stochastic noise** to expose LLM session-to-session variance
+Final tally (20/20 scripts × Sonnet 4.6):
 
-Outcome should inform whether to invest in Tier 3 scripts.
+| Verdict | Count | Notes |
+|---------|------:|-------|
+| correctness ⭐ | 3 | `algo-risk-altman-z`, `algo-ecom-bm25`, `biz-financial-ratios` |
+| speed | 5 | `mkt-ab-testing`, `biz-dcf`, `ecom-rfm-analysis`, `algo-rank-wilson`, `algo-rank-elo` |
+| neither | 12 | (the rest) |
+
+Hit rate ~40%. The 12 "neither" scripts are removal candidates pending spot-check
+on harder scenarios.
 
 ### 3. Tier 3 Scripts (heavier dependencies)
 
@@ -127,9 +130,11 @@ The user wanted to first improve skills themselves (deterministic scripts, repo 
 
 ## ⚪ Low Priority / Watch List
 
-### 5. Subagent sandbox limitation
+### 5. Subagent sandbox limitation ✅ RESOLVED
 
-In Phase 1.7 and Tier 1 evals, 4/5 with_script subagents could not execute Bash. They fell back to reading the script source and simulating the output. This is a Claude Code subagent sandbox limitation, not a skill problem. When publishing plugins, ensure target environments allow Python execution.
+Resolved 2026-04-08 by adding `Bash(python *)` and `Bash(python3 *)` to
+`.claude/settings.json` permissions. Subagents can now execute Tier 1+2 scripts
+without per-call approval. Reproducible across the project for anyone who clones it.
 
 ---
 

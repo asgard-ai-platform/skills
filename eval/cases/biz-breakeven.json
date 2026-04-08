@@ -1,0 +1,30 @@
+{
+  "skill": "biz-breakeven",
+  "script_cmd": "python3 biz-breakeven/scripts/breakeven.py",
+  "scenarios": [
+    {
+      "id": "basic-break-even",
+      "dimension": "messy_real_data",
+      "prompt": "Fixed costs = $180,000/year. Selling price = $45 per unit. Variable cost = $27 per unit. Compute break-even quantity (units), break-even revenue, contribution margin per unit, and contribution margin ratio.",
+      "expected": {
+        "break_even_quantity": 10000.0,
+        "break_even_revenue": 450000.0,
+        "contribution_margin_per_unit": 18.0,
+        "contribution_margin_ratio": 0.4
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "target-profit",
+      "dimension": "ambiguous_input",
+      "prompt": "Fixed costs $250,000. Price $120, variable cost $72. Management wants an $80,000 target profit (not just break-even). Compute the quantity needed to reach that profit, the corresponding revenue, contribution margin per unit, and contribution margin ratio. Formula: Q = (Fixed + Target) / (Price - VC).",
+      "expected": {
+        "break_even_quantity": 6875.0,
+        "break_even_revenue": 825000.0,
+        "contribution_margin_per_unit": 48.0,
+        "contribution_margin_ratio": 0.4
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

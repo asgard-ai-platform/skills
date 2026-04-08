@@ -1,0 +1,26 @@
+{
+  "skill": "algo-price-elasticity",
+  "script_cmd": "python3 algo-price-elasticity/scripts/arc_elasticity.py",
+  "scenarios": [
+    {
+      "id": "arc-elasticity-midpoint",
+      "dimension": "messy_real_data",
+      "prompt": "A product sold 1000 units at $100. Price raised to $115 and sales fell to 820 units. Compute the arc (midpoint) elasticity of demand. Use the symmetric midpoint formula: Ed = ((Q2-Q1)/((Q1+Q2)/2)) / ((P2-P1)/((P1+P2)/2)). Report elasticity (signed, negative for normal goods) and abs_elasticity.",
+      "expected": {
+        "elasticity": -1.4176,
+        "abs_elasticity": 1.4176
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "point-elasticity",
+      "dimension": "ambiguous_input",
+      "prompt": "At the current price P = $50, quantity sold Q = 2000 units, and the demand curve slope dQ/dP = -30. Compute the point elasticity of demand: Ed = (dQ/dP) × (P/Q). Report elasticity and abs_elasticity.",
+      "expected": {
+        "elasticity": -0.75,
+        "abs_elasticity": 0.75
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

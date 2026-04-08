@@ -111,7 +111,19 @@ Use null for any field you cannot compute. The keys above are required and must
 match character-for-character."""
 
 
-def run_arm(case: dict, scenario: dict, arm: str) -> dict:
+def _is_transient_failure(result: dict) -> bool:
+    """Detect Anthropic 5xx / overload / transient timeouts worth retrying."""
+    if result["returncode"] == -1:  # timeout
+        return True
+    out = result.get("stdout", "")
+    if "overloaded_error" in out or "Overloaded" in out:
+        return True
+    if '"status":5' in out or "API Error: 5" in out:
+        return True
+    return False
+
+
+def run_arm(case: dict, scenario: dict, arm: str, max_retries: int = 2) -> dict:
     prompt = build_prompt(case, scenario, arm)
     timeout_sec = ARM_TIMEOUT[arm]
     cmd = [
@@ -128,31 +140,45 @@ def run_arm(case: dict, scenario: dict, arm: str) -> dict:
         "--tools",
         ARM_TOOLS[arm],
     ]
-    started = time.time()
-    try:
-        proc = subprocess.run(
-            cmd,
-            cwd=REPO_ROOT,
-            capture_output=True,
-            text=True,
-            timeout=timeout_sec,
-        )
-        elapsed = round(time.time() - started, 2)
-        return {
-            "arm": arm,
-            "elapsed_sec": elapsed,
-            "returncode": proc.returncode,
-            "stdout": proc.stdout,
-            "stderr": proc.stderr,
-        }
-    except subprocess.TimeoutExpired:
-        return {
-            "arm": arm,
-            "elapsed_sec": timeout_sec,
-            "returncode": -1,
-            "stdout": "",
-            "stderr": f"TIMEOUT after {timeout_sec}s",
-        }
+
+    attempt = 0
+    while True:
+        attempt += 1
+        started = time.time()
+        try:
+            proc = subprocess.run(
+                cmd,
+                cwd=REPO_ROOT,
+                capture_output=True,
+                text=True,
+                timeout=timeout_sec,
+            )
+            elapsed = round(time.time() - started, 2)
+            result = {
+                "arm": arm,
+                "elapsed_sec": elapsed,
+                "returncode": proc.returncode,
+                "stdout": proc.stdout,
+                "stderr": proc.stderr,
+                "attempts": attempt,
+            }
+        except subprocess.TimeoutExpired:
+            result = {
+                "arm": arm,
+                "elapsed_sec": timeout_sec,
+                "returncode": -1,
+                "stdout": "",
+                "stderr": f"TIMEOUT after {timeout_sec}s",
+                "attempts": attempt,
+            }
+
+        if not _is_transient_failure(result) or attempt > max_retries:
+            return result
+
+        backoff = 15 * attempt
+        sys.stderr.write(f"(transient failure, retry {attempt}/{max_retries} in {backoff}s) ")
+        sys.stderr.flush()
+        time.sleep(backoff)
 
 
 def extract_response_text(stdout: str) -> str:
