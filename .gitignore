@@ -20,6 +20,7 @@ Thumbs.db
 **/scripts/tmp_*.json
 /eval_input.json
 /tmp_*.json
+/eval/*_input.json
 
 # Claude Code: shared project settings should be tracked
 # (overrides global gitignore which excludes .claude/)
