@@ -37,6 +37,28 @@ non-manufacturing and emerging markets.
 Extract from financial statements: working capital, retained earnings, EBIT, market cap (or book equity for private), total assets, total liabilities, sales.
 **Gate:** All five inputs available, from same reporting period.
 
+### Phase 1.5: Variant Selection (MANDATORY)
+
+Before touching any formula, pick the right variant — this is the single most common
+mistake when applying Altman Z.
+
+| Firm description | Variant | Script flag |
+|------------------|---------|-------------|
+| Public **manufacturing** firm | Original Z | `--variant original` |
+| **Private** manufacturing firm (no market cap) | Z' | `--variant private` |
+| **Non-manufacturing** — SaaS, services, retail, tech, finance-light | Z'' | `--variant non_manufacturing` |
+| Emerging-market firm of any kind | Z'' | `--variant non_manufacturing` |
+
+**If the user description contains any of these tags**: "SaaS", "cloud", "software",
+"services", "retail", "e-commerce", "platform", "tech", "emerging market", "BRICS",
+"non-manufacturing" → **use Z''**. Do not default to the original Z just because
+that's the "classic" formula.
+
+Full formulas and zone thresholds for each variant live in
+[`references/z-score-variants.md`](references/z-score-variants.md). Coefficients,
+X₄ definition (market cap vs book equity), and the X₅ treatment all differ between
+variants — they are not small tweaks to the original.
+
 ### Phase 2: Core Algorithm
 1. X₁ = Working Capital / Total Assets (liquidity)
 2. X₂ = Retained Earnings / Total Assets (cumulative profitability)
@@ -82,7 +104,8 @@ Return Z-score with component breakdown and zone classification.
 - **Accounting manipulation**: Z-score uses reported financials. Creative accounting (off-balance-sheet debt, revenue recognition games) can mask distress.
 - **Industry differences**: Capital-intensive industries naturally have lower asset turnover (X₅). Compare within industry, not across.
 - **Trend matters more than level**: A company moving from Z=3.5 to Z=2.1 over two years is concerning even though 2.1 is still in the grey zone.
-- **Private firm variant**: Z' replaces X₄ with Book Equity / Total Liabilities and re-weights: Z' = 0.717X₁ + 0.847X₂ + 3.107X₃ + 0.420X₄ + 0.998X₅.
+- **Private firm variant** (Z'): replaces X₄ with Book Equity / Total Liabilities and re-weights: `Z' = 0.717X₁ + 0.847X₂ + 3.107X₃ + 0.420X₄ + 0.998X₅`. Zone thresholds shift to 2.9 / 1.23.
+- **Non-manufacturing variant** (Z''): **drops X₅ entirely** and re-estimates the rest: `Z'' = 6.56X₁ + 3.26X₂ + 6.72X₃ + 1.05X₄`. Zone thresholds shift to 2.6 / 1.1. Using original Z on a SaaS / services firm inflates the score via X₅ and can mis-zone a distressed firm as safe.
 
 ## Scripts
 
@@ -94,5 +117,5 @@ Run `python scripts/altman_z.py --verify` to execute built-in sanity tests.
 
 ## References
 
-- For Z' and Z'' variant formulas, see `references/z-score-variants.md`
-- For comparison with Ohlson O-Score, see `references/bankruptcy-models.md`
+- [`references/z-score-variants.md`](references/z-score-variants.md) — Z / Z' / Z'' full
+  formulas, zone thresholds, variant-selection rules, and a worked tech-firm example.

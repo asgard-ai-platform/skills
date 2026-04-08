@@ -16,7 +16,7 @@
     {
       "id": "mixed-tw-units",
       "dimension": "messy_real_data",
-      "prompt": "Compute per-share value (in TWD) for this Taiwan listco DCF. WACC 7.8%, terminal growth 2.2%. Free cash flows are reported in inconsistent units across years — convert carefully:\n\nYear 1 FCF: 230,000 thousand TWD\nYear 2 FCF: 246.8 million TWD\nYear 3 FCF: 0.265 billion TWD\nYear 4 FCF: 28,400 萬 TWD\nYear 5 FCF: 3.02 億 TWD\n\nNet debt: 1.85 billion TWD\nShares outstanding: 412 million\n\nReport enterprise_value_m and equity_value_m in millions of TWD, and per_share in TWD.",
+      "prompt": "Help me value this Taiwan listco using DCF. The analyst gave me the FCF forecast but the units are inconsistent across years (she's been using multiple data sources):\n\nYear 1 FCF: 230,000 thousand TWD\nYear 2 FCF: 246.8 million TWD\nYear 3 FCF: 0.265 billion TWD\nYear 4 FCF: 28,400 萬 TWD\nYear 5 FCF: 3.02 億 TWD\n\nWACC 7.8%, terminal growth 2.2%, net debt 1.85 billion TWD, 412 million shares outstanding. Report enterprise_value_m and equity_value_m in millions of TWD, and per_share in TWD.",
       "expected": {
         "enterprise_value_m": 4840.99,
         "equity_value_m": 2990.99,
@@ -27,7 +27,7 @@
     {
       "id": "ambiguous-mid-year-vs-eoy",
       "dimension": "ambiguous_input",
-      "prompt": "A 5-year DCF: cash flows 50, 55, 60, 65, 70 ($M). WACC 10%, g 3%. The CFO insists we use mid-year discounting convention. Compute enterprise value. Note: the standard DCF formula uses end-of-year discounting; mid-year multiplies the EV by (1+wacc)^0.5. Report both ev_eoy_m and ev_mid_year_m, and flag the convention difference.",
+      "prompt": "I need a DCF valuation. 5-year cash flows: 50, 55, 60, 65, 70 ($M). WACC 10%, terminal growth 3%. The CFO wants mid-year discounting. Report ev_eoy_m, ev_mid_year_m, and must_flag any assumption the modeler should know about.",
       "expected": {
         "ev_eoy_m": 863.4,
         "ev_mid_year_m": 905.54,

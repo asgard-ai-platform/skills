@@ -3,9 +3,9 @@
   "script_cmd": "python3 biz-dupont/scripts/dupont.py",
   "scenarios": [
     {
-      "id": "3-factor-classic",
+      "id": "break-down-roe",
       "dimension": "messy_real_data",
-      "prompt": "Compute the 3-factor DuPont decomposition. Net income $145M, revenue $2,200M, total assets $1,850M, total equity $720M. Report ROE (as decimal, e.g. 0.2014), net_margin, asset_turnover, equity_multiplier.",
+      "prompt": "I'm prepping a board slide on why our ROE dropped this year. Break down ROE into its drivers for me. Net income $145M, revenue $2,200M, total assets $1,850M, total equity $720M. Report roe, net_margin, asset_turnover, equity_multiplier as decimals.",
       "expected": {
         "roe_direct": 0.2014,
         "net_margin": 0.0659,
@@ -15,9 +15,9 @@
       "rubric": "within_1_percent"
     },
     {
-      "id": "5-factor-must-pick-correct-model",
+      "id": "full-decomposition",
       "dimension": "ambiguous_input",
-      "prompt": "Same firm: net income $145M, revenue $2,200M, total assets $1,850M, total equity $720M. Additional data: EBT (earnings before tax) = $195M, EBIT (earnings before interest and tax) = $240M. Since EBT and EBIT are provided, the appropriate decomposition is the 5-factor DuPont (Tax Burden × Interest Burden × EBIT Margin × Asset Turnover × Equity Multiplier), NOT the 3-factor. Compute ROE and the 5 components: tax_burden, interest_burden, ebit_margin, asset_turnover, equity_multiplier.",
+      "prompt": "For the same firm, I want a deeper ROE breakdown that separates operating profitability from the tax and interest drag. Additional data: EBT (earnings before tax) = $195M, EBIT (earnings before interest and tax) = $240M. (Same balance sheet: net income $145M, revenue $2,200M, total assets $1,850M, total equity $720M.) Report roe, tax_burden, interest_burden, ebit_margin, asset_turnover, equity_multiplier as decimals.",
       "expected": {
         "roe_direct": 0.2014,
         "tax_burden": 0.7436,

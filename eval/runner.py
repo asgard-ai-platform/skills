@@ -2,8 +2,8 @@
 """Eval runner — strict eval of Tier 1+2 scripts via headless `claude` CLI.
 
 For each scenario in a case YAML, spawns two subagents:
-  - with_script:    --tools "Bash,Read"  (settings.json permits Bash(python *))
-  - without_script: --tools "Read"        (must compute by hand)
+  - with_skill:    full SKILL.md methodology + Bash+Read (script executable)
+  - without_skill: vanilla LLM, no methodology, no tools — baseline
 
 Both arms are given the same prompt + the methodology section of the
 skill's SKILL.md. Only the script execution capability differs.
@@ -33,14 +33,31 @@ RESULTS_DIR = EVAL_ROOT / "results"
 
 MODEL = "claude-sonnet-4-6"
 
+# Skill-ablation eval:
+#   with_skill    — full SKILL.md methodology in prompt, Bash+Read, --add-dir repo
+#                   (agent can execute the bundled script and read examples/references)
+#   without_skill — NO methodology, no tools, no repo access
+#                   (vanilla LLM on the raw user question — baseline)
+ARMS = ("with_skill", "without_skill")
+
 ARM_TOOLS = {
-    "with_script": "Bash,Read",
-    "without_script": "Read",
+    "with_skill": "Bash,Read",
+    "without_skill": "",  # empty string disables all tools
 }
 
 ARM_TIMEOUT = {
-    "with_script": 180,
-    "without_script": 720,
+    "with_skill": 180,
+    "without_skill": 720,
+}
+
+ARM_INCLUDE_METHODOLOGY = {
+    "with_skill": True,
+    "without_skill": False,
+}
+
+ARM_ADD_DIR = {
+    "with_skill": True,
+    "without_skill": False,
 }
 
 
@@ -61,18 +78,8 @@ def skill_methodology(skill: str) -> str:
 
 
 def build_prompt(case: dict, scenario: dict, arm: str) -> str:
-    methodology = skill_methodology(case["skill"])
-    arm_directive = (
-        f"You MAY execute the calculator at: `{case['script_cmd']}`. "
-        "Use it; do not recompute by hand."
-        if arm == "with_script"
-        else (
-            "You MUST compute by hand. Do not run any scripts. "
-            "Show your reasoning, then give the final answer."
-        )
-    )
-    # Build a concrete JSON template from the scenario's expected keys so the
-    # agent uses the EXACT key names the scorer is looking for.
+    # Build the output JSON template from expected keys so the agent uses
+    # exact key names the scorer expects.
     expected = scenario["expected"]
     template_pairs = []
     for k, v in expected.items():
@@ -84,23 +91,8 @@ def build_prompt(case: dict, scenario: dict, arm: str) -> str:
             template_pairs.append(f'"{k}": null')
     template = "{" + ", ".join(template_pairs) + "}"
 
-    return f"""You are evaluating a financial / analytical scenario for the skill `{case['skill']}`.
-
-## Methodology (from SKILL.md)
-
-{methodology}
-
----
-
-## Scenario
-
-{scenario['prompt']}
-
-## Constraints for this run
-
-{arm_directive}
-
-## Output
+    user_question = scenario["prompt"]
+    output_block = f"""## Required output
 
 Show your reasoning, then on the LAST line of your response output a single JSON
 object with EXACTLY these keys (do not rename, do not nest, do not add extra keys):
@@ -109,6 +101,37 @@ object with EXACTLY these keys (do not rename, do not nest, do not add extra key
 
 Use null for any field you cannot compute. The keys above are required and must
 match character-for-character."""
+
+    if ARM_INCLUDE_METHODOLOGY[arm]:
+        methodology = skill_methodology(case["skill"])
+        script_hint = (
+            f"\n\nYou have access to the bundled calculator at "
+            f"`{case['script_cmd']}` via Bash. Prefer running it over hand computation."
+        )
+        return f"""You are answering a user question. You have access to the `{case['skill']}` skill.
+
+## Skill methodology (from SKILL.md)
+
+{methodology}
+{script_hint}
+
+---
+
+## User question
+
+{user_question}
+
+{output_block}"""
+    else:
+        # Baseline: vanilla LLM, no skill, no tools.
+        return f"""Answer the following user question using your own knowledge. You have no
+tools and no reference material — just your training.
+
+## User question
+
+{user_question}
+
+{output_block}"""
 
 
 def _is_transient_failure(result: dict) -> bool:
@@ -135,11 +158,11 @@ def run_arm(case: dict, scenario: dict, arm: str, max_retries: int = 2) -> dict:
         "--output-format",
         "json",
         "--no-session-persistence",
-        "--add-dir",
-        str(REPO_ROOT),
         "--tools",
-        ARM_TOOLS[arm],
+        ARM_TOOLS[arm] or '""',
     ]
+    if ARM_ADD_DIR[arm]:
+        cmd.extend(["--add-dir", str(REPO_ROOT)])
 
     attempt = 0
     while True:
@@ -285,20 +308,20 @@ def score_arm(scenario: dict, arm_result: dict) -> dict:
     return {"verdict": "unknown", "notes": [f"unknown rubric: {rubric}"]}
 
 
-SPEED_RATIO_THRESHOLD = 3.0  # without_script/with_script ratio considered a "speed win"
+SPEED_RATIO_THRESHOLD = 3.0  # without_skill/with_skill ratio considered a "speed win"
 
 
 def _classify_scenario(s: dict) -> str:
     """Per-scenario value class: correctness / speed / both / neither.
 
-    correctness: with_script passed AND without_script failed
-    speed:       both passed AND without_script took >= 3x longer
+    correctness: with_skill passed AND without_skill failed
+    speed:       both passed AND without_skill took >= 3x longer
     both:        correctness AND speed
     neither:     both passed at similar speed (script adds no measurable value)
-    inconclusive: with_script failed (script itself broken — needs investigation)
+    inconclusive: with_skill failed (script itself broken — needs investigation)
     """
-    ws = s["arms"]["with_script"]
-    wo = s["arms"]["without_script"]
+    ws = s["arms"]["with_skill"]
+    wo = s["arms"]["without_skill"]
     ws_v = ws["score"]["verdict"]
     wo_v = wo["score"]["verdict"]
     if ws_v != "pass":
@@ -322,8 +345,8 @@ def _print_summary(record: dict) -> None:
     sys.stderr.write(header)
     classes = []
     for s in record["scenarios"]:
-        ws = s["arms"]["with_script"]
-        wo = s["arms"]["without_script"]
+        ws = s["arms"]["with_skill"]
+        wo = s["arms"]["without_skill"]
         ws_v = ws["score"]["verdict"]
         wo_v = wo["score"]["verdict"]
         ratio = wo["elapsed_sec"] / max(ws["elapsed_sec"], 0.1)
@@ -370,7 +393,7 @@ def run_case(case_path: Path) -> Path:
             "rubric": scenario.get("rubric"),
             "arms": {},
         }
-        for arm in ("with_script", "without_script"):
+        for arm in ("with_skill", "without_skill"):
             sys.stderr.write(f"    arm: {arm} ... ")
             sys.stderr.flush()
             result = run_arm(case, scenario, arm)

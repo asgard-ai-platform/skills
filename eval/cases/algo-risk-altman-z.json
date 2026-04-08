@@ -5,25 +5,25 @@
     {
       "id": "classic-manufacturing",
       "dimension": "messy_real_data",
-      "prompt": "A publicly traded steel manufacturer. Working capital = $240M, retained earnings = $580M, EBIT = $175M, market cap = $1850M, total liabilities = $1100M, sales = $2950M, total assets = $3200M. Compute the original Altman Z-score and report z_score plus zone (safe / grey / distress).",
+      "prompt": "I'm a credit analyst looking at a publicly traded steel manufacturer. From their 10-K: working capital $240M, retained earnings $580M, EBIT $175M, market cap $1,850M, total liabilities $1,100M, sales $2,950M, total assets $3,200M. What's their bankruptcy risk score, and what zone are they in?",
       "expected": {
         "z_score": 2.4552
       },
       "rubric": "within_1_percent"
     },
     {
-      "id": "private-firm-must-use-z-prime",
+      "id": "private-metal-fab",
       "dimension": "ambiguous_input",
-      "prompt": "A privately held metal-fabrication company (NOT publicly traded). Working capital $85M, retained earnings $120M, EBIT $45M, book value of equity $320M (use this in place of market cap since shares aren't traded), total liabilities $410M, sales $1100M, total assets $850M. Compute the Altman score using the variant appropriate for private firms (Z'), not the original Z. Report z_score and the variant you used.",
+      "prompt": "Our bank is underwriting a loan to a privately held metal-fabrication company (not publicly traded — no market cap). Financials: working capital $85M, retained earnings $120M, EBIT $45M, book value of equity $320M, total liabilities $410M, sales $1,100M, total assets $850M. Give me a bankruptcy risk score.",
       "expected": {
         "z_score": 1.9751
       },
       "rubric": "within_1_percent"
     },
     {
-      "id": "non-manufacturing-tech-firm",
+      "id": "saas-tech-firm",
       "dimension": "ambiguous_input",
-      "prompt": "A publicly traded SaaS / cloud-services company (non-manufacturing). Working capital $320M, retained earnings $950M, EBIT $280M, market cap $4500M, total liabilities $1600M, sales $3800M, total assets $4200M. Compute the Altman score using the variant for non-manufacturing / emerging-market firms (Z''), which drops the X5 sales/assets term. Report z_score and the variant you used.",
+      "prompt": "I'm evaluating credit risk on a publicly traded SaaS / cloud-services company. Working capital $320M, retained earnings $950M, EBIT $280M, market cap $4,500M, total liabilities $1,600M, sales $3,800M, total assets $4,200M. What's their bankruptcy risk score?",
       "expected": {
         "z_score": 4.6383
       },
