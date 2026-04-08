@@ -63,6 +63,11 @@ Assets above the SML are undervalued (positive alpha); below are overvalued (neg
 
 ## Output Format
 
+> ⚠️ **Decimal vs percent**: When passing values to or from the bundled script, all rates
+> (`risk_free`, `market_return`, `beta_contribution`, `expected_return`, `alpha`) are
+> **decimals** — `0.05` means 5%, NOT `5.0`. The narrative report below renders them as
+> percentages for humans, but never mix the two in the same JSON object.
+
 ```markdown
 ## CAPM Analysis: [Asset / Portfolio]
 

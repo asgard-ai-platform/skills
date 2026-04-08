@@ -73,6 +73,11 @@ Compare DuPont components across competitors to identify relative strengths/weak
 
 ## Output Format
 
+> ⚠️ **Decimal vs percent**: The bundled script returns ROE and all margin/burden
+> components as **decimals** (`0.2014` means 20.14%, NOT `20.14`). The narrative
+> table below renders them as percentages for humans, but JSON outputs and any
+> downstream pipeline must use decimals consistently.
+
 ```markdown
 # DuPont Analysis: {Company}
 

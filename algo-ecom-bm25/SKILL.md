@@ -45,6 +45,14 @@ For query Q with terms t₁...tₙ against document d:
 3. Score(d, Q) = Σᵢ IDF(tᵢ) × TF_component(tᵢ, d)
 4. Rank documents by score descending
 
+> ⚠️ **IDF variant lock-in**: BM25 has several IDF formulations in the wild
+> (Robertson-Sparck Jones, classic Okapi, Lucene's smoothed `+1`, BM25+, BM25L).
+> This skill — and the bundled script — uses the **Lucene-style smoothed variant**
+> shown above (`log((N - df + 0.5) / (df + 0.5) + 1)`), which never returns negative
+> IDF for very common terms. If you compare scores against another engine
+> (Elasticsearch, Solr, Whoosh), they may differ by ~3–5% even on identical inputs.
+> Do not "correct" the script unless you intend to change the variant globally.
+
 ### Phase 3: Verification
 Spot-check: query "red shoes" should rank documents containing both "red" and "shoes" higher than documents with only one term. Shorter product titles with both terms should rank above long descriptions with sparse mentions.
 **Gate:** Relevance spot-check passes on 10+ test queries.

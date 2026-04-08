@@ -67,9 +67,15 @@ Cover all five categories for a complete picture.
 **3. Leverage** — How much debt is used?
 | Ratio | Formula | Measures |
 |-------|---------|----------|
-| Debt-to-Equity | Total Debt / Equity | Capital structure |
+| Debt-to-Equity | Total Liabilities / Equity | Capital structure |
 | Interest Coverage | EBIT / Interest Expense | Ability to service debt |
-| Debt-to-Assets | Total Debt / Total Assets | Asset financing |
+| Debt-to-Assets | Total Liabilities / Total Assets | Asset financing |
+
+> ⚠️ **"Debt" definition**: This skill (and the bundled script) defines "Debt" in the
+> leverage ratios as **Total Liabilities** — not "long-term debt only" or "interest-bearing
+> debt only". Both alternative definitions exist in textbooks and produce materially
+> different ratios. If you need a different definition, document the choice explicitly
+> and compute it manually; do not silently substitute.
 
 **4. Efficiency** — How well are assets used?
 | Ratio | Formula | Measures |
@@ -96,6 +102,12 @@ Cover all five categories for a complete picture.
 5. **Recommend** actions based on weak areas
 
 ## Output Format
+
+> ⚠️ **Decimal vs percent**: The bundled script returns all profitability ratios
+> (`gross_margin`, `operating_margin`, `net_margin`, `roa`, `roe`) as **decimals** —
+> `0.35` means 35%, NOT `35.0`. Liquidity and leverage ratios are already unitless
+> multiples (e.g. `current_ratio: 2.125`). Render percentages only in the human-facing
+> markdown report, never in JSON outputs.
 
 ```markdown
 # Financial Ratio Analysis: {Company}
