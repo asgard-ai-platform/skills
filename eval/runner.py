@@ -71,6 +71,19 @@ def build_prompt(case: dict, scenario: dict, arm: str) -> str:
             "Show your reasoning, then give the final answer."
         )
     )
+    # Build a concrete JSON template from the scenario's expected keys so the
+    # agent uses the EXACT key names the scorer is looking for.
+    expected = scenario["expected"]
+    template_pairs = []
+    for k, v in expected.items():
+        if isinstance(v, (int, float)):
+            template_pairs.append(f'"{k}": <number>')
+        elif isinstance(v, str):
+            template_pairs.append(f'"{k}": "<text or null>"')
+        else:
+            template_pairs.append(f'"{k}": null')
+    template = "{" + ", ".join(template_pairs) + "}"
+
     return f"""You are evaluating a financial / analytical scenario for the skill `{case['skill']}`.
 
 ## Methodology (from SKILL.md)
@@ -89,12 +102,13 @@ def build_prompt(case: dict, scenario: dict, arm: str) -> str:
 
 ## Output
 
-Return your final answer as a JSON object on the LAST line of your response,
-matching the keys in the scenario's expected fields. Example:
+Show your reasoning, then on the LAST line of your response output a single JSON
+object with EXACTLY these keys (do not rename, do not nest, do not add extra keys):
 
-  {{"enterprise_value_m": 1234.5, "equity_value_m": 1100.0, "per_share": 25.5}}
+  {template}
 
-Use null for fields you cannot compute. Show reasoning above the JSON line."""
+Use null for any field you cannot compute. The keys above are required and must
+match character-for-character."""
 
 
 def run_arm(case: dict, scenario: dict, arm: str) -> dict:

@@ -1,0 +1,34 @@
+{
+  "skill": "algo-mfg-cpk",
+  "script_cmd": "python3 algo-mfg-cpk/scripts/cpk.py",
+  "scenarios": [
+    {
+      "id": "off-center-process",
+      "dimension": "messy_real_data",
+      "prompt": "A CNC milling process targets a hole diameter of 10.0mm with USL = 10.5mm, LSL = 9.5mm. Sample data shows mean = 10.18mm, sd = 0.12mm. Compute Cp and Cpk. Note: the process is off-center, so Cp and Cpk will differ — do not report them as equal.",
+      "expected": {
+        "cp": 1.3889,
+        "cpk": 0.8889
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "single-sided-spec-usl-only",
+      "dimension": "ambiguous_input",
+      "prompt": "A component has only an upper specification limit: USL = 200 (impurity ppm, must not exceed). There is no lower limit. Process mean = 178, sd = 8. Compute Cpk. Note: with only USL, Cpk = Cpu = (USL - mean) / (3*sd). Do NOT use the two-sided formula.",
+      "expected": {
+        "cpk": 0.9167
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "edge-zero-sd",
+      "dimension": "edge_case",
+      "prompt": "USL = 10, LSL = 5, mean = 7.5, sd = 0 (process is perfectly deterministic in this sample). Compute Cpk.",
+      "expected": {
+        "error": "sd must be positive"
+      },
+      "rubric": "must_raise_or_refuse"
+    }
+  ]
+}

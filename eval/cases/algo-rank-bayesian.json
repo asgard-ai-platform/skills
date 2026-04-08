@@ -1,0 +1,35 @@
+{
+  "skill": "algo-rank-bayesian",
+  "script_cmd": "python3 algo-rank-bayesian/scripts/bayesian_avg.py",
+  "scenarios": [
+    {
+      "id": "few-vs-many-ratings-C100",
+      "dimension": "messy_real_data",
+      "prompt": "Rank these 5 items using the IMDB-style Bayesian average, with confidence constant C = 100 phantom votes and global_mean computed from the items themselves.\n\nItems (id, avg_rating, n):\n  A: 9.6, n=5\n  B: 8.7, n=850\n  C: 9.1, n=42\n  D: 7.2, n=1500\n  E: 10.0, n=1\n\nReport the bayesian_avg of the top-ranked item, and the rank position of item A (1=highest).",
+      "expected": {
+        "top_bayesian_avg": 8.6022,
+        "rank_of_A": 3
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "sensitivity-C20",
+      "dimension": "ambiguous_input",
+      "prompt": "Same 5 items as before:\n  A: 9.6, n=5\n  B: 8.7, n=850\n  C: 9.1, n=42\n  D: 7.2, n=1500\n  E: 10.0, n=1\n\nNow use a much weaker prior: C = 20 phantom votes (instead of 100). global_mean still computed from items. Report top item's bayesian_avg and the rank of item C.",
+      "expected": {
+        "top_bayesian_avg": 8.6786,
+        "rank_of_C": 2
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "small-n-trap",
+      "dimension": "edge_case",
+      "prompt": "An item has avg_rating = 10.0 with n = 1. The site-wide global_mean is 7.5 and confidence C = 50. Compute this item's Bayesian average. (Trap: a naive ranker would put this at #1 with 10.0; the Bayesian average should be much closer to the prior.)",
+      "expected": {
+        "bayesian_avg": 7.549
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

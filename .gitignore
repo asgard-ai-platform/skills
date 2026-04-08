@@ -17,6 +17,7 @@ Thumbs.db
 # Local eval / scratch
 /tmp/
 *.local.json
+**/scripts/tmp_*.json
 
 # Claude Code: shared project settings should be tracked
 # (overrides global gitignore which excludes .claude/)

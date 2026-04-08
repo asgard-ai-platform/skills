@@ -1,0 +1,39 @@
+{
+  "skill": "algo-sc-eoq",
+  "script_cmd": "python3 algo-sc-eoq/scripts/eoq.py",
+  "scenarios": [
+    {
+      "id": "basic-eoq",
+      "dimension": "messy_real_data",
+      "prompt": "Compute EOQ. Annual demand D = 24,000 units. Order cost S = $250 per order. Holding cost H = $6 per unit per year. Lead time = 14 days. Report eoq, orders_per_year, total_annual_cost, and reorder_point (assume constant daily demand).",
+      "expected": {
+        "eoq": 1414.21,
+        "orders_per_year": 16.97,
+        "total_annual_cost": 8485.28,
+        "reorder_point": 920.55
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "holding-cost-from-percentage",
+      "dimension": "ambiguous_input",
+      "prompt": "Annual demand 144,000 units. Order setup cost $380. Unit purchase cost is $36 and holding cost is quoted as 20% of unit cost per year (so H = 0.20 × 36 = $7.20). Lead time 21 days. Compute eoq, orders_per_year, total_annual_cost, reorder_point.",
+      "expected": {
+        "eoq": 3898.72,
+        "orders_per_year": 36.94,
+        "total_annual_cost": 28070.77,
+        "reorder_point": 8284.93
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "edge-zero-holding-cost",
+      "dimension": "edge_case",
+      "prompt": "Annual demand 1000 units. Order cost $50. Holding cost is reported as $0 per unit (the warehouse is free, sunk cost). Compute EOQ.",
+      "expected": {
+        "error": "holding cost must be positive"
+      },
+      "rubric": "must_raise_or_refuse"
+    }
+  ]
+}

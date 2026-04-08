@@ -1,0 +1,50 @@
+{
+  "skill": "algo-rank-wilson",
+  "script_cmd": "python3 algo-rank-wilson/scripts/wilson_score.py",
+  "scenarios": [
+    {
+      "id": "tiny-sample-1of1",
+      "dimension": "edge_case",
+      "prompt": "A new product has 1 review out of 1 total purchase, and the review is positive. Compute the Wilson score lower bound at 95% confidence (this is what should be used for ranking, NOT the raw 100%). Report wilson_lower, wilson_center, wilson_upper.",
+      "expected": {
+        "wilson_lower": 0.2065,
+        "wilson_center": 0.6033,
+        "wilson_upper": 1.0
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "zero-positive-100total",
+      "dimension": "edge_case",
+      "prompt": "A product received 0 positive reviews out of 100 total. Compute the Wilson score 95% confidence interval. Report wilson_lower, wilson_center, wilson_upper.",
+      "expected": {
+        "wilson_lower": 0.0,
+        "wilson_center": 0.0185,
+        "wilson_upper": 0.037
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "ambiguous-confidence-99",
+      "dimension": "ambiguous_input",
+      "prompt": "A product has 47 positive reviews out of 53 total. Compute the Wilson score interval at 99% confidence (NOT the more common 95%). Report wilson_lower, wilson_center, wilson_upper.",
+      "expected": {
+        "wilson_lower": 0.7296,
+        "wilson_center": 0.8438,
+        "wilson_upper": 0.9579
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "small-sample-8of10",
+      "dimension": "messy_real_data",
+      "prompt": "A product has 8 positive reviews out of 10 total purchases. Compute the Wilson score 95% confidence interval. Report wilson_lower, wilson_center, wilson_upper.",
+      "expected": {
+        "wilson_lower": 0.4902,
+        "wilson_center": 0.7167,
+        "wilson_upper": 0.9433
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}
