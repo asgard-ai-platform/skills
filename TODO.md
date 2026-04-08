@@ -32,18 +32,28 @@ From the 28-skill quality audit (`eval-workspace/qa-report.md` in skill-template
 
 ### 2. Strict eval of Tier 1 + 2 scripts ✅ DONE
 
-Completed 2026-04-08. See [`eval/eval-report.md`](eval/eval-report.md) for full results.
+Completed 2026-04-09. Two methodologies run; see [`eval/eval-report.md`](eval/eval-report.md)
+for full results and comparison.
 
-Final tally (20/20 scripts × Sonnet 4.6):
+**Methodology B (skill ablation — primary) tally (20/20 × Sonnet 4.6)**:
 
-| Verdict | Count | Notes |
-|---------|------:|-------|
-| correctness ⭐ | 3 | `algo-risk-altman-z`, `algo-ecom-bm25`, `biz-financial-ratios` |
-| speed | 5 | `mkt-ab-testing`, `biz-dcf`, `ecom-rfm-analysis`, `algo-rank-wilson`, `algo-rank-elo` |
-| neither | 12 | (the rest) |
+| Verdict | Count | Skills |
+|---------|------:|--------|
+| correctness ⭐ | 5 | `algo-risk-altman-z`, `algo-price-elasticity`, `algo-rank-elo`, `algo-sc-eoq`, `algo-seo-tfidf` |
+| both ⭐⭐ | 1 | `ecom-rfm-analysis` |
+| speed | 3 | `biz-dcf`, `mkt-ab-testing`, `algo-sc-newsvendor` |
+| neither | 10 | rest |
+| inconclusive | 1 | `algo-ecom-bm25` (skill bug was fixed mid-run) |
 
-Hit rate ~40%. The 12 "neither" scripts are removal candidates pending spot-check
-on harder scenarios.
+Hit rate: 9/20 = 45%. The 10 "neither" skills are removal candidates but should
+be re-validated with 3–5 replication runs before any removal (N=1 sampling
+showed real verdict variance on at least 2 cases).
+
+**Side effects**: eval surfaced and fixed skill quality issues in
+`algo-risk-altman-z` (broken references + missing Phase 1.5 variant-selection gate),
+`algo-ecom-bm25` (undocumented stop-word removal), `biz-financial-ratios` (debt
+definition ambiguity), and decimal-vs-percent conventions in 3 Output Format
+sections (`grad-capm`, `biz-dupont`, `biz-financial-ratios`).
 
 ### 3. Tier 3 Scripts (heavier dependencies)
 
@@ -138,13 +148,14 @@ without per-call approval. Reproducible across the project for anyone who clones
 
 ---
 
-## Suggested next-step order
+## Suggested next-step order (updated 2026-04-09)
 
 | Order | Item | Effort |
 |-------|------|--------|
 | 1 | Phase 5a: 4 bundle YAMLs (in `skill-template` repo) | Small (~1 hr) |
 | 2 | Phase 5a: Plugin 2 (Taiwan stock) prototype | Medium |
-| 3 | Strict eval of Tier 1+2 scripts on messy data | Medium |
-| 4 | QA P2-P3 fixes (if strict eval shows scripts need help) | Medium |
-| 5 | Phase 5b: build script + publish independent plugin repos | Large |
-| 6 | Tier 3 scripts (only if plugin scenarios need them) | Large |
+| 3 | Repo-wide broken-references sweep (grep SKILL.md references → verify existence) | Small |
+| 4 | Eval replication: 3–5 independent runs per case to stabilize the 10 "neither" verdicts before removal | Medium |
+| 5 | QA P2-P3 fixes (weak Iron Laws, over-teaching, empty `examples/`) | Medium |
+| 6 | Phase 5b: build script + publish independent plugin repos | Large |
+| 7 | Tier 3 scripts (only if plugin scenarios need them) | Large |
