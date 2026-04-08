@@ -1,0 +1,19 @@
+{
+  "skill": "biz-unit-economics",
+  "script_cmd": "python3 biz-unit-economics/scripts/unit_economics.py",
+  "scenarios": [
+    {
+      "id": "saas-board-deck",
+      "dimension": "messy_real_data",
+      "prompt": "I'm prepping the monthly SaaS board deck and need the standard unit-economics metrics from these numbers:\n\n  new_mrr: 85000, expansion_mrr: 18000, contraction_mrr: 6000, churned_mrr: 12000,\n  starting_mrr: 620000, ending_mrr: 705000,\n  sales_and_marketing_cost: 340000, gross_margin: 0.78, monthly_churn: 0.019,\n  cash_burned: 450000, new_arr_added: 1020000\n\nReport nrr, grr, saas_quick_ratio, magic_number, burn_multiple.",
+      "expected": {
+        "nrr": 1.0,
+        "grr": 0.971,
+        "saas_quick_ratio": 5.72,
+        "magic_number": 3.0,
+        "burn_multiple": 0.44
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

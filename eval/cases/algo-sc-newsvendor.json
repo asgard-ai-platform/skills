@@ -1,0 +1,39 @@
+{
+  "skill": "algo-sc-newsvendor",
+  "script_cmd": "python3 algo-sc-newsvendor/scripts/newsvendor.py",
+  "scenarios": [
+    {
+      "id": "high-margin-order-above-mean",
+      "dimension": "messy_real_data",
+      "prompt": "A single-period stocking decision. We sell a product for $80, buy it for $25, and can liquidate unsold units for $8. Daily demand is normally distributed with mean 200 and sd 50. How many units should I order today? Report optimal_quantity, critical_ratio, z_star.",
+      "expected": {
+        "optimal_quantity": 235.93,
+        "critical_ratio": 0.7639,
+        "z_star": 0.7186
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "low-margin-perishable",
+      "dimension": "ambiguous_input",
+      "prompt": "Bakery ordering problem. Fresh bread sells for $12, costs $9 to bake, and unsold loaves go to waste at end of day (salvage $0). Daily demand mean 500, sd 120. How many loaves should I bake? Report optimal_quantity, critical_ratio, z_star.",
+      "expected": {
+        "optimal_quantity": 419.1,
+        "critical_ratio": 0.25,
+        "z_star": -0.6742
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "very-high-underage-luxury",
+      "dimension": "edge_case",
+      "prompt": "A luxury item sells for $200, costs us $30, salvage value $15. Demand mean 100, sd 25. How many to stock? Report optimal_quantity, critical_ratio, z_star.",
+      "expected": {
+        "optimal_quantity": 134.95,
+        "critical_ratio": 0.9189,
+        "z_star": 1.3981
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

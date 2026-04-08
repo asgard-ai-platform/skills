@@ -1,0 +1,42 @@
+{
+  "skill": "biz-cac-ltv",
+  "script_cmd": "python3 biz-cac-ltv/scripts/cac_ltv.py",
+  "scenarios": [
+    {
+      "id": "basic-saas",
+      "dimension": "messy_real_data",
+      "prompt": "A SaaS company spent $240,000 on marketing + sales last quarter and acquired 1,200 new customers. ARPU = $85/month, gross margin = 68%, monthly churn = 4%. Give me CAC, LTV, LTV/CAC ratio, and CAC payback period in months. Report as cac, ltv, ltv_cac_ratio, payback_months.",
+      "expected": {
+        "cac": 200.0,
+        "ltv": 1445.0,
+        "ltv_cac_ratio": 7.22,
+        "payback_months": 3.46
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "annual-arpu-monthly-churn",
+      "dimension": "ambiguous_input",
+      "prompt": "A subscription business reports: marketing + sales spend $500,000, new customers acquired 2,000, annual ARPU $1,200, gross margin 75%, monthly churn 5%. Compute cac, ltv, ltv_cac_ratio, payback_months.",
+      "expected": {
+        "cac": 250.0,
+        "ltv": 1500.0,
+        "ltv_cac_ratio": 6.0,
+        "payback_months": 3.33
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "thin-margin-business",
+      "dimension": "ambiguous_input",
+      "prompt": "Marketing spend $90,000, 600 new customers, monthly ARPU $50, gross margin 40%, monthly churn 8%. Report cac, ltv, ltv_cac_ratio, payback_months.",
+      "expected": {
+        "cac": 150.0,
+        "ltv": 250.0,
+        "ltv_cac_ratio": 1.67,
+        "payback_months": 7.5
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

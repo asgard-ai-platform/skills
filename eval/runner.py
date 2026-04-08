@@ -139,11 +139,15 @@ def _is_transient_failure(result: dict) -> bool:
     if result["returncode"] == -1:  # timeout
         return True
     out = result.get("stdout", "")
-    if "overloaded_error" in out or "Overloaded" in out:
-        return True
-    if '"status":5' in out or "API Error: 5" in out:
-        return True
-    return False
+    markers = (
+        "overloaded_error",
+        "Overloaded",
+        "api_error",
+        "Internal server error",
+        '"status":5',
+        "API Error: 5",
+    )
+    return any(m in out for m in markers)
 
 
 def run_arm(case: dict, scenario: dict, arm: str, max_retries: int = 2) -> dict:

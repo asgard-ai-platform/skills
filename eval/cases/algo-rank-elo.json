@@ -5,7 +5,7 @@
     {
       "id": "underdog-beats-favorite",
       "dimension": "messy_real_data",
-      "prompt": "Player A (rating 1500) plays Player B (rating 1700). A wins. K-factor = 32. Compute the new ratings after this match. Report new_rating_a, new_rating_b, delta_a (the change in A's rating).",
+      "prompt": "I'm running a chess club tournament. Player A (rated 1500) just beat Player B (rated 1700). We use K-factor = 32 for club games. Update their ratings. Report new_rating_a, new_rating_b, delta_a.",
       "expected": {
         "new_rating_a": 1524.31,
         "new_rating_b": 1675.69,
@@ -16,7 +16,7 @@
     {
       "id": "draw-higher-rated-loses-points",
       "dimension": "ambiguous_input",
-      "prompt": "Player A (1850) draws against Player B (1620). K = 24. Common trap: agents often think a draw means no rating change. Wrong — the higher-rated player LOSES points on a draw because the expected score was > 0.5 and the actual was 0.5. Compute new_rating_a, new_rating_b, delta_a.",
+      "prompt": "Player A (1850) and Player B (1620) drew their game. K=24. What are their new ratings? Report new_rating_a, new_rating_b, delta_a.",
       "expected": {
         "new_rating_a": 1843.04,
         "new_rating_b": 1626.96,
@@ -27,7 +27,7 @@
     {
       "id": "elite-upset-low-k",
       "dimension": "messy_real_data",
-      "prompt": "Two grandmasters: Player A (2400) loses to Player B (2100). The federation uses K = 16 for top players (lower K reduces volatility for established ratings). Compute new_rating_a, new_rating_b, delta_a.",
+      "prompt": "Grandmaster game. Player A (2400) lost to Player B (2100). This federation uses K=16 for top-rated players. Update ratings. Report new_rating_a, new_rating_b, delta_a.",
       "expected": {
         "new_rating_a": 2386.42,
         "new_rating_b": 2113.58,

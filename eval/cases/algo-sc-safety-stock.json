@@ -1,0 +1,28 @@
+{
+  "skill": "algo-sc-safety-stock",
+  "script_cmd": "python3 algo-sc-safety-stock/scripts/safety_stock.py",
+  "scenarios": [
+    {
+      "id": "service-95",
+      "dimension": "messy_real_data",
+      "prompt": "Set up a safety stock policy. Average daily demand 120 units with sd 35. Lead time averages 7 days with sd 2 days (our supplier is a bit flaky). Target service level 95%. Report safety_stock, reorder_point, z_score.",
+      "expected": {
+        "safety_stock": 423.14,
+        "reorder_point": 1263.14,
+        "z_score": 1.6449
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "service-99",
+      "dimension": "ambiguous_input",
+      "prompt": "Same demand/lead-time profile (avg demand 120, sd 35, lead time 7 days, sd 2) but ops wants to bump the service target from 95% to 99%. How much safety stock do we need now? Report safety_stock, reorder_point, z_score.",
+      "expected": {
+        "safety_stock": 598.43,
+        "reorder_point": 1438.43,
+        "z_score": 2.3263
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "skill": "algo-ecom-bm25",
+  "script_cmd": "python3 algo-ecom-bm25/scripts/bm25.py",
+  "scenarios": [
+    {
+      "id": "rank-4-docs",
+      "dimension": "messy_real_data",
+      "prompt": "I'm tuning our site search and need to verify BM25 rankings for a test query. For the query 'lazy dog brown', rank these 4 documents:\n\n  d1: 'the quick brown fox jumps over the lazy dog'\n  d2: 'machine learning models predict outcomes from data'\n  d3: 'the lazy dog sleeps under the brown tree all day'\n  d4: 'supply chain optimization reduces holding costs'\n\nUse standard BM25 parameters. Report top_doc_id and top_score.",
+      "expected": {
+        "top_doc_id": "d1",
+        "top_score": 2.0484
+      },
+      "rubric": "within_1_percent_AND_units_consistent"
+    }
+  ]
+}

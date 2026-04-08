@@ -5,7 +5,7 @@
     {
       "id": "basic-break-even",
       "dimension": "messy_real_data",
-      "prompt": "Fixed costs = $180,000/year. Selling price = $45 per unit. Variable cost = $27 per unit. Compute break-even quantity (units), break-even revenue, contribution margin per unit, and contribution margin ratio.",
+      "prompt": "I'm pricing a new product line. Annual fixed costs are $180,000. Each unit sells for $45 and costs $27 to produce. How many units do we need to sell to break even? Report break_even_quantity, break_even_revenue, contribution_margin_per_unit, contribution_margin_ratio.",
       "expected": {
         "break_even_quantity": 10000.0,
         "break_even_revenue": 450000.0,
@@ -17,7 +17,7 @@
     {
       "id": "target-profit",
       "dimension": "ambiguous_input",
-      "prompt": "Fixed costs $250,000. Price $120, variable cost $72. Management wants an $80,000 target profit (not just break-even). Compute the quantity needed to reach that profit, the corresponding revenue, contribution margin per unit, and contribution margin ratio. Formula: Q = (Fixed + Target) / (Price - VC).",
+      "prompt": "Fixed costs $250,000. Price $120, variable cost $72. The CEO wants to hit $80,000 in annual profit (not just break even). What quantity do we need? Report break_even_quantity (the quantity required, including profit target), break_even_revenue, contribution_margin_per_unit, contribution_margin_ratio.",
       "expected": {
         "break_even_quantity": 6875.0,
         "break_even_revenue": 825000.0,

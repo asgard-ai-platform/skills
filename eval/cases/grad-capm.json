@@ -1,0 +1,27 @@
+{
+  "skill": "grad-capm",
+  "script_cmd": "python3 grad-capm/scripts/capm.py",
+  "scenarios": [
+    {
+      "id": "basic-with-alpha",
+      "dimension": "messy_real_data",
+      "prompt": "I'm assessing whether a stock outperformed its risk-adjusted benchmark. Risk-free rate = 3.5%, expected market return = 9.5%, beta = 1.35, actual observed return = 11.8%. Report expected_return, market_risk_premium, and alpha (actual minus expected) as decimals (e.g. 0.03 not 3).",
+      "expected": {
+        "expected_return": 0.116,
+        "market_risk_premium": 0.06,
+        "alpha": 0.002
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "negative-beta",
+      "dimension": "edge_case",
+      "prompt": "A defensive asset (e.g. gold miner stock) has beta = -0.25 relative to the market. Risk-free = 4.0%, market return = 8.0%. What's the CAPM-implied expected return? Report expected_return and market_risk_premium as decimals.",
+      "expected": {
+        "expected_return": 0.03,
+        "market_risk_premium": 0.04
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "skill": "algo-rank-bayesian",
+  "script_cmd": "python3 algo-rank-bayesian/scripts/bayesian_avg.py",
+  "scenarios": [
+    {
+      "id": "few-vs-many-ratings-C100",
+      "dimension": "messy_real_data",
+      "prompt": "I'm building a leaderboard and need to rank these 5 items fairly, accounting for sample size (I don't want a single 10-star rating to beat an item with 800 reviews averaging 8.7). Use a shrinkage constant of 100 phantom votes, with the global mean computed from the items themselves.\n\n  A: avg_rating=9.6, n=5\n  B: avg_rating=8.7, n=850\n  C: avg_rating=9.1, n=42\n  D: avg_rating=7.2, n=1500\n  E: avg_rating=10.0, n=1\n\nReport top_bayesian_avg (top-ranked item's shrunken score) and rank_of_A (1 = best).",
+      "expected": {
+        "top_bayesian_avg": 8.6022,
+        "rank_of_A": 3
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "sensitivity-C20",
+      "dimension": "ambiguous_input",
+      "prompt": "Same 5 items (A 9.6/5, B 8.7/850, C 9.1/42, D 7.2/1500, E 10.0/1). I want the ranking to be less conservative - let smaller-sample items move faster toward their observed average. Drop the shrinkage constant to 20 phantom votes. Report top_bayesian_avg and rank_of_C.",
+      "expected": {
+        "top_bayesian_avg": 8.6786,
+        "rank_of_C": 2
+      },
+      "rubric": "within_1_percent"
+    },
+    {
+      "id": "small-n-trap",
+      "dimension": "edge_case",
+      "prompt": "One of our items has a single 10-star review. The site-wide average across all items is 7.5. Using a shrinkage constant of 50 phantom votes, what's this item's effective rating for ranking purposes? Report bayesian_avg.",
+      "expected": {
+        "bayesian_avg": 7.549
+      },
+      "rubric": "within_1_percent"
+    }
+  ]
+}

@@ -5,7 +5,7 @@
     {
       "id": "off-center-process",
       "dimension": "messy_real_data",
-      "prompt": "A CNC milling process targets a hole diameter of 10.0mm with USL = 10.5mm, LSL = 9.5mm. Sample data shows mean = 10.18mm, sd = 0.12mm. Compute Cp and Cpk. Note: the process is off-center, so Cp and Cpk will differ — do not report them as equal.",
+      "prompt": "I'm reviewing process capability data for a CNC milling line making a 10.0mm diameter hole. The spec is 9.5-10.5mm. From the last 30 parts: sample mean = 10.18mm, sample sd = 0.12mm. Is this process capable? Report cp and cpk.",
       "expected": {
         "cp": 1.3889,
         "cpk": 0.8889
@@ -15,7 +15,7 @@
     {
       "id": "single-sided-spec-usl-only",
       "dimension": "ambiguous_input",
-      "prompt": "A component has only an upper specification limit: USL = 200 (impurity ppm, must not exceed). There is no lower limit. Process mean = 178, sd = 8. Compute Cpk. Note: with only USL, Cpk = Cpu = (USL - mean) / (3*sd). Do NOT use the two-sided formula.",
+      "prompt": "We track an impurity measurement with only an upper limit: USL = 200 ppm (anything below that is fine, there's no lower limit). Production samples show mean = 178, sd = 8. Give me the capability index. Report cpk.",
       "expected": {
         "cpk": 0.9167
       },
@@ -24,7 +24,7 @@
     {
       "id": "edge-zero-sd",
       "dimension": "edge_case",
-      "prompt": "USL = 10, LSL = 5, mean = 7.5, sd = 0 (process is perfectly deterministic in this sample). Compute Cpk.",
+      "prompt": "Spec: USL=10, LSL=5. Measured 20 samples, all exactly 7.5 (zero variation in the data). Compute Cpk.",
       "expected": {
         "error": "sd must be positive"
       },

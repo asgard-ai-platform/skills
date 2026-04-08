@@ -34,8 +34,20 @@ length, b=0 ignores length. Default k₁=1.2, b=0.75 works for most
 cases but MUST be tuned for your specific corpus.
 ```
 
-### Phase 1: Input Validation
-Build inverted index: term → list of (document, term frequency). Compute: document lengths, average document length, document frequency per term.
+### Phase 1: Input Validation + Tokenization
+Tokenize each document to lowercase word tokens. **Remove stop words** before
+counting — the bundled script drops a standard English stop list (`the, a, an,
+and, or, but, of, in, on, at, to, for, with, by, from, as, is, are, was, were,
+be, been, being`). Then build an inverted index: term → list of (document, term
+frequency). Compute: document lengths (post stop-word removal), average document
+length, document frequency per term.
+
+> ⚠️ **Stop-word removal affects `|d|` and `avgdl`**: because stop words are
+> dropped before length is measured, hand-computing BM25 without removing them
+> will give the wrong length normalization and scores will be off by 3–5%.
+> If you're reproducing BM25 by hand to compare against the script, apply the
+> same stop list first — or just run the script.
+
 **Gate:** Index built, statistics computed, corpus non-empty.
 
 ### Phase 2: Core Algorithm
