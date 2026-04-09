@@ -152,10 +152,10 @@ without per-call approval. Reproducible across the project for anyone who clones
 
 | Order | Item | Effort |
 |-------|------|--------|
-| 1 | Phase 5a: 4 bundle YAMLs (in `skill-template` repo) | Small (~1 hr) |
-| 2 | Phase 5a: Plugin 2 (Taiwan stock) prototype | Medium |
-| 3 | Repo-wide broken-references sweep (grep SKILL.md references → verify existence) | Small |
-| 4 | Eval replication: 3–5 independent runs per case to stabilize the 10 "neither" verdicts before removal | Medium |
-| 5 | QA P2-P3 fixes (weak Iron Laws, over-teaching, empty `examples/`) | Medium |
+| ~~1~~ | ~~Repo-wide broken-references sweep~~ | ✅ Done 2026-04-09 (314/314 files generated) |
+| 2 | Phase 5a: 4 bundle YAMLs (in `skill-template` repo) | Small (~1 hr) |
+| 3 | Phase 5a: Plugin 2 (Taiwan stock) prototype | Medium |
+| 4 | QA P2-P3 fixes (weak Iron Laws, over-teaching, empty `examples/`) | Medium |
+| 5 | Eval replication: 3–5 independent runs per case to stabilize the 10 "neither" verdicts before removal | Medium |
 | 6 | Phase 5b: build script + publish independent plugin repos | Large |
 | 7 | Tier 3 scripts (only if plugin scenarios need them) | Large |
