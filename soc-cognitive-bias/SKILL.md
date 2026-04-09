@@ -22,50 +22,16 @@ bias by name, explain its mechanism, and show how it applies to this
 particular situation. Different biases require different countermeasures.
 ```
 
-### Core Biases Catalog
-
-**Information Processing Biases**
-| Bias | Mechanism | Example |
-|------|-----------|---------|
-| **Confirmation bias** | Seeking/favoring information that confirms existing beliefs | Only reading positive reviews of a product you already like |
-| **Anchoring** | Over-relying on the first piece of information encountered | Salary negotiation anchored by the first number stated |
-| **Availability heuristic** | Judging probability by how easily examples come to mind | Overestimating plane crash risk after seeing news coverage |
-| **Representativeness** | Judging probability by similarity to a prototype | Assuming a startup will succeed because the founder "looks like" Elon Musk |
-
-**Decision Biases**
-| Bias | Mechanism | Example |
-|------|-----------|---------|
-| **Sunk cost fallacy** | Continuing investment because of past costs (irrecoverable) | Finishing a bad movie because you paid for the ticket |
-| **Status quo bias** | Preferring the current state over change | Staying with a bad vendor because switching is effort |
-| **Overconfidence** | Overestimating one's knowledge, accuracy, or control | Executives predicting 90% success rate for projects that fail 60% of the time |
-| **Dunning-Kruger** | Low-skilled individuals overestimate their ability; high-skilled underestimate | Junior analyst confident in wrong analysis; senior analyst hesitant about correct one |
-
-**Social Biases**
-| Bias | Mechanism | Example |
-|------|-----------|---------|
-| **Groupthink** | Desire for conformity suppresses dissent | Board unanimously approves a flawed plan because no one wants to be the dissenter |
-| **Authority bias** | Deferring to authority figures regardless of evidence | "The CEO thinks X, so X must be right" |
-| **Bandwagon effect** | Adopting beliefs because many others hold them | "Everyone is investing in crypto, so it must be good" |
-| **Halo effect** | One positive trait influences perception of everything else | "Apple makes great phones, so Apple TV+ must have great content" |
-
 ### Bias Audit Process
 
 1. **Describe the decision**: What is being decided? By whom? Based on what evidence?
-2. **Identify potential biases**: Which biases could be influencing this decision? (Use catalog above)
+2. **Identify potential biases by name**: Which specific biases (confirmation, anchoring, sunk cost, groupthink, overconfidence, availability, etc.) could be influencing this decision?
 3. **Find the evidence**: What specific behavior or reasoning pattern indicates the bias?
 4. **Assess impact**: How much does this bias affect the decision quality? (High/Med/Low)
-5. **Design countermeasures**: What specific debiasing technique addresses each bias?
+5. **Design countermeasures**: What specific debiasing technique addresses each identified bias?
 
-### Debiasing Techniques
-
-| Bias | Countermeasure |
-|------|---------------|
-| Confirmation | Assign a "red team" to argue the opposite case |
-| Anchoring | Generate multiple independent estimates before discussion |
-| Sunk cost | Ask "If we were starting from zero, would we invest in this?" |
-| Groupthink | Anonymous voting before group discussion |
-| Overconfidence | Require confidence intervals, track calibration over time |
-| Availability | Use base rates and statistical data, not anecdotes |
+For the full bias catalog (12 biases × mechanism × example) and
+debiasing techniques per bias, see [`references/debiasing-protocols.md`](references/debiasing-protocols.md).
 
 ## Output Format
 

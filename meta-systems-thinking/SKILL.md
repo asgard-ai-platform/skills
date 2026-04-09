@@ -11,27 +11,25 @@ metadata:
 ## Framework
 
 ```
-IRON LAW: The Whole Is Not the Sum of Its Parts
+IRON LAW: First-Order Fixes in Complex Systems Produce Second-Order
+Backlash Within 2 Cycles — Map the Feedback Loop BEFORE Intervening
 
-You cannot understand a system by analyzing its components in isolation.
-The behavior of the system emerges from the INTERACTIONS between components,
-not from the components themselves. Optimizing each department independently
-can make the overall organization worse.
+Agents default to "fix the symptom directly" (e.g., high turnover → raise
+salaries). In systems with feedback loops, the direct fix triggers a
+compensating response that makes the original problem worse OR creates
+a new one (raise salaries → budget squeeze → cut training → worse
+onboarding → higher turnover). Before recommending any intervention,
+draw the causal loop diagram and identify at least one reinforcing and
+one balancing loop. If you can't find any, the problem may not be a
+systems problem — don't force the framework.
 ```
 
-### Core Concepts
-
-**Feedback loops**: Cause A → Effect B → feeds back to influence A
-- **Reinforcing (positive)**: Amplifies change. Success → more resources → more success (or failure → fewer resources → more failure). Creates exponential growth or collapse.
-- **Balancing (negative)**: Resists change, seeks equilibrium. Thermostat: too hot → AC on → temperature drops → AC off.
-
-**Emergence**: System-level properties that don't exist in individual components. Traffic jams emerge from individual driving behaviors. Culture emerges from individual interactions.
-
-**Delays**: Effects don't appear immediately. Investing in training today improves performance months later. Ignoring maintenance today causes breakdowns months later. Delays make cause-and-effect hard to connect.
-
-**Leverage points**: Places where a small change produces large effects. Changing system rules, incentives, or information flows often has more impact than pushing harder on symptoms.
-
 ### Analysis Steps
+
+Key concepts assumed known: feedback loops (reinforcing/balancing), emergence,
+delays, leverage points, stocks and flows. For system archetypes (Fixes That
+Fail, Shifting the Burden, Limits to Growth, etc.) see
+[`references/system-archetypes.md`](references/system-archetypes.md).
 
 1. **Define the system boundary**: What's in, what's out?
 2. **Map key variables**: What are the important stocks (quantities that accumulate)?

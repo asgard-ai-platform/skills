@@ -11,13 +11,15 @@ metadata:
 ## Framework
 
 ```
-IRON LAW: Content Without Strategy Is Just Noise
+IRON LAW: Higher Posting Frequency Without Content-Channel Fit REDUCES Engagement Per Post
 
-A content calendar without business objectives is a list of post ideas.
-Before scheduling content, define: WHO is the audience, WHAT action do
-we want them to take, and HOW does this content move them toward that action?
-
-Every piece of content should answer: "What business goal does this serve?"
+Agents default to "post more often" when building content calendars. But
+publishing frequency only improves reach when content format matches
+platform consumption patterns. Posting a LinkedIn thought-leadership
+article to Instagram Reels, or pushing daily content when you only have
+2 good ideas per week, dilutes engagement rate and trains the algorithm
+to suppress your content. Test content-channel fit on 5 posts BEFORE
+committing to a cadence.
 ```
 
 ### Content Pillars (3-5 Themes)

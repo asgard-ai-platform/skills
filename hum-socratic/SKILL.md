@@ -15,44 +15,32 @@ The Socratic method uses disciplined questioning to examine ideas, uncover assum
 ## Framework
 
 ```
-IRON LAW: Ask, Don't Tell
+IRON LAW: More Than 3 Consecutive Questions Without Summary Produces
+Confusion, Not Insight
 
-The Socratic method works by QUESTIONING, not by asserting. The moment
-you provide the answer, you've abandoned the method. Even when the answer
-is obvious to you, pose it as a question and let the thinker arrive there.
+Agents applying Socratic questioning default to an unbounded chain of
+questions. After ~3 questions, the thinker loses the thread — they can't
+hold the question hierarchy in working memory. Pause every 2-3 questions
+to SUMMARIZE what the thinker has revealed so far ("So your position is X
+because Y, but you're unsure about Z — is that right?"). Then resume.
+Without this checkpoint, the session feels like an interrogation, not a
+guided inquiry.
 
-"Have you considered what happens if X is wrong?" — Socratic ✓
-"X is wrong because Y" — not Socratic ✗
+Also: never ask a question whose answer you already embedded in the
+phrasing. "Don't you think X is problematic?" is a leading assertion
+disguised as a question. Rephrase as "What are the consequences of X?"
 ```
 
-### Six Types of Socratic Questions
+### Facilitation Flow
 
-| Type | Purpose | Examples |
-|------|---------|---------|
-| **Clarification** | Understand what is meant | "What do you mean by...?" "Can you give an example?" |
-| **Probing assumptions** | Surface hidden premises | "What are you assuming here?" "Is that always the case?" |
-| **Probing evidence** | Examine the basis for belief | "What evidence supports this?" "How do you know that?" |
-| **Exploring perspectives** | Consider alternative viewpoints | "How might someone who disagrees see this?" "What's the opposing view?" |
-| **Probing implications** | Trace consequences | "If that's true, what follows?" "What would be the effect of...?" |
-| **Questioning the question** | Examine the inquiry itself | "Why is this question important?" "Is this the right question to ask?" |
+1. **Clarify** the thinker's claim precisely
+2. **Probe assumptions** — what must be true for the claim to hold?
+3. **Request evidence** — what supports the belief? Is it sufficient?
+4. **Introduce counter-perspectives** — what would a critic say?
+5. **Explore implications** — if right, what follows? If wrong, what changes?
+6. **Synthesize** (the IRON LAW checkpoint) — summarize, confirm understanding, then continue
 
-### Facilitation Steps
-
-1. **Start with the thinker's claim or question**: What do they believe? What are they trying to figure out?
-2. **Ask for clarification**: Make sure you and they understand the position precisely
-3. **Probe assumptions**: What must be true for their claim to hold?
-4. **Request evidence**: What supports their belief? Is it sufficient?
-5. **Introduce counter-perspectives**: What would a critic say?
-6. **Explore implications**: If they're right, what follows? If they're wrong, what changes?
-7. **Synthesize**: What has the questioning revealed? Has the original position evolved?
-
-### Scaffolding Techniques (Maieutics)
-
-For complex topics, provide a sequence of questions that build understanding step by step:
-- Start with what the thinker already knows
-- Each question builds on the previous answer
-- Gradually increase complexity
-- The final question should reveal the insight they've been building toward
+For the six question types (clarification, assumptions, evidence, perspectives, implications, meta-questions) and scaffolding techniques (maieutics), see [`references/facilitation-guide.md`](references/facilitation-guide.md).
 
 ## Output Format
 

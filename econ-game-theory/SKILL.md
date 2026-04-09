@@ -25,36 +25,14 @@ Every game requires three elements explicitly defined:
 Analyzing a "game" without a payoff matrix is just storytelling.
 ```
 
-### Core Concepts
-
-**Dominant Strategy**: A strategy that is best regardless of what the opponent does. If a player has a dominant strategy, they will always play it.
-
-**Nash Equilibrium**: A combination of strategies where no player can improve their payoff by unilaterally changing their strategy. It's "stable" — nobody has incentive to deviate.
-
-**Prisoner's Dilemma**: Both players have a dominant strategy that leads to a collectively worse outcome than cooperation. Explains why rational individuals don't cooperate even when it's in their mutual interest.
-
 ### Analysis Steps
 
 1. **Identify players** and their available strategies
-2. **Build the payoff matrix** (for 2-player simultaneous games)
+2. **Build the payoff matrix** (simultaneous) or **game tree** (sequential)
 3. **Check for dominant strategies** per player
-4. **Find Nash Equilibrium** (where best responses intersect)
-5. **Evaluate efficiency** — is the NE Pareto optimal? If not, there's a cooperation opportunity.
-
-### Common Game Structures
-
-| Game | Structure | Real-world Example |
-|------|----------|-------------------|
-| Prisoner's Dilemma | Both defect despite mutual cooperation being better | Price wars, arms races |
-| Chicken | Both players want to avoid mutual aggression | Market entry threats, brinkmanship |
-| Coordination | Both benefit from choosing the same strategy | Technology standards, driving side |
-| Battle of the Sexes | Both benefit from coordination but prefer different options | Joint ventures with different preferences |
-
-### Sequential Games (Extensive Form)
-
-For games with turns, use a game tree:
-1. Map decision nodes and branches
-2. Apply **backward induction**: Start from the end, find optimal choice at each node, work backward
+4. **Find Nash Equilibrium** — where best responses intersect
+5. **For sequential games**: apply backward induction from terminal nodes
+6. **Evaluate efficiency** — is the NE Pareto optimal? If not, flag cooperation opportunity
 3. The resulting path is the Subgame Perfect Equilibrium
 
 ## Output Format
@@ -108,6 +86,7 @@ For games with turns, use a game tree:
 - **Payoff estimation is the hard part**: The matrix is easy once payoffs are known. Estimating realistic payoffs requires market research and financial modeling.
 - **Repeated games change everything**: In one-shot games, defection dominates. In repeated games, tit-for-tat and reputation effects enable cooperation.
 - **Information matters**: Games with incomplete information (you don't know opponent's payoffs) or imperfect information (you don't see opponent's moves) require Bayesian analysis.
+- **Mixed-strategy NE is the default, not the exception**: When no pure-strategy NE exists (e.g., matching pennies), agents often report "no equilibrium found" instead of computing the mixed strategy. Every finite game has at least one NE — if you can't find a pure one, solve for the mixing probabilities.
 
 ## References
 

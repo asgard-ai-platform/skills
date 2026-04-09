@@ -11,57 +11,34 @@ metadata:
 ## Framework
 
 ```
-IRON LAW: Look at the Data Before Modeling
+IRON LAW: Perform EDA Only AFTER Train/Test Split — Or You Leak the Future
 
-NEVER fit a model, run a test, or draw conclusions without first exploring
-the data. EDA reveals data quality issues, distribution shapes, outliers,
-and relationships that determine which methods are appropriate.
+Agents know "do EDA first." But they almost always do EDA on the FULL
+dataset before splitting. This is information leakage: you've seen the
+test set's distributions, outliers, and correlations, and your subsequent
+modeling choices (feature scaling, outlier treatment, imputation strategy)
+are now informed by data the model shouldn't see. Split first, then EDA
+only on the training set. Apply the same transformations to the test set
+without re-examining it.
 
-A regression on data with outliers, missing values, and non-linear
-relationships produces garbage results.
+Exception: data quality checks (nulls, dtypes, duplicates) CAN run on
+the full dataset since they don't inform model hyperparameters.
 ```
 
 ### EDA Workflow
 
-**1. Structure Check**
-- Shape: rows × columns
-- Data types: numeric, categorical, datetime, text
-- Column names and meanings
-- Primary key / unique identifier
+Standard five-phase flow (structure → quality → univariate → bivariate →
+findings summary). Assume the agent already knows these steps. Focus on
+the non-obvious traps below instead.
 
-**2. Data Quality Assessment**
-- Missing values: count and pattern (MCAR, MAR, MNAR)
-- Duplicates: exact and near-duplicates
-- Inconsistencies: mixed formats, typos, impossible values
-- Outliers: statistical (z-score > 3, IQR method) and domain-based
+**Critical additions most EDA guides miss:**
 
-**3. Univariate Analysis**
-- Numeric: mean, median, std, min/max, distribution shape (histogram), skewness
-- Categorical: value counts, mode, cardinality, bar chart
-- Datetime: range, gaps, seasonality
+1. **Split BEFORE explore** (see IRON LAW above)
+2. **Missing data pattern matters more than count**: MCAR is safe to impute; MNAR (e.g. high-income respondents skip income question) requires domain modeling, not mean-fill
+3. **Simpson's paradox check**: If a trend holds in the aggregate but reverses within subgroups, the aggregate trend is misleading. Always stratify by the most obvious confound before reporting a bivariate finding
+4. **Data leakage in features**: A feature that perfectly correlates with the target is usually derived FROM the target (e.g. "refund_amount" predicting churn — it's an effect, not a cause). Flag any feature with r > 0.95 for causal review
 
-**4. Bivariate/Multivariate Analysis**
-- Numeric × numeric: correlation matrix, scatter plots
-- Numeric × categorical: grouped statistics, box plots
-- Categorical × categorical: cross-tabulation, chi-square
-- Time series: trend, seasonality, autocorrelation
-
-**5. Key Findings Summary**
-- Top 3-5 insights or patterns discovered
-- Data quality issues requiring attention
-- Hypotheses generated for further investigation
-- Recommended next steps (modeling, cleaning, additional data needed)
-
-### Visualization Selection Guide
-
-| Question | Chart Type |
-|----------|-----------|
-| Distribution of one variable | Histogram, box plot, density plot |
-| Comparison across categories | Bar chart, grouped bar |
-| Relationship between two numerics | Scatter plot |
-| Trend over time | Line chart |
-| Composition / proportion | Stacked bar, pie (sparingly) |
-| Correlation overview | Heatmap of correlation matrix |
+For the visualization selection guide, see [`references/missing-data.md`](references/missing-data.md).
 
 ## Output Format
 

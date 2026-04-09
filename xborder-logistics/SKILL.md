@@ -11,14 +11,14 @@ metadata:
 ## Framework
 
 ```
-IRON LAW: Logistics Model Must Match Volume and Speed Requirements
+IRON LAW: Return Logistics Costs 3-5× More Than Outbound — Budget for It or Die
 
-Direct mail: low volume, slow delivery, low upfront cost
-Overseas warehouse: high volume, fast delivery, high upfront cost
-Bonded warehouse: medium volume, medium speed, tax advantages
-
-Choosing the wrong model wastes money (over-investing) or loses customers
-(under-delivering). Match to your CURRENT volume with a plan to upgrade.
+Agents plan outbound shipping costs but systematically ignore returns.
+Cross-border return rates run 15-30% for apparel, and each return costs
+3-5× the outbound shipment (reverse customs, restocking, re-export duties,
+currency loss). If your margin can't absorb a 20% return rate at 4× cost,
+the overseas warehouse model is a cash trap regardless of forward volume.
+Calculate the break-even return rate BEFORE committing to a fulfillment model.
 ```
 
 ### Three Logistics Models
