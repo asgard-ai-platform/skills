@@ -1,0 +1,16 @@
+{
+  "skill": "stat-eda",
+  "script_cmd": "",
+  "scenarios": [
+    {
+      "id": "split-before-eda",
+      "dimension": "ambiguous_input",
+      "prompt": "I have a customer churn dataset with 50,000 rows: customer_id, signup_date, last_login, monthly_spend, support_tickets, plan_type, churned (0/1). I want to build a churn prediction model. Walk me through your EDA plan step by step. When do you split into train/test, and what do you do on which split?",
+      "expected": {
+        "splits_before_eda": "yes",
+        "eda_on_train_only": "yes"
+      },
+      "rubric": "judge_flagged_assumption"
+    }
+  ]
+}
