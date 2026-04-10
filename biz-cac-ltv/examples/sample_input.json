@@ -1,0 +1,43 @@
+{
+  "_comment": "台灣 B2C 訂閱箱服務單月數據：三個付費渠道 + 行銷團隊固定成本，月均流失率 8%，測試 LTV:CAC 落在 3:1 門檻附近的臨界情境",
+  "channels": [
+    {
+      "name": "Facebook/Instagram Ads",
+      "spend": 200000,
+      "customers": 148
+    },
+    {
+      "name": "Google Ads",
+      "spend": 80000,
+      "customers": 61
+    },
+    {
+      "name": "KOL Partnerships",
+      "spend": 50000,
+      "customers": 38
+    },
+    {
+      "name": "Referral / Organic",
+      "spend": 0,
+      "customers": 53
+    }
+  ],
+  "additional_costs": [
+    {
+      "name": "Marketing Team (2 FTE)",
+      "amount": 120000
+    },
+    {
+      "name": "Marketing Tools & Software",
+      "amount": 18000
+    },
+    {
+      "name": "Content Production",
+      "amount": 22000
+    }
+  ],
+  "arpu": 599,
+  "gross_margin": 0.55,
+  "monthly_churn_rate": 0.08,
+  "currency": "TWD"
+}
