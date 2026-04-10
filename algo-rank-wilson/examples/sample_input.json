@@ -1,0 +1,18 @@
+{
+  "_comment": "電商商品評分排名測試：涵蓋高評論量高評分、高評論量中評分、低評論量完美比例（cold-start penalization 驗證）、零好評、超高評論量等邊界情境，確認 Wilson lower bound 正確懲罰樣本數不足的項目",
+  "confidence": 0.95,
+  "items": [
+    {"item": "Sony WH-1000XM5 降噪耳機",     "positive": 4821, "total": 5102},
+    {"item": "Apple AirPods Pro 2",           "positive": 9234, "total": 9987},
+    {"item": "ASUS ROG Flow Z13 筆電",        "positive": 1183, "total": 1350},
+    {"item": "Logitech MX Master 3S 滑鼠",    "positive": 3302, "total": 3571},
+    {"item": "Samsung 990 Pro 2TB SSD",       "positive": 2105, "total": 2400},
+    {"item": "新品上架藍牙喇叭（測試款）",      "positive": 3,    "total": 3},
+    {"item": "剛到貨的機械鍵盤",               "positive": 2,    "total": 2},
+    {"item": "Anker 充電器 A2342",            "positive": 587,  "total": 720},
+    {"item": "某品牌劣評耳機",                "positive": 0,    "total": 48},
+    {"item": "Keychron K2 Pro 鍵盤",          "positive": 6741, "total": 7200},
+    {"item": "Razer DeathAdder V3 Pro",       "positive": 888,  "total": 960},
+    {"item": "Belkin MagSafe 充電盤",         "positive": 412,  "total": 500}
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_comment": "Taiwan electronics manufacturer: 5 SKUs with realistic demand/cost profiles — tests normal EOQ, high-holding-cost fast-mover, low-ordering-cost frequent replenishment, and near-zero demand edge case",
+  "items": [
+    {
+      "sku": "PCB-A320",
+      "description": "主板組件 A320",
+      "annual_demand": 10000,
+      "order_cost": 100,
+      "holding_cost_per_unit_per_year": 4.0,
+      "lead_time_days": 14
+    },
+    {
+      "sku": "CAP-100UF",
+      "description": "電解電容 100μF (高週轉快消)",
+      "annual_demand": 250000,
+      "order_cost": 30,
+      "holding_cost_per_unit_per_year": 0.8,
+      "lead_time_days": 7
+    },
+    {
+      "sku": "HEAT-SINK-L",
+      "description": "大型散熱片 (體積大、倉儲成本高)",
+      "annual_demand": 3000,
+      "order_cost": 200,
+      "holding_cost_per_unit_per_year": 45.0,
+      "lead_time_days": 21
+    },
+    {
+      "sku": "CABLE-USB-C",
+      "description": "USB-C 連接線 (低採購成本、頻繁補貨)",
+      "annual_demand": 18000,
+      "order_cost": 15,
+      "holding_cost_per_unit_per_year": 1.2,
+      "lead_time_days": 5
+    },
+    {
+      "sku": "MOLD-CUSTOM-X",
+      "description": "客製模具零件 (極低需求、高訂購成本)",
+      "annual_demand": 120,
+      "order_cost": 500,
+      "holding_cost_per_unit_per_year": 80.0,
+      "lead_time_days": 45
+    }
+  ]
+}

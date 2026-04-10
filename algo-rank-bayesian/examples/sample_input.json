@@ -1,0 +1,21 @@
+{
+  "_comment": "台灣電影評分排行場景：混合高評分低評論數 vs 中等評分高評論數的項目，驗證貝葉斯平均對小樣本的縮合效果；confidence_C 設為 120 (接近評論數中位數)",
+  "confidence_C": 120,
+  "items": [
+    {"name": "正常人",        "avg_rating": 9.2, "review_count": 18},
+    {"name": "斯卡羅",        "avg_rating": 8.8, "review_count": 3420},
+    {"name": "無聲",          "avg_rating": 9.5, "review_count": 4},
+    {"name": "夜明け前",      "avg_rating": 6.1, "review_count": 890},
+    {"name": "返校",          "avg_rating": 8.6, "review_count": 12400},
+    {"name": "孤味",          "avg_rating": 8.3, "review_count": 5670},
+    {"name": "瀑布",          "avg_rating": 8.9, "review_count": 2980},
+    {"name": "一家子兒咕咕叫", "avg_rating": 7.4, "review_count": 1120},
+    {"name": "親愛的房客",    "avg_rating": 8.7, "review_count": 4210},
+    {"name": "新天堂樂園(台版重映)", "avg_rating": 9.1, "review_count": 67},
+    {"name": "詭扯",          "avg_rating": 5.9, "review_count": 3300},
+    {"name": "緝魂",          "avg_rating": 7.8, "review_count": 6800},
+    {"name": "消失的情人節",  "avg_rating": 8.4, "review_count": 9150},
+    {"name": "怪胎",          "avg_rating": 8.1, "review_count": 2430},
+    {"name": "初戀慢半拍",    "avg_rating": 10.0, "review_count": 1}
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "_comment": "Tests query scoring across a mixed SEO/content corpus: verifies stop-word suppression, log-normalized TF variant, and that a term appearing in all docs scores zero. Query 'technical seo audit' should surface the technical-SEO-focused documents highest.",
+  "corpus": [
+    {
+      "id": "doc_technical_seo",
+      "text": "Technical SEO audit involves crawling your website to identify broken links, duplicate content, missing canonical tags, and slow page load times. A thorough technical SEO audit improves indexability and crawl efficiency."
+    },
+    {
+      "id": "doc_content_marketing",
+      "text": "Content marketing strategy focuses on creating high-quality blog posts, infographics, and videos to attract organic traffic. Great content earns backlinks naturally and supports long-term SEO growth."
+    },
+    {
+      "id": "doc_keyword_research",
+      "text": "Keyword research identifies search terms your target audience uses. Tools like keyword planners reveal search volume, keyword difficulty, and related keyword suggestions for SEO campaigns."
+    },
+    {
+      "id": "doc_link_building",
+      "text": "Link building acquires backlinks from authoritative external websites to boost domain authority. Guest posting, digital PR, and broken link building are common link acquisition strategies."
+    },
+    {
+      "id": "doc_page_speed",
+      "text": "Page speed optimization reduces load time through image compression, lazy loading, browser caching, and minifying CSS and JavaScript. Core Web Vitals scores directly influence Google search rankings."
+    },
+    {
+      "id": "doc_on_page_seo",
+      "text": "On-page SEO covers title tags, meta descriptions, header hierarchy, internal linking, and keyword placement within body content. Proper on-page optimization signals relevance to search engines."
+    },
+    {
+      "id": "doc_crawl_budget",
+      "text": "Crawl budget management ensures search engine bots spend their limited crawl allocation on high-value pages. Blocking low-value URLs in robots.txt and fixing crawl traps improve technical SEO crawl efficiency."
+    },
+    {
+      "id": "doc_schema_markup",
+      "text": "Schema markup adds structured data to HTML so search engines can display rich snippets in results. Common schema types include Article, Product, FAQ, and BreadcrumbList for enhanced SERP visibility."
+    },
+    {
+      "id": "doc_local_seo",
+      "text": "Local SEO optimizes a business presence in location-based search results. Google Business Profile, NAP consistency, local citations, and review management are key local SEO ranking factors."
+    },
+    {
+      "id": "doc_analytics",
+      "text": "SEO analytics tracks organic traffic, click-through rate, average position, and conversion rate using tools like Google Search Console and analytics platforms. Data-driven SEO decisions improve campaign performance."
+    }
+  ],
+  "query": "technical seo audit crawl",
+  "tf_variant": "log_normalized",
+  "top_n": 5,
+  "stop_words": ["a", "an", "the", "and", "or", "in", "on", "to", "of", "for", "is", "are", "your", "with", "from", "that", "this", "by", "as", "its", "their", "be", "can", "so"]
+}

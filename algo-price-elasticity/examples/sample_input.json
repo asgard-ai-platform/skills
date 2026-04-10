@@ -1,0 +1,24 @@
+{
+  "_comment": "台灣電商平台無線藍牙耳機 2025 全年月度價格實驗，測試漲價與降價場景下的弧彈性與營收影響。含 12 筆觀察值，價格波動範圍 NT$1,190–NT$1,990，可驗證彈性隨價格區間變化的非線性特性。",
+  "product": "藍牙降噪耳機 (型號 ANC-X500)",
+  "currency": "TWD",
+  "observations": [
+    {"month": "2025-01", "price": 1990, "quantity": 420},
+    {"month": "2025-02", "price": 1890, "quantity": 510},
+    {"month": "2025-03", "price": 1790, "quantity": 620},
+    {"month": "2025-04", "price": 1690, "quantity": 740},
+    {"month": "2025-05", "price": 1590, "quantity": 870},
+    {"month": "2025-06", "price": 1490, "quantity": 1010},
+    {"month": "2025-07", "price": 1390, "quantity": 1170},
+    {"month": "2025-08", "price": 1390, "quantity": 1185},
+    {"month": "2025-09", "price": 1490, "quantity": 980},
+    {"month": "2025-10", "price": 1590, "quantity": 840},
+    {"month": "2025-11", "price": 1290, "quantity": 1380},
+    {"month": "2025-12", "price": 1190, "quantity": 1650}
+  ],
+  "analysis": {
+    "reference_point": {"price": 1590, "quantity": 870},
+    "target_point": {"price": 1790, "quantity": 620},
+    "price_change_pct": 12.6
+  }
+}

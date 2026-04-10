@@ -1,0 +1,11 @@
+{
+  "_comment": "電子零件倉儲 — 95% 服務水準情境：同時存在需求與前置時間不確定性，驗證雙重 σ 合併路徑與年度持有成本計算",
+  "avg_demand": 120,
+  "demand_std": 36,
+  "avg_lead_time": 5,
+  "lead_time_std": 1.2,
+  "service_level": 0.95,
+  "unit_cost": 85.0,
+  "holding_rate": 0.22,
+  "periods_per_year": 52
+}

@@ -1,0 +1,8 @@
+{
+  "_comment": "台灣春夏季女裝單季採購決策：售價高、成本中等、季末折扣出清，測試高 critical ratio (CR~0.75) 導致 Q* 明顯高於平均需求的典型案例",
+  "price": 1200,
+  "cost": 420,
+  "salvage": 150,
+  "demand_mean": 350,
+  "demand_std": 80
+}

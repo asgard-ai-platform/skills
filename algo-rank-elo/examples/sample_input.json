@@ -1,0 +1,25 @@
+{
+  "_comment": "6名電競選手（VALORANT）進行循環賽，混合普通勝負與平局場次，驗證零和性質與冷門大分差情境",
+  "k_factor": 32,
+  "initial_rating": 1500,
+  "matches": [
+    {"winner": "s1mple",   "loser": "ZywOo"},
+    {"winner": "NiKo",     "loser": "device"},
+    {"winner": "ZywOo",    "loser": "sh1ro"},
+    {"winner": "s1mple",   "loser": "device"},
+    {"winner": "sh1ro",    "loser": "NiKo"},
+    {"winner": "ZywOo",    "loser": "NiKo"},
+    {"winner": "device",   "loser": "sh1ro"},
+    {"winner": "s1mple",   "loser": "sh1ro"},
+    {"winner": "NiKo",     "loser": "b1t"},
+    {"winner": "ZywOo",    "loser": "b1t"},
+    {"winner": "b1t",      "loser": "device"},
+    {"winner": "s1mple",   "loser": "b1t"},
+    {"winner": "sh1ro",    "loser": "b1t"},
+    {"winner": "ZywOo",    "loser": "device"},
+    {"winner": "s1mple",   "loser": "NiKo"},
+    {"winner": "b1t",      "loser": "NiKo",   "draw": true},
+    {"winner": "sh1ro",    "loser": "device",  "draw": true},
+    {"winner": "ZywOo",    "loser": "s1mple",  "draw": true}
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "_comment": "Tests multi-term query ranking: docs with both 'wireless' and 'earbuds' in title should outscore docs with only one term; also exercises stop-word removal (e.g. 'with'), TF saturation via repeated terms in SKU-008, and length normalization across short titles vs long descriptions.",
+  "query": "wireless earbuds noise cancelling",
+  "k1": 1.2,
+  "b": 0.75,
+  "documents": [
+    {
+      "doc_id": "SKU-001",
+      "title": "Sony WF-1000XM5 Wireless Earbuds with Noise Cancelling",
+      "body": "Industry-leading noise cancelling wireless earbuds. Up to 8 hours battery life with noise cancelling on. IPX4 water resistant. Multipoint connection for two devices."
+    },
+    {
+      "doc_id": "SKU-002",
+      "title": "Apple AirPods Pro 2nd Generation Wireless Earbuds",
+      "body": "Active noise cancellation removes background noise. Adaptive Transparency lets outside sound in. Personalised Spatial Audio with dynamic head tracking."
+    },
+    {
+      "doc_id": "SKU-003",
+      "title": "Samsung Galaxy Buds2 Pro Wireless Earbuds",
+      "body": "360 audio with head tracking. Intelligent active noise cancellation. IPX7 water resistant. 29 hours total battery with case."
+    },
+    {
+      "doc_id": "SKU-004",
+      "title": "Anker Soundcore P3i Wireless Earbuds",
+      "body": "Hybrid active noise cancellation with 4 microphones. 10mm drivers for deep bass. 30 hours playtime. IPX5 water resistance. Transparency mode."
+    },
+    {
+      "doc_id": "SKU-005",
+      "title": "Bose QuietComfort 45 Wireless Headphones",
+      "body": "Over-ear wireless headphones with world-class noise cancellation. 24 hours battery. Aware mode for letting in outside sound. Comfortable around-ear fit."
+    },
+    {
+      "doc_id": "SKU-006",
+      "title": "JBL Tune 510BT Wireless On-Ear Headphones",
+      "body": "On-ear wireless headphones with JBL Pure Bass Sound. 40 hours battery life. Hands-free calls with voice assistant support. Foldable design."
+    },
+    {
+      "doc_id": "SKU-007",
+      "title": "Jabra Elite 4 Active Wireless Earbuds",
+      "body": "Active noise cancellation with HearThrough mode. IP57 dust and water resistant. 28 hours total battery. Mono earbud mode. 6 microphones for clear calls."
+    },
+    {
+      "doc_id": "SKU-008",
+      "title": "Earbuds Earbuds Earbuds Wireless Bluetooth Sport Earbuds",
+      "body": "Earbuds earbuds earbuds sport fitness earbuds wireless earbuds earbuds for gym earbuds earbuds running earbuds earbuds earbuds bluetooth earbuds earbuds earbuds."
+    },
+    {
+      "doc_id": "SKU-009",
+      "title": "Bluetooth Speaker Portable Waterproof",
+      "body": "360 degree surround sound. IPX7 waterproof rating. 12 hours playtime. USB-C charging. Pairs with smartphones and tablets."
+    },
+    {
+      "doc_id": "SKU-010",
+      "title": "USB-C to 3.5mm Headphone Adapter",
+      "body": "Connect wired headphones or earbuds to USB-C devices. DAC chip for clean audio output. Compatible with Android smartphones and laptops."
+    },
+    {
+      "doc_id": "SKU-011",
+      "title": "Noise Cancelling Earplugs for Sleeping",
+      "body": "High fidelity foam earplugs for sleep, travel, and concerts. SNR 35dB noise reduction. Reusable washable material. Pack of 10 pairs."
+    },
+    {
+      "doc_id": "SKU-012",
+      "title": "Philips TAT3508 True Wireless Earbuds with Active Noise Cancelling",
+      "body": "True wireless earbuds with hybrid active noise cancellation. 9mm drivers. IPX4 splash resistant. 27 hours total battery with charging case. Voice assistant compatible."
+    }
+  ]
+}

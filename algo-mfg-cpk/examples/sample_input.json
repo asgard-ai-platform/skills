@@ -1,0 +1,14 @@
+{
+  "_comment": "Tests borderline-capable process (Cpk ~1.1) with slight upward centering shift. USL=55, LSL=45, target=50, subgroup_size=5 (4 subgroups × 5 = 20 measurements). Verifies that Cp > Cpk (off-center penalty), PPM estimate is non-zero, and rbar_d2 sigma method is applied.",
+  "measurements": [
+    50.2, 51.8, 48.9, 52.3, 49.7,
+    51.4, 50.6, 52.1, 49.3, 51.0,
+    50.8, 52.5, 49.5, 51.9, 50.4,
+    51.6, 48.7, 52.0, 50.3, 51.2
+  ],
+  "usl": 55.0,
+  "lsl": 45.0,
+  "target": 50.0,
+  "subgroup_size": 5,
+  "sigma_method": "rbar_d2"
+}

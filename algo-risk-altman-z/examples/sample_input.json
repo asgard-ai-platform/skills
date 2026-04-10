@@ -1,0 +1,13 @@
+{
+  "_comment": "Public manufacturing firm (original Z variant) — tests safe-zone classification. Based on a mid-size steel component manufacturer with healthy liquidity and moderate leverage. Values in USD millions.",
+  "company": "Meridian Steel Components Inc.",
+  "period": "2024-Q4",
+  "variant": "original",
+  "working_capital": 820,
+  "retained_earnings": 1350,
+  "ebit": 430,
+  "market_cap": 5200,
+  "total_liabilities": 2100,
+  "total_assets": 4600,
+  "sales": 6800
+}

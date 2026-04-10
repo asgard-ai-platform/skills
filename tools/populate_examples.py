@@ -154,12 +154,31 @@ def write_one(skill_dir: Path) -> tuple[bool, str]:
     if len(content) < 100:
         return False, f"too short ({len(content)} chars)"
 
-    # Validate JSON for script-based skills
+    # Validate JSON for script-based skills; extract if wrapped in prose
     if target.suffix == ".json":
         try:
             json.loads(content)
-        except json.JSONDecodeError as e:
-            return False, f"invalid JSON: {e}"
+        except json.JSONDecodeError:
+            # Fallback: find the first { ... } block (outermost braces)
+            depth = 0
+            start = -1
+            for i, c in enumerate(content):
+                if c == "{":
+                    if depth == 0:
+                        start = i
+                    depth += 1
+                elif c == "}":
+                    depth -= 1
+                    if depth == 0 and start != -1:
+                        candidate = content[start : i + 1]
+                        try:
+                            json.loads(candidate)
+                            content = candidate
+                            break
+                        except json.JSONDecodeError:
+                            start = -1
+            else:
+                return False, "invalid JSON: no extractable JSON object found"
 
     target.write_text(content.rstrip() + "\n", encoding="utf-8")
     return True, f"wrote {len(content)} chars → {target.name}"
