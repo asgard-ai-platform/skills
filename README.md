@@ -1,520 +1,520 @@
 # Asgard Skills
 
-Open-source library of **263 coding agent skills** across 21 topic-based categories. Each skill is a self-contained Markdown file (`SKILL.md`) following the [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) standard, with optional Python scripts for deterministic calculations.
+開源的 **263 個 coding agent skills** 知識庫，分成 21 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
 
-[繁體中文](README.zh-TW.md)
+[English](README.en.md)
 
-## Overview
+## 概觀
 
-This repository is the **raw ingredient pantry** for the [Asgard AI Platform](https://github.com/asgard-ai-platform). Skills are combined with [Asgard MCPs](https://github.com/orgs/asgard-ai-platform/repositories?q=mcp-) to assemble [coding agent plugins](https://github.com/asgard-ai-platform) targeting specific user personas (e.g., Taiwan stock analyst, e-commerce operator, policy researcher).
+本 repo 是 [Asgard AI Platform](https://github.com/asgard-ai-platform) 的**原料庫**。Skills 會與 [Asgard MCPs](https://github.com/orgs/asgard-ai-platform/repositories?q=mcp-) 組合，打包成針對特定使用者情境的 [coding agent plugins](https://github.com/asgard-ai-platform)（例如台股分析師、電商營運、政策研究者）。
 
-A skill encodes **methodology + judgment + gotchas** for one well-defined task — what an LLM agent would otherwise have to rediscover or get wrong.
+每個 skill 封裝的是某個明確任務的**方法論 + 判斷 + 陷阱**——那些 LLM agent 若沒有提示就會重新摸索、或直接做錯的東西。
 
-## Repository Layout
+## Repo 結構
 
 ```
 .
 ├── {category}-{skill-name}/
-│   ├── SKILL.md           ← Level 1 frontmatter + Level 2 instructions
-│   ├── examples/          ← (always present, populated as needed)
-│   ├── references/        ← (heavy/long content offloaded here)
-│   └── scripts/           ← (only when deterministic calculator exists)
+│   ├── SKILL.md           ← Level 1 frontmatter + Level 2 指引
+│   ├── examples/          ← （必存在，視需要填充）
+│   ├── references/        ← （冗長內容外掛於此）
+│   └── scripts/           ← （僅在有確定性計算腳本時出現）
 └── ...
 ```
 
-## Categories (21 prefixes, 263 skills)
+## 類別（21 個前綴，263 個 skills）
 
-| Prefix | Count | Topic |
+| 前綴 | 數量 | 主題 |
 |--------|------:|-------|
-| `grad-` | 87 | Graduate-level theoretical models (RBV, CAPM, SEM, DID, ...) |
-| `algo-` | 62 | Algorithms (PageRank, BM25, ARIMA, EOQ, ...) |
-| `biz-` | 22 | Business school frameworks (SWOT, Porter's Five Forces, DCF, ...) |
-| `hum-` | 9 | Humanities / critical reasoning |
-| `tw-` | 9 | Taiwan-specific knowledge (stock, tax, e-invoice, ...) |
-| `ecom-` | 7 | E-commerce practical |
-| `econ-` | 6 | Economics fundamentals |
-| `meta-` | 6 | Interdisciplinary mental models |
-| `ops-` | 6 | Business operations (OKR, contract review, pitch deck, ...) |
-| `law-` | 5 | Legal frameworks |
-| `pr-` | 5 | PR & brand communications |
-| `cs-` | 4 | Customer service |
-| `data-` | 4 | Data analytics |
-| `mfg-` | 4 | Manufacturing |
-| `mkt-` | 4 | Digital marketing |
-| `soc-` | 7 | Social science |
-| `stat-` | 4 | Statistical methodology |
-| `tech-` | 4 | General tech (API, prompt engineering, MCP server, ...) |
-| `ux-` | 4 | Design / UX methodology |
-| `fin-` | 2 | Finance practical (modeling, earnings) |
-| `xborder-` | 2 | Cross-border commerce |
+| `grad-` | 87 | 研究所級理論模型（RBV、CAPM、SEM、DID…） |
+| `algo-` | 62 | 演算法（PageRank、BM25、ARIMA、EOQ…） |
+| `biz-` | 22 | 商學院框架（SWOT、Porter 五力、DCF…） |
+| `hum-` | 9 | 人文 / 批判性推理 |
+| `tw-` | 9 | 台灣在地知識（股市、稅務、電子發票…） |
+| `ecom-` | 7 | 電商實務 |
+| `econ-` | 6 | 經濟學基礎 |
+| `meta-` | 6 | 跨領域思維模型 |
+| `ops-` | 6 | 企業營運（OKR、合約審查、pitch deck…） |
+| `law-` | 5 | 法律框架 |
+| `pr-` | 5 | 公關 / 品牌傳播 |
+| `cs-` | 4 | 客戶服務 |
+| `data-` | 4 | 資料分析 |
+| `mfg-` | 4 | 製造業 |
+| `mkt-` | 4 | 數位行銷 |
+| `soc-` | 7 | 社會科學 |
+| `stat-` | 4 | 統計方法論 |
+| `tech-` | 4 | 一般技術（API、prompt engineering、MCP server…） |
+| `ux-` | 4 | 設計 / UX 方法論 |
+| `fin-` | 2 | 金融實務（modeling、earnings） |
+| `xborder-` | 2 | 跨境電商 |
 
-## Skill Catalog
+## Skill 目錄
 
-Every skill below is a directory at the repo root. Click the name to open its `SKILL.md`. Descriptions are condensed from each skill's frontmatter (WHAT + WHEN).
+以下列出全部 263 個 skills，依前綴分組。點擊名稱開啟其 `SKILL.md`。簡介為各 skill frontmatter `description` 的中文摘要（WHAT + WHEN）。
 
 <details>
-<summary><b><code>grad-</code></b> — Graduate-level theoretical models (87)</summary>
+<summary><b><code>grad-</code></b>　研究所級理論模型（87）</summary>
 
-- [`grad-action-research`](grad-action-research/SKILL.md) — Apply action research through Plan-Act-Observe-Reflect cycles and Participatory Action Research (PAR) to generate knowledge while improving practice.
-- [`grad-affordance`](grad-affordance/SKILL.md) — Apply Affordance Theory (Gibson, 1979; Norman, 1988) to analyze the action possibilities that an artifact provides to an actor.
-- [`grad-agenda-setting`](grad-agenda-setting/SKILL.md) — Apply agenda-setting theory (McCombs & Shaw) to analyze how media salience transfers to public perception.
-- [`grad-ai-ethics`](grad-ai-ethics/SKILL.md) — Apply AI ethics frameworks (fairness, accountability, transparency, privacy) to evaluate AI systems for algorithmic bias, explainability gaps, and value alignment failures.
-- [`grad-ambidexterity`](grad-ambidexterity/SKILL.md) — Apply organizational ambidexterity theory to balance exploration and exploitation activities.
-- [`grad-ant`](grad-ant/SKILL.md) — Apply Actor-Network Theory (Latour, Callon) to trace how human and non-human actors (actants) form networks through translation processes.
-- [`grad-auction-theory`](grad-auction-theory/SKILL.md) — Apply auction theory to compare the four canonical auction formats and assess revenue equivalence.
-- [`grad-behavioral-finance`](grad-behavioral-finance/SKILL.md) — Apply behavioral finance theory to identify systematic investor biases and their impact on asset prices.
-- [`grad-blooms`](grad-blooms/SKILL.md) — Apply Bloom's revised taxonomy to classify learning objectives and design assessments across six cognitive levels.
-- [`grad-born-global`](grad-born-global/SKILL.md) — Apply the Born Global framework to analyze firms that internationalize rapidly from inception under resource constraints.
-- [`grad-brand-equity`](grad-brand-equity/SKILL.md) — Apply brand equity frameworks (Aaker, 1991; Keller, 1993) to assess and build customer-based brand value.
-- [`grad-business-ecosystems`](grad-business-ecosystems/SKILL.md) — Apply Moore's business ecosystem framework to analyze how firms co-evolve through four stages (birth, expansion, authority, renewal) and occupy different ecosystem roles.
-- [`grad-capm`](grad-capm/SKILL.md) — Apply the Capital Asset Pricing Model (CAPM) to estimate expected returns and assess risk-return tradeoffs.
-- [`grad-cas`](grad-cas/SKILL.md) — Apply Complex Adaptive Systems theory to analyze phenomena exhibiting emergence, self-organization, co-evolution, and edge-of-chaos dynamics.
-- [`grad-case-study`](grad-case-study/SKILL.md) — Apply case study research design (Yin) to investigate how and why questions within real-life contexts using single or multiple case designs and triangulation.
-- [`grad-cct`](grad-cct/SKILL.md) — Apply Consumer Culture Theory to analyze consumption as a cultural practice shaped by identity, marketplace cultures, and ideology.
-- [`grad-cognitive-load`](grad-cognitive-load/SKILL.md) — Apply Cognitive Load Theory to optimize instructional design by managing intrinsic, extraneous, and germane load within working memory limits.
-- [`grad-constructivism`](grad-constructivism/SKILL.md) — Apply constructivist learning theory to design instruction based on active knowledge construction, scaffolding, and the zone of proximal development.
-- [`grad-contract-theory`](grad-contract-theory/SKILL.md) — Apply contract theory to design incentive-compatible agreements under moral hazard and adverse selection.
-- [`grad-coopetition`](grad-coopetition/SKILL.md) — Apply the Co-opetition Value Net framework (Brandenburger and Nalebuff, 1996) to map cooperative and competitive dynamics in business relationships.
-- [`grad-critical-realism`](grad-critical-realism/SKILL.md) — Apply Bhaskar's critical realism to analyze phenomena through three ontological domains (real, actual, empirical), identify generative causal mechanisms via retroduction, and examine structure-agen...
-- [`grad-cultivation`](grad-cultivation/SKILL.md) — Apply cultivation theory (Gerbner) to analyze how long-term media exposure shapes worldviews.
-- [`grad-diamond`](grad-diamond/SKILL.md) — Apply Porter's Diamond Model to analyze national competitive advantage for a specific industry.
-- [`grad-did`](grad-did/SKILL.md) — Apply Difference-in-Differences (DID) to estimate causal treatment effects by comparing changes in outcomes between treatment and control groups.
-- [`grad-digital-transformation`](grad-digital-transformation/SKILL.md) — Apply the three-level framework of digital transformation — Digitization, Digitalization, and Digital Transformation — to diagnose and plan organizational change enabled by digital technologies.
-- [`grad-disruptive-innovation`](grad-disruptive-innovation/SKILL.md) — Apply Christensen's Disruptive Innovation theory to assess low-end and new-market threats to incumbents.
-- [`grad-dual-process`](grad-dual-process/SKILL.md) — Apply dual-process theory to diagnose whether judgments arise from fast intuitive (System 1) or slow analytical (System 2) processing and identify resulting cognitive biases.
-- [`grad-elm`](grad-elm/SKILL.md) — Apply the Elaboration Likelihood Model to design persuasion strategies by matching message type to audience elaboration level.
-- [`grad-embeddedness`](grad-embeddedness/SKILL.md) — Apply Granovetter's embeddedness theory to analyze how economic behavior is embedded in ongoing social relations, avoiding both over-socialized and under-socialized accounts.
-- [`grad-emh`](grad-emh/SKILL.md) — Apply the Efficient Market Hypothesis (Fama, 1970) to evaluate information incorporation in asset prices across weak, semi-strong, and strong forms.
-- [`grad-ethnography`](grad-ethnography/SKILL.md) — Apply ethnographic methods including prolonged engagement, participant observation, thick description, and netnography to study cultures and communities.
-- [`grad-event-study`](grad-event-study/SKILL.md) — Apply event study methodology to measure abnormal returns and cumulative abnormal returns (CAR) around corporate or market events.
-- [`grad-fama-french`](grad-fama-french/SKILL.md) — Apply the Fama-French three-factor model to decompose asset returns into market, size, and value factors.
-- [`grad-field-theory`](grad-field-theory/SKILL.md) — Apply Bourdieu's field theory to analyze power relations through the interplay of field, capital, and habitus.
-- [`grad-flow`](grad-flow/SKILL.md) — Apply flow theory to diagnose optimal experience conditions and design environments that balance challenge and skill for sustained engagement.
-- [`grad-framing`](grad-framing/SKILL.md) — Apply framing theory to analyze how selection, emphasis, and exclusion shape interpretation of issues.
-- [`grad-governance`](grad-governance/SKILL.md) — Apply governance theory to analyze multi-level, network, and collaborative governance arrangements beyond traditional government.
-- [`grad-grounded-theory`](grad-grounded-theory/SKILL.md) — Apply Grounded Theory (Glaser and Strauss) to build theory inductively from qualitative data through open, axial, and selective coding.
-- [`grad-hlm`](grad-hlm/SKILL.md) — Apply Hierarchical Linear Modeling (HLM) to analyze nested data structures with random intercepts and slopes, accounting for intra-class correlation and cross-level interactions.
-- [`grad-info-economics`](grad-info-economics/SKILL.md) — Apply information economics to diagnose and remedy market failures caused by asymmetric information.
-- [`grad-innovation-diffusion-bass`](grad-innovation-diffusion-bass/SKILL.md) — Apply the Bass Diffusion Model (1969) to forecast innovation adoption using innovation and imitation coefficients.
-- [`grad-is-success`](grad-is-success/SKILL.md) — Apply the DeLone and McLean Information Systems Success Model to evaluate IS effectiveness through six interdependent dimensions.
-- [`grad-mechanism-design`](grad-mechanism-design/SKILL.md) — Apply mechanism design (reverse game theory) to engineer incentive-compatible rules for allocation problems.
-- [`grad-meta-analysis`](grad-meta-analysis/SKILL.md) — Apply meta-analysis to synthesize effect sizes across multiple studies, assess heterogeneity, and evaluate publication bias.
-- [`grad-mixed-methods`](grad-mixed-methods/SKILL.md) — Design and conduct mixed methods research using convergent, explanatory sequential, or exploratory sequential strategies with genuine integration of qualitative and quantitative strands.
-- [`grad-mm-theorem`](grad-mm-theorem/SKILL.md) — Apply the Modigliani-Miller theorem to analyze capital structure decisions and identify when financing choices affect firm value.
-- [`grad-narrative`](grad-narrative/SKILL.md) — Apply narrative research methods to understand human experience through stories, analyzing narrative structure, temporality, and meaning-making in life stories and oral histories.
-- [`grad-network-economics`](grad-network-economics/SKILL.md) — Apply network economics to analyze markets with network effects, critical mass dynamics, and platform competition.
-- [`grad-oli`](grad-oli/SKILL.md) — Apply Dunning's OLI Paradigm (Eclectic Theory) to evaluate foreign direct investment decisions based on Ownership, Location, and Internalization advantages.
-- [`grad-org-ecology`](grad-org-ecology/SKILL.md) — Apply organizational ecology (Hannan and Freeman) to analyze population-level dynamics of organizational founding, failure, and selection.
-- [`grad-panel-data`](grad-panel-data/SKILL.md) — Apply panel data analysis with fixed effects, random effects, and dynamic GMM to exploit longitudinal variation and control for unobserved heterogeneity.
-- [`grad-paradigms`](grad-paradigms/SKILL.md) — Apply Kuhn's paradigm theory to analyze scientific progress through the cycle of normal science, anomalies, crisis, and revolution.
-- [`grad-paradox-theory`](grad-paradox-theory/SKILL.md) — Apply Smith and Lewis's paradox theory to identify and manage organizational tensions across performing, organizing, belonging, and learning dimensions.
-- [`grad-pecking-order`](grad-pecking-order/SKILL.md) — Apply pecking order theory (Myers and Majluf, 1984) to analyze how information asymmetry drives financing hierarchy decisions.
-- [`grad-phenomenology`](grad-phenomenology/SKILL.md) — Apply phenomenological methods including bracketing (epoche), lived experience inquiry, and Interpretive Phenomenological Analysis (IPA) to uncover the essence of human experience.
-- [`grad-platform-economics`](grad-platform-economics/SKILL.md) — Apply platform economics to analyze network effects, solve chicken-and-egg problems, and design multi-sided platform pricing strategies.
-- [`grad-pls-sem`](grad-pls-sem/SKILL.md) — Apply Partial Least Squares SEM (PLS-SEM) with reflective and formative measurement models to maximize explained variance in endogenous constructs.
-- [`grad-policy-streams`](grad-policy-streams/SKILL.md) — Apply Kingdon's multiple streams framework to analyze how problems, policies, and politics converge to open policy windows.
-- [`grad-pragmatism`](grad-pragmatism/SKILL.md) — Apply pragmatist philosophy (Peirce, James, Dewey) to frame knowledge as instrumental for action, evaluate ideas by their practical consequences, and conduct inquiry as problem-solving.
-- [`grad-public-choice`](grad-public-choice/SKILL.md) — Apply public choice theory to analyze political decision-making as rational self-interested behavior.
-- [`grad-real-options`](grad-real-options/SKILL.md) — Apply real options analysis to value managerial flexibility embedded in investment decisions.
-- [`grad-sd-logic`](grad-sd-logic/SKILL.md) — Apply Service-Dominant Logic (Vargo and Lusch, 2004) and value co-creation principles to reframe exchange and value creation.
-- [`grad-sdt`](grad-sdt/SKILL.md) — Apply Self-Determination Theory to analyze motivation quality along the autonomy continuum and design interventions that satisfy basic psychological needs.
-- [`grad-sem`](grad-sem/SKILL.md) — Apply Structural Equation Modeling (SEM) to test hypothesized causal structures by combining measurement models (CFA) and structural models (path analysis).
-- [`grad-sensemaking`](grad-sensemaking/SKILL.md) — Apply Weick's sensemaking theory to analyze how individuals and organizations construct meaning from ambiguous situations.
-- [`grad-servqual`](grad-servqual/SKILL.md) — Apply the SERVQUAL model (Parasuraman, Zeithaml, and Berry, 1988) to measure service quality gaps across five dimensions.
-- [`grad-signaling`](grad-signaling/SKILL.md) — Apply signaling theory (Spence, 1973) to analyze how agents communicate private information through costly, credible signals under information asymmetry.
-- [`grad-social-capital`](grad-social-capital/SKILL.md) — Apply social capital theory (Putnam, Coleman, Bourdieu, Burt) to analyze how network structures and trust generate value or impose constraints.
-- [`grad-social-identity`](grad-social-identity/SKILL.md) — Apply Social Identity Theory to analyze how group categorization, identification, and intergroup comparison drive behavior, bias, and conflict.
-- [`grad-sociotechnical`](grad-sociotechnical/SKILL.md) — Apply Sociotechnical Systems Theory to analyze and design work systems through joint optimization of social and technical subsystems.
-- [`grad-spiral-of-silence`](grad-spiral-of-silence/SKILL.md) — Apply spiral of silence theory (Noelle-Neumann) to analyze how perceived opinion climate suppresses minority expression.
-- [`grad-strat-agency`](grad-strat-agency/SKILL.md) — Apply Agency Theory (Jensen and Meckling, 1976) to diagnose principal-agent problems — moral hazard, adverse selection — and design governance mechanisms to align interests.
-- [`grad-strat-dynamic-cap`](grad-strat-dynamic-cap/SKILL.md) — Apply the Dynamic Capabilities framework (Teece et al., 1997) — sensing, seizing, and transforming — to analyze how firms adapt, integrate, and reconfigure competences in rapidly changing environme...
-- [`grad-strat-institutional`](grad-strat-institutional/SKILL.md) — Apply Institutional Theory (DiMaggio and Powell, 1983) to analyze how coercive, mimetic, and normative isomorphic pressures shape organizational structures and practices.
-- [`grad-strat-kbv`](grad-strat-kbv/SKILL.md) — Apply the Knowledge-Based View (Grant, 1996) and Nonaka and Takeuchi's SECI model to analyze how organizations create, transfer, and integrate knowledge for competitive advantage.
-- [`grad-strat-rbv`](grad-strat-rbv/SKILL.md) — Apply the Resource-Based View (Barney, 1991) and VRIO framework to evaluate whether a firm's resources and capabilities confer sustained competitive advantage.
-- [`grad-strat-stakeholder`](grad-strat-stakeholder/SKILL.md) — Apply Stakeholder Theory (Freeman, 1984) and the Mitchell et al.
-- [`grad-strat-tce`](grad-strat-tce/SKILL.md) — Apply Transaction Cost Economics (Williamson, 1975, 1985) to analyze governance structure choices — market, hybrid, or hierarchy — based on transaction characteristics.
-- [`grad-strat-upper-echelons`](grad-strat-upper-echelons/SKILL.md) — Apply Upper Echelons Theory (Hambrick and Mason, 1984) to analyze how top management team characteristics — demographics, experiences, values — shape strategic choices and organizational outcomes.
-- [`grad-structuration`](grad-structuration/SKILL.md) — Apply Giddens' structuration theory to analyze the duality of structure — how social structures are both the medium and outcome of the practices they organize.
-- [`grad-survey-design`](grad-survey-design/SKILL.md) — Apply rigorous survey design principles including construct operationalization, Likert scale development, reliability and validity assessment, and common method variance control.
-- [`grad-sustainability`](grad-sustainability/SKILL.md) — Apply sustainability frameworks (triple bottom line, SDGs, ESG, circular economy) to evaluate whether strategies balance economic, social, and environmental dimensions.
-- [`grad-systematic-review`](grad-systematic-review/SKILL.md) — Conduct a systematic literature review following the PRISMA framework with explicit search strategy, inclusion and exclusion criteria, quality assessment, and transparent synthesis.
-- [`grad-tam-utaut`](grad-tam-utaut/SKILL.md) — Apply the Technology Acceptance Model (Davis, 1989) and Unified Theory of Acceptance and Use of Technology (Venkatesh et al., 2003) to predict technology adoption.
-- [`grad-tpack`](grad-tpack/SKILL.md) — Apply the TPACK framework to evaluate and design technology-integrated instruction at the intersection of technological, pedagogical, and content knowledge.
-- [`grad-tpb`](grad-tpb/SKILL.md) — Apply the Theory of Planned Behavior to predict behavioral intentions from attitudes, subjective norms, and perceived behavioral control, and identify intervention leverage points.
-- [`grad-uppsala`](grad-uppsala/SKILL.md) — Apply the Uppsala Internationalization Model to analyze gradual foreign market entry based on psychic distance and experiential learning.
+- [`grad-action-research`](grad-action-research/SKILL.md) — 用 Plan-Act-Observe-Reflect 循環與參與式行動研究（PAR），在改善實務的同時生成知識。
+- [`grad-affordance`](grad-affordance/SKILL.md) — 套用 Affordance 理論（Gibson 1979、Norman 1988），分析物件提供給行動者的行動可能性。
+- [`grad-agenda-setting`](grad-agenda-setting/SKILL.md) — 套用議題設定理論（McCombs & Shaw），分析媒體顯著性如何轉移到公眾認知。
+- [`grad-ai-ethics`](grad-ai-ethics/SKILL.md) — 套用 AI 倫理框架（公平、課責、透明、隱私），評估 AI 系統的演算法偏見、可解釋性與價值對齊。
+- [`grad-ambidexterity`](grad-ambidexterity/SKILL.md) — 套用組織雙元理論，平衡探索與利用兩類活動。
+- [`grad-ant`](grad-ant/SKILL.md) — 套用行動者網絡理論（Latour、Callon），追蹤人與非人 actants 如何透過轉譯形成網絡。
+- [`grad-auction-theory`](grad-auction-theory/SKILL.md) — 套用拍賣理論，比較四種正典拍賣形式並評估收益等價性。
+- [`grad-behavioral-finance`](grad-behavioral-finance/SKILL.md) — 套用行為財務理論，辨識系統性投資人偏誤及其對資產價格的影響。
+- [`grad-blooms`](grad-blooms/SKILL.md) — 套用 Bloom 修訂版分類學，依六個認知層次分類學習目標並設計評量。
+- [`grad-born-global`](grad-born-global/SKILL.md) — 套用 Born Global 框架，分析在資源限制下從創立即快速國際化的公司。
+- [`grad-brand-equity`](grad-brand-equity/SKILL.md) — 套用品牌權益框架（Aaker 1991、Keller 1993），評估與建構顧客導向品牌價值。
+- [`grad-business-ecosystems`](grad-business-ecosystems/SKILL.md) — 套用 Moore 商業生態系框架，分析企業如何透過誕生、擴張、權威、更新四階段共演化並佔據不同生態角色。
+- [`grad-capm`](grad-capm/SKILL.md) — 套用資本資產定價模型（CAPM），估算預期報酬與評估風險報酬取捨。
+- [`grad-cas`](grad-cas/SKILL.md) — 套用複雜適應系統理論，分析具有湧現、自組織、共演化與混沌邊緣動態的現象。
+- [`grad-case-study`](grad-case-study/SKILL.md) — 套用 Yin 的個案研究設計，以單／多個案與三角驗證調查 how/why 問題。
+- [`grad-cct`](grad-cct/SKILL.md) — 套用消費者文化理論，把消費分析為由身份、市場文化與意識形態塑造的文化實踐。
+- [`grad-cognitive-load`](grad-cognitive-load/SKILL.md) — 套用認知負荷理論，依工作記憶限制管理內在、外在與相關負荷以最佳化教學設計。
+- [`grad-constructivism`](grad-constructivism/SKILL.md) — 套用建構主義學習理論，依主動知識建構、鷹架與最近發展區設計教學。
+- [`grad-contract-theory`](grad-contract-theory/SKILL.md) — 套用契約理論，在道德風險與逆選擇下設計誘因相容的契約。
+- [`grad-coopetition`](grad-coopetition/SKILL.md) — 套用 Brandenburger & Nalebuff（1996）競合價值網框架，描繪商業關係中的合作與競爭動態。
+- [`grad-critical-realism`](grad-critical-realism/SKILL.md) — 套用 Bhaskar 批判實在論，從真實／實際／經驗三層本體論、回溯性推論機制以及結構─能動性辯證分析現象。
+- [`grad-cultivation`](grad-cultivation/SKILL.md) — 套用 Gerbner 涵化理論，分析長期媒體曝露如何形塑世界觀。
+- [`grad-diamond`](grad-diamond/SKILL.md) — 套用 Porter 鑽石模型，分析特定產業的國家競爭優勢。
+- [`grad-did`](grad-did/SKILL.md) — 套用差異中之差異（DID），比較處理組與對照組結果變化以估算因果效應。
+- [`grad-digital-transformation`](grad-digital-transformation/SKILL.md) — 套用數位化、數位優化、數位轉型三層框架，診斷與規劃數位科技驅動的組織變革。
+- [`grad-disruptive-innovation`](grad-disruptive-innovation/SKILL.md) — 套用 Christensen 破壞式創新理論，評估低階與新市場對在位者的威脅。
+- [`grad-dual-process`](grad-dual-process/SKILL.md) — 套用雙歷程理論，診斷判斷源自快速直覺（系統一）或慢速分析（系統二），辨識相應的認知偏誤。
+- [`grad-elm`](grad-elm/SKILL.md) — 套用 ELM 推敲可能性模式，依受眾推敲程度匹配訊息類型來設計說服策略。
+- [`grad-embeddedness`](grad-embeddedness/SKILL.md) — 套用 Granovetter 鑲嵌理論，分析經濟行為如何鑲嵌於持續性社會關係，避免過度／不足社會化的解釋。
+- [`grad-emh`](grad-emh/SKILL.md) — 套用效率市場假說（Fama 1970），以弱式、半強式、強式評估資訊在資產價格中的反映程度。
+- [`grad-ethnography`](grad-ethnography/SKILL.md) — 套用民族誌方法──長期投入、參與觀察、厚描與網路民族誌──研究文化與社群。
+- [`grad-event-study`](grad-event-study/SKILL.md) — 套用事件研究法，衡量公司或市場事件前後的異常報酬與累積異常報酬（CAR）。
+- [`grad-fama-french`](grad-fama-french/SKILL.md) — 套用 Fama-French 三因子模型，把資產報酬分解為市場、規模與價值因子。
+- [`grad-field-theory`](grad-field-theory/SKILL.md) — 套用 Bourdieu 場域理論，從場域、資本、慣習三者交互分析權力關係。
+- [`grad-flow`](grad-flow/SKILL.md) — 套用心流理論，診斷最佳體驗條件，設計挑戰與技能平衡的環境以維持投入。
+- [`grad-framing`](grad-framing/SKILL.md) — 套用框架理論，分析選擇、強調與排除如何形塑議題詮釋。
+- [`grad-governance`](grad-governance/SKILL.md) — 套用治理理論，分析超越傳統政府的多層次、網絡式與協作治理安排。
+- [`grad-grounded-theory`](grad-grounded-theory/SKILL.md) — 套用紮根理論（Glaser & Strauss），透過開放、軸心、選擇性編碼從質性資料歸納建構理論。
+- [`grad-hlm`](grad-hlm/SKILL.md) — 套用階層線性模型（HLM），以隨機截距與斜率分析巢套資料，處理組內相關與跨層交互作用。
+- [`grad-info-economics`](grad-info-economics/SKILL.md) — 套用資訊經濟學，診斷與補救由資訊不對稱造成的市場失靈。
+- [`grad-innovation-diffusion-bass`](grad-innovation-diffusion-bass/SKILL.md) — 套用 Bass 擴散模型（1969），用創新與模仿係數預測創新採用。
+- [`grad-is-success`](grad-is-success/SKILL.md) — 套用 DeLone & McLean 資訊系統成功模型，從六個相依構面評估 IS 成效。
+- [`grad-mechanism-design`](grad-mechanism-design/SKILL.md) — 套用機制設計（反向賽局論），為配置問題設計誘因相容的規則。
+- [`grad-meta-analysis`](grad-meta-analysis/SKILL.md) — 套用後設分析，整合多項研究的效果量、評估異質性與發表偏誤。
+- [`grad-mixed-methods`](grad-mixed-methods/SKILL.md) — 用聚合、解釋順序、探索順序等策略設計與執行混合方法研究，做質量真正整合。
+- [`grad-mm-theorem`](grad-mm-theorem/SKILL.md) — 套用 Modigliani-Miller 定理，分析資本結構決策並辨識融資選擇何時影響企業價值。
+- [`grad-narrative`](grad-narrative/SKILL.md) — 套用敘事研究方法，從生命故事與口述歷史的結構、時間性與意義建構理解人類經驗。
+- [`grad-network-economics`](grad-network-economics/SKILL.md) — 套用網絡經濟學，分析具網絡效應、臨界質量動態與平台競爭的市場。
+- [`grad-oli`](grad-oli/SKILL.md) — 套用 Dunning OLI 折衷理論，依所有權、區位、內部化優勢評估外人直接投資決策。
+- [`grad-org-ecology`](grad-org-ecology/SKILL.md) — 套用組織生態學（Hannan & Freeman），分析組織創立、失敗與選擇的族群層次動態。
+- [`grad-panel-data`](grad-panel-data/SKILL.md) — 用固定效果、隨機效果與動態 GMM 進行追蹤資料分析，運用縱向變異並控制不可觀察異質性。
+- [`grad-paradigms`](grad-paradigms/SKILL.md) — 套用 Kuhn 典範理論，以常態科學、異常、危機、革命的循環分析科學進展。
+- [`grad-paradox-theory`](grad-paradox-theory/SKILL.md) — 套用 Smith & Lewis 弔詭理論，辨識並管理績效、組織、歸屬、學習四面向的組織張力。
+- [`grad-pecking-order`](grad-pecking-order/SKILL.md) — 套用啄食順序理論（Myers & Majluf 1984），分析資訊不對稱如何驅動融資階層決策。
+- [`grad-phenomenology`](grad-phenomenology/SKILL.md) — 套用現象學方法，含懸置（epoche）、生活經驗探究與詮釋現象學分析（IPA），揭示經驗本質。
+- [`grad-platform-economics`](grad-platform-economics/SKILL.md) — 套用平台經濟學，分析網絡效應、解雞生蛋問題並設計多邊平台定價策略。
+- [`grad-pls-sem`](grad-pls-sem/SKILL.md) — 套用 PLS-SEM 偏最小平方結構方程，結合反映性與形成性測量模型，最大化內生構念解釋變異。
+- [`grad-policy-streams`](grad-policy-streams/SKILL.md) — 套用 Kingdon 多重源流框架，分析問題、政策、政治三流匯合如何開啟政策窗。
+- [`grad-pragmatism`](grad-pragmatism/SKILL.md) — 套用實用主義哲學（Peirce、James、Dewey），把知識視為行動工具、以實際後果評價觀念、把探究當問題解決。
+- [`grad-public-choice`](grad-public-choice/SKILL.md) — 套用公共選擇理論，把政治決策分析為理性自利行為。
+- [`grad-real-options`](grad-real-options/SKILL.md) — 套用實質選擇權分析，為投資決策中內含的管理彈性估值。
+- [`grad-sd-logic`](grad-sd-logic/SKILL.md) — 套用服務主導邏輯（Vargo & Lusch 2004）與價值共創原則，重構交換與價值創造。
+- [`grad-sdt`](grad-sdt/SKILL.md) — 套用自我決定理論，沿自主性連續體分析動機品質，設計滿足三種基本心理需求的介入。
+- [`grad-sem`](grad-sem/SKILL.md) — 套用結構方程模型（SEM），結合測量模型（CFA）與結構模型（路徑分析）檢驗假設的因果結構。
+- [`grad-sensemaking`](grad-sensemaking/SKILL.md) — 套用 Weick 意義建構理論，分析個人與組織如何從模糊情境中建構意義。
+- [`grad-servqual`](grad-servqual/SKILL.md) — 套用 SERVQUAL 模型（Parasuraman、Zeithaml、Berry 1988），從五構面衡量服務品質落差。
+- [`grad-signaling`](grad-signaling/SKILL.md) — 套用 Spence（1973）訊號理論，分析資訊不對稱下行動者如何透過昂貴可信的訊號傳達私有資訊。
+- [`grad-social-capital`](grad-social-capital/SKILL.md) — 套用社會資本理論（Putnam、Coleman、Bourdieu、Burt），分析網絡結構與信任如何產生價值或形成限制。
+- [`grad-social-identity`](grad-social-identity/SKILL.md) — 套用社會認同理論，分析群體分類、認同與群際比較如何驅動行為、偏見與衝突。
+- [`grad-sociotechnical`](grad-sociotechnical/SKILL.md) — 套用社會技術系統理論，透過社會與技術子系統的聯合最佳化來分析與設計工作系統。
+- [`grad-spiral-of-silence`](grad-spiral-of-silence/SKILL.md) — 套用沈默螺旋理論（Noelle-Neumann），分析感知意見氣候如何壓抑少數意見表達。
+- [`grad-strat-agency`](grad-strat-agency/SKILL.md) — 套用代理理論（Jensen & Meckling 1976），診斷主理人─代理人問題（道德風險、逆選擇）並設計治理機制以對齊利益。
+- [`grad-strat-dynamic-cap`](grad-strat-dynamic-cap/SKILL.md) — 套用動態能力框架（Teece 等 1997）的感知、把握、轉化，分析企業如何在快速變動環境中調適與重組能力。
+- [`grad-strat-institutional`](grad-strat-institutional/SKILL.md) — 套用制度理論（DiMaggio & Powell 1983），分析強制、模仿、規範性同形壓力如何形塑組織結構與實踐。
+- [`grad-strat-kbv`](grad-strat-kbv/SKILL.md) — 套用知識基礎觀（Grant 1996）與 Nonaka & Takeuchi 的 SECI 模型，分析組織如何創造、移轉與整合知識以形成競爭優勢。
+- [`grad-strat-rbv`](grad-strat-rbv/SKILL.md) — 套用資源基礎觀（Barney 1991）與 VRIO 框架，評估企業資源與能力是否形成可持續競爭優勢。
+- [`grad-strat-stakeholder`](grad-strat-stakeholder/SKILL.md) — 套用 Freeman（1984）利害關係人理論與 Mitchell 等人的分類法做利害關係人分析。
+- [`grad-strat-tce`](grad-strat-tce/SKILL.md) — 套用交易成本經濟學（Williamson 1975、1985），依交易特性分析市場、混合或科層的治理結構選擇。
+- [`grad-strat-upper-echelons`](grad-strat-upper-echelons/SKILL.md) — 套用高階梯隊理論（Hambrick & Mason 1984），分析高階管理團隊的人口統計、經驗與價值如何形塑策略選擇與組織結果。
+- [`grad-structuration`](grad-structuration/SKILL.md) — 套用 Giddens 結構化理論，分析結構的二元性──社會結構既是實踐的媒介也是其結果。
+- [`grad-survey-design`](grad-survey-design/SKILL.md) — 套用嚴謹的問卷設計原則，含構念操作化、Likert 量表發展、信效度評估與共同方法變異控制。
+- [`grad-sustainability`](grad-sustainability/SKILL.md) — 套用永續框架（三重底線、SDGs、ESG、循環經濟），評估策略是否平衡經濟、社會與環境三維度。
+- [`grad-systematic-review`](grad-systematic-review/SKILL.md) — 依 PRISMA 框架做系統性文獻回顧，含明確檢索策略、納入排除標準、品質評估與透明合成。
+- [`grad-tam-utaut`](grad-tam-utaut/SKILL.md) — 套用科技接受模型（Davis 1989）與 UTAUT（Venkatesh 等 2003），預測技術採用。
+- [`grad-tpack`](grad-tpack/SKILL.md) — 套用 TPACK 框架，從技術、教學、內容知識交集評估與設計科技融入教學。
+- [`grad-tpb`](grad-tpb/SKILL.md) — 套用計畫行為理論，從態度、主觀規範、知覺行為控制預測行為意圖並找出介入槓桿點。
+- [`grad-uppsala`](grad-uppsala/SKILL.md) — 套用 Uppsala 國際化模型，依心理距離與經驗學習分析逐步進入國外市場。
 
 </details>
 
 <details>
-<summary><b><code>algo-</code></b> — Algorithms (62)</summary>
+<summary><b><code>algo-</code></b>　演算法（62）</summary>
 
-- [`algo-ad-bidding`](algo-ad-bidding/SKILL.md) — Implement and select ad bidding strategies from manual CPC to automated target-CPA and target-ROAS.
-- [`algo-ad-budget`](algo-ad-budget/SKILL.md) — Optimize advertising budget allocation across campaigns using marginal returns analysis.
-- [`algo-ad-ctr`](algo-ad-ctr/SKILL.md) — Build CTR prediction models for estimating ad click-through rates from features.
-- [`algo-ad-gsp`](algo-ad-gsp/SKILL.md) — Implement Generalized Second Price auction for ad slot allocation and pricing.
-- [`algo-ad-vcg`](algo-ad-vcg/SKILL.md) — Implement VCG mechanism for incentive-compatible ad slot allocation with truthful bidding.
-- [`algo-blockchain-basics`](algo-blockchain-basics/SKILL.md) — Explain blockchain fundamentals including distributed ledger architecture, consensus mechanisms, and block structure.
-- [`algo-blockchain-smart-contract`](algo-blockchain-smart-contract/SKILL.md) — Design and implement smart contracts as self-executing programmatic agreements on blockchain.
-- [`algo-ecom-bm25`](algo-ecom-bm25/SKILL.md) — Implement BM25 ranking function for e-commerce product search relevance scoring.
-- [`algo-ecom-ranking`](algo-ecom-ranking/SKILL.md) — Design multi-objective e-commerce product ranking combining relevance, conversion, and business metrics.
-- [`algo-ecom-search`](algo-ecom-search/SKILL.md) — Optimize e-commerce search relevance across the full pipeline from query understanding to result presentation.
-- [`algo-forecast-arima`](algo-forecast-arima/SKILL.md) — Build ARIMA models for time series forecasting with trend and seasonality decomposition.
-- [`algo-forecast-ensemble`](algo-forecast-ensemble/SKILL.md) — Combine multiple forecasting models into ensemble predictions for improved accuracy.
-- [`algo-forecast-exponential`](algo-forecast-exponential/SKILL.md) — Apply exponential smoothing methods for time series forecasting with weighted moving averages.
-- [`algo-forecast-prophet`](algo-forecast-prophet/SKILL.md) — Build forecasting models with Meta's Prophet for business time series with holidays and changepoints.
-- [`algo-hr-compensation`](algo-hr-compensation/SKILL.md) — Conduct compensation benchmarking analysis to position salaries against market data.
-- [`algo-hr-matching`](algo-hr-matching/SKILL.md) — Implement Gale-Shapley stable matching algorithm for two-sided matching problems.
-- [`algo-hr-turnover`](algo-hr-turnover/SKILL.md) — Build employee turnover prediction models to identify flight risk and retention drivers.
-- [`algo-mfg-cpk`](algo-mfg-cpk/SKILL.md) — Calculate Cpk process capability index to assess whether a process meets specification requirements.
-- [`algo-mfg-doe`](algo-mfg-doe/SKILL.md) — Design and analyze factorial experiments to identify significant process factors and optimize settings.
-- [`algo-mfg-fmea`](algo-mfg-fmea/SKILL.md) — Conduct FMEA to systematically identify, prioritize, and mitigate potential failure modes.
-- [`algo-mfg-spc`](algo-mfg-spc/SKILL.md) — Implement Statistical Process Control charts to monitor production process stability.
-- [`algo-net-centrality`](algo-net-centrality/SKILL.md) — Calculate network centrality metrics to identify important nodes in graphs.
-- [`algo-net-community`](algo-net-community/SKILL.md) — Implement Louvain community detection to discover densely connected groups in networks.
-- [`algo-net-influence`](algo-net-influence/SKILL.md) — Solve the influence maximization problem to select optimal seed nodes for maximum information spread.
-- [`algo-nlp-lda`](algo-nlp-lda/SKILL.md) — Implement LDA topic modeling to discover latent topics in document collections.
-- [`algo-nlp-ner`](algo-nlp-ner/SKILL.md) — Implement Named Entity Recognition to identify and classify entities in text.
-- [`algo-nlp-similarity`](algo-nlp-similarity/SKILL.md) — Calculate text similarity using lexical and semantic methods for matching and deduplication.
-- [`algo-nlp-summarization`](algo-nlp-summarization/SKILL.md) — Implement text summarization using extractive and abstractive approaches.
-- [`algo-price-bundle`](algo-price-bundle/SKILL.md) — Design bundle pricing strategies using pure bundling, mixed bundling, and consumer surplus analysis.
-- [`algo-price-conjoint`](algo-price-conjoint/SKILL.md) — Run conjoint analysis to measure how product attributes drive consumer preferences and willingness to pay.
-- [`algo-price-dynamic`](algo-price-dynamic/SKILL.md) — Implement dynamic pricing strategies that adjust prices in real-time based on demand, time, and competition.
-- [`algo-price-elasticity`](algo-price-elasticity/SKILL.md) — Calculate price elasticity of demand to quantify how price changes affect sales volume.
-- [`algo-price-van-westendorp`](algo-price-van-westendorp/SKILL.md) — Conduct Van Westendorp Price Sensitivity Meter analysis to identify acceptable price ranges.
-- [`algo-rank-bayesian`](algo-rank-bayesian/SKILL.md) — Apply Bayesian averaging to rank items by combining observed ratings with prior expectations.
-- [`algo-rank-elo`](algo-rank-elo/SKILL.md) — Implement Elo rating system to rank items or players from pairwise comparison outcomes.
-- [`algo-rank-trueskill`](algo-rank-trueskill/SKILL.md) — Implement TrueSkill rating system for multiplayer and team-based competitive ranking.
-- [`algo-rank-wilson`](algo-rank-wilson/SKILL.md) — Calculate Wilson Score confidence intervals for ranking items by positive proportion with sample size correction.
-- [`algo-rec-cf`](algo-rec-cf/SKILL.md) — Implement collaborative filtering for recommendations based on user behavior patterns.
-- [`algo-rec-content`](algo-rec-content/SKILL.md) — Implement content-based recommendation by matching item features to user preference profiles.
-- [`algo-rec-hybrid`](algo-rec-hybrid/SKILL.md) — Design hybrid recommendation systems combining multiple strategies for improved accuracy.
-- [`algo-rec-mf`](algo-rec-mf/SKILL.md) — Implement matrix factorization to decompose user-item interaction matrices into latent factor representations.
-- [`algo-rec-session`](algo-rec-session/SKILL.md) — Implement session-based recommendation from short-term user behavior sequences without long-term profiles.
-- [`algo-risk-altman-z`](algo-risk-altman-z/SKILL.md) — Calculate Altman Z-Score to predict corporate bankruptcy probability from financial ratios.
-- [`algo-risk-benford`](algo-risk-benford/SKILL.md) — Apply Benford's Law to detect anomalies in numerical datasets by analyzing first-digit frequency distributions.
-- [`algo-risk-credit`](algo-risk-credit/SKILL.md) — Build credit scoring models to predict default probability from borrower characteristics.
-- [`algo-risk-var`](algo-risk-var/SKILL.md) — Calculate Value at Risk to estimate maximum portfolio loss at a given confidence level.
-- [`algo-sc-bullwhip`](algo-sc-bullwhip/SKILL.md) — Analyze and mitigate the bullwhip effect where demand variability amplifies upstream in supply chains.
-- [`algo-sc-eoq`](algo-sc-eoq/SKILL.md) — Calculate Economic Order Quantity to minimize total inventory cost (ordering + holding).
-- [`algo-sc-newsvendor`](algo-sc-newsvendor/SKILL.md) — Solve the newsvendor problem for single-period ordering decisions under uncertain demand.
-- [`algo-sc-routing`](algo-sc-routing/SKILL.md) — Solve vehicle routing problems to optimize delivery routes under capacity and time constraints.
-- [`algo-sc-safety-stock`](algo-sc-safety-stock/SKILL.md) — Calculate safety stock levels to buffer against demand and lead time uncertainty.
-- [`algo-seo-backlink`](algo-seo-backlink/SKILL.md) — Evaluate backlink quality using Domain Authority, Domain Rating, and trust metrics.
-- [`algo-seo-content`](algo-seo-content/SKILL.md) — Execute content SEO strategy from keyword research through content planning, writing, and on-page optimization.
-- [`algo-seo-crawl`](algo-seo-crawl/SKILL.md) — Implement a web crawler pipeline covering URL discovery, fetching, parsing, and storage.
-- [`algo-seo-pagerank`](algo-seo-pagerank/SKILL.md) — Implement PageRank algorithm to compute web page importance scores using the random surfer model.
-- [`algo-seo-schema`](algo-seo-schema/SKILL.md) — Implement Schema.org structured data markup in JSON-LD format for enhanced search results.
-- [`algo-seo-technical`](algo-seo-technical/SKILL.md) — Optimize Core Web Vitals (LCP, INP, CLS) for better search rankings and user experience.
-- [`algo-seo-tfidf`](algo-seo-tfidf/SKILL.md) — Implement TF-IDF scoring to measure term importance relative to a document corpus.
-- [`algo-social-engagement`](algo-social-engagement/SKILL.md) — Calculate and benchmark social media engagement rates across platforms and variants.
-- [`algo-social-influence`](algo-social-influence/SKILL.md) — Measure social media influence using engagement-weighted metrics beyond follower count.
-- [`algo-social-sentiment`](algo-social-sentiment/SKILL.md) — Implement VADER sentiment analysis for social media text scoring.
-- [`algo-social-virality`](algo-social-virality/SKILL.md) — Model viral spread dynamics using SIR/SIS/SEIR compartmental models.
-
-</details>
-
-<details>
-<summary><b><code>biz-</code></b> — Business school frameworks (22)</summary>
-
-- [`biz-4p-7p`](biz-4p-7p/SKILL.md) — Apply the Marketing Mix (4P/7P) framework to design tactical marketing decisions across Product, Price, Place, Promotion — plus People, Process, Physical Evidence for services.
-- [`biz-ansoff`](biz-ansoff/SKILL.md) — Apply Ansoff Matrix to evaluate growth strategy options across market and product dimensions.
-- [`biz-bcg-matrix`](biz-bcg-matrix/SKILL.md) — Apply BCG Growth-Share Matrix to analyze a product or business unit portfolio for resource allocation decisions.
-- [`biz-blue-ocean`](biz-blue-ocean/SKILL.md) — Apply Blue Ocean Strategy to create uncontested market space through value innovation.
-- [`biz-brand-positioning`](biz-brand-positioning/SKILL.md) — Develop brand positioning strategy including positioning statements, perceptual maps, and brand personality/archetype analysis.
-- [`biz-breakeven`](biz-breakeven/SKILL.md) — Perform break-even analysis to determine the sales volume or revenue needed to cover all costs.
-- [`biz-bsc`](biz-bsc/SKILL.md) — Apply the Balanced Scorecard (BSC) framework to translate strategy into measurable objectives across Financial, Customer, Internal Process, and Learning & Growth perspectives.
-- [`biz-cac-ltv`](biz-cac-ltv/SKILL.md) — Calculate and analyze Customer Acquisition Cost (CAC) and Customer Lifetime Value (LTV) to evaluate unit economics and marketing efficiency.
-- [`biz-customer-journey`](biz-customer-journey/SKILL.md) — Map and analyze the customer journey across Awareness, Consideration, Decision, Usage, and Advocacy stages.
-- [`biz-dcf`](biz-dcf/SKILL.md) — Build Discounted Cash Flow (DCF) valuation models to estimate intrinsic value.
-- [`biz-dupont`](biz-dupont/SKILL.md) — Apply DuPont Analysis to decompose Return on Equity (ROE) into profitability, efficiency, and leverage components.
-- [`biz-financial-ratios`](biz-financial-ratios/SKILL.md) — Analyze financial health using ratio categories: profitability, liquidity, leverage, efficiency, and valuation.
-- [`biz-lean-six-sigma`](biz-lean-six-sigma/SKILL.md) — Apply Lean and Six Sigma principles to eliminate waste and reduce process variation.
-- [`biz-pestel`](biz-pestel/SKILL.md) — Apply PESTEL framework to scan the macro-environment across Political, Economic, Social, Technological, Environmental, and Legal dimensions.
-- [`biz-porters-five-forces`](biz-porters-five-forces/SKILL.md) — Apply Porter's Five Forces framework to assess industry competitive dynamics and attractiveness.
-- [`biz-pricing-strategy`](biz-pricing-strategy/SKILL.md) — Analyze and design pricing strategies including cost-plus, value-based, competitive, penetration, and skimming approaches with psychological pricing techniques.
-- [`biz-stp`](biz-stp/SKILL.md) — Apply STP (Segmentation, Targeting, Positioning) framework for market strategy.
-- [`biz-supply-chain`](biz-supply-chain/SKILL.md) — Analyze supply chain operations using the SCOR model across Plan, Source, Make, Deliver, and Return processes.
-- [`biz-swot`](biz-swot/SKILL.md) — Conduct SWOT analysis with TOWS matrix for strategic planning.
-- [`biz-toc`](biz-toc/SKILL.md) — Apply Theory of Constraints (TOC) to identify and manage system bottlenecks.
-- [`biz-unit-economics`](biz-unit-economics/SKILL.md) — Analyze unit economics to evaluate per-unit profitability and business model scalability.
-- [`biz-value-chain`](biz-value-chain/SKILL.md) — Apply Porter's Value Chain Analysis to identify competitive advantage sources within an organization's activities.
+- [`algo-ad-bidding`](algo-ad-bidding/SKILL.md) — 實作並挑選廣告出價策略，從手動 CPC 到自動 target-CPA、target-ROAS。
+- [`algo-ad-budget`](algo-ad-budget/SKILL.md) — 用邊際報酬分析在多檔廣告活動間最佳化預算分配。
+- [`algo-ad-ctr`](algo-ad-ctr/SKILL.md) — 從特徵建構 CTR 預測模型來估算廣告點擊率。
+- [`algo-ad-gsp`](algo-ad-gsp/SKILL.md) — 實作 GSP 廣義第二價拍賣，做廣告版位分配與計價。
+- [`algo-ad-vcg`](algo-ad-vcg/SKILL.md) — 實作 VCG 機制，做誘因相容（誠實出價）的廣告版位分配。
+- [`algo-blockchain-basics`](algo-blockchain-basics/SKILL.md) — 說明區塊鏈基礎：分散式帳本架構、共識機制與區塊結構。
+- [`algo-blockchain-smart-contract`](algo-blockchain-smart-contract/SKILL.md) — 在區塊鏈上設計與實作可自動執行的智能合約。
+- [`algo-ecom-bm25`](algo-ecom-bm25/SKILL.md) — 實作 BM25 排名函數，做電商商品搜尋的相關性評分。
+- [`algo-ecom-ranking`](algo-ecom-ranking/SKILL.md) — 設計多目標電商商品排序，結合相關性、轉換率與商業指標。
+- [`algo-ecom-search`](algo-ecom-search/SKILL.md) — 從查詢理解到結果呈現，全鏈路優化電商搜尋相關性。
+- [`algo-forecast-arima`](algo-forecast-arima/SKILL.md) — 建構 ARIMA 時間序列預測模型，含趨勢與季節性分解。
+- [`algo-forecast-ensemble`](algo-forecast-ensemble/SKILL.md) — 把多個預測模型組合成 ensemble 預測以提升精度。
+- [`algo-forecast-exponential`](algo-forecast-exponential/SKILL.md) — 套用指數平滑法，對時間序列做加權移動平均預測。
+- [`algo-forecast-prophet`](algo-forecast-prophet/SKILL.md) — 用 Meta Prophet 對含節假日與變點的商業時序建構預測模型。
+- [`algo-hr-compensation`](algo-hr-compensation/SKILL.md) — 做薪酬對標分析，把薪資定位到市場資料上。
+- [`algo-hr-matching`](algo-hr-matching/SKILL.md) — 實作 Gale-Shapley 穩定配對演算法，解雙邊媒合問題。
+- [`algo-hr-turnover`](algo-hr-turnover/SKILL.md) — 建構員工離職預測模型，找出流失風險與留任驅動因子。
+- [`algo-mfg-cpk`](algo-mfg-cpk/SKILL.md) — 計算 Cpk 製程能力指數，評估製程是否符合規格要求。
+- [`algo-mfg-doe`](algo-mfg-doe/SKILL.md) — 設計與分析因子實驗，找出顯著製程因子並最佳化參數。
+- [`algo-mfg-fmea`](algo-mfg-fmea/SKILL.md) — 執行 FMEA，系統性辨識、排序並降低潛在失效模式。
+- [`algo-mfg-spc`](algo-mfg-spc/SKILL.md) — 實作統計製程控制（SPC）管制圖，監控生產製程穩定度。
+- [`algo-net-centrality`](algo-net-centrality/SKILL.md) — 計算網路中心性指標，找出圖中的重要節點。
+- [`algo-net-community`](algo-net-community/SKILL.md) — 用 Louvain 演算法做社群偵測，找出網路中緊密連結的群組。
+- [`algo-net-influence`](algo-net-influence/SKILL.md) — 解影響力最大化問題，挑選最佳種子節點達到最大資訊擴散。
+- [`algo-nlp-lda`](algo-nlp-lda/SKILL.md) — 用 LDA 做主題建模，從文件集中發現潛在主題。
+- [`algo-nlp-ner`](algo-nlp-ner/SKILL.md) — 實作命名實體識別（NER），辨識並分類文本中的實體。
+- [`algo-nlp-similarity`](algo-nlp-similarity/SKILL.md) — 用詞彙與語意方法計算文本相似度，做匹配與去重。
+- [`algo-nlp-summarization`](algo-nlp-summarization/SKILL.md) — 用抽取式與生成式方法實作文本摘要。
+- [`algo-price-bundle`](algo-price-bundle/SKILL.md) — 用純綑綁、混合綑綁與消費者剩餘分析設計綑綁定價策略。
+- [`algo-price-conjoint`](algo-price-conjoint/SKILL.md) — 做聯合分析（conjoint），衡量產品屬性如何驅動偏好與付費意願。
+- [`algo-price-dynamic`](algo-price-dynamic/SKILL.md) — 依需求、時間與競爭，實作即時調價的動態定價策略。
+- [`algo-price-elasticity`](algo-price-elasticity/SKILL.md) — 計算需求價格彈性，量化價格變動對銷量的影響。
+- [`algo-price-van-westendorp`](algo-price-van-westendorp/SKILL.md) — 做 Van Westendorp 價格敏感度分析（PSM），找出可接受價格區間。
+- [`algo-rank-bayesian`](algo-rank-bayesian/SKILL.md) — 用貝氏平均法結合觀測評分與先驗，對項目做排名。
+- [`algo-rank-elo`](algo-rank-elo/SKILL.md) — 實作 Elo 評分系統，從成對比較結果對人或物排名。
+- [`algo-rank-trueskill`](algo-rank-trueskill/SKILL.md) — 實作 TrueSkill 評分系統，做多人與隊伍制競技排名。
+- [`algo-rank-wilson`](algo-rank-wilson/SKILL.md) — 計算 Wilson Score 信賴區間，依正面比例排名並做樣本數修正。
+- [`algo-rec-cf`](algo-rec-cf/SKILL.md) — 實作協同過濾推薦，依使用者行為模式產生推薦。
+- [`algo-rec-content`](algo-rec-content/SKILL.md) — 用內容特徵與使用者偏好剖面匹配，做內容式推薦。
+- [`algo-rec-hybrid`](algo-rec-hybrid/SKILL.md) — 設計多策略混合推薦系統以提升精度。
+- [`algo-rec-mf`](algo-rec-mf/SKILL.md) — 實作矩陣分解，把使用者─物品互動矩陣分解為潛在因子表示。
+- [`algo-rec-session`](algo-rec-session/SKILL.md) — 從短期行為序列做 session-based 推薦，無需長期使用者剖面。
+- [`algo-risk-altman-z`](algo-risk-altman-z/SKILL.md) — 計算 Altman Z-Score，從財務比率預測企業破產機率。
+- [`algo-risk-benford`](algo-risk-benford/SKILL.md) — 套用 Benford 定律，分析首位數字頻率分佈來偵測資料異常。
+- [`algo-risk-credit`](algo-risk-credit/SKILL.md) — 從借款人特徵建構信用評分模型，預測違約機率。
+- [`algo-risk-var`](algo-risk-var/SKILL.md) — 計算 VaR（風險值），估算給定信賴水準下的最大組合損失。
+- [`algo-sc-bullwhip`](algo-sc-bullwhip/SKILL.md) — 分析並降低長鞭效應──需求波動沿供應鏈上游放大的現象。
+- [`algo-sc-eoq`](algo-sc-eoq/SKILL.md) — 計算經濟訂購量（EOQ），最小化總庫存成本（訂購＋持有）。
+- [`algo-sc-newsvendor`](algo-sc-newsvendor/SKILL.md) — 解報童問題：在不確定需求下做單期訂購決策。
+- [`algo-sc-routing`](algo-sc-routing/SKILL.md) — 解車輛路徑問題（VRP），在容量與時間限制下最佳化配送路線。
+- [`algo-sc-safety-stock`](algo-sc-safety-stock/SKILL.md) — 計算安全庫存水位，緩衝需求與前置時間的不確定性。
+- [`algo-seo-backlink`](algo-seo-backlink/SKILL.md) — 用 Domain Authority、Domain Rating 與信任指標評估反向連結品質。
+- [`algo-seo-content`](algo-seo-content/SKILL.md) — 從關鍵字研究、內容規劃、寫作到頁面優化，執行內容 SEO 策略。
+- [`algo-seo-crawl`](algo-seo-crawl/SKILL.md) — 實作網路爬蟲管線：URL 發現、抓取、解析與儲存。
+- [`algo-seo-pagerank`](algo-seo-pagerank/SKILL.md) — 用隨機漫遊模型實作 PageRank，計算網頁重要性分數。
+- [`algo-seo-schema`](algo-seo-schema/SKILL.md) — 用 JSON-LD 格式實作 Schema.org 結構化資料標記，強化搜尋結果呈現。
+- [`algo-seo-technical`](algo-seo-technical/SKILL.md) — 優化 Core Web Vitals（LCP、INP、CLS），提升搜尋排名與使用者體驗。
+- [`algo-seo-tfidf`](algo-seo-tfidf/SKILL.md) — 實作 TF-IDF 評分，衡量詞彙相對於文件語料庫的重要性。
+- [`algo-social-engagement`](algo-social-engagement/SKILL.md) — 計算並對標社群媒體在不同平台與素材變體的互動率。
+- [`algo-social-influence`](algo-social-influence/SKILL.md) — 用互動加權指標衡量社群影響力，超越單純的粉絲數。
+- [`algo-social-sentiment`](algo-social-sentiment/SKILL.md) — 實作 VADER 情感分析，對社群媒體文本做情感評分。
+- [`algo-social-virality`](algo-social-virality/SKILL.md) — 用 SIR/SIS/SEIR 倉室模型建模病毒式傳播動態。
 
 </details>
 
 <details>
-<summary><b><code>hum-</code></b> — Humanities / critical reasoning (9)</summary>
+<summary><b><code>biz-</code></b>　商學院框架（22）</summary>
 
-- [`hum-critical-thinking`](hum-critical-thinking/SKILL.md) — Apply structured critical thinking — identifying claims, evidence, reasoning chains, hidden assumptions, and logical fallacies — to evaluate or construct specific written arguments rigorously.
-- [`hum-dialectics`](hum-dialectics/SKILL.md) — Apply Hegelian dialectics (thesis-antithesis-synthesis) to analyze contradictions and generate higher-order understanding.
-- [`hum-discourse`](hum-discourse/SKILL.md) — Apply discourse analysis to examine how language constructs meaning, power relationships, and social reality in texts and communications.
-- [`hum-ethics`](hum-ethics/SKILL.md) — Apply ethical frameworks — deontology, utilitarianism, virtue ethics, and justice theory — to analyze moral dilemmas and make principled decisions.
-- [`hum-historical-analogy`](hum-historical-analogy/SKILL.md) — Use historical analogies to inform strategic decisions by identifying structural similarities and differences between past and present situations.
-- [`hum-narrative`](hum-narrative/SKILL.md) — Apply narrative structure and storytelling techniques for brand, business, and communication contexts.
-- [`hum-rhetoric`](hum-rhetoric/SKILL.md) — Apply classical rhetoric — Ethos, Pathos, Logos — to analyze persuasive communication and craft effective arguments.
-- [`hum-socratic`](hum-socratic/SKILL.md) — Apply Socratic questioning — systematic inquiry via clarification, assumption-probing, evidence-testing, perspective-shifting, implication-tracing, and meta-questions — to coach learning or surface...
-- [`hum-source-criticism`](hum-source-criticism/SKILL.md) — Evaluate source credibility using primary/secondary classification, internal/external criticism, triangulation, and misinformation detection.
-
-</details>
-
-<details>
-<summary><b><code>tw-</code></b> — Taiwan-specific knowledge (9)</summary>
-
-- [`tw-einvoice-guide`](tw-einvoice-guide/SKILL.md) — Implement Taiwan's e-invoice (電子發票) system including platform integration, B2B vs B2C formats, carrier consolidation, and tax filing reconciliation.
-- [`tw-fintech-compliance`](tw-fintech-compliance/SKILL.md) — Navigate Taiwan fintech regulations including FSC oversight, electronic payment laws, VASP rules, AML/KYC requirements, and the regulatory sandbox.
-- [`tw-healthcare-regulations`](tw-healthcare-regulations/SKILL.md) — Navigate Taiwan healthcare regulations including NHI system, medical device classification, drug registration, telemedicine rules, and health data protection.
-- [`tw-manufacturing`](tw-manufacturing/SKILL.md) — Analyze Taiwan's manufacturing industry structure including semiconductor, electronics, machinery, and petrochemical sectors.
-- [`tw-payment-integration`](tw-payment-integration/SKILL.md) — Integrate Taiwan payment service providers including credit card, ATM transfer, convenience store payment, and mobile wallets (LINE Pay, JKoPay).
-- [`tw-retail-landscape`](tw-retail-landscape/SKILL.md) — Analyze Taiwan's retail industry including convenience stores, department stores, supermarkets, hypermarkets, and e-commerce with omnichannel trends.
-- [`tw-startup-legal`](tw-startup-legal/SKILL.md) — Guide Taiwan company registration and legal setup including business entity selection, commercial registration, company registration, and tax ID application.
-- [`tw-stock-analysis`](tw-stock-analysis/SKILL.md) — Analyze Taiwan-listed stocks using fundamental analysis including EPS, P/E ratio, dividend yield, and financial statement review.
-- [`tw-tax-basics`](tw-tax-basics/SKILL.md) — Navigate Taiwan's tax system including corporate income tax (營所稅), business tax (營業稅), personal income tax, withholding obligations, and startup tax incentives.
+- [`biz-4p-7p`](biz-4p-7p/SKILL.md) — 套用 4P/7P 行銷組合框架，設計產品、價格、通路、促銷以及服務業的人員、流程、實體證據。
+- [`biz-ansoff`](biz-ansoff/SKILL.md) — 用安索夫矩陣評估市場與產品兩維度的成長策略選項。
+- [`biz-bcg-matrix`](biz-bcg-matrix/SKILL.md) — 用 BCG 成長／市占矩陣分析產品或事業組合，做資源配置決策。
+- [`biz-blue-ocean`](biz-blue-ocean/SKILL.md) — 套用藍海策略，透過價值創新開創無競爭的市場空間。
+- [`biz-brand-positioning`](biz-brand-positioning/SKILL.md) — 發展品牌定位策略，包含定位陳述、知覺圖、品牌個性與原型分析。
+- [`biz-breakeven`](biz-breakeven/SKILL.md) — 做損益兩平分析，計算覆蓋全部成本所需的銷量或營收。
+- [`biz-bsc`](biz-bsc/SKILL.md) — 套用平衡計分卡（BSC），把策略轉成財務、顧客、內部流程、學習與成長四構面的可衡量目標。
+- [`biz-cac-ltv`](biz-cac-ltv/SKILL.md) — 計算並分析顧客取得成本（CAC）與終身價值（LTV），評估單位經濟與行銷效率。
+- [`biz-customer-journey`](biz-customer-journey/SKILL.md) — 繪製並分析顧客旅程的認知、考慮、決策、使用與倡導階段。
+- [`biz-dcf`](biz-dcf/SKILL.md) — 建構現金流折現（DCF）估值模型，估算內含價值。
+- [`biz-dupont`](biz-dupont/SKILL.md) — 用杜邦分析把 ROE 拆解為獲利力、效率與槓桿三項要素。
+- [`biz-financial-ratios`](biz-financial-ratios/SKILL.md) — 用獲利力、流動性、槓桿、效率、估值五類比率分析財務體質。
+- [`biz-lean-six-sigma`](biz-lean-six-sigma/SKILL.md) — 套用精實與六標準差原則，消除浪費並降低製程變異。
+- [`biz-pestel`](biz-pestel/SKILL.md) — 用 PESTEL 框架掃描政治、經濟、社會、科技、環境與法律六面向的總體環境。
+- [`biz-porters-five-forces`](biz-porters-five-forces/SKILL.md) — 用 Porter 五力框架評估產業競爭動態與吸引力。
+- [`biz-pricing-strategy`](biz-pricing-strategy/SKILL.md) — 分析並設計成本加成、價值基礎、競爭、滲透與吸脂等定價策略，含心理定價技巧。
+- [`biz-stp`](biz-stp/SKILL.md) — 套用 STP（市場區隔、目標市場、定位）框架制定市場策略。
+- [`biz-supply-chain`](biz-supply-chain/SKILL.md) — 用 SCOR 模型分析供應鏈的計畫、採購、製造、配送與退貨流程。
+- [`biz-swot`](biz-swot/SKILL.md) — 用 SWOT 分析與 TOWS 矩陣做策略規劃。
+- [`biz-toc`](biz-toc/SKILL.md) — 套用限制理論（TOC），辨識並管理系統瓶頸。
+- [`biz-unit-economics`](biz-unit-economics/SKILL.md) — 分析單位經濟，評估單位獲利與商業模式可擴展性。
+- [`biz-value-chain`](biz-value-chain/SKILL.md) — 套用 Porter 價值鏈分析，從組織活動中找出競爭優勢來源。
 
 </details>
 
 <details>
-<summary><b><code>ecom-</code></b> — E-commerce practical (7)</summary>
+<summary><b><code>hum-</code></b>　人文 / 批判性推理（9）</summary>
 
-- [`ecom-analytics`](ecom-analytics/SKILL.md) — Analyze e-commerce performance using GA4 metrics, conversion funnel analysis, and key e-commerce KPIs.
-- [`ecom-conversational`](ecom-conversational/SKILL.md) — Design conversational commerce experiences across messaging platforms including chatbot flows, product cards, and conversion strategies.
-- [`ecom-inventory-health`](ecom-inventory-health/SKILL.md) — Analyze inventory health using turnover ratios, ABC classification, safety stock calculations, and stockout vs overstock diagnostics.
-- [`ecom-multilingual-listing`](ecom-multilingual-listing/SKILL.md) — Optimize multilingual product listings for international e-commerce including SEO localization, machine translation workflows, and cultural adaptation.
-- [`ecom-promo-roi`](ecom-promo-roi/SKILL.md) — Calculate and analyze promotional ROI including incremental sales lift, margin impact, and promo type comparison.
-- [`ecom-rfm-analysis`](ecom-rfm-analysis/SKILL.md) — Perform RFM (Recency, Frequency, Monetary) customer segmentation from transaction data.
-- [`ecom-sea-strategy`](ecom-sea-strategy/SKILL.md) — Develop e-commerce strategy for Southeast Asian markets including platform selection, payment infrastructure, logistics challenges, and localization requirements.
-
-</details>
-
-<details>
-<summary><b><code>econ-</code></b> — Economics fundamentals (6)</summary>
-
-- [`econ-behavioral`](econ-behavioral/SKILL.md) — Apply behavioral economics concepts including bounded rationality, prospect theory, mental accounting, and nudge theory to analyze decision-making biases.
-- [`econ-business-cycle`](econ-business-cycle/SKILL.md) — Analyze business cycle phases (expansion, peak, contraction, trough) and their implications for business strategy and policy response.
-- [`econ-game-theory`](econ-game-theory/SKILL.md) — Apply basic game theory concepts including Nash equilibrium, dominant strategies, and the Prisoner's Dilemma to analyze strategic interactions.
-- [`econ-macro-indicators`](econ-macro-indicators/SKILL.md) — Interpret macroeconomic indicators including GDP, inflation, unemployment, interest rates, and exchange rates to assess economic health and predict trends.
-- [`econ-market-structure`](econ-market-structure/SKILL.md) — Analyze market structures across perfect competition, monopolistic competition, oligopoly, and monopoly to predict firm behavior and market outcomes.
-- [`econ-supply-demand`](econ-supply-demand/SKILL.md) — Apply supply and demand analysis to explain price determination, market equilibrium, and the effects of policy interventions.
+- [`hum-critical-thinking`](hum-critical-thinking/SKILL.md) — 用結構化批判思考──辨識主張、證據、推理鏈、隱藏假設與邏輯謬誤──嚴謹評估或建構論證。
+- [`hum-dialectics`](hum-dialectics/SKILL.md) — 套用黑格爾辯證法（正─反─合），分析矛盾並產出更高層次的理解。
+- [`hum-discourse`](hum-discourse/SKILL.md) — 套用論述分析，檢視語言如何在文本與溝通中建構意義、權力關係與社會現實。
+- [`hum-ethics`](hum-ethics/SKILL.md) — 套用倫理學框架──義務論、效益論、德行倫理、正義論──分析道德兩難並做有原則的決策。
+- [`hum-historical-analogy`](hum-historical-analogy/SKILL.md) — 用歷史類比輔助策略決策，辨識過去與當前情境的結構相似與差異。
+- [`hum-narrative`](hum-narrative/SKILL.md) — 把敘事結構與故事技巧套用到品牌、商業與溝通情境。
+- [`hum-rhetoric`](hum-rhetoric/SKILL.md) — 套用古典修辭學（Ethos、Pathos、Logos）分析說服性溝通並打造有效論證。
+- [`hum-socratic`](hum-socratic/SKILL.md) — 套用蘇格拉底式提問──澄清、探假設、檢驗證據、轉換觀點、追問蘊涵與後設提問──以引導學習或揭露盲點。
+- [`hum-source-criticism`](hum-source-criticism/SKILL.md) — 用一手／二手分類、內部／外部批判、三角驗證與假訊息辨識評估來源可信度。
 
 </details>
 
 <details>
-<summary><b><code>meta-</code></b> — Interdisciplinary mental models (6)</summary>
+<summary><b><code>tw-</code></b>　台灣在地知識（9）</summary>
 
-- [`meta-decision-analysis`](meta-decision-analysis/SKILL.md) — Apply structured decision analysis using decision matrices, decision trees, expected value, and multi-criteria decision analysis (MCDA).
-- [`meta-first-principles`](meta-first-principles/SKILL.md) — Apply first principles thinking to break problems down to fundamental truths and reason up from there.
-- [`meta-mental-models`](meta-mental-models/SKILL.md) — Apply a latticework of mental models from multiple disciplines to improve decision quality.
-- [`meta-scenario-planning`](meta-scenario-planning/SKILL.md) — Conduct scenario planning to prepare for multiple plausible futures using driving forces, uncertainty axes, and the 2x2 scenario matrix.
-- [`meta-structured-problem`](meta-structured-problem/SKILL.md) — Apply structured problem-solving using MECE principle, issue trees, hypothesis-driven approach, and the Pyramid Principle.
-- [`meta-systems-thinking`](meta-systems-thinking/SKILL.md) — Apply systems thinking — causal loop diagrams, stock-and-flow models, system archetypes, and leverage-point analysis — to organizational, economic, or social problems where feedback loops, delays, ...
-
-</details>
-
-<details>
-<summary><b><code>ops-</code></b> — Business operations (6)</summary>
-
-- [`ops-business-model-canvas`](ops-business-model-canvas/SKILL.md) — Apply the Business Model Canvas (BMC) to map and evaluate business models across nine building blocks.
-- [`ops-contract-review`](ops-contract-review/SKILL.md) — Review business contracts for risk identification including liability clauses, IP ownership, termination terms, and payment conditions.
-- [`ops-meeting-minutes`](ops-meeting-minutes/SKILL.md) — Create structured meeting minutes with decisions, action items, and follow-up tracking.
-- [`ops-negotiation`](ops-negotiation/SKILL.md) — Apply principled negotiation using BATNA, ZOPA, and the Harvard method to prepare for and conduct negotiations.
-- [`ops-okr-planning`](ops-okr-planning/SKILL.md) — Design and implement OKR (Objectives and Key Results) for goal-setting and strategic alignment across organizational levels.
-- [`ops-pitch-deck`](ops-pitch-deck/SKILL.md) — Structure and write investor pitch decks covering problem, solution, market, business model, traction, team, and financials.
+- [`tw-einvoice-guide`](tw-einvoice-guide/SKILL.md) — 導入台灣電子發票系統，含平台介接、B2B/B2C 格式、載具歸戶與報稅對帳。
+- [`tw-fintech-compliance`](tw-fintech-compliance/SKILL.md) — 處理台灣金融科技法規，含金管會監理、電子支付法、VASP、AML/KYC 與監理沙盒。
+- [`tw-healthcare-regulations`](tw-healthcare-regulations/SKILL.md) — 處理台灣醫療法規，含健保制度、醫材分級、藥品查驗登記、遠距醫療與健康資料保護。
+- [`tw-manufacturing`](tw-manufacturing/SKILL.md) — 分析台灣製造業結構，含半導體、電子、機械與石化等產業。
+- [`tw-payment-integration`](tw-payment-integration/SKILL.md) — 整合台灣金流服務商，含信用卡、ATM 轉帳、超商代收與行動支付（LINE Pay、街口）。
+- [`tw-retail-landscape`](tw-retail-landscape/SKILL.md) — 分析台灣零售業：超商、百貨、超市、量販與電商，含全通路趨勢。
+- [`tw-startup-legal`](tw-startup-legal/SKILL.md) — 指引台灣公司登記與法務設立，含商業組織選擇、商業／公司登記與稅籍申請。
+- [`tw-stock-analysis`](tw-stock-analysis/SKILL.md) — 用基本面分析台股，含 EPS、本益比、殖利率與財報檢視。
+- [`tw-tax-basics`](tw-tax-basics/SKILL.md) — 處理台灣稅制，含營所稅、營業稅、綜所稅、扣繳義務與新創租稅優惠。
 
 </details>
 
 <details>
-<summary><b><code>law-</code></b> — Legal frameworks (5)</summary>
+<summary><b><code>ecom-</code></b>　電商實務（7）</summary>
 
-- [`law-contract`](law-contract/SKILL.md) — Analyze contract fundamentals including formation requirements (offer, acceptance, consideration), essential clauses, and common risk areas.
-- [`law-gdpr-pdpa`](law-gdpr-pdpa/SKILL.md) — Analyze data privacy compliance requirements under GDPR, Taiwan's Personal Data Protection Act (PDPA), and related regulations.
-- [`law-ip`](law-ip/SKILL.md) — Analyze intellectual property rights across patents, trademarks, copyrights, and trade secrets.
-- [`law-irac`](law-irac/SKILL.md) — Apply IRAC (Issue, Rule, Application, Conclusion) method for structured legal analysis.
-- [`law-labor`](law-labor/SKILL.md) — Analyze Taiwan labor law fundamentals under the Labor Standards Act including working hours, overtime, leave, and termination rules.
-
-</details>
-
-<details>
-<summary><b><code>pr-</code></b> — PR & brand communications (5)</summary>
-
-- [`pr-crisis-communication`](pr-crisis-communication/SKILL.md) — Manage crisis communication across prevention, response, and recovery phases using SCCT theory and crisis statement frameworks.
-- [`pr-crisis-response`](pr-crisis-response/SKILL.md) — Manage PR crises using classification, golden hour response, crisis statement templates (3C framework), and reputation recovery planning.
-- [`pr-media-monitoring`](pr-media-monitoring/SKILL.md) — Set up and conduct media monitoring to track brand mentions, sentiment, and share of voice across news, social, and online channels.
-- [`pr-press-release`](pr-press-release/SKILL.md) — Write effective press releases using inverted pyramid structure, headline best practices, and media distribution strategy.
-- [`pr-social-copywriting`](pr-social-copywriting/SKILL.md) — Write platform-optimized social media copy for Instagram, Facebook, LinkedIn, and X/Twitter with hooks, CTAs, and hashtag strategies.
+- [`ecom-analytics`](ecom-analytics/SKILL.md) — 用 GA4 指標、轉換漏斗分析與電商核心 KPI 分析電商成效。
+- [`ecom-conversational`](ecom-conversational/SKILL.md) — 在訊息平台上設計對話式電商體驗：聊天機器人流程、商品卡片與轉換策略。
+- [`ecom-inventory-health`](ecom-inventory-health/SKILL.md) — 用週轉率、ABC 分類、安全庫存與缺貨／呆滯診斷分析庫存健康度。
+- [`ecom-multilingual-listing`](ecom-multilingual-listing/SKILL.md) — 為跨境電商優化多語商品頁：SEO 在地化、機翻流程與文化調適。
+- [`ecom-promo-roi`](ecom-promo-roi/SKILL.md) — 計算並分析促銷 ROI：增量銷售、毛利衝擊與促銷型態比較。
+- [`ecom-rfm-analysis`](ecom-rfm-analysis/SKILL.md) — 從交易資料做 RFM（最近一次、頻率、金額）顧客分群。
+- [`ecom-sea-strategy`](ecom-sea-strategy/SKILL.md) — 擬定東南亞電商策略：平台選擇、金流基礎建設、物流挑戰與在地化需求。
 
 </details>
 
 <details>
-<summary><b><code>cs-</code></b> — Customer service (4)</summary>
+<summary><b><code>econ-</code></b>　經濟學基礎（6）</summary>
 
-- [`cs-analytics`](cs-analytics/SKILL.md) — Measure and optimize customer service performance using CSAT, NPS, CES, First Contact Resolution, and text mining on support tickets.
-- [`cs-chatbot-design`](cs-chatbot-design/SKILL.md) — Design conversational AI chatbots including intent recognition, slot filling, dialogue flow, and response generation.
-- [`cs-notification-strategy`](cs-notification-strategy/SKILL.md) — Design push notification and messaging strategies including channel selection, timing optimization, personalization, and fatigue management.
-- [`cs-sop`](cs-sop/SKILL.md) — Design customer service operations including tiered support (L1/L2/L3), response templates, SLA definitions, escalation procedures, and complaint handling.
-
-</details>
-
-<details>
-<summary><b><code>data-</code></b> — Data analytics (4)</summary>
-
-- [`data-cohort-analysis`](data-cohort-analysis/SKILL.md) — Conduct cohort analysis to track user behavior over time, build retention matrices, and compare cohort performance.
-- [`data-dashboard-design`](data-dashboard-design/SKILL.md) — Design effective data dashboards with proper KPI hierarchy, chart type selection, and interactive features.
-- [`data-financial-analysis`](data-financial-analysis/SKILL.md) — Interpret the three core financial statements (income statement, balance sheet, cash flow statement) to assess business health and performance.
-- [`data-sql-optimization`](data-sql-optimization/SKILL.md) — Optimize SQL query performance using EXPLAIN analysis, indexing strategies, and common anti-pattern fixes.
+- [`econ-behavioral`](econ-behavioral/SKILL.md) — 套用行為經濟學概念──有限理性、展望理論、心理帳戶、推力理論──分析決策偏誤。
+- [`econ-business-cycle`](econ-business-cycle/SKILL.md) — 分析景氣循環的擴張、頂峰、收縮、谷底階段，及其對策略與政策的意涵。
+- [`econ-game-theory`](econ-game-theory/SKILL.md) — 套用基本賽局概念──Nash 均衡、優勢策略、囚徒困境──分析策略互動。
+- [`econ-macro-indicators`](econ-macro-indicators/SKILL.md) — 解讀 GDP、通膨、失業、利率、匯率等總體指標，評估經濟體質與預測趨勢。
+- [`econ-market-structure`](econ-market-structure/SKILL.md) — 分析完全競爭、獨占性競爭、寡占與獨占等市場結構，預測廠商行為與市場結果。
+- [`econ-supply-demand`](econ-supply-demand/SKILL.md) — 用供需分析說明價格決定、市場均衡與政策介入的影響。
 
 </details>
 
 <details>
-<summary><b><code>mfg-</code></b> — Manufacturing (4)</summary>
+<summary><b><code>meta-</code></b>　跨領域思維模型（6）</summary>
 
-- [`mfg-oee-analysis`](mfg-oee-analysis/SKILL.md) — Calculate and diagnose Overall Equipment Effectiveness (OEE) by decomposing into Availability, Performance, and Quality rates.
-- [`mfg-predictive-maintenance`](mfg-predictive-maintenance/SKILL.md) — Design predictive maintenance strategies using sensor data, ML models for remaining useful life (RUL), and the P-F curve framework.
-- [`mfg-production-planning`](mfg-production-planning/SKILL.md) — Design production plans using MPS (Master Production Schedule), MRP (Material Requirements Planning), and capacity planning.
-- [`mfg-supplier-scorecard`](mfg-supplier-scorecard/SKILL.md) — Evaluate and manage suppliers using weighted scorecards across quality, delivery, price, and service dimensions.
-
-</details>
-
-<details>
-<summary><b><code>mkt-</code></b> — Digital marketing (4)</summary>
-
-- [`mkt-ab-testing`](mkt-ab-testing/SKILL.md) — Design and execute marketing A/B tests for landing pages, email campaigns, ad creatives, and pricing with proper test design and result analysis.
-- [`mkt-ad-optimization`](mkt-ad-optimization/SKILL.md) — Optimize digital advertising campaigns across Google Ads, Meta Ads, and LINE LAP including bidding strategies, audience targeting, creative testing, and ROAS optimization.
-- [`mkt-content-calendar`](mkt-content-calendar/SKILL.md) — Build and manage content calendars for multi-platform content marketing including editorial planning, content type allocation, and team workflow.
-- [`mkt-seo-audit`](mkt-seo-audit/SKILL.md) — Conduct technical and on-page SEO audits covering crawlability, site speed, mobile-friendliness, and content optimization.
+- [`meta-decision-analysis`](meta-decision-analysis/SKILL.md) — 用決策矩陣、決策樹、期望值與多準則決策分析（MCDA）做結構化決策分析。
+- [`meta-first-principles`](meta-first-principles/SKILL.md) — 用第一性原理思考，把問題拆到基本真理再從頭推理。
+- [`meta-mental-models`](meta-mental-models/SKILL.md) — 套用跨領域思維模型晶格，提升決策品質。
+- [`meta-scenario-planning`](meta-scenario-planning/SKILL.md) — 用驅動力、不確定軸與 2x2 情境矩陣做情境規劃，準備多種可能未來。
+- [`meta-structured-problem`](meta-structured-problem/SKILL.md) — 用 MECE、議題樹、假設驅動法與金字塔原理做結構化問題解決。
+- [`meta-systems-thinking`](meta-systems-thinking/SKILL.md) — 套用系統思考──因果迴路圖、存量流量模型、系統原型與槓桿點分析──處理具有回饋迴路與時延的組織、經濟或社會問題。
 
 </details>
 
 <details>
-<summary><b><code>soc-</code></b> — Social science (7)</summary>
+<summary><b><code>ops-</code></b>　企業營運（6）</summary>
 
-- [`soc-cialdini`](soc-cialdini/SKILL.md) — Apply Cialdini's six principles of persuasion — Reciprocity, Commitment/Consistency, Social Proof, Liking, Authority, and Scarcity — to analyze or design influence strategies.
-- [`soc-cognitive-bias`](soc-cognitive-bias/SKILL.md) — Identify and analyze cognitive biases including confirmation bias, anchoring, availability heuristic, and sunk cost fallacy in decision-making contexts.
-- [`soc-innovation-diffusion`](soc-innovation-diffusion/SKILL.md) — Apply Rogers' Diffusion of Innovations theory to analyze how new products, ideas, or technologies spread through populations.
-- [`soc-policy-analysis`](soc-policy-analysis/SKILL.md) — Conduct structured policy analysis including problem definition, alternative evaluation, and evidence-based recommendation.
-- [`soc-social-network`](soc-social-network/SKILL.md) — Apply social network analysis concepts including nodes, ties, centrality, structural holes, and strong/weak ties to map and analyze relationship structures.
-- [`soc-stakeholder`](soc-stakeholder/SKILL.md) — Conduct stakeholder analysis using identification, Power-Interest matrix classification, and influence strategy development.
-- [`soc-user-research`](soc-user-research/SKILL.md) — Design and conduct user research using interviews, focus groups, surveys, and field observation.
-
-</details>
-
-<details>
-<summary><b><code>stat-</code></b> — Statistical methodology (4)</summary>
-
-- [`stat-ab-testing`](stat-ab-testing/SKILL.md) — Design and analyze A/B tests with proper statistical methodology including sample size calculation, randomization, frequentist and Bayesian approaches, and sequential testing.
-- [`stat-causal-inference`](stat-causal-inference/SKILL.md) — Apply causal inference methods — counterfactual framework, instrumental variables, propensity score matching, and difference-in-differences — to estimate causal effects from observational data.
-- [`stat-eda`](stat-eda/SKILL.md) — Conduct Exploratory Data Analysis (EDA) using descriptive statistics, visualizations, and data quality checks.
-- [`stat-hypothesis-testing`](stat-hypothesis-testing/SKILL.md) — Conduct statistical hypothesis testing including null/alternative hypothesis formulation, p-values, Type I/II errors, and test statistic selection.
+- [`ops-business-model-canvas`](ops-business-model-canvas/SKILL.md) — 套用商業模式畫布（BMC），用九宮格描繪並評估商業模式。
+- [`ops-contract-review`](ops-contract-review/SKILL.md) — 審閱商業合約，辨識責任條款、IP 歸屬、終止條款與付款條件等風險。
+- [`ops-meeting-minutes`](ops-meeting-minutes/SKILL.md) — 撰寫結構化會議紀錄，含決議、行動項與後續追蹤。
+- [`ops-negotiation`](ops-negotiation/SKILL.md) — 套用原則式談判（BATNA、ZOPA、哈佛談判法）準備並執行談判。
+- [`ops-okr-planning`](ops-okr-planning/SKILL.md) — 設計並導入 OKR（目標與關鍵結果），跨組織層級做目標設定與策略對齊。
+- [`ops-pitch-deck`](ops-pitch-deck/SKILL.md) — 建構並撰寫投資人 pitch deck：問題、解方、市場、商模、進展、團隊與財務。
 
 </details>
 
 <details>
-<summary><b><code>tech-</code></b> — General tech (4)</summary>
+<summary><b><code>law-</code></b>　法律框架（5）</summary>
 
-- [`tech-api-integration`](tech-api-integration/SKILL.md) — Guide REST API integration including HTTP methods, authentication, error handling, and rate limiting.
-- [`tech-data-pipeline`](tech-data-pipeline/SKILL.md) — Design data pipelines covering ETL vs ELT architectures, data source integration, scheduling, quality checks, and warehouse design.
-- [`tech-mcp-server-dev`](tech-mcp-server-dev/SKILL.md) — Build MCP (Model Context Protocol) servers including tool definition, schema design, authentication, error handling, and Claude Code integration.
-- [`tech-prompt-engineering`](tech-prompt-engineering/SKILL.md) — Debug and harden production LLM prompts — handle prompt injection, output format drift, instruction forgetting in long contexts, and cross-model portability issues.
-
-</details>
-
-<details>
-<summary><b><code>ux-</code></b> — Design / UX methodology (4)</summary>
-
-- [`ux-design-thinking`](ux-design-thinking/SKILL.md) — Apply Design Thinking's five stages — Empathize, Define, Ideate, Prototype, Test — to solve user-centered problems.
-- [`ux-heuristic`](ux-heuristic/SKILL.md) — Conduct heuristic evaluation of user interfaces using Nielsen's 10 usability principles.
-- [`ux-jtbd`](ux-jtbd/SKILL.md) — Apply Jobs to Be Done (JTBD) framework to understand customer motivation through functional, emotional, and social jobs.
-- [`ux-lean-startup`](ux-lean-startup/SKILL.md) — Apply Lean Startup methodology — Build-Measure-Learn loop, MVP, validated learning, and pivot decisions.
+- [`law-contract`](law-contract/SKILL.md) — 分析合約基礎：成立要件（要約、承諾、對價）、必要條款與常見風險區。
+- [`law-gdpr-pdpa`](law-gdpr-pdpa/SKILL.md) — 分析 GDPR、台灣個資法（PDPA）及相關法規下的資料隱私合規要求。
+- [`law-ip`](law-ip/SKILL.md) — 分析專利、商標、著作權與營業秘密等智慧財產權。
+- [`law-irac`](law-irac/SKILL.md) — 套用 IRAC（議題、規則、適用、結論）法做結構化法律分析。
+- [`law-labor`](law-labor/SKILL.md) — 分析台灣勞動基準法基礎：工時、加班、休假與終止規則。
 
 </details>
 
 <details>
-<summary><b><code>fin-</code></b> — Finance practical (2)</summary>
+<summary><b><code>pr-</code></b>　公關 / 品牌傳播（5）</summary>
 
-- [`fin-earnings-summary`](fin-earnings-summary/SKILL.md) — Summarize and analyze earnings calls (法說會) including financial highlights, management commentary, guidance, and analyst Q&A key takeaways.
-- [`fin-modeling`](fin-modeling/SKILL.md) — Build three-statement financial models (Income Statement, Balance Sheet, Cash Flow) with revenue forecasting, assumption management, and scenario analysis.
+- [`pr-crisis-communication`](pr-crisis-communication/SKILL.md) — 用 SCCT 理論與危機聲明框架，管理預防、回應、復原三階段的危機溝通。
+- [`pr-crisis-response`](pr-crisis-response/SKILL.md) — 用分類、黃金時間回應、3C 危機聲明範本與聲譽復原規劃管理公關危機。
+- [`pr-media-monitoring`](pr-media-monitoring/SKILL.md) — 建立並執行媒體監測，追蹤新聞、社群與線上頻道的品牌提及、情緒與聲量佔比。
+- [`pr-press-release`](pr-press-release/SKILL.md) — 用倒金字塔結構、標題寫作要訣與媒體發送策略寫出有效新聞稿。
+- [`pr-social-copywriting`](pr-social-copywriting/SKILL.md) — 為 Instagram、Facebook、LinkedIn、X/Twitter 寫平台優化的社群文案，含 hook、CTA 與 hashtag 策略。
 
 </details>
 
 <details>
-<summary><b><code>xborder-</code></b> — Cross-border commerce (2)</summary>
+<summary><b><code>cs-</code></b>　客戶服務（4）</summary>
 
-- [`xborder-logistics`](xborder-logistics/SKILL.md) — Design cross-border logistics strategies including direct mail, overseas warehousing, and bonded warehouse models for international e-commerce.
-- [`xborder-sea-entry`](xborder-sea-entry/SKILL.md) — Plan Southeast Asia market entry including mode selection, regulatory requirements, cultural research, and go-to-market timeline.
+- [`cs-analytics`](cs-analytics/SKILL.md) — 用 CSAT、NPS、CES、首次解決率與客服工單文本探勘衡量並優化客服績效。
+- [`cs-chatbot-design`](cs-chatbot-design/SKILL.md) — 設計對話式 AI 聊天機器人，含意圖辨識、槽位填充、對話流與回應生成。
+- [`cs-notification-strategy`](cs-notification-strategy/SKILL.md) — 設計推播與訊息策略，含通路選擇、時機優化、個人化與疲勞管理。
+- [`cs-sop`](cs-sop/SKILL.md) — 設計客服營運：分層支援（L1/L2/L3）、回應範本、SLA 定義、升級流程與客訴處理。
 
 </details>
 
-## Skill Structure
+<details>
+<summary><b><code>data-</code></b>　資料分析（4）</summary>
 
-Every `SKILL.md` follows a consistent template:
+- [`data-cohort-analysis`](data-cohort-analysis/SKILL.md) — 做世代分析（cohort），追蹤使用者行為隨時間變化、建立留存矩陣並比較世代表現。
+- [`data-dashboard-design`](data-dashboard-design/SKILL.md) — 用合理的 KPI 階層、圖表選型與互動功能設計有效的資料儀表板。
+- [`data-financial-analysis`](data-financial-analysis/SKILL.md) — 解讀三大財報（損益表、資產負債表、現金流量表）以評估營運體質與績效。
+- [`data-sql-optimization`](data-sql-optimization/SKILL.md) — 用 EXPLAIN 分析、索引策略與常見反模式修正來優化 SQL 查詢效能。
+
+</details>
+
+<details>
+<summary><b><code>mfg-</code></b>　製造業（4）</summary>
+
+- [`mfg-oee-analysis`](mfg-oee-analysis/SKILL.md) — 計算並診斷整體設備效率（OEE），拆解為可用率、效能率與品質率。
+- [`mfg-predictive-maintenance`](mfg-predictive-maintenance/SKILL.md) — 用感測器資料、剩餘壽命（RUL）ML 模型與 P-F 曲線框架設計預測性維護策略。
+- [`mfg-production-planning`](mfg-production-planning/SKILL.md) — 用 MPS（主排程）、MRP（物料需求規劃）與產能規劃設計生產計畫。
+- [`mfg-supplier-scorecard`](mfg-supplier-scorecard/SKILL.md) — 用品質、交期、價格與服務四面向的加權計分卡評估與管理供應商。
+
+</details>
+
+<details>
+<summary><b><code>mkt-</code></b>　數位行銷（4）</summary>
+
+- [`mkt-ab-testing`](mkt-ab-testing/SKILL.md) — 為登陸頁、EDM、廣告素材與定價設計並執行行銷 A/B 測試，含正確的測試設計與結果分析。
+- [`mkt-ad-optimization`](mkt-ad-optimization/SKILL.md) — 在 Google Ads、Meta Ads、LINE LAP 上優化數位廣告活動，含出價、受眾、素材測試與 ROAS 優化。
+- [`mkt-content-calendar`](mkt-content-calendar/SKILL.md) — 為多平台內容行銷建立並管理內容月曆，含編輯排程、內容類型分配與團隊流程。
+- [`mkt-seo-audit`](mkt-seo-audit/SKILL.md) — 做技術與頁面 SEO 稽核，涵蓋可爬性、站速、行動友善與內容優化。
+
+</details>
+
+<details>
+<summary><b><code>soc-</code></b>　社會科學（7）</summary>
+
+- [`soc-cialdini`](soc-cialdini/SKILL.md) — 套用 Cialdini 六大說服原則──互惠、承諾／一致、社會證明、喜好、權威、稀缺──分析或設計影響策略。
+- [`soc-cognitive-bias`](soc-cognitive-bias/SKILL.md) — 在決策情境辨識並分析確認偏誤、錨定、可得性捷思與沉沒成本謬誤等認知偏誤。
+- [`soc-innovation-diffusion`](soc-innovation-diffusion/SKILL.md) — 套用 Rogers 創新擴散理論，分析新產品、想法或技術如何在族群中擴散。
+- [`soc-policy-analysis`](soc-policy-analysis/SKILL.md) — 做結構化政策分析，含問題定義、方案評估與證據導向建議。
+- [`soc-social-network`](soc-social-network/SKILL.md) — 套用社會網絡分析概念──節點、連結、中心性、結構洞、強弱連結──描繪並分析關係結構。
+- [`soc-stakeholder`](soc-stakeholder/SKILL.md) — 做利害關係人分析：辨識、Power-Interest 矩陣分類與影響策略發展。
+- [`soc-user-research`](soc-user-research/SKILL.md) — 用訪談、焦點團體、問卷與田野觀察設計並執行使用者研究。
+
+</details>
+
+<details>
+<summary><b><code>stat-</code></b>　統計方法論（4）</summary>
+
+- [`stat-ab-testing`](stat-ab-testing/SKILL.md) — 用樣本數計算、隨機化、頻率派與貝氏方法及序貫檢定，設計並分析嚴謹的 A/B 測試。
+- [`stat-causal-inference`](stat-causal-inference/SKILL.md) — 套用因果推論方法──反事實框架、工具變數、傾向分數匹配與 DID──從觀察資料估算因果效應。
+- [`stat-eda`](stat-eda/SKILL.md) — 用描述統計、視覺化與資料品質檢查做探索性資料分析（EDA）。
+- [`stat-hypothesis-testing`](stat-hypothesis-testing/SKILL.md) — 做統計假設檢定，含虛無／對立假設設定、p 值、型一／型二錯誤與檢定統計量選擇。
+
+</details>
+
+<details>
+<summary><b><code>tech-</code></b>　一般技術（4）</summary>
+
+- [`tech-api-integration`](tech-api-integration/SKILL.md) — 指引 REST API 整合，含 HTTP 方法、認證、錯誤處理與速率限制。
+- [`tech-data-pipeline`](tech-data-pipeline/SKILL.md) — 設計資料管線，含 ETL/ELT 架構、資料源整合、排程、品質檢查與資料倉儲設計。
+- [`tech-mcp-server-dev`](tech-mcp-server-dev/SKILL.md) — 建構 MCP（Model Context Protocol）伺服器，含工具定義、schema 設計、認證、錯誤處理與 Claude Code 整合。
+- [`tech-prompt-engineering`](tech-prompt-engineering/SKILL.md) — 除錯並強化生產級 LLM prompt：處理 prompt injection、輸出格式漂移、長上下文指令遺忘與跨模型可移植性問題。
+
+</details>
+
+<details>
+<summary><b><code>ux-</code></b>　設計 / UX 方法論（4）</summary>
+
+- [`ux-design-thinking`](ux-design-thinking/SKILL.md) — 套用設計思考五階段──同理、定義、發想、原型、測試──解使用者中心問題。
+- [`ux-heuristic`](ux-heuristic/SKILL.md) — 用 Nielsen 十大可用性原則做使用者介面的啟發式評估。
+- [`ux-jtbd`](ux-jtbd/SKILL.md) — 套用待辦工作（JTBD）框架，從功能性、情感性與社會性工作理解顧客動機。
+- [`ux-lean-startup`](ux-lean-startup/SKILL.md) — 套用精實創業方法論：Build-Measure-Learn 循環、MVP、驗證式學習與 pivot 決策。
+
+</details>
+
+<details>
+<summary><b><code>fin-</code></b>　金融實務（2）</summary>
+
+- [`fin-earnings-summary`](fin-earnings-summary/SKILL.md) — 摘要與分析法說會：財務亮點、管理層說明、財測指引與分析師問答重點。
+- [`fin-modeling`](fin-modeling/SKILL.md) — 建構三表財務模型（損益、資產負債、現金流），含營收預測、假設管理與情境分析。
+
+</details>
+
+<details>
+<summary><b><code>xborder-</code></b>　跨境電商（2）</summary>
+
+- [`xborder-logistics`](xborder-logistics/SKILL.md) — 為跨境電商設計物流策略，含直郵、海外倉與保稅倉模式。
+- [`xborder-sea-entry`](xborder-sea-entry/SKILL.md) — 規劃東南亞市場進入：模式選擇、法規要求、文化研究與 GTM 時程。
+
+</details>
+
+## Skill 結構
+
+每份 `SKILL.md` 遵循一致的模板：
 
 ```markdown
 ---
 name: "{category}-{skill-name}"
-description: "[imperative WHAT + WHEN, < 1024 chars, no XML brackets]"
+description: "[祈使句 WHAT + WHEN，< 1024 字元，不可含 XML 角括號]"
 metadata:
   category: "WP-XX Topic Label"
   tags: [...]
 ---
 
-# {Skill Display Name}
+# {Skill 顯示名稱}
 
 ## Overview / Framework
 ## When to Use (and When NOT to Use)
-## Methodology (Phase-Gate or Hub-and-Spoke pattern)
-## IRON LAW: {non-obvious constraint}
+## Methodology（Phase-Gate 或 Hub-and-Spoke 模式）
+## IRON LAW：{非顯而易見的約束}
 ## Output Format
 ## Gotchas
-## Scripts (if applicable)
+## Scripts（若適用）
 ## References
 ```
 
-## Deterministic Scripts
+## 確定性計算腳本
 
-20 skills currently ship Python scripts (pure stdlib, no external dependencies) for calculations that LLMs frequently get wrong:
+目前有 20 個 skills 附帶 Python 腳本（純 stdlib、無外部依賴），處理那些 LLM 常算錯的計算：
 
-- **Finance**: `biz-cac-ltv`, `biz-breakeven`, `biz-dcf`, `biz-dupont`, `biz-financial-ratios`, `biz-unit-economics`, `grad-capm`, `fin-modeling`*
-- **Risk / Stats**: `algo-risk-altman-z`, `algo-risk-var`*, `mkt-ab-testing`, `algo-mfg-cpk`
-- **Supply chain**: `algo-sc-eoq`, `algo-sc-safety-stock`, `algo-sc-newsvendor`
-- **Ranking**: `algo-rank-wilson`, `algo-rank-elo`, `algo-rank-bayesian`
-- **E-commerce**: `ecom-rfm-analysis`, `algo-price-elasticity`
-- **Search**: `algo-seo-tfidf`, `algo-ecom-bm25`
+- **財務**：`biz-cac-ltv`、`biz-breakeven`、`biz-dcf`、`biz-dupont`、`biz-financial-ratios`、`biz-unit-economics`、`grad-capm`、`fin-modeling`
+- **風險 / 統計**：`algo-risk-altman-z`、`algo-risk-var`、`mkt-ab-testing`、`algo-mfg-cpk`
+- **供應鏈**：`algo-sc-eoq`、`algo-sc-safety-stock`、`algo-sc-newsvendor`
+- **排名**：`algo-rank-wilson`、`algo-rank-elo`、`algo-rank-bayesian`
+- **電商**：`ecom-rfm-analysis`、`algo-price-elasticity`
+- **搜尋**：`algo-seo-tfidf`、`algo-ecom-bm25`
 
-Each script supports `--help`, `--input <json>`, and `--verify` (built-in self-test). Scripts emit JSON to stdout for downstream consumption.
+每個腳本都支援 `--help`、`--input <json>`、`--verify`（內建自我測試）。輸出以 JSON 印到 stdout，方便後續串接。
 
 ```bash
-# Example
+# 範例
 python ecom-rfm-analysis/scripts/rfm_score.py --input customers.json
 python biz-cac-ltv/scripts/cac_ltv.py --marketing-cost 100000 --new-customers 500 \
   --arpu 50 --gross-margin 0.70 --monthly-churn 0.05
 ```
 
-## Design Principles
+## 設計原則
 
-1. **Iron Law**: every skill defines one non-obvious constraint that an agent would otherwise violate
-2. **Hub-and-Spoke**: SKILL.md is concise (< 200 lines); heavy content offloaded to `references/`
-3. **Phase-Gate** (algorithms): explicit steps with verification gates between
-4. **Concrete Verification**: examples must be exact and computable, not approximate ranges
-5. **No Over-Teaching**: assume the agent knows fundamentals; focus on what it would get WRONG
+1. **Iron Law**：每個 skill 都定義一條非顯而易見的約束，agent 不提示就會踩雷
+2. **Hub-and-Spoke**：SKILL.md 精簡（< 200 行）；冗長內容外掛到 `references/`
+3. **Phase-Gate**（演算法）：明確步驟、步驟之間設驗證關卡
+4. **具體驗證**：範例必須可精確計算，不接受「大概落在某範圍」
+5. **不過度教學**：假設 agent 已懂基礎，只強調它會**做錯**的地方
 
-See [`CLAUDE.md`](CLAUDE.md) for full design rules and quality standards.
+完整設計規則與品質標準見 [`CLAUDE.md`](CLAUDE.md)。
 
-## Status
+## 狀態
 
-| Phase | Status |
+| 階段 | 狀態 |
 |-------|:-:|
-| Phase 1: Generate 263 skills across 4 sections | ✅ |
-| Phase 1.5: Auto lint (frontmatter, length, IRON LAW) | ✅ 263/263 |
-| Phase 1.7: With/without skill eval (4 samples) | ✅ 4/4 with_skill wins |
-| Phase 2-3: Quality audit (28 sampled) | ✅ 14 PASS / 13 MINOR / 1 MAJOR |
-| Phase 3.5: P0 + P1 remediation | ✅ |
-| Phase 4: Description optimization (phantom trigger) | ✅ |
-| Tier 1 + 2 deterministic scripts (20 total) | ✅ All `--verify` pass |
-| Plugin bundling (Phase 5) | 🟡 In planning ([see `TODO.md`](TODO.md)) |
+| Phase 1：四個 section 共 263 個 skills 生成 | ✅ |
+| Phase 1.5：自動 lint（frontmatter、長度、IRON LAW） | ✅ 263/263 |
+| Phase 1.7：with/without skill 評估（4 份樣本） | ✅ 4/4 with_skill 勝 |
+| Phase 2-3：品質審計（抽樣 28 份） | ✅ 14 PASS / 13 MINOR / 1 MAJOR |
+| Phase 3.5：P0 + P1 修補 | ✅ |
+| Phase 4：description 最佳化（phantom trigger） | ✅ |
+| Tier 1 + 2 確定性腳本（共 20 支） | ✅ 全部 `--verify` 通過 |
+| Plugin 打包（Phase 5） | 🟡 規劃中（[見 `TODO.md`](TODO.md)） |
 
-## Related Repositories
+## 相關 Repo
 
-- [`asgard-ai-platform/skill-template`](https://github.com/asgard-ai-platform/skill-template) — Plugin template for creating new coding agent plugins
-- [`asgard-ai-platform/mcp-*`](https://github.com/orgs/asgard-ai-platform/repositories?q=mcp-) — MCP servers (data ingredients)
-- Plugin bundles (forthcoming) — Curated combinations of skills + MCPs for specific personas
+- [`asgard-ai-platform/skill-template`](https://github.com/asgard-ai-platform/skill-template) — 建立 coding agent plugin 的樣板
+- [`asgard-ai-platform/mcp-*`](https://github.com/orgs/asgard-ai-platform/repositories?q=mcp-) — MCP servers（資料原料）
+- Plugin bundles（即將推出） — 針對特定情境的 skills + MCPs 組合
 
-## License
+## 授權
 
-MIT License. See [LICENSE](LICENSE).
+MIT License。見 [LICENSE](LICENSE)。
