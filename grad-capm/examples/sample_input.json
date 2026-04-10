@@ -1,0 +1,57 @@
+{
+  "_comment": "Tests CAPM expected return and alpha calculation across a diversified set of US equities with varying betas; includes assets above, on, and below the SML to verify alpha sign handling. All rates in decimals.",
+  "risk_free": 0.0425,
+  "market_return": 0.1050,
+  "assets": [
+    {
+      "name": "NVIDIA (NVDA)",
+      "beta": 1.72,
+      "actual_return": 0.2340
+    },
+    {
+      "name": "Apple (AAPL)",
+      "beta": 1.21,
+      "actual_return": 0.1480
+    },
+    {
+      "name": "Microsoft (MSFT)",
+      "beta": 0.98,
+      "actual_return": 0.1190
+    },
+    {
+      "name": "Johnson & Johnson (JNJ)",
+      "beta": 0.54,
+      "actual_return": 0.0720
+    },
+    {
+      "name": "Procter & Gamble (PG)",
+      "beta": 0.41,
+      "actual_return": 0.0580
+    },
+    {
+      "name": "JPMorgan Chase (JPM)",
+      "beta": 1.15,
+      "actual_return": 0.1010
+    },
+    {
+      "name": "Tesla (TSLA)",
+      "beta": 2.05,
+      "actual_return": 0.1850
+    },
+    {
+      "name": "Exxon Mobil (XOM)",
+      "beta": 0.83,
+      "actual_return": 0.1350
+    },
+    {
+      "name": "Berkshire Hathaway B (BRK.B)",
+      "beta": 0.89,
+      "actual_return": 0.1020
+    },
+    {
+      "name": "Amazon (AMZN)",
+      "beta": 1.38,
+      "actual_return": 0.1260
+    }
+  ]
+}
