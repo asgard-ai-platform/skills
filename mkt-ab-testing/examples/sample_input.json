@@ -1,0 +1,18 @@
+{
+  "_comment": "Landing page CTA A/B test: 'Sign Up' vs 'Start Free Trial'. Tests analyze mode with a statistically significant result and sample-size planning for the next test.",
+  "mode": "analyze",
+  "test_name": "Homepage CTA — Sign Up vs Start Free Trial",
+  "control": {
+    "label": "Sign Up",
+    "visitors": 4821,
+    "conversions": 193
+  },
+  "variant": {
+    "label": "Start Free Trial",
+    "visitors": 4876,
+    "conversions": 261
+  },
+  "alpha": 0.05,
+  "power": 0.80,
+  "hypothesis": "Changing the CTA from 'Sign Up' to 'Start Free Trial' will increase signup conversion rate by 30% because it communicates lower commitment and immediate value."
+}
