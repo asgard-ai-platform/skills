@@ -1,0 +1,7 @@
+{
+  "_comment": "台灣手工皂品牌電商通路損益平衡分析：固定成本含倉租與人事，變動成本含原料與包材，測試基本 BEP 計算與安全邊際",
+  "selling_price": 380,
+  "variable_cost_per_unit": 95,
+  "fixed_costs": 285000,
+  "actual_sales_units": 1200
+}

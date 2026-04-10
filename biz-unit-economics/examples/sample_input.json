@@ -1,0 +1,19 @@
+{
+  "_comment": "Taiwan B2B SaaS (HR tech, ~80 enterprise customers). Tests NRR > 100%, healthy LTV:CAC, sub-12-month payback, positive magic number, and burn multiple approaching 1x.",
+  "starting_mrr": 1800000,
+  "new_mrr": 210000,
+  "expansion_mrr": 135000,
+  "contraction_mrr": 32000,
+  "churned_mrr": 67000,
+  "starting_customers": 78,
+  "new_customers": 9,
+  "churned_customers": 3,
+  "arpu_monthly": 23000,
+  "gross_margin_pct": 0.74,
+  "monthly_churn_rate": 0.018,
+  "acquisition_spend": 630000,
+  "prior_period_acquisition_spend": 580000,
+  "prior_period_new_arr": 1920000,
+  "net_burn_monthly": 1250000,
+  "currency": "TWD"
+}

@@ -1,0 +1,17 @@
+{
+  "_comment": "台灣 SaaS 公司 DCF 估值範例：ARR NT$500M、25%→15% 成長曲線，測試 5 年 FCF 折現 + Gordon Growth 終值計算，含淨負債與每股估值輸出",
+  "company": "TaiwanCloud Inc.",
+  "currency": "NTD",
+  "projection_years": 5,
+  "fcf_projections": [
+    { "year": 1, "fcf": 62000000 },
+    { "year": 2, "fcf": 84000000 },
+    { "year": 3, "fcf": 109000000 },
+    { "year": 4, "fcf": 136000000 },
+    { "year": 5, "fcf": 161000000 }
+  ],
+  "wacc": 0.105,
+  "terminal_growth_rate": 0.025,
+  "net_debt": 120000000,
+  "shares_outstanding": 50000000
+}

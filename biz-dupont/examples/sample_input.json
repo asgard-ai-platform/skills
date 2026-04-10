@@ -1,0 +1,73 @@
+{
+  "_comment": "Peer comparison + 3-year trend: two Taiwanese food conglomerates (margin-driven vs. turnover-driven). Exercises 3-factor decomposition, leverage flag, and period-over-period trend analysis. EBT/EBIT included to enable optional 5-factor extension.",
+  "companies": [
+    {
+      "name": "統一企業 (Uni-President)",
+      "ticker": "1216.TW",
+      "currency": "NTD_millions",
+      "periods": [
+        {
+          "year": 2021,
+          "revenue": 58420,
+          "net_income": 4673,
+          "ebt": 5380,
+          "ebit": 6120,
+          "total_assets": 76850,
+          "shareholders_equity": 34210
+        },
+        {
+          "year": 2022,
+          "revenue": 62180,
+          "net_income": 4915,
+          "ebt": 5710,
+          "ebit": 6480,
+          "total_assets": 80340,
+          "shareholders_equity": 35880
+        },
+        {
+          "year": 2023,
+          "revenue": 65430,
+          "net_income": 5284,
+          "ebt": 6050,
+          "ebit": 6890,
+          "total_assets": 83760,
+          "shareholders_equity": 37420
+        }
+      ]
+    },
+    {
+      "name": "大潤發流通事業 (RT-Mart Taiwan)",
+      "ticker": "private",
+      "currency": "NTD_millions",
+      "periods": [
+        {
+          "year": 2021,
+          "revenue": 42600,
+          "net_income": 638,
+          "ebt": 820,
+          "ebit": 1050,
+          "total_assets": 18340,
+          "shareholders_equity": 8920
+        },
+        {
+          "year": 2022,
+          "revenue": 44100,
+          "net_income": 618,
+          "ebt": 790,
+          "ebit": 1010,
+          "total_assets": 19120,
+          "shareholders_equity": 8740
+        },
+        {
+          "year": 2023,
+          "revenue": 45800,
+          "net_income": 687,
+          "ebt": 865,
+          "ebit": 1095,
+          "total_assets": 19880,
+          "shareholders_equity": 9150
+        }
+      ]
+    }
+  ]
+}

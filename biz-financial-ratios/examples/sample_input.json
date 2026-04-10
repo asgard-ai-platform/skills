@@ -1,0 +1,35 @@
+{
+  "_comment": "AsiaTech Electronics Corp (fictional Taiwanese ODM) FY2025 — exercises all five ratio categories: profitability shows below-peer margins, liquidity is adequate, leverage is rising (D/E 1.4x), efficiency reveals slow inventory vs industry 6x, valuation at modest P/E 23x. Designed to trigger 'potential working capital crisis' pattern from SKILL.md example.",
+
+  "company": "AsiaTech Electronics Corp",
+  "fiscal_year": 2025,
+  "currency": "TWD",
+  "unit": "millions",
+  "industry": "Electronics Manufacturing (ODM)",
+
+  "revenue": 85200,
+  "cogs": 69864,
+  "ebit": 7668,
+  "interest_expense": 580,
+  "net_income": 5950,
+  "depreciation_amortization": 2400,
+
+  "total_assets": 72400,
+  "current_assets": 38600,
+  "cash": 8900,
+  "inventory": 12300,
+  "accounts_receivable": 14800,
+  "current_liabilities": 21500,
+  "accounts_payable": 8617,
+  "total_liabilities": 43400,
+  "equity": 29000,
+
+  "avg_inventory": 13050,
+  "avg_receivables": 14200,
+  "avg_accounts_payable": 8400,
+
+  "shares_outstanding": 2000,
+  "stock_price": 68.5,
+  "dividend_per_share": 1.8,
+  "enterprise_value": 143100
+}
