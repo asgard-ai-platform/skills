@@ -3,7 +3,7 @@
 **Date**: 2026-04-19
 **Branch**: `feat/tw-ecommerce-domain`
 **Source**: `~/Downloads/tw-ecommerce-skills-proposal.md` (v0.1)
-**Scope**: D2 — Phase 0 infra + 3 MCP-backed reference skills + ~17 skeleton skills
+**Scope**: D2 — Phase 0 infra + 3 MCP-backed reference skills + 26 skeleton skills
 
 ---
 
@@ -12,11 +12,11 @@
 1. Introduce a coherent **Taiwan e-commerce** skill domain into `asgard-ai-platform/skills` without breaking the existing flat repo architecture.
 2. Reuse existing `tw-*` / `ecom-*` skills that already cover the landscape layer; only add depth where missing.
 3. Ship 3 merge-ready reference skills grounded in MCP-backed official docs, so remaining skeletons have a concrete template to copy.
-4. Ship 30-skill **directory footprint** (structure visible) so future contributors see the domain shape.
+4. Ship 29-skill **directory footprint** (structure visible) so future contributors see the domain shape.
 
 ## 2. Non-goals
 
-- Not implementing all 30 skills' body content in this branch. Only 3 are content-complete; the rest are frontmatter + skeleton.
+- Not implementing all 29 skills' body content in this branch. Only 3 are content-complete; the rest are frontmatter + skeleton.
 - Not creating any new MCP or `bundles/` manifest.
 - Not touching existing `tw-*` or `ecom-*` skills' content. Cross-linking only.
 - Not introducing nested skill directories (`ecommerce-tw/payment/tw-payment-tappay/` from proposal §2.1 is rejected — violates `CLAUDE.md` flat convention).
@@ -32,7 +32,7 @@ skills/
 ├── tw-ecom-shopline-integration/      ← new, flat
 ├── tw-ecom-payment-newebpay/          ← new, flat
 ├── tw-ecom-invoice-ezpay/             ← new, flat
-├── tw-ecom-...                         ← ~17 skeletons, flat
+├── tw-ecom-...                         ← 26 skeletons, flat
 ├── tw-payment-integration/             ← existing, untouched
 ├── tw-einvoice-guide/                  ← existing, untouched
 ├── ecom-rfm-analysis/                  ← existing, untouched
@@ -66,7 +66,7 @@ Proposal §2.1 planned ~30 skills; ~10 are already covered:
 | Analytics: general | `ecom-analytics`, `ecom-rfm-analysis` | **Do not add**; domain doc points here |
 | Compliance: general | `tw-startup-legal`, `tw-fintech-compliance`, `tw-tax-basics` | Partial coverage; domain doc cross-links |
 
-Net new skills to create in this branch: **~20** (3 complete + ~17 skeleton).
+Net new skills to create in this branch: **29** (3 complete + 26 skeleton).
 
 ## 5. Reference skills (3 complete, merge-ready)
 
@@ -100,7 +100,7 @@ All three are MCP-backed, so content derives from official tool schemas + vendor
 - DO: state known facts only, mark `last verified` date
 - DON'T: fabricate fee rates, dispute-handling procedures, settlement timing without vendor doc citation — mark as `TODO: verify with <source>` instead
 
-## 6. Skeleton skills (~17, scaffold only)
+## 6. Skeleton skills (26, scaffold only)
 
 ### 6.1 Skeleton contents
 
@@ -117,10 +117,14 @@ Each skeleton directory contains:
 
 ### 6.2 Skeleton list (grouped by layer)
 
-**Platform** (3):
+**Platform** (5):
+- `tw-ecom-platform-selection` — DTC vs marketplace vs hybrid decision
 - `tw-ecom-91app-integration`
 - `tw-ecom-shopify-tw-integration`
-- `tw-ecom-cyberbiz-integration`
+- `tw-ecom-shopee-operations`
+- `tw-ecom-momo-operations`
+
+*Note:* `cyberbiz-integration` intentionally NOT added — `mcp-cyberbiz` is an empty repo (per `TODO.md`), no grounding content available yet.
 
 **Payment** (4):
 - `tw-ecom-payment-tappay`
@@ -139,14 +143,31 @@ Each skeleton directory contains:
 - `tw-ecom-invoice-carrier`
 - `tw-ecom-invoice-void`
 
-**Compliance** (2):
+**Compliance** (4):
 - `tw-ecom-compliance-consumer`
 - `tw-ecom-compliance-product`
+- `tw-ecom-compliance-pdpa` — e-commerce specific member consent / cookie / order data
+- `tw-ecom-compliance-cross-border` — TW cross-border tariff / VAT
 
-**Operations** (1 — everything else covered by existing `ecom-*`):
-- `tw-ecom-operations-promotion` (台灣檔期 — 雙11、618、週年慶)
+**Operations** (4):
+- `tw-ecom-operations-promotion` — 雙11、618、週年慶
+- `tw-ecom-operations-pricing` — 含稅價、議價文化、檔期壓價策略
+- `tw-ecom-operations-crm-line-oa` — LINE OA (dominant TW channel)
+- `tw-ecom-operations-customer-service` — PTT/Dcard reputation + 消保鑑賞期話術
 
-*Total: 17 skeleton + 3 complete = 20 new skill directories.*
+**Analytics** (2):
+- `tw-ecom-analytics-ga4` — TW e-commerce GA4 event conventions
+- `tw-ecom-analytics-benchmarks` — TW market CVR / ROAS / LTV reference ranges
+
+*Total: 26 skeleton + 3 complete = 29 new skill directories.*
+
+### 6.3 Deliberately excluded skills
+
+| Skill | Why excluded |
+|---|---|
+| `tw-ecom-advertising` | Ad optimization is mostly cross-geo methodology; existing `mkt-ad-optimization` + `algo-ad-*` cover it. Adding a TW variant risks `CLAUDE.md` anti-pattern #4 (Missing Gotchas — generic content). |
+| `tw-ecom-reporting` | Daily/weekly/monthly reporting is a generic methodology with no TW specificity. |
+| `tw-ecom-cyberbiz-integration` | `mcp-cyberbiz` is empty per `TODO.md`; no docs to ground against. Add later when MCP has content. |
 
 ## 7. Phase 0 infrastructure
 
@@ -162,7 +183,7 @@ This branch also ships:
    - Quality bar (the 8 anti-patterns from `CLAUDE.md`)
    - Domain cohesion rule: new skill in an existing domain → update `docs/domains/*.md` index
 3. Update `README.md` (and `README.en.md`) to reference the new `docs/domains/` convention.
-4. Entry in `TODO.md` — carve out the ~17 skeleton skills as tracked follow-up work.
+4. Entry in `TODO.md` — carve out the 26 skeleton skills as tracked follow-up work.
 
 **Explicitly NOT in Phase 0**:
 - No lint script (proposal §4.1 item 5). Defer until we have 2+ domain doc patterns to lint against. Avoid premature tooling.
@@ -179,7 +200,7 @@ Per `CLAUDE.md`:
 - Description field < 1024 chars, no XML angle brackets
 
 **Verification before PR**:
-- All 20 new SKILL.md files parse as valid YAML frontmatter
+- All 29 new SKILL.md files parse as valid YAML frontmatter
 - Manually check 3 complete skills against `CLAUDE.md` §Quality Audit Anti-Patterns
 - `docs/domains/tw-ecommerce.md` cross-links all skills (new + existing) that belong to the domain
 
@@ -199,12 +220,14 @@ Per `CLAUDE.md`:
 
 ## 10. Follow-up branches (roadmap)
 
-- `feat/tw-ecom-payment-deep-skills` — fill in `tw-ecom-payment-tappay`, `-ecpay`, `-jkopay`, `-dispute`
-- `feat/tw-ecom-logistics-skills` — fill in logistics layer (all 4)
-- `feat/tw-ecom-compliance-skills` — fill in compliance layer + cross-link to existing `tw-startup-legal`
-- `feat/tw-ecom-invoice-deep-skills` — fill in `tw-ecom-invoice-universalec`, `-carrier`, `-void`
-- `feat/tw-ecom-operations-promotion` — Taiwan promo calendar (雙11, 618, 年中慶, etc.)
-- Each follow-up branch handles 1-4 skills; quarterly re-verification run as separate branch.
+- `feat/tw-ecom-platform-skills` — fill in 5 platform skeletons (platform-selection, 91app, shopify-tw, shopee, momo)
+- `feat/tw-ecom-payment-deep-skills` — fill in 4 payment skeletons (tappay, ecpay, jkopay, dispute)
+- `feat/tw-ecom-logistics-skills` — fill in 4 logistics skeletons
+- `feat/tw-ecom-invoice-deep-skills` — fill in 3 invoice skeletons (universalec, carrier, void)
+- `feat/tw-ecom-compliance-skills` — fill in 4 compliance skeletons + cross-link to existing `tw-startup-legal`
+- `feat/tw-ecom-operations-skills` — fill in 4 operations skeletons (promotion, pricing, crm-line-oa, customer-service)
+- `feat/tw-ecom-analytics-skills` — fill in 2 analytics skeletons (ga4, benchmarks)
+- Each follow-up branch handles 2-5 skills. Quarterly re-verification runs as its own branch.
 
 ## 11. Next step
 
