@@ -37,7 +37,7 @@ NewebPay (藍新金流) is one of the three dominant TW payment gateways (with E
 
 NDNF and NDNP are **separate merchant accounts** with separate `MerchantID` + `HashKey` + `HashIV` triples. Configuring one does not enable the other.
 
-**Signature model.** Every request body is AES-256-CBC-encrypted with the merchant's `HashKey` (32 chars) and `HashIV` (16 chars) into a `TradeInfo` blob, and a SHA-256 `TradeSha` is computed over `HashKey=…&{TradeInfo}&HashIV=…` (the literal format, not a generic param sort — see Gotchas). Version is `2.0`. 3DS 2.0 liability shift is handled by NewebPay's hosted MPG page; merchants never see card PAN.
+**Signature model.** Every request body is AES-256-CBC-encrypted with the merchant's `HashKey` (32 chars) and `HashIV` (16 chars) into a `TradeInfo` blob, and a SHA-256 `TradeSha` is computed over `HashKey=…&{TradeInfo}&HashIV=…` and the result uppercased (the literal format, not a generic param sort — see Gotchas). Version is `2.0`. 3DS 2.0 liability shift is handled by NewebPay's hosted MPG page; merchants never see card PAN.
 
 **Trust boundary.** `create_mpg_payment` / `create_period_payment` return encrypted form data for a **browser-side POST** to `https://ccore.newebpay.com/MPG/mpg_gateway` (or `core.newebpay.com` in prod). The merchant backend never sees card PAN. Payment result is delivered via two channels: **NotifyURL** (server-to-server webhook) and **ReturnURL** (browser redirect). These can arrive out of order.
 
@@ -98,7 +98,7 @@ Three flows. For each, the exact `mcp-newebpay` tool is named. See `references/i
 
 ## Gotchas
 
-- **TradeSha is NOT a generic alphabetical-sort HMAC.** It is `SHA256("HashKey={key}&{TradeInfo blob}&HashIV={iv}")` — `HashKey` first, `HashIV` last, the literal encrypted `TradeInfo` sandwiched between. Developers who treat it as "sort params alphabetically and HMAC them" build something that validates against nothing. `mcp-newebpay` handles this for you; if you hand-roll a verifier for NotifyURL, copy the exact format.
+- **TradeSha is NOT a generic alphabetical-sort HMAC.** It is `SHA256("HashKey={key}&{TradeInfo blob}&HashIV={iv}").upper()` — `HashKey` first, `HashIV` last, the literal encrypted `TradeInfo` sandwiched between, and the result in uppercase hex. Developers who treat it as "sort params alphabetically and HMAC them" build something that validates against nothing. `mcp-newebpay` handles this for you; if you hand-roll a verifier for NotifyURL, copy the exact format.
 - **NotifyURL can arrive before, after, or simultaneously with ReturnURL.** Never close an order on ReturnURL alone — the browser can be closed, the redirect can fail, or NotifyURL can beat the redirect to your server. Treat ReturnURL as "show the customer a thank-you page"; treat NotifyURL as "the money moved". If your order state machine depends on ordering, you will ship double-fulfillment or ghost-open-orders.
 - **NDNF and NDNP use different MerchantID / HashKey / HashIV.** Cross-contaminating them produces a signature-valid-but-wrong-merchant request that NewebPay rejects with a generic error. `mcp-newebpay` uses separate env groups (`NEWEBPAY_NDNF_*` vs `NEWEBPAY_NDNP_*`) specifically to prevent this; do not unify them in wrapper code.
 - **HashIV must be exactly 16 bytes; HashKey must be exactly 32 bytes.** Merchants migrating from the older MPG1 protocol often re-use MPG1 keys of the wrong length — AES-256-CBC then pads/truncates silently and every request fails decryption on NewebPay's side with an opaque "參數錯誤" (parameter error). If all requests are failing, check the lengths before anything else.
@@ -132,7 +132,7 @@ When completing a NewebPay task, produce this structure:
 | … | … | … | … |
 
 ## Callback Handling
-- NotifyURL verification: TradeSha recomputed with HashKey={…}&TradeInfo&HashIV={…}: Y/N
+- NotifyURL verification: TradeSha recomputed with HashKey={…}&{TradeInfo}&HashIV={…} uppercased: Y/N
 - ReturnURL treated as UI-only (no state mutation): Y/N
 - query_trade fallback on missed NotifyURL: Y/N
 - Idempotency key: MerchantOrderNo

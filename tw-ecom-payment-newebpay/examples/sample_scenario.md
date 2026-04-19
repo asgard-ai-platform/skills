@@ -71,8 +71,8 @@ issue_invoice(
   carrier_type  = member.carrier_type,       # 手機條碼 / 會員載具 / 捐贈碼 / null
   carrier_id    = member.carrier_id,
   items         = [{name: "Content Site Annual Membership (month N)", qty: 1, unit_price: 149}],
-  amount        = 149,
-  tax           = 7,                          # 5% tax on taxable portion per TW 統一發票 rules
+  amount        = 149,                        # assumed tax-inclusive (5%); confirm amount/tax semantics with tw-ecom-invoice-ezpay
+  tax           = 7,                           # 149 − (149 / 1.05) ≈ 7.10, rounded per ezPay convention
 )
 ```
 
@@ -115,7 +115,9 @@ See `tw-ecom-payment-dispute` skill for the evidence-package playbook. The decis
 
 ### Step 7 — Month 12 final cycle + mandate completion
 
-At month 12, NewebPay charges and fires the final NotifyURL. Because `PeriodTimes=12` was set at creation, the mandate auto-terminates after the 12th successful charge. `query_trade` on the mandate (via the portal or NDNP query endpoint — `mcp-newebpay` does not expose an NDNP-specific query as of v0.x; use `query_trade` against per-cycle `OrderNo`) will show the completed state.
+At month 12, NewebPay charges and fires the final NotifyURL. Because `PeriodTimes=12` was set at creation, the mandate auto-terminates after the 12th successful charge. `query_trade` on the mandate (via the portal or NDNP query endpoint) will show the completed state.
+
+> TODO: verify whether `query_trade` accepts NDNP per-cycle `OrderNo` or if NDNP reconciliation requires merchant portal export.
 
 If the member wants renewal, repeat Step 1 with a fresh `MerOrderNo`.
 
