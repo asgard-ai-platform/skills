@@ -4,6 +4,35 @@ Tracking deferred items by priority. Updated 2026-04-07 after the rename + repo 
 
 ---
 
+## 🟡 Medium Priority — tw-ecommerce Skeleton Backlog
+
+Added 2026-04-19 on branch `feat/tw-ecommerce-domain`. 26 skeletons with frontmatter + "when to use" only — bodies pending.
+
+**Design spec:** `docs/superpowers/specs/2026-04-19-tw-ecommerce-domain-design.md`
+**Domain map:** `docs/domains/tw-ecommerce.md`
+
+Each follow-up branch fills in one layer:
+
+| Branch | Skills to fill |
+|---|---|
+| `feat/tw-ecom-platform-skills` | `tw-ecom-platform-selection`, `tw-ecom-91app-integration`, `tw-ecom-shopify-tw-integration`, `tw-ecom-shopee-operations`, `tw-ecom-momo-operations` |
+| `feat/tw-ecom-payment-deep-skills` | `tw-ecom-payment-tappay`, `tw-ecom-payment-ecpay`, `tw-ecom-payment-jkopay`, `tw-ecom-payment-dispute` |
+| `feat/tw-ecom-logistics-skills` | `tw-ecom-logistics-cvs`, `tw-ecom-logistics-home`, `tw-ecom-logistics-cold-chain`, `tw-ecom-logistics-cross-border` |
+| `feat/tw-ecom-invoice-deep-skills` | `tw-ecom-invoice-universalec`, `tw-ecom-invoice-carrier`, `tw-ecom-invoice-void` |
+| `feat/tw-ecom-compliance-skills` | `tw-ecom-compliance-consumer`, `tw-ecom-compliance-product`, `tw-ecom-compliance-pdpa`, `tw-ecom-compliance-cross-border` |
+| `feat/tw-ecom-operations-skills` | `tw-ecom-operations-promotion`, `tw-ecom-operations-pricing`, `tw-ecom-operations-crm-line-oa`, `tw-ecom-operations-customer-service` |
+| `feat/tw-ecom-analytics-skills` | `tw-ecom-analytics-ga4`, `tw-ecom-analytics-benchmarks` |
+
+**Content-source discipline** (per design spec §5.2):
+- Platform / payment / invoice skeletons should wait for official docs + MCP snapshots before writing; avoid fabricating fee rates.
+- Compliance skeletons must cite the law article (e.g., `消保法 §19`) + date.
+- Analytics benchmarks must cite industry source + year.
+- Mark unsourced numbers as `TODO: verify with <source>` — don't ship.
+
+**Deliberately excluded from the roadmap:** `tw-ecom-advertising`, `tw-ecom-reporting`, `tw-ecom-cyberbiz-integration` (see design spec §6.3).
+
+---
+
 ## 🟡 Medium Priority — Skill Quality Improvements
 
 ### 1. QA Phase 2-3 P2/P3 Remediation
