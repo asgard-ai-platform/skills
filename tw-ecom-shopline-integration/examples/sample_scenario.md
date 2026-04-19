@@ -58,7 +58,7 @@ Extract and persist:
 - `order.customer.*` — buyer identity (needed for invoice carrier lookup)
 - `order.invoice.*` — if the merchant collected 統編 or 手機條碼 at checkout, it is on the order payload
 
-`TODO: verify with mcp-shopline tool schema — exact field path for invoice carrier on the order object (`invoice.carrier_id` vs `invoice.carrier_code`).`
+> TODO: verify with mcp-shopline tool schema — exact field path for invoice carrier on the order object (`invoice.carrier_id` vs `invoice.carrier_code`).
 
 ### Step 3 — Hand off to internal ERP
 
@@ -98,7 +98,7 @@ If the merchant wants the Shopline order to reflect the invoice number, call an 
 
 ### Step 6 — Daily reconciliation
 
-Once per day (run after the Shopline day-close cutoff — `TODO: verify the merchant's day-close hour in Shopline admin`):
+Once per day (run after the Shopline day-close cutoff — TODO: verify the merchant's day-close hour in Shopline admin):
 
 ```
 get_sales_summary(
@@ -130,7 +130,7 @@ list_return_orders(start_date = ..., end_date = ...)
 → trigger ezPay allowance:  issue_allowance(original_invoice = ..., amount = ...)
 ```
 
-`TODO: verify with mcp-shopline — whether return_order has a back-reference to the original order_id or whether it must be joined via customer + line-item match.`
+> TODO: verify with mcp-shopline — whether return_order has a back-reference to the original order_id or whether it must be joined via customer + line-item match.
 
 ---
 

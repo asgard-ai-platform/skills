@@ -60,7 +60,9 @@ What is the user asking for?
 ├─ Promotion / coupon / flash sale?
 │    ├─ Read  → list_promotions · get_promotion_detail ·
 │    │          list_flash_price_campaigns · list_affiliate_campaigns
-│    └─ Write → promotion write tools (12) — create/update/delete
+│    └─ Write → promotion write tools (12) — split into three sub-families:
+│              flat promo · flash price · gift/add-on. See
+│              references/tool-catalog.md for exact tool per family.
 │
 ├─ Modify an order (status, tag, fulfill, cancel)?
 │    → Order write tools (8) — require write scope
@@ -111,7 +113,7 @@ Common multi-tool flows. For each, use the tool names below; see `examples/sampl
 
 - **Order status split by channel — `confirmed` vs `completed`.** Online orders use `confirmed`; POS uses `completed`. The tools include both by default, but if you pass a custom `status` filter and forget one, you silently lose half the data. Always verify with `get_channel_comparison` that online and POS counts look plausible.
 - **Pagination caps.** `per_page` maxes at 50, and search returns are capped at 10,000 results total. For large windows, split the date range (Shopline Open API uses `fetch_all_pages_by_date_segments` internally, but your own multi-step flows need the same discipline). A 30-day top-seller query on a high-volume merchant will hit the cap.
-- **Async write propagation — read-after-write can be stale.** After calling a `[WRITE]` tool (e.g., `update_order_status`, `adjust_store_credit`), an immediate read may still return the pre-write state. Do not gate downstream logic on a read-after-write within the same sync step. Build a reconciliation loop, or pass the write response's own `updated_at` forward. `TODO: verify exact propagation window with Shopline Open API support or mcp-shopline maintainers.`
+- **Async write propagation — read-after-write can be stale.** After calling a `[WRITE]` tool (e.g., `update_order_status`, `adjust_store_credit`), an immediate read may still return the pre-write state. Do not gate downstream logic on a read-after-write within the same sync step. Build a reconciliation loop, or pass the write response's own `updated_at` forward. (TODO: verify exact propagation window with Shopline Open API support or mcp-shopline maintainers.)
 - **No webhook support yet (as of 2026-04).** `mcp-shopline` roadmap lists webhooks as pending. Until then, all event detection is polling. Budget API calls accordingly and pick a poll cadence (5-15 min for orders, hourly for inventory) that respects the 0.2s inter-page delay the tools enforce.
 - **Channels endpoint often 403/422; fall back to order payload.** `list_channels` / `get_channel_detail` require a separate permission that most tokens don't carry. The same information (store name, channel type) is available via `order.channel.created_by_channel_name` on any order detail — use that as the authoritative source when channel tools fail.
 - **Write tools need explicit scope AND `SHOPLINE_TEST_WRITES=1` in tests.** Tokens default to read-only scope; production write failures usually mean the scope wasn't granted, not that the tool is broken. Start debugging with `get_token_info` to confirm scope before assuming a bug. In test harnesses, writes are gated behind the env var — unset it in CI unless you have a dedicated test store.
