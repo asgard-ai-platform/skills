@@ -515,6 +515,16 @@ python biz-cac-ltv/scripts/cac_ltv.py --marketing-cost 100000 --new-customers 50
 - [`asgard-ai-platform/mcp-*`](https://github.com/orgs/asgard-ai-platform/repositories?q=mcp-) — MCP servers（資料原料）
 - Plugin bundles（即將推出） — 針對特定情境的 skills + MCPs 組合
 
+## Domain 導航
+
+特定領域的 skill 組織索引放在 [`docs/domains/`](docs/domains/)：
+
+- [`tw-ecommerce.md`](docs/domains/tw-ecommerce.md) — 台灣電商（平台、金流、物流、發票、法遵、營運、分析）
+
+## 貢獻指南
+
+請見 [`CONTRIBUTING.md`](CONTRIBUTING.md)。提交新 skill 前務必先讀 [`CLAUDE.md`](CLAUDE.md) 了解目錄與品質標準。
+
 ## 授權
 
 MIT License。見 [LICENSE](LICENSE)。
