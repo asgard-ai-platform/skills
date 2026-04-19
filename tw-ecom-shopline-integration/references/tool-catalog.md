@@ -142,7 +142,7 @@ Write:
 
 ---
 
-## Store Settings — 12 R + 3 W (delivery/merchant) + 2 W (media/metafield)
+## Store Settings — 13 R + 3 W (delivery/merchant) + 2 W (media/metafield)
 
 Read:
 
