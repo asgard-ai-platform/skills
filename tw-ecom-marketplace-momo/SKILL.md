@@ -1,12 +1,12 @@
 ---
-name: "tw-ecom-momo-operations"
+name: "tw-ecom-marketplace-momo"
 description: "Operate on momo購物網 — listing approval workflow, price-matching rules, momo's next-day delivery SLA, campaign participation, and fast-fashion SKU rotation. Use when setting up or running momo operations, negotiating MOQ / margin with 採購, or participating in momo campaigns. Do NOT use for Shopee (different platform, different rules) or DTC. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: []
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-shopee-operations", "tw-ecom-operations-promotion"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-marketplace-shopee", "tw-ecom-operations-promotion"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "momo", "marketplace"]
@@ -26,7 +26,7 @@ metadata:
 
 ## Do NOT use when
 
-- Shopee operations → `tw-ecom-shopee-operations`
+- Shopee operations → `tw-ecom-marketplace-shopee`
 - DTC platform work → platform-specific skills
 
 ## Core concepts
@@ -55,7 +55,7 @@ TODO.
 
 ## Related
 
-- `tw-ecom-platform-selection`
-- `tw-ecom-shopee-operations`
+- `tw-ecom-channel-strategy`
+- `tw-ecom-marketplace-shopee`
 
 _Last verified: 2026-04_

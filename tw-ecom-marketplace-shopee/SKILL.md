@@ -1,12 +1,12 @@
 ---
-name: "tw-ecom-shopee-operations"
+name: "tw-ecom-marketplace-shopee"
 description: "Operate a Shopee Taiwan store — listings, promotions, flash sales, SIP (Shopee Supported Program) cross-border, ads (蝦皮廣告), and reputation/review management. Use when setting up or running Shopee TW operations, participating in platform campaigns (雙11, 618), or managing seller-center workflows. Do NOT use for Shopee API integration specifics (no official Asgard MCP yet) or DTC platforms. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: []
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-momo-operations", "tw-ecom-operations-promotion"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-marketplace-momo", "tw-ecom-operations-promotion"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "shopee", "marketplace"]
@@ -55,8 +55,8 @@ TODO.
 
 ## Related
 
-- `tw-ecom-platform-selection`
-- `tw-ecom-momo-operations`
+- `tw-ecom-channel-strategy`
+- `tw-ecom-marketplace-momo`
 - `tw-ecom-operations-promotion`
 
 _Last verified: 2026-04_

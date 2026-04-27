@@ -1,12 +1,12 @@
 ---
-name: "tw-ecom-shopline-integration"
+name: "tw-ecom-dtc-shopline"
 description: "Integrate and operate Shopline in Taiwan e-commerce context via mcp-shopline. Use when the user needs to sync orders, manage products, run promotions, or reconcile inventory on Shopline stores; when comparing Shopline vs 91APP/Shopify for Taiwan DTC; or when debugging async write propagation. Do NOT use for API schema lookup (go to mcp-shopline docs) or non-Taiwan Shopline deployments."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: ["mcp-shopline"]
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-invoice-ezpay", "tw-ecom-payment-newebpay", "ecom-rfm-analysis", "ecom-promo-roi", "ecom-inventory-health"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-invoice-ezpay", "tw-ecom-payment-newebpay", "ecom-rfm-analysis", "ecom-promo-roi", "ecom-inventory-health"]
   last_verified: "2026-04"
   tags: ["taiwan", "e-commerce", "shopline", "platform", "integration"]
 ---
@@ -24,7 +24,7 @@ metadata:
 ## Do NOT use when
 
 - You need the exact API schema for one endpoint — read the tool description or Shopline Open API docs directly
-- The merchant is on Shopify, 91APP, Cyberbiz, or a non-Shopline platform — use `tw-ecom-platform-selection` first
+- The merchant is on Shopify, 91APP, Cyberbiz, or a non-Shopline platform — use `tw-ecom-channel-strategy` first
 - The Shopline store is non-Taiwan (HK/SG/MY) — currency, invoice, and logistics assumptions in this skill are TWD + Taiwan-specific
 
 ## Core concepts
@@ -158,7 +158,7 @@ When completing a Shopline task, produce this structure:
 ## Related
 
 - **MCPs**: `mcp-shopline`
-- **Skills**: `tw-ecom-platform-selection` (Shopline vs 91APP/Shopify decision), `tw-ecom-invoice-ezpay` (e-invoice handoff), `tw-ecom-payment-newebpay` (payment reconciliation), `ecom-rfm-analysis` (segmentation methodology), `ecom-promo-roi` (lift measurement), `ecom-inventory-health` (stock KPIs)
+- **Skills**: `tw-ecom-channel-strategy` (Shopline vs 91APP/Shopify decision), `tw-ecom-invoice-ezpay` (e-invoice handoff), `tw-ecom-payment-newebpay` (payment reconciliation), `ecom-rfm-analysis` (segmentation methodology), `ecom-promo-roi` (lift measurement), `ecom-inventory-health` (stock KPIs)
 - **References**: `references/tool-catalog.md` (one-line per tool, grouped by domain), `examples/sample_scenario.md` (end-to-end order → invoice flow)
 
 _Last verified: 2026-04_

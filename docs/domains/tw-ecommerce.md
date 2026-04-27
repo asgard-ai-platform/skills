@@ -59,7 +59,7 @@ I need to...
 ├── Run operations
 │   ├── 檔期 / 雙11 → tw-ecom-operations-promotion
 │   ├── Pricing → tw-ecom-operations-pricing
-│   ├── LINE OA CRM → tw-ecom-operations-crm-line-oa
+│   ├── LINE OA CRM → tw-ecom-operations-line-oa
 │   ├── Customer service → tw-ecom-operations-customer-service
 │   ├── Generic RFM → ecom-rfm-analysis  (existing)
 │   ├── Promo ROI → ecom-promo-roi  (existing)

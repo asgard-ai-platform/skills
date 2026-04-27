@@ -152,7 +152,7 @@ Each skeleton directory contains:
 **Operations** (4):
 - `tw-ecom-operations-promotion` — 雙11、618、週年慶
 - `tw-ecom-operations-pricing` — 含稅價、議價文化、檔期壓價策略
-- `tw-ecom-operations-crm-line-oa` — LINE OA (dominant TW channel)
+- `tw-ecom-operations-line-oa` — LINE OA (dominant TW channel)
 - `tw-ecom-operations-customer-service` — PTT/Dcard reputation + 消保鑑賞期話術
 
 **Analytics** (2):

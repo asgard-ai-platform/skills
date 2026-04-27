@@ -1,12 +1,12 @@
 ---
-name: "tw-ecom-91app-integration"
-description: "Integrate and operate 91APP in Taiwan e-commerce context via mcp-91app. Use when syncing orders/products/members on 91APP, running OMO (online-merge-offline) flows, integrating 91APP's app-first storefronts, or comparing 91APP vs Shopline/Shopify for mid-market DTC. Do NOT use for Shopline-specific integration (see tw-ecom-shopline-integration). STATUS: SKELETON — body pending."
+name: "tw-ecom-dtc-91app"
+description: "Integrate and operate 91APP in Taiwan e-commerce context via mcp-91app. Use when syncing orders/products/members on 91APP, running OMO (online-merge-offline) flows, integrating 91APP's app-first storefronts, or comparing 91APP vs Shopline/Shopify for mid-market DTC. Do NOT use for Shopline-specific integration (see tw-ecom-dtc-shopline). STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: ["mcp-91app"]
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-shopline-integration"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-dtc-shopline"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "91app", "platform", "integration"]
@@ -26,7 +26,7 @@ metadata:
 
 ## Do NOT use when
 
-- You need generic platform selection guidance → use `tw-ecom-platform-selection`
+- You need generic platform selection guidance → use `tw-ecom-channel-strategy`
 - You need 91APP API schema docs → consult mcp-91app README directly
 
 ## Core concepts
@@ -55,7 +55,7 @@ TODO.
 
 ## Related
 
-- `tw-ecom-platform-selection`
-- `tw-ecom-shopline-integration` (methodology template)
+- `tw-ecom-channel-strategy`
+- `tw-ecom-dtc-shopline` (methodology template)
 
 _Last verified: 2026-04_

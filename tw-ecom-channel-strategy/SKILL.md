@@ -1,12 +1,12 @@
 ---
-name: "tw-ecom-platform-selection"
+name: "tw-ecom-channel-strategy"
 description: "Choose the right e-commerce platform mix for a Taiwan business — DTC platforms (Shopline, 91APP, Shopify), marketplaces (Shopee, momo, PChome), or hybrid. Use when comparing platform fees, traffic potential, brand control trade-offs, or designing a go-to-market channel strategy for Taiwan. Do NOT use for specific platform integration details (see platform-specific skills). STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: ["mcp-shopline", "mcp-91app"]
-  related_skills: ["tw-ecom-shopline-integration", "tw-ecom-91app-integration", "tw-ecom-shopify-tw-integration", "tw-ecom-shopee-operations", "tw-ecom-momo-operations"]
+  related_skills: ["tw-ecom-dtc-shopline", "tw-ecom-dtc-91app", "tw-ecom-dtc-shopify-localization", "tw-ecom-marketplace-shopee", "tw-ecom-marketplace-momo"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "platform", "strategy"]
@@ -14,7 +14,7 @@ metadata:
 
 # Taiwan E-Commerce Platform Selection
 
-> **STATUS: SKELETON** — body pending. Prefer `tw-ecom-shopline-integration` for platform-specific depth in the meantime.
+> **STATUS: SKELETON** — body pending. Prefer `tw-ecom-dtc-shopline` for platform-specific depth in the meantime.
 
 ## When to use this skill
 

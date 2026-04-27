@@ -1,5 +1,5 @@
 ---
-name: "tw-ecom-operations-crm-line-oa"
+name: "tw-ecom-operations-line-oa"
 description: "Run CRM and member retention via LINE Official Account — broadcast cost model, rich menu, auto-response, tagging, 1-to-1 chat, and LINE Pay integration. Use when designing LINE OA strategy for a TW brand, segmenting members for broadcasts, or measuring LINE OA ROI. Do NOT use for generic CRM (use `ecom-rfm-analysis` or `biz-cac-ltv`). STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"

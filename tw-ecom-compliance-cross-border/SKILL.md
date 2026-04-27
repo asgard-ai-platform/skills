@@ -1,6 +1,6 @@
 ---
 name: "tw-ecom-compliance-cross-border"
-description: "Tax and regulatory compliance for cross-border e-commerce involving Taiwan — import VAT (5%), duty thresholds, 報單 filing, 境外電商 sales-tax registration, cross-border sales to TW. Use when shipping to/from TW, setting up境外電商 tax registration, or handling HS-code audits. Do NOT use for domestic-only TW ops. STATUS: SKELETON — body pending."
+description: "Tax and regulatory compliance for cross-border e-commerce involving Taiwan — import duty rates, VAT (5%), HS-code classification, 報單 filing, 境外電商 sales-tax registration, and de minimis thresholds. Use when calculating duty/tax obligations, registering as a 境外電商, classifying goods by HS code, or advising on de minimis exemption eligibility. Do NOT use for carrier selection or physical shipping operations (see tw-ecom-logistics-cross-border). Do NOT use for domestic 營業稅 only. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-05 台灣創業"
   domain: "ecommerce-tw"
@@ -18,15 +18,15 @@ metadata:
 
 ## When to use this skill
 
-- Setting up 境外電商 Taiwan sales tax registration
-- Managing de minimis threshold for inbound parcels
+- Setting up 境外電商 Taiwan sales-tax registration
 - HS-code classification and 報單 filing
-- Cross-border returns (duty-paid rework)
+- Calculating import duty rates and VAT obligations
+- Advising on de minimis exemption thresholds
 - VAT reconciliation on parallel-import goods
 
 ## Do NOT use when
 
-- Pure logistics → `tw-ecom-logistics-cross-border`
+- Carrier selection or shipping operations → `tw-ecom-logistics-cross-border`
 - Domestic 營業稅 only → `tw-tax-basics`
 
 ## Core concepts

@@ -6,7 +6,7 @@ metadata:
   domain: "ecommerce-tw"
   layer: "compliance"
   related_mcps: []
-  related_skills: ["law-gdpr-pdpa", "tw-ecom-compliance-consumer", "tw-ecom-operations-crm-line-oa"]
+  related_skills: ["law-gdpr-pdpa", "tw-ecom-compliance-consumer", "tw-ecom-operations-line-oa"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "compliance", "pdpa", "privacy"]
@@ -27,7 +27,7 @@ metadata:
 ## Do NOT use when
 
 - Generic PDPA / GDPR concepts → `law-gdpr-pdpa`
-- Marketing consent for LINE OA → `tw-ecom-operations-crm-line-oa`
+- Marketing consent for LINE OA → `tw-ecom-operations-line-oa`
 
 ## Core concepts
 
@@ -56,6 +56,6 @@ TODO.
 ## Related
 
 - `law-gdpr-pdpa`
-- `tw-ecom-operations-crm-line-oa`
+- `tw-ecom-operations-line-oa`
 
 _Last verified: 2026-04_

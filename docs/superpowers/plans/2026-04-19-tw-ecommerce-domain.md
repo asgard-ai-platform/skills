@@ -30,7 +30,7 @@
 - Logistics: `tw-ecom-logistics-cvs`, `tw-ecom-logistics-home`, `tw-ecom-logistics-cold-chain`, `tw-ecom-logistics-cross-border`
 - Invoice: `tw-ecom-invoice-universalec`, `tw-ecom-invoice-carrier`, `tw-ecom-invoice-void`
 - Compliance: `tw-ecom-compliance-consumer`, `tw-ecom-compliance-product`, `tw-ecom-compliance-pdpa`, `tw-ecom-compliance-cross-border`
-- Operations: `tw-ecom-operations-promotion`, `tw-ecom-operations-pricing`, `tw-ecom-operations-crm-line-oa`, `tw-ecom-operations-customer-service`
+- Operations: `tw-ecom-operations-promotion`, `tw-ecom-operations-pricing`, `tw-ecom-operations-line-oa`, `tw-ecom-operations-customer-service`
 - Analytics: `tw-ecom-analytics-ga4`, `tw-ecom-analytics-benchmarks`
 
 ### New / modified non-skill files
@@ -1734,7 +1734,7 @@ metadata:
   domain: "ecommerce-tw"
   layer: "compliance"
   related_mcps: []
-  related_skills: ["law-gdpr-pdpa", "tw-ecom-compliance-consumer", "tw-ecom-operations-crm-line-oa"]
+  related_skills: ["law-gdpr-pdpa", "tw-ecom-compliance-consumer", "tw-ecom-operations-line-oa"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "compliance", "pdpa", "privacy"]
@@ -1755,7 +1755,7 @@ metadata:
 ## Do NOT use when
 
 - Generic PDPA / GDPR concepts → `law-gdpr-pdpa`
-- Marketing consent for LINE OA → `tw-ecom-operations-crm-line-oa`
+- Marketing consent for LINE OA → `tw-ecom-operations-line-oa`
 
 ## Core concepts
 
@@ -1784,7 +1784,7 @@ TODO.
 ## Related
 
 - `law-gdpr-pdpa`
-- `tw-ecom-operations-crm-line-oa`
+- `tw-ecom-operations-line-oa`
 
 _Last verified: 2026-04_
 SKILL
@@ -1882,7 +1882,7 @@ git commit -m "feat(tw-ecom): add 4 compliance-layer skeletons"
 **Files:**
 - Create: `tw-ecom-operations-promotion/`
 - Create: `tw-ecom-operations-pricing/`
-- Create: `tw-ecom-operations-crm-line-oa/`
+- Create: `tw-ecom-operations-line-oa/`
 - Create: `tw-ecom-operations-customer-service/`
 
 - [ ] **Step 1: Create `tw-ecom-operations-promotion`**
@@ -2025,14 +2025,14 @@ _Last verified: 2026-04_
 SKILL
 ```
 
-- [ ] **Step 3: Create `tw-ecom-operations-crm-line-oa`**
+- [ ] **Step 3: Create `tw-ecom-operations-line-oa`**
 
 ```bash
-mkdir -p tw-ecom-operations-crm-line-oa/references tw-ecom-operations-crm-line-oa/examples
-touch tw-ecom-operations-crm-line-oa/references/.gitkeep tw-ecom-operations-crm-line-oa/examples/.gitkeep
-cat > tw-ecom-operations-crm-line-oa/SKILL.md <<'SKILL'
+mkdir -p tw-ecom-operations-line-oa/references tw-ecom-operations-line-oa/examples
+touch tw-ecom-operations-line-oa/references/.gitkeep tw-ecom-operations-line-oa/examples/.gitkeep
+cat > tw-ecom-operations-line-oa/SKILL.md <<'SKILL'
 ---
-name: "tw-ecom-operations-crm-line-oa"
+name: "tw-ecom-operations-line-oa"
 description: "Run CRM and member retention via LINE Official Account — broadcast cost model, rich menu, auto-response, tagging, 1-to-1 chat, and LINE Pay integration. Use when designing LINE OA strategy for a TW brand, segmenting members for broadcasts, or measuring LINE OA ROI. Do NOT use for generic CRM (use `ecom-rfm-analysis` or `biz-cac-ltv`). STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
@@ -2169,7 +2169,7 @@ SKILL
 - [ ] **Step 5: Verify 4 operations skeletons**
 
 ```bash
-for d in tw-ecom-operations-promotion tw-ecom-operations-pricing tw-ecom-operations-crm-line-oa tw-ecom-operations-customer-service; do
+for d in tw-ecom-operations-promotion tw-ecom-operations-pricing tw-ecom-operations-line-oa tw-ecom-operations-customer-service; do
   echo "=== $d ==="; ls $d $d/references $d/examples; head -5 $d/SKILL.md
 done
 ```
@@ -2177,7 +2177,7 @@ done
 - [ ] **Step 6: Commit**
 
 ```bash
-git add tw-ecom-operations-promotion tw-ecom-operations-pricing tw-ecom-operations-crm-line-oa tw-ecom-operations-customer-service
+git add tw-ecom-operations-promotion tw-ecom-operations-pricing tw-ecom-operations-line-oa tw-ecom-operations-customer-service
 git commit -m "feat(tw-ecom): add 4 operations-layer skeletons"
 ```
 
@@ -2417,7 +2417,7 @@ I need to...
 ├── Run operations
 │   ├── 檔期 / 雙11 → tw-ecom-operations-promotion
 │   ├── Pricing → tw-ecom-operations-pricing
-│   ├── LINE OA CRM → tw-ecom-operations-crm-line-oa
+│   ├── LINE OA CRM → tw-ecom-operations-line-oa
 │   ├── Customer service → tw-ecom-operations-customer-service
 │   ├── Generic RFM → ecom-rfm-analysis  (existing)
 │   ├── Promo ROI → ecom-promo-roi  (existing)
@@ -2708,7 +2708,7 @@ Each follow-up branch fills in one layer:
 | `feat/tw-ecom-logistics-skills` | `tw-ecom-logistics-cvs`, `tw-ecom-logistics-home`, `tw-ecom-logistics-cold-chain`, `tw-ecom-logistics-cross-border` |
 | `feat/tw-ecom-invoice-deep-skills` | `tw-ecom-invoice-universalec`, `tw-ecom-invoice-carrier`, `tw-ecom-invoice-void` |
 | `feat/tw-ecom-compliance-skills` | `tw-ecom-compliance-consumer`, `tw-ecom-compliance-product`, `tw-ecom-compliance-pdpa`, `tw-ecom-compliance-cross-border` |
-| `feat/tw-ecom-operations-skills` | `tw-ecom-operations-promotion`, `tw-ecom-operations-pricing`, `tw-ecom-operations-crm-line-oa`, `tw-ecom-operations-customer-service` |
+| `feat/tw-ecom-operations-skills` | `tw-ecom-operations-promotion`, `tw-ecom-operations-pricing`, `tw-ecom-operations-line-oa`, `tw-ecom-operations-customer-service` |
 | `feat/tw-ecom-analytics-skills` | `tw-ecom-analytics-ga4`, `tw-ecom-analytics-benchmarks` |
 
 **Content-source discipline** (per design spec §5.2):
@@ -2752,7 +2752,7 @@ for d in \
   tw-ecom-logistics-cvs tw-ecom-logistics-home tw-ecom-logistics-cold-chain tw-ecom-logistics-cross-border \
   tw-ecom-invoice-universalec tw-ecom-invoice-carrier tw-ecom-invoice-void \
   tw-ecom-compliance-consumer tw-ecom-compliance-product tw-ecom-compliance-pdpa tw-ecom-compliance-cross-border \
-  tw-ecom-operations-promotion tw-ecom-operations-pricing tw-ecom-operations-crm-line-oa tw-ecom-operations-customer-service \
+  tw-ecom-operations-promotion tw-ecom-operations-pricing tw-ecom-operations-line-oa tw-ecom-operations-customer-service \
   tw-ecom-analytics-ga4 tw-ecom-analytics-benchmarks; do
   [ -f "$d/SKILL.md" ] && [ -d "$d/references" ] && [ -d "$d/examples" ] || echo "MISSING: $d"
 done

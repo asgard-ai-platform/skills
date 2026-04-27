@@ -1,12 +1,12 @@
 ---
-name: "tw-ecom-shopify-tw-integration"
+name: "tw-ecom-dtc-shopify-localization"
 description: "Run Shopify stores for Taiwan market — localization (NT$ pricing, Traditional Chinese, TW address format), payment apps (ECPay / NewebPay / TapPay Shopify apps), shipping apps (CVS / 黑貓), and e-invoice integration. Use when setting up Shopify for TW, choosing TW payment/shipping apps, or adapting a global Shopify theme for TW. Do NOT use for general (non-TW) Shopify dev. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: []
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-payment-newebpay", "tw-ecom-logistics-cvs", "tw-ecom-invoice-ezpay"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-payment-newebpay", "tw-ecom-logistics-cvs", "tw-ecom-invoice-ezpay"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "shopify", "localization"]
@@ -55,7 +55,7 @@ TODO.
 
 ## Related
 
-- `tw-ecom-platform-selection`
+- `tw-ecom-channel-strategy`
 - `tw-ecom-payment-newebpay`
 - `tw-ecom-logistics-cvs`
 

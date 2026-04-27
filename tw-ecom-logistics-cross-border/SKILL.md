@@ -1,6 +1,6 @@
 ---
 name: "tw-ecom-logistics-cross-border"
-description: "Handle cross-border shipping FROM or TO Taiwan — customs (報關 / 海關), HS codes, de minimis thresholds, carrier choices (DHL / FedEx / UPS / 郵局 國際), and returns friction. Use when a TW business ships internationally or sells cross-border to TW. Do NOT use for domestic TW shipping. STATUS: SKELETON — body pending."
+description: "Select carriers and manage cross-border shipping operations for Taiwan — carrier choices (DHL / FedEx / UPS / 郵局 國際), customs clearance operations (報關), DDP vs DDU trade-offs, label generation, and returns handling. Use when choosing a carrier, estimating shipping cost or transit time, or managing the physical movement of cross-border goods. Do NOT use for duty/tax calculation, HS-code classification, or 境外電商 tax registration (see tw-ecom-compliance-cross-border). Do NOT use for domestic TW shipping. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
@@ -18,16 +18,17 @@ metadata:
 
 ## When to use this skill
 
-- Shipping from TW to overseas customers
-- Importing to TW for cross-border e-commerce
-- Handling 報關 / de minimis / HS codes
-- Choosing among DHL / FedEx / UPS / 郵局 國際
-- Managing returns from overseas
+- Choosing a carrier for TW → overseas or overseas → TW shipments
+- Estimating shipping cost, transit time, or DDP total landed cost
+- Managing customs clearance operations (報關) and document prep
+- Handling returns from overseas buyers
+- Comparing DHL / FedEx / UPS / 郵局 國際 for a given route
 
 ## Do NOT use when
 
-- Domestic TW → `tw-ecom-logistics-home` / `-cvs`
-- Pure tax / compliance → `tw-ecom-compliance-cross-border`
+- Duty/tax calculation, HS-code classification, or 報單 filing → `tw-ecom-compliance-cross-border`
+- 境外電商 sales-tax registration → `tw-ecom-compliance-cross-border`
+- Domestic TW logistics → `tw-ecom-logistics-home` / `tw-ecom-logistics-cvs`
 
 ## Core concepts
 

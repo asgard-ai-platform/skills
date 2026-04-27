@@ -20,7 +20,7 @@ Each follow-up branch fills in one layer:
 | `feat/tw-ecom-logistics-skills` | `tw-ecom-logistics-cvs`, `tw-ecom-logistics-home`, `tw-ecom-logistics-cold-chain`, `tw-ecom-logistics-cross-border` |
 | `feat/tw-ecom-invoice-deep-skills` | `tw-ecom-invoice-universalec`, `tw-ecom-invoice-carrier`, `tw-ecom-invoice-void` |
 | `feat/tw-ecom-compliance-skills` | `tw-ecom-compliance-consumer`, `tw-ecom-compliance-product`, `tw-ecom-compliance-pdpa`, `tw-ecom-compliance-cross-border` |
-| `feat/tw-ecom-operations-skills` | `tw-ecom-operations-promotion`, `tw-ecom-operations-pricing`, `tw-ecom-operations-crm-line-oa`, `tw-ecom-operations-customer-service` |
+| `feat/tw-ecom-operations-skills` | `tw-ecom-operations-promotion`, `tw-ecom-operations-pricing`, `tw-ecom-operations-line-oa`, `tw-ecom-operations-customer-service` |
 | `feat/tw-ecom-analytics-skills` | `tw-ecom-analytics-ga4`, `tw-ecom-analytics-benchmarks` |
 
 **Content-source discipline** (per design spec §5.2):
