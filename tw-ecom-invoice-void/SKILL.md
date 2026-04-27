@@ -31,6 +31,10 @@ metadata:
 ## Core concepts
 
 TODO: void vs 折讓, bimonthly boundary, accounting implications.
+NOTE (填充時): 此 skill 只寫「選哪條路」的決策邏輯，不重複 API 呼叫細節。
+`tw-ecom-invoice-ezpay` 已有完整的 void_invoice / issue_allowance / trigger_allowance 步驟；
+`tw-ecom-invoice-universalec` 同理。此 skill 的 Implementation guidance 應只提供判斷框架，
+並用 "→ see tw-ecom-invoice-ezpay / -universalec" 指向 API 層。
 
 ## Decision tree
 
@@ -38,7 +42,8 @@ TODO: given refund date vs issuance date → void or 折讓.
 
 ## Implementation guidance
 
-TODO: API calls, accounting entries, customer notification.
+TODO: 決策路徑後的 SOP（accounting entries, customer notification, 字軌影響）。
+不重複 void_invoice / issue_allowance / trigger_allowance 的 API 參數 — 那些在 ezpay/universalec skill。
 
 ## Gotchas
 

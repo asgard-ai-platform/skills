@@ -32,14 +32,18 @@ metadata:
 ## Core concepts
 
 TODO: carrier types, format specs, validation rules.
+NOTE (填充時): 格式規格（手機條碼 `/` + 7 alphanumeric、自然人憑證 2 letters + 14 digits）
+已在 `tw-ecom-invoice-ezpay` Gotchas 中詳細說明。此 skill 不重複格式規格；
+改聚焦在 UX 層面：validation 在哪層做、錯誤訊息設計、掃碼元件選型。
 
 ## Decision tree
 
-TODO: which carrier to default to given context.
+TODO: which carrier to default to given context (e.g., 有會員帳號 → 會員載具；無帳號 → 引導填手機條碼；B2B → 不需載具).
 
 ## Implementation guidance
 
-TODO: scan widget, validation, member-carrier linking.
+TODO: scan widget 選型與整合、client-side validation 流程、member-carrier linking（會員帳號與手機條碼綁定）。
+不重複 `issue_invoice` carrier_type / carrier_num 參數說明 — 那些在 ezpay/universalec skill。
 
 ## Gotchas
 
