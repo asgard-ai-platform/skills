@@ -27,7 +27,7 @@ metadata:
 ## Do NOT use when
 
 - DTC platform work → use Shopline/91APP/Shopify skills
-- Ad auction theory → use `algo-ad-*` skills
+- Ad auction theory (bidding model, GSP/VCG, CTR optimization) → `algo-ad-bidding`, `algo-ad-gsp`, `algo-ad-ctr`
 
 ## Core concepts
 
