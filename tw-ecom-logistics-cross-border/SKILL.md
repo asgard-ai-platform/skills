@@ -32,7 +32,7 @@ metadata:
 
 ## Core concepts
 
-TODO: de minimis threshold, HS code basics, duty vs VAT, DDP vs DDU.
+TODO: DDP vs DDU trade-offs (landed cost transparency, liability shift), carrier-choice framework (weight / speed / destination / DDP capability), customs document prep (商業發票、包裝明細、原產地證明), label standards per carrier, returns friction and cost structure. NOTE: HS-code classification, de minimis thresholds, and duty/VAT rates belong in `tw-ecom-compliance-cross-border` — do not duplicate here.
 
 ## Decision tree
 
