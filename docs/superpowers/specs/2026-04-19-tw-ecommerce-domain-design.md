@@ -29,7 +29,7 @@ All skills remain at repo root as `{category}-{slug}` directories, per `CLAUDE.m
 
 ```
 skills/
-├── tw-ecom-shopline-integration/      ← new, flat
+├── tw-ecom-dtc-shopline/      ← new, flat
 ├── tw-ecom-payment-newebpay/          ← new, flat
 ├── tw-ecom-invoice-ezpay/             ← new, flat
 ├── tw-ecom-...                         ← 26 skeletons, flat
@@ -50,7 +50,7 @@ skills/
 - New Taiwan e-commerce skills: `tw-ecom-<layer>-<topic>`
   - Layer ∈ {`platform`, `payment`, `logistics`, `invoice`, `compliance`, `operations`, `analytics`}
   - Examples: `tw-ecom-payment-newebpay`, `tw-ecom-invoice-ezpay`
-- Platform-layer exception: use platform name directly (`tw-ecom-shopline-integration`, `tw-ecom-91app-integration`), not `tw-ecom-platform-<name>`. Each platform is its own identifier.
+- Platform-layer exception: use platform name directly (`tw-ecom-dtc-shopline`, `tw-ecom-dtc-91app`), not `tw-ecom-platform-<name>`. Each platform is its own identifier.
 - Existing `tw-*` / `ecom-*` skills keep their names (no renaming, avoid breaking consumers).
 
 ## 4. Existing skill overlap audit
@@ -74,7 +74,7 @@ All three are MCP-backed, so content derives from official tool schemas + vendor
 
 | Skill | MCP | Layer | Tool count |
 |---|---|---|---|
-| `tw-ecom-shopline-integration` | `mcp-shopline` | platform | 143 (75 read + 68 write) |
+| `tw-ecom-dtc-shopline` | `mcp-shopline` | platform | 143 (75 read + 68 write) |
 | `tw-ecom-payment-newebpay` | `mcp-newebpay` | payment | 8 |
 | `tw-ecom-invoice-ezpay` | `mcp-ezpay-einvoice` | invoice | 7 |
 
@@ -118,11 +118,11 @@ Each skeleton directory contains:
 ### 6.2 Skeleton list (grouped by layer)
 
 **Platform** (5):
-- `tw-ecom-platform-selection` — DTC vs marketplace vs hybrid decision
-- `tw-ecom-91app-integration`
-- `tw-ecom-shopify-tw-integration`
-- `tw-ecom-shopee-operations`
-- `tw-ecom-momo-operations`
+- `tw-ecom-channel-strategy` — DTC vs marketplace vs hybrid decision
+- `tw-ecom-dtc-91app`
+- `tw-ecom-dtc-shopify-localization`
+- `tw-ecom-marketplace-shopee`
+- `tw-ecom-marketplace-momo`
 
 *Note:* `cyberbiz-integration` intentionally NOT added — `mcp-cyberbiz` is an empty repo (per `TODO.md`), no grounding content available yet.
 

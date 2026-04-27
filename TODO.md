@@ -15,7 +15,7 @@ Each follow-up branch fills in one layer:
 
 | Branch | Skills to fill |
 |---|---|
-| `feat/tw-ecom-platform-skills` | `tw-ecom-platform-selection`, `tw-ecom-91app-integration`, `tw-ecom-shopify-tw-integration`, `tw-ecom-shopee-operations`, `tw-ecom-momo-operations` |
+| `feat/tw-ecom-platform-skills` | `tw-ecom-channel-strategy`, `tw-ecom-dtc-91app`, `tw-ecom-dtc-shopify-localization`, `tw-ecom-marketplace-shopee`, `tw-ecom-marketplace-momo` |
 | `feat/tw-ecom-payment-deep-skills` | `tw-ecom-payment-tappay`, `tw-ecom-payment-ecpay`, `tw-ecom-payment-jkopay`, `tw-ecom-payment-dispute` |
 | `feat/tw-ecom-logistics-skills` | `tw-ecom-logistics-cvs`, `tw-ecom-logistics-home`, `tw-ecom-logistics-cold-chain`, `tw-ecom-logistics-cross-border` |
 | `feat/tw-ecom-invoice-deep-skills` | `tw-ecom-invoice-universalec`, `tw-ecom-invoice-carrier`, `tw-ecom-invoice-void` |

@@ -6,7 +6,7 @@ metadata:
   domain: "ecommerce-tw"
   layer: "operations"
   related_mcps: []
-  related_skills: ["ecom-promo-roi", "tw-ecom-operations-pricing", "tw-ecom-operations-customer-service", "tw-ecom-shopee-operations", "tw-ecom-momo-operations"]
+  related_skills: ["ecom-promo-roi", "tw-ecom-operations-pricing", "tw-ecom-operations-customer-service", "tw-ecom-marketplace-shopee", "tw-ecom-marketplace-momo"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "promotion", "campaign"]

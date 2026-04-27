@@ -148,7 +148,7 @@ When completing a NewebPay task, produce this structure:
 ## Related
 
 - **MCPs**: `mcp-newebpay`
-- **Skills**: `tw-payment-integration` (gateway comparison decision), `tw-ecom-payment-dispute` (chargeback / 爭議款 handling), `tw-ecom-invoice-ezpay` (e-invoice handoff after successful payment), `tw-ecom-shopline-integration` (storefront integration)
+- **Skills**: `tw-payment-integration` (gateway comparison decision), `tw-ecom-payment-dispute` (chargeback / 爭議款 handling), `tw-ecom-invoice-ezpay` (e-invoice handoff after successful payment), `tw-ecom-dtc-shopline` (storefront integration)
 - **References**: `references/integration-flow.md` (merchant setup → first transaction → callback → reconciliation), `examples/sample_scenario.md` (subscription billing with ezPay invoice and dispute handling)
 
 _Last verified: 2026-04_

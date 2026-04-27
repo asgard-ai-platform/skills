@@ -18,14 +18,14 @@ Taiwan e-commerce brings together platform integration, payment gateways, logist
 I need to...
 
 ├── Choose a platform / channel mix
-│   └── tw-ecom-platform-selection
+│   └── tw-ecom-channel-strategy
 │
 ├── Integrate with a specific platform
-│   ├── Shopline → tw-ecom-shopline-integration  ★ reference
-│   ├── 91APP → tw-ecom-91app-integration
-│   ├── Shopify TW → tw-ecom-shopify-tw-integration
-│   ├── Shopee → tw-ecom-shopee-operations
-│   └── momo → tw-ecom-momo-operations
+│   ├── Shopline → tw-ecom-dtc-shopline  ★ reference
+│   ├── 91APP → tw-ecom-dtc-91app
+│   ├── Shopify TW → tw-ecom-dtc-shopify-localization
+│   ├── Shopee → tw-ecom-marketplace-shopee
+│   └── momo → tw-ecom-marketplace-momo
 │
 ├── Pick a payment gateway
 │   ├── Landscape / selection → tw-payment-integration  (existing)
@@ -76,8 +76,8 @@ I need to...
 
 | MCP | Tools | Covered by |
 |---|---:|---|
-| `mcp-shopline` | 143 | `tw-ecom-shopline-integration` |
-| `mcp-91app` | 17 | `tw-ecom-91app-integration` (skeleton) |
+| `mcp-shopline` | 143 | `tw-ecom-dtc-shopline` |
+| `mcp-91app` | 17 | `tw-ecom-dtc-91app` (skeleton) |
 | `mcp-newebpay` | 8 | `tw-ecom-payment-newebpay` |
 | `mcp-ezpay-einvoice` | 7 | `tw-ecom-invoice-ezpay` |
 | `mcp-universalec-e-invoice` | 27 | `tw-ecom-invoice-universalec` (skeleton) |

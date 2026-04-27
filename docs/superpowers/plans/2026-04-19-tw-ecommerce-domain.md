@@ -20,12 +20,12 @@
 ### New skill directories (29 at repo root)
 
 **Complete** (SKILL.md + references/<file>.md + examples/sample_scenario.md):
-- `tw-ecom-shopline-integration/`
+- `tw-ecom-dtc-shopline/`
 - `tw-ecom-payment-newebpay/`
 - `tw-ecom-invoice-ezpay/`
 
 **Skeleton** (SKILL.md + references/.gitkeep + examples/.gitkeep):
-- Platform: `tw-ecom-platform-selection`, `tw-ecom-91app-integration`, `tw-ecom-shopify-tw-integration`, `tw-ecom-shopee-operations`, `tw-ecom-momo-operations`
+- Platform: `tw-ecom-channel-strategy`, `tw-ecom-dtc-91app`, `tw-ecom-dtc-shopify-localization`, `tw-ecom-marketplace-shopee`, `tw-ecom-marketplace-momo`
 - Payment: `tw-ecom-payment-tappay`, `tw-ecom-payment-ecpay`, `tw-ecom-payment-jkopay`, `tw-ecom-payment-dispute`
 - Logistics: `tw-ecom-logistics-cvs`, `tw-ecom-logistics-home`, `tw-ecom-logistics-cold-chain`, `tw-ecom-logistics-cross-border`
 - Invoice: `tw-ecom-invoice-universalec`, `tw-ecom-invoice-carrier`, `tw-ecom-invoice-void`
@@ -105,19 +105,19 @@ This task has no commit step — the files are local scratch only.
 
 ---
 
-## Task 2: Write tw-ecom-shopline-integration (complete reference skill)
+## Task 2: Write tw-ecom-dtc-shopline (complete reference skill)
 
 **Files:**
-- Create: `tw-ecom-shopline-integration/SKILL.md`
-- Create: `tw-ecom-shopline-integration/references/tool-catalog.md`
-- Create: `tw-ecom-shopline-integration/examples/sample_scenario.md`
+- Create: `tw-ecom-dtc-shopline/SKILL.md`
+- Create: `tw-ecom-dtc-shopline/references/tool-catalog.md`
+- Create: `tw-ecom-dtc-shopline/examples/sample_scenario.md`
 
 **Content source discipline:** derive all facts from `/tmp/tw-ecom-refs/mcp-shopline-README.md` + Shopline Open API public docs. Mark any unsourced claim as `TODO: verify with <source>` — do not fabricate fee rates or settlement timing.
 
 - [ ] **Step 1: Create directory structure**
 
 ```bash
-mkdir -p tw-ecom-shopline-integration/references tw-ecom-shopline-integration/examples
+mkdir -p tw-ecom-dtc-shopline/references tw-ecom-dtc-shopline/examples
 ```
 
 - [ ] **Step 2: Write SKILL.md**
@@ -141,21 +141,21 @@ Required sections in this order:
 10. `## Output Format` — Markdown template the agent should produce when completing a Shopline task (see Task 3 & 4 for the pattern)
 11. `## Related`
     - `related_mcps`: `mcp-shopline`
-    - `related_skills`: `tw-ecom-platform-selection`, `tw-ecom-invoice-ezpay`, `tw-ecom-payment-newebpay`, `ecom-rfm-analysis`, `ecom-promo-roi`, `ecom-inventory-health`
+    - `related_skills`: `tw-ecom-channel-strategy`, `tw-ecom-invoice-ezpay`, `tw-ecom-payment-newebpay`, `ecom-rfm-analysis`, `ecom-promo-roi`, `ecom-inventory-health`
 12. `_Last verified: 2026-04_`
 
 Frontmatter template (exact fields):
 
 ```yaml
 ---
-name: "tw-ecom-shopline-integration"
+name: "tw-ecom-dtc-shopline"
 description: "Integrate and operate Shopline in Taiwan e-commerce context via mcp-shopline. Use when the user needs to sync orders, manage products, run promotions, or reconcile inventory on Shopline stores; when comparing Shopline vs 91APP/Shopify for Taiwan DTC; or when debugging async write propagation. Do NOT use for API schema lookup (go to mcp-shopline docs) or non-Taiwan Shopline deployments."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: ["mcp-shopline"]
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-invoice-ezpay", "tw-ecom-payment-newebpay", "ecom-rfm-analysis", "ecom-promo-roi", "ecom-inventory-health"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-invoice-ezpay", "tw-ecom-payment-newebpay", "ecom-rfm-analysis", "ecom-promo-roi", "ecom-inventory-health"]
   last_verified: "2026-04"
   tags: ["taiwan", "e-commerce", "shopline", "platform", "integration"]
 ---
@@ -172,9 +172,9 @@ One end-to-end scenario (~80-150 lines): "New order arrives via Shopline → syn
 - [ ] **Step 5: Verify file shape**
 
 ```bash
-wc -l tw-ecom-shopline-integration/SKILL.md tw-ecom-shopline-integration/references/tool-catalog.md tw-ecom-shopline-integration/examples/sample_scenario.md
-head -10 tw-ecom-shopline-integration/SKILL.md
-awk '/^description:/ { print length($0)-15 }' tw-ecom-shopline-integration/SKILL.md
+wc -l tw-ecom-dtc-shopline/SKILL.md tw-ecom-dtc-shopline/references/tool-catalog.md tw-ecom-dtc-shopline/examples/sample_scenario.md
+head -10 tw-ecom-dtc-shopline/SKILL.md
+awk '/^description:/ { print length($0)-15 }' tw-ecom-dtc-shopline/SKILL.md
 ```
 
 Expected:
@@ -186,8 +186,8 @@ Expected:
 - [ ] **Step 6: Commit**
 
 ```bash
-git add tw-ecom-shopline-integration/
-git commit -m "feat(tw-ecom): add tw-ecom-shopline-integration reference skill"
+git add tw-ecom-dtc-shopline/
+git commit -m "feat(tw-ecom): add tw-ecom-dtc-shopline reference skill"
 ```
 
 ---
@@ -347,29 +347,29 @@ git commit -m "feat(tw-ecom): add tw-ecom-invoice-ezpay reference skill"
 ## Task 5: Create 5 platform skeletons
 
 **Files (5 skill directories):**
-- Create: `tw-ecom-platform-selection/` (SKILL.md, references/.gitkeep, examples/.gitkeep)
-- Create: `tw-ecom-91app-integration/` (same)
-- Create: `tw-ecom-shopify-tw-integration/` (same)
-- Create: `tw-ecom-shopee-operations/` (same)
-- Create: `tw-ecom-momo-operations/` (same)
+- Create: `tw-ecom-channel-strategy/` (SKILL.md, references/.gitkeep, examples/.gitkeep)
+- Create: `tw-ecom-dtc-91app/` (same)
+- Create: `tw-ecom-dtc-shopify-localization/` (same)
+- Create: `tw-ecom-marketplace-shopee/` (same)
+- Create: `tw-ecom-marketplace-momo/` (same)
 
 Skeleton SKILL.md shape (applied uniformly): frontmatter + banner + When to use + Do NOT use when + TODO body sections.
 
-- [ ] **Step 1: Create `tw-ecom-platform-selection`**
+- [ ] **Step 1: Create `tw-ecom-channel-strategy`**
 
 ```bash
-mkdir -p tw-ecom-platform-selection/references tw-ecom-platform-selection/examples
-touch tw-ecom-platform-selection/references/.gitkeep tw-ecom-platform-selection/examples/.gitkeep
-cat > tw-ecom-platform-selection/SKILL.md <<'SKILL'
+mkdir -p tw-ecom-channel-strategy/references tw-ecom-channel-strategy/examples
+touch tw-ecom-channel-strategy/references/.gitkeep tw-ecom-channel-strategy/examples/.gitkeep
+cat > tw-ecom-channel-strategy/SKILL.md <<'SKILL'
 ---
-name: "tw-ecom-platform-selection"
+name: "tw-ecom-channel-strategy"
 description: "Choose the right e-commerce platform mix for a Taiwan business — DTC platforms (Shopline, 91APP, Shopify), marketplaces (Shopee, momo, PChome), or hybrid. Use when comparing platform fees, traffic potential, brand control trade-offs, or designing a go-to-market channel strategy for Taiwan. Do NOT use for specific platform integration details (see platform-specific skills). STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: ["mcp-shopline", "mcp-91app"]
-  related_skills: ["tw-ecom-shopline-integration", "tw-ecom-91app-integration", "tw-ecom-shopify-tw-integration", "tw-ecom-shopee-operations", "tw-ecom-momo-operations"]
+  related_skills: ["tw-ecom-dtc-shopline", "tw-ecom-dtc-91app", "tw-ecom-dtc-shopify-localization", "tw-ecom-marketplace-shopee", "tw-ecom-marketplace-momo"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "platform", "strategy"]
@@ -377,7 +377,7 @@ metadata:
 
 # Taiwan E-Commerce Platform Selection
 
-> **STATUS: SKELETON** — body pending. Prefer `tw-ecom-shopline-integration` for platform-specific depth in the meantime.
+> **STATUS: SKELETON** — body pending. Prefer `tw-ecom-dtc-shopline` for platform-specific depth in the meantime.
 
 ## When to use this skill
 
@@ -425,21 +425,21 @@ _Last verified: 2026-04_
 SKILL
 ```
 
-- [ ] **Step 2: Create `tw-ecom-91app-integration`**
+- [ ] **Step 2: Create `tw-ecom-dtc-91app`**
 
 ```bash
-mkdir -p tw-ecom-91app-integration/references tw-ecom-91app-integration/examples
-touch tw-ecom-91app-integration/references/.gitkeep tw-ecom-91app-integration/examples/.gitkeep
-cat > tw-ecom-91app-integration/SKILL.md <<'SKILL'
+mkdir -p tw-ecom-dtc-91app/references tw-ecom-dtc-91app/examples
+touch tw-ecom-dtc-91app/references/.gitkeep tw-ecom-dtc-91app/examples/.gitkeep
+cat > tw-ecom-dtc-91app/SKILL.md <<'SKILL'
 ---
-name: "tw-ecom-91app-integration"
-description: "Integrate and operate 91APP in Taiwan e-commerce context via mcp-91app. Use when syncing orders/products/members on 91APP, running OMO (online-merge-offline) flows, integrating 91APP's app-first storefronts, or comparing 91APP vs Shopline/Shopify for mid-market DTC. Do NOT use for Shopline-specific integration (see tw-ecom-shopline-integration). STATUS: SKELETON — body pending."
+name: "tw-ecom-dtc-91app"
+description: "Integrate and operate 91APP in Taiwan e-commerce context via mcp-91app. Use when syncing orders/products/members on 91APP, running OMO (online-merge-offline) flows, integrating 91APP's app-first storefronts, or comparing 91APP vs Shopline/Shopify for mid-market DTC. Do NOT use for Shopline-specific integration (see tw-ecom-dtc-shopline). STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: ["mcp-91app"]
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-shopline-integration"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-dtc-shopline"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "91app", "platform", "integration"]
@@ -459,7 +459,7 @@ metadata:
 
 ## Do NOT use when
 
-- You need generic platform selection guidance → use `tw-ecom-platform-selection`
+- You need generic platform selection guidance → use `tw-ecom-channel-strategy`
 - You need 91APP API schema docs → consult mcp-91app README directly
 
 ## Core concepts
@@ -488,28 +488,28 @@ TODO.
 
 ## Related
 
-- `tw-ecom-platform-selection`
-- `tw-ecom-shopline-integration` (methodology template)
+- `tw-ecom-channel-strategy`
+- `tw-ecom-dtc-shopline` (methodology template)
 
 _Last verified: 2026-04_
 SKILL
 ```
 
-- [ ] **Step 3: Create `tw-ecom-shopify-tw-integration`**
+- [ ] **Step 3: Create `tw-ecom-dtc-shopify-localization`**
 
 ```bash
-mkdir -p tw-ecom-shopify-tw-integration/references tw-ecom-shopify-tw-integration/examples
-touch tw-ecom-shopify-tw-integration/references/.gitkeep tw-ecom-shopify-tw-integration/examples/.gitkeep
-cat > tw-ecom-shopify-tw-integration/SKILL.md <<'SKILL'
+mkdir -p tw-ecom-dtc-shopify-localization/references tw-ecom-dtc-shopify-localization/examples
+touch tw-ecom-dtc-shopify-localization/references/.gitkeep tw-ecom-dtc-shopify-localization/examples/.gitkeep
+cat > tw-ecom-dtc-shopify-localization/SKILL.md <<'SKILL'
 ---
-name: "tw-ecom-shopify-tw-integration"
+name: "tw-ecom-dtc-shopify-localization"
 description: "Run Shopify stores for Taiwan market — localization (NT$ pricing, Traditional Chinese, TW address format), payment apps (ECPay / NewebPay / TapPay Shopify apps), shipping apps (CVS / 黑貓), and e-invoice integration. Use when setting up Shopify for TW, choosing TW payment/shipping apps, or adapting a global Shopify theme for TW. Do NOT use for general (non-TW) Shopify dev. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: []
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-payment-newebpay", "tw-ecom-logistics-cvs", "tw-ecom-invoice-ezpay"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-payment-newebpay", "tw-ecom-logistics-cvs", "tw-ecom-invoice-ezpay"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "shopify", "localization"]
@@ -558,7 +558,7 @@ TODO.
 
 ## Related
 
-- `tw-ecom-platform-selection`
+- `tw-ecom-channel-strategy`
 - `tw-ecom-payment-newebpay`
 - `tw-ecom-logistics-cvs`
 
@@ -566,21 +566,21 @@ _Last verified: 2026-04_
 SKILL
 ```
 
-- [ ] **Step 4: Create `tw-ecom-shopee-operations`**
+- [ ] **Step 4: Create `tw-ecom-marketplace-shopee`**
 
 ```bash
-mkdir -p tw-ecom-shopee-operations/references tw-ecom-shopee-operations/examples
-touch tw-ecom-shopee-operations/references/.gitkeep tw-ecom-shopee-operations/examples/.gitkeep
-cat > tw-ecom-shopee-operations/SKILL.md <<'SKILL'
+mkdir -p tw-ecom-marketplace-shopee/references tw-ecom-marketplace-shopee/examples
+touch tw-ecom-marketplace-shopee/references/.gitkeep tw-ecom-marketplace-shopee/examples/.gitkeep
+cat > tw-ecom-marketplace-shopee/SKILL.md <<'SKILL'
 ---
-name: "tw-ecom-shopee-operations"
+name: "tw-ecom-marketplace-shopee"
 description: "Operate a Shopee Taiwan store — listings, promotions, flash sales, SIP (Shopee Supported Program) cross-border, ads (蝦皮廣告), and reputation/review management. Use when setting up or running Shopee TW operations, participating in platform campaigns (雙11, 618), or managing seller-center workflows. Do NOT use for Shopee API integration specifics (no official Asgard MCP yet) or DTC platforms. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: []
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-momo-operations", "tw-ecom-operations-promotion"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-marketplace-momo", "tw-ecom-operations-promotion"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "shopee", "marketplace"]
@@ -629,29 +629,29 @@ TODO.
 
 ## Related
 
-- `tw-ecom-platform-selection`
-- `tw-ecom-momo-operations`
+- `tw-ecom-channel-strategy`
+- `tw-ecom-marketplace-momo`
 - `tw-ecom-operations-promotion`
 
 _Last verified: 2026-04_
 SKILL
 ```
 
-- [ ] **Step 5: Create `tw-ecom-momo-operations`**
+- [ ] **Step 5: Create `tw-ecom-marketplace-momo`**
 
 ```bash
-mkdir -p tw-ecom-momo-operations/references tw-ecom-momo-operations/examples
-touch tw-ecom-momo-operations/references/.gitkeep tw-ecom-momo-operations/examples/.gitkeep
-cat > tw-ecom-momo-operations/SKILL.md <<'SKILL'
+mkdir -p tw-ecom-marketplace-momo/references tw-ecom-marketplace-momo/examples
+touch tw-ecom-marketplace-momo/references/.gitkeep tw-ecom-marketplace-momo/examples/.gitkeep
+cat > tw-ecom-marketplace-momo/SKILL.md <<'SKILL'
 ---
-name: "tw-ecom-momo-operations"
+name: "tw-ecom-marketplace-momo"
 description: "Operate on momo購物網 — listing approval workflow, price-matching rules, momo's next-day delivery SLA, campaign participation, and fast-fashion SKU rotation. Use when setting up or running momo operations, negotiating MOQ / margin with 採購, or participating in momo campaigns. Do NOT use for Shopee (different platform, different rules) or DTC. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-01 電商"
   domain: "ecommerce-tw"
   layer: "platform"
   related_mcps: []
-  related_skills: ["tw-ecom-platform-selection", "tw-ecom-shopee-operations", "tw-ecom-operations-promotion"]
+  related_skills: ["tw-ecom-channel-strategy", "tw-ecom-marketplace-shopee", "tw-ecom-operations-promotion"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "momo", "marketplace"]
@@ -671,7 +671,7 @@ metadata:
 
 ## Do NOT use when
 
-- Shopee operations → `tw-ecom-shopee-operations`
+- Shopee operations → `tw-ecom-marketplace-shopee`
 - DTC platform work → platform-specific skills
 
 ## Core concepts
@@ -700,8 +700,8 @@ TODO.
 
 ## Related
 
-- `tw-ecom-platform-selection`
-- `tw-ecom-shopee-operations`
+- `tw-ecom-channel-strategy`
+- `tw-ecom-marketplace-shopee`
 
 _Last verified: 2026-04_
 SKILL
@@ -710,7 +710,7 @@ SKILL
 - [ ] **Step 6: Verify 5 skeletons**
 
 ```bash
-for d in tw-ecom-platform-selection tw-ecom-91app-integration tw-ecom-shopify-tw-integration tw-ecom-shopee-operations tw-ecom-momo-operations; do
+for d in tw-ecom-channel-strategy tw-ecom-dtc-91app tw-ecom-dtc-shopify-localization tw-ecom-marketplace-shopee tw-ecom-marketplace-momo; do
   echo "=== $d ==="
   ls $d $d/references $d/examples
   head -5 $d/SKILL.md
@@ -722,7 +722,7 @@ Expected: 5 directories, each with SKILL.md + references/.gitkeep + examples/.gi
 - [ ] **Step 7: Commit**
 
 ```bash
-git add tw-ecom-platform-selection tw-ecom-91app-integration tw-ecom-shopify-tw-integration tw-ecom-shopee-operations tw-ecom-momo-operations
+git add tw-ecom-channel-strategy tw-ecom-dtc-91app tw-ecom-dtc-shopify-localization tw-ecom-marketplace-shopee tw-ecom-marketplace-momo
 git commit -m "feat(tw-ecom): add 5 platform-layer skeletons"
 ```
 
@@ -1899,7 +1899,7 @@ metadata:
   domain: "ecommerce-tw"
   layer: "operations"
   related_mcps: []
-  related_skills: ["ecom-promo-roi", "tw-ecom-operations-pricing", "tw-ecom-operations-customer-service", "tw-ecom-shopee-operations", "tw-ecom-momo-operations"]
+  related_skills: ["ecom-promo-roi", "tw-ecom-operations-pricing", "tw-ecom-operations-customer-service", "tw-ecom-marketplace-shopee", "tw-ecom-marketplace-momo"]
   last_verified: "2026-04"
   status: "skeleton"
   tags: ["taiwan", "e-commerce", "promotion", "campaign"]
@@ -2376,14 +2376,14 @@ Taiwan e-commerce brings together platform integration, payment gateways, logist
 I need to...
 
 ├── Choose a platform / channel mix
-│   └── tw-ecom-platform-selection
+│   └── tw-ecom-channel-strategy
 │
 ├── Integrate with a specific platform
-│   ├── Shopline → tw-ecom-shopline-integration  ★ reference
-│   ├── 91APP → tw-ecom-91app-integration
-│   ├── Shopify TW → tw-ecom-shopify-tw-integration
-│   ├── Shopee → tw-ecom-shopee-operations
-│   └── momo → tw-ecom-momo-operations
+│   ├── Shopline → tw-ecom-dtc-shopline  ★ reference
+│   ├── 91APP → tw-ecom-dtc-91app
+│   ├── Shopify TW → tw-ecom-dtc-shopify-localization
+│   ├── Shopee → tw-ecom-marketplace-shopee
+│   └── momo → tw-ecom-marketplace-momo
 │
 ├── Pick a payment gateway
 │   ├── Landscape / selection → tw-payment-integration  (existing)
@@ -2434,8 +2434,8 @@ I need to...
 
 | MCP | Tools | Covered by |
 |---|---:|---|
-| `mcp-shopline` | 143 | `tw-ecom-shopline-integration` |
-| `mcp-91app` | 17 | `tw-ecom-91app-integration` (skeleton) |
+| `mcp-shopline` | 143 | `tw-ecom-dtc-shopline` |
+| `mcp-91app` | 17 | `tw-ecom-dtc-91app` (skeleton) |
 | `mcp-newebpay` | 8 | `tw-ecom-payment-newebpay` |
 | `mcp-ezpay-einvoice` | 7 | `tw-ecom-invoice-ezpay` |
 | `mcp-universalec-e-invoice` | 27 | `tw-ecom-invoice-universalec` (skeleton) |
@@ -2703,7 +2703,7 @@ Each follow-up branch fills in one layer:
 
 | Branch | Skills to fill |
 |---|---|
-| `feat/tw-ecom-platform-skills` | `tw-ecom-platform-selection`, `tw-ecom-91app-integration`, `tw-ecom-shopify-tw-integration`, `tw-ecom-shopee-operations`, `tw-ecom-momo-operations` |
+| `feat/tw-ecom-platform-skills` | `tw-ecom-channel-strategy`, `tw-ecom-dtc-91app`, `tw-ecom-dtc-shopify-localization`, `tw-ecom-marketplace-shopee`, `tw-ecom-marketplace-momo` |
 | `feat/tw-ecom-payment-deep-skills` | `tw-ecom-payment-tappay`, `tw-ecom-payment-ecpay`, `tw-ecom-payment-jkopay`, `tw-ecom-payment-dispute` |
 | `feat/tw-ecom-logistics-skills` | `tw-ecom-logistics-cvs`, `tw-ecom-logistics-home`, `tw-ecom-logistics-cold-chain`, `tw-ecom-logistics-cross-border` |
 | `feat/tw-ecom-invoice-deep-skills` | `tw-ecom-invoice-universalec`, `tw-ecom-invoice-carrier`, `tw-ecom-invoice-void` |
@@ -2746,8 +2746,8 @@ git commit -m "docs(todo): carve out tw-ecom skeleton backlog"
 
 ```bash
 for d in \
-  tw-ecom-shopline-integration tw-ecom-payment-newebpay tw-ecom-invoice-ezpay \
-  tw-ecom-platform-selection tw-ecom-91app-integration tw-ecom-shopify-tw-integration tw-ecom-shopee-operations tw-ecom-momo-operations \
+  tw-ecom-dtc-shopline tw-ecom-payment-newebpay tw-ecom-invoice-ezpay \
+  tw-ecom-channel-strategy tw-ecom-dtc-91app tw-ecom-dtc-shopify-localization tw-ecom-marketplace-shopee tw-ecom-marketplace-momo \
   tw-ecom-payment-tappay tw-ecom-payment-ecpay tw-ecom-payment-jkopay tw-ecom-payment-dispute \
   tw-ecom-logistics-cvs tw-ecom-logistics-home tw-ecom-logistics-cold-chain tw-ecom-logistics-cross-border \
   tw-ecom-invoice-universalec tw-ecom-invoice-carrier tw-ecom-invoice-void \
@@ -2802,7 +2802,7 @@ Expected: `checked tw-ecom-* skills, 0 errors` and exit code 0.
 - [ ] **Step 3: Line-count check on complete skills**
 
 ```bash
-for d in tw-ecom-shopline-integration tw-ecom-payment-newebpay tw-ecom-invoice-ezpay; do
+for d in tw-ecom-dtc-shopline tw-ecom-payment-newebpay tw-ecom-invoice-ezpay; do
   lines=$(wc -l < $d/SKILL.md)
   echo "$d: $lines lines"
   [ "$lines" -le 500 ] || echo "  ⚠️ exceeds CLAUDE.md 500-line cap"
@@ -2863,6 +2863,6 @@ Placeholder scan:
 - "TODO" markers inside heredocs are intentional — they are the placeholder text *inside* the skeleton SKILL.md, not placeholders in the plan itself.
 
 Type consistency:
-- Skill names used in `related_skills` cross-refs match the directory names defined in each task (spot-checked: `tw-ecom-shopline-integration`, `tw-ecom-invoice-ezpay`, `tw-ecom-payment-newebpay`, `tw-payment-integration`, `tw-einvoice-guide`, `ecom-rfm-analysis`, `ecom-promo-roi`, `ecom-inventory-health`).
+- Skill names used in `related_skills` cross-refs match the directory names defined in each task (spot-checked: `tw-ecom-dtc-shopline`, `tw-ecom-invoice-ezpay`, `tw-ecom-payment-newebpay`, `tw-payment-integration`, `tw-einvoice-guide`, `ecom-rfm-analysis`, `ecom-promo-roi`, `ecom-inventory-health`).
 - Frontmatter field names consistent (`domain`, `layer`, `related_mcps`, `related_skills`, `last_verified`, `status`, `tags`) — matches design spec §5.1.
 - Branch / commit scope prefix `feat(tw-ecom)` used consistently across layer commits.

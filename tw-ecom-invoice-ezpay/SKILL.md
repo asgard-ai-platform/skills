@@ -159,7 +159,7 @@ When completing an ezPay invoice task, produce this structure:
 ## Related
 
 - **MCPs**: `mcp-ezpay-einvoice`
-- **Skills**: `tw-einvoice-guide` (MOF platform landscape, B2B/B2C/carrier basics), `tw-ecom-invoice-carrier` (carrier-specific patterns — skeleton), `tw-ecom-invoice-void` (void vs allowance decision — skeleton), `tw-tax-basics` (營業稅 401 filing reconciliation), `tw-ecom-payment-newebpay` (upstream trigger via payment NotifyURL), `tw-ecom-shopline-integration` (order-to-invoice handoff)
+- **Skills**: `tw-einvoice-guide` (MOF platform landscape, B2B/B2C/carrier basics), `tw-ecom-invoice-carrier` (carrier-specific patterns — skeleton), `tw-ecom-invoice-void` (void vs allowance decision — skeleton), `tw-tax-basics` (營業稅 401 filing reconciliation), `tw-ecom-payment-newebpay` (upstream trigger via payment NotifyURL), `tw-ecom-dtc-shopline` (order-to-invoice handoff)
 - **References**: `references/issuance-flow.md` (registration → 字軌 → sandbox → prod → daily reconciliation), `examples/sample_scenario.md` (Shopline 手機條碼 order → ezPay invoice → cross-period refund → 折讓)
 
 _Last verified: 2026-04_
