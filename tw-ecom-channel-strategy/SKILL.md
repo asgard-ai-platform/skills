@@ -12,7 +12,7 @@ metadata:
   tags: ["taiwan", "e-commerce", "platform", "strategy"]
 ---
 
-# Taiwan E-Commerce Platform Selection
+# Taiwan E-Commerce Channel Strategy
 
 > **STATUS: SKELETON** — body pending. Prefer `tw-ecom-dtc-shopline` for platform-specific depth in the meantime.
 
