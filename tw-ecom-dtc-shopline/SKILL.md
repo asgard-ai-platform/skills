@@ -122,6 +122,15 @@ Common multi-tool flows. For each, use the tool names below; see `examples/sampl
 
 **Never filter orders on `status` or `created_from` alone.** Online orders use `confirmed`, POS uses `completed`, and the store identity lives on `order.channel.created_by_channel_name` — not on `created_from` (`"shop"` / `"pos"`). Any order query that hard-codes one status or keys off `created_from` will silently drop POS revenue, misattribute store sales, or both. Always pass both statuses (or omit the filter) and always carry the channel name forward in downstream records.
 
+### Rationalization Table
+
+| "但是…" | 為什麼錯 |
+|---|---|
+| 我只需要線上訂單，`status=confirmed` 就夠了 | POS 訂單用 `completed`，hard-code `confirmed` 會靜默丟失所有實體門市營收 |
+| `created_from` 欄位明確標示 `"shop"` vs `"pos"`，用它來分類就好 | `created_from` 不是通路身份的權威來源；門市名稱只在 `order.channel.created_by_channel_name` 中，跨店分析時用 `created_from` 會錯誤合併所有實體店 |
+| 只拿 `confirmed` 是效能最佳化，不是資料遺失 | 範圍縮小不等於最佳化；用日期區間分頁才是正確的效能手段，不是靠省略 POS 訂單 |
+| 這個報表只給線上部門，POS 不在範圍內 | 商業邏輯範圍不等於查詢範圍；即使報表只看線上，下游 ERP 或發票系統仍可能吃到這份 query 結果 |
+
 ## Output Format
 
 When completing a Shopline task, produce this structure:

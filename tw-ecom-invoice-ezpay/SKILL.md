@@ -116,6 +116,15 @@ Three flows. For each, the exact `mcp-ezpay-einvoice` tool is named. See `refere
 
 **MOF is the source of truth; ezPay state can lag.** Never close the books, never file 401 (營業稅), and never tell the customer "invoice issued" based solely on an ezPay `SUCCESS` response or a `query_invoice` hit. ezPay is a batching 加值中心 — its local record can be ahead of, behind, or silently out-of-sync with the 財政部電子發票整合服務平台. Run daily reconciliation against the MOF platform's upload status for every invoice issued in the prior 48 hours. Any ezPay record without a confirmed MOF upload is pending, not issued. Two failure modes this prevents: (1) 營業稅 filing with phantom invoices that MOF never received (audit finding, fine); (2) customer-facing claims of "invoice issued" when the carrier/lottery record does not exist on MOF (consumer complaint, brand damage). When in doubt, MOF wins.
 
+### Rationalization Table
+
+| "但是…" | 為什麼錯 |
+|---|---|
+| `issue_invoice` 回傳 `SUCCESS`，發票一定開出去了 | `SUCCESS` 只代表 ezPay 本地接受請求；上傳財政部是非同步批次，可能延遲數小時或靜默失敗 |
+| `query_invoice` 查得到這張發票，代表 MOF 也有 | `query_invoice` 查的是 ezPay 本地快取，不是財政部電子發票整合服務平台 |
+| 客戶手機條碼已經收到通知，所以發票在 MOF 上了 | 載具通知由 ezPay 發送，與 MOF 上傳是不同的非同步流程，兩者可不同步 |
+| 每張都對帳太耗效能，ezPay 不太會出錯 | 出錯頻率低不等於零；稅務申報錯誤的代價（罰款、重審）遠高於每日對帳的成本 |
+
 ## Output Format
 
 When completing an ezPay invoice task, produce this structure:

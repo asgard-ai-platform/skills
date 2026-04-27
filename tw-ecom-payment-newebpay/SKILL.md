@@ -109,6 +109,15 @@ Three flows. For each, the exact `mcp-newebpay` tool is named. See `references/i
 
 **NotifyURL is the source of truth, not ReturnURL.** Never transition an order to "paid" — and never trigger downstream effects like e-invoice issuance, fulfillment, or subscription activation — based on ReturnURL parameters or the browser redirect. Two specific failure modes this prevents: (1) double-fulfillment when the customer closes the browser early and retries, arriving on ReturnURL twice; (2) ghost-open orders when NotifyURL fires but the browser never reaches ReturnURL (airplane mode, network drop). If NotifyURL has not been received and verified server-side, the order is open — regardless of what the ReturnURL page says. When in doubt, call `query_trade` to re-confirm; treat that server response as equivalent to a NotifyURL retry.
 
+### Rationalization Table
+
+| "但是…" | 為什麼錯 |
+|---|---|
+| 客戶已經在感謝頁了，付款應該成功了 | ReturnURL 可以被重新整理重放、也可以在付款失敗後仍然跳轉（NewebPay 某些錯誤路徑仍會跳回 ReturnURL）|
+| NotifyURL 和 ReturnURL 幾乎同時到，先用 ReturnURL 更新再等 NotifyURL 確認就好 | 非同步順序無法保證；高流量期間兩者可差數分鐘，先更新會產生競態條件導致雙重履行 |
+| 我需要立刻給客戶看訂單確認，等 NotifyURL 太慢 | ReturnURL 完全可以用於顯示 UI（「處理中，請稍候」），訂單狀態變更必須等 NotifyURL；這兩件事不衝突 |
+| 我們的 NotifyURL 偶爾收不到，所以 ReturnURL 是備援 | 備援邏輯應是「若 N 分鐘內未收到 NotifyURL，呼叫 `query_trade` 主動查詢」，而非信任 ReturnURL |
+
 ## Output Format
 
 When completing a NewebPay task, produce this structure:
