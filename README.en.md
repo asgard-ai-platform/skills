@@ -515,6 +515,16 @@ See [`CLAUDE.md`](CLAUDE.md) for full design rules and quality standards.
 - [`asgard-ai-platform/mcp-*`](https://github.com/orgs/asgard-ai-platform/repositories?q=mcp-) — MCP servers (data ingredients)
 - Plugin bundles (forthcoming) — Curated combinations of skills + MCPs for specific personas
 
+## Domain Navigation
+
+Curated skill indexes for specific workflows live in [`docs/domains/`](docs/domains/):
+
+- [`tw-ecommerce.md`](docs/domains/tw-ecommerce.md) — Taiwan e-commerce (platform, payment, logistics, invoice, compliance, operations, analytics)
+
+## Contributing
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). Before submitting a new skill, read [`CLAUDE.md`](CLAUDE.md) for directory layout and quality standards.
+
 ## License
 
 MIT License. See [LICENSE](LICENSE).
