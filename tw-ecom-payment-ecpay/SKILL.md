@@ -1,6 +1,6 @@
 ---
 name: "tw-ecom-payment-ecpay"
-description: "Integrate 綠界 (ECPay) for Taiwan e-commerce — credit card, ATM, CVS 代碼, 超商取貨付款, and CheckMacValue signature. Use when ECPay is chosen as PSP, setting up logistics-payment combined flows (超取+COD), or comparing ECPay vs NewebPay. Do NOT use for non-ECPay providers. STATUS: SKELETON — body pending."
+description: "Integrate 綠界 (ECPay) for Taiwan e-commerce — credit card, ATM, CVS 代碼, 超商取貨付款, and CheckMacValue signature. Use when ECPay is the chosen PSP, setting up logistics-payment combined flows (超取+COD), computing or verifying CheckMacValue, or handling ECPay callbacks. Do NOT use for gateway selection or comparison (see tw-payment-integration). Do NOT use for non-ECPay providers. STATUS: SKELETON — body pending."
 metadata:
   category: "WP-05 台灣創業"
   domain: "ecommerce-tw"
