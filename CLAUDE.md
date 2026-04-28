@@ -22,7 +22,7 @@ Every skill is a directory at the repo root, named `{category}-{slug}`, containi
 
 ## Naming Convention
 
-Skills use **topic-based prefixes** (no `skill-` prefix). The 21 categories:
+Skills use **topic-based prefixes** (no `skill-` prefix). The 22 categories:
 
 ```
 grad-      Graduate-level theoretical models
@@ -40,6 +40,7 @@ cs-        Customer service
 data-      Data analytics
 mfg-       Manufacturing
 mkt-       Digital marketing
+med-       Mass communication / journalism
 soc-       Social science
 stat-      Statistical methodology
 tech-      General tech (API, prompt eng, MCP)

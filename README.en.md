@@ -1,6 +1,6 @@
 # Asgard Skills
 
-Open-source library of **263 coding agent skills** across 21 topic-based categories. Each skill is a self-contained Markdown file (`SKILL.md`) following the [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) standard, with optional Python scripts for deterministic calculations.
+Open-source library of **264 coding agent skills** across 22 topic-based categories. Each skill is a self-contained Markdown file (`SKILL.md`) following the [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) standard, with optional Python scripts for deterministic calculations.
 
 [繁體中文](README.md)
 
@@ -22,7 +22,7 @@ A skill encodes **methodology + judgment + gotchas** for one well-defined task �
 └── ...
 ```
 
-## Categories (21 prefixes, 263 skills)
+## Categories (22 prefixes, 264 skills)
 
 | Prefix | Count | Topic |
 |--------|------:|-------|
@@ -47,10 +47,12 @@ A skill encodes **methodology + judgment + gotchas** for one well-defined task �
 | `ux-` | 4 | Design / UX methodology |
 | `fin-` | 2 | Finance practical (modeling, earnings) |
 | `xborder-` | 2 | Cross-border commerce |
+| `med-` | 1 | Mass communication / journalism |
 
 ## Skill Catalog
 
 Every skill below is a directory at the repo root. Click the name to open its `SKILL.md`. Descriptions are condensed from each skill's frontmatter (WHAT + WHEN).
+
 
 <details>
 <summary><b><code>grad-</code></b> — Graduate-level theoretical models (87)</summary>
@@ -441,6 +443,13 @@ Every skill below is a directory at the repo root. Click the name to open its `S
 
 </details>
 
+<details>
+<summary><b><code>med-</code></b> — Mass communication / journalism (1)</summary>
+
+- [`med-news-reporter`](med-news-reporter/SKILL.md) — Turn user-supplied raw material (transcripts, event notes, data, direct quotes) into a publishable news piece across four types — breaking news, investigative report, feature, and op-ed — with mandatory media-ethics and media-literacy self-checks.
+
+</details>
+
 ## Skill Structure
 
 Every `SKILL.md` follows a consistent template:
@@ -501,7 +510,7 @@ See [`CLAUDE.md`](CLAUDE.md) for full design rules and quality standards.
 | Phase | Status |
 |-------|:-:|
 | Phase 1: Generate 263 skills across 4 sections | ✅ |
-| Phase 1.5: Auto lint (frontmatter, length, IRON LAW) | ✅ 263/263 |
+| Phase 1.5: Auto lint (frontmatter, length, IRON LAW) | ✅ 264/264 |
 | Phase 1.7: With/without skill eval (4 samples) | ✅ 4/4 with_skill wins |
 | Phase 2-3: Quality audit (28 sampled) | ✅ 14 PASS / 13 MINOR / 1 MAJOR |
 | Phase 3.5: P0 + P1 remediation | ✅ |

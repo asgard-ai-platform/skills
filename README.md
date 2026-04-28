@@ -1,6 +1,6 @@
 # Asgard Skills
 
-開源的 **263 個 coding agent skills** 知識庫，分成 21 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
+開源的 **264 個 coding agent skills** 知識庫，分成 22 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
 
 [English](README.en.md)
 
@@ -22,7 +22,7 @@
 └── ...
 ```
 
-## 類別（21 個前綴，263 個 skills）
+## 類別（22 個前綴，264 個 skills）
 
 | 前綴 | 數量 | 主題 |
 |--------|------:|-------|
@@ -47,10 +47,11 @@
 | `ux-` | 4 | 設計 / UX 方法論 |
 | `fin-` | 2 | 金融實務（modeling、earnings） |
 | `xborder-` | 2 | 跨境電商 |
+| `med-` | 1 | 大眾傳播 / 新聞寫作 |
 
 ## Skill 目錄
 
-以下列出全部 263 個 skills，依前綴分組。點擊名稱開啟其 `SKILL.md`。簡介為各 skill frontmatter `description` 的中文摘要（WHAT + WHEN）。
+以下列出全部 264 個 skills，依前綴分組。點擊名稱開啟其 `SKILL.md`。簡介為各 skill frontmatter `description` 的中文摘要（WHAT + WHEN）。
 
 <details>
 <summary><b><code>grad-</code></b>　研究所級理論模型（87）</summary>
@@ -441,6 +442,13 @@
 
 </details>
 
+<details>
+<summary><b><code>med-</code></b>　大眾傳播 / 新聞寫作（1）</summary>
+
+- [`med-news-reporter`](med-news-reporter/SKILL.md) — 將使用者提供的原始素材（逐字稿、事件紀錄、數據、直接引言）寫成可發表的新聞稿件，涵蓋即時新聞、深度調查、特稿與評論四種類型，並強制執行媒體倫理與識讀自我檢核。
+
+</details>
+
 ## Skill 結構
 
 每份 `SKILL.md` 遵循一致的模板：
@@ -501,7 +509,7 @@ python biz-cac-ltv/scripts/cac_ltv.py --marketing-cost 100000 --new-customers 50
 | 階段 | 狀態 |
 |-------|:-:|
 | Phase 1：四個 section 共 263 個 skills 生成 | ✅ |
-| Phase 1.5：自動 lint（frontmatter、長度、IRON LAW） | ✅ 263/263 |
+| Phase 1.5：自動 lint（frontmatter、長度、IRON LAW） | ✅ 264/264 |
 | Phase 1.7：with/without skill 評估（4 份樣本） | ✅ 4/4 with_skill 勝 |
 | Phase 2-3：品質審計（抽樣 28 份） | ✅ 14 PASS / 13 MINOR / 1 MAJOR |
 | Phase 3.5：P0 + P1 修補 | ✅ |
