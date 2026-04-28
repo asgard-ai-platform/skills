@@ -1,6 +1,6 @@
 # Asgard Skills
 
-Open-source library of **264 coding agent skills** across 22 topic-based categories. Each skill is a self-contained Markdown file (`SKILL.md`) following the [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) standard, with optional Python scripts for deterministic calculations.
+Open-source library of **293 coding agent skills** across 22 topic-based categories. Each skill is a self-contained Markdown file (`SKILL.md`) following the [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) standard, with optional Python scripts for deterministic calculations.
 
 [繁體中文](README.md)
 
@@ -22,7 +22,7 @@ A skill encodes **methodology + judgment + gotchas** for one well-defined task �
 └── ...
 ```
 
-## Categories (22 prefixes, 264 skills)
+## Categories (22 prefixes, 293 skills)
 
 | Prefix | Count | Topic |
 |--------|------:|-------|
@@ -30,7 +30,7 @@ A skill encodes **methodology + judgment + gotchas** for one well-defined task �
 | `algo-` | 62 | Algorithms (PageRank, BM25, ARIMA, EOQ, ...) |
 | `biz-` | 22 | Business school frameworks (SWOT, Porter's Five Forces, DCF, ...) |
 | `hum-` | 9 | Humanities / critical reasoning |
-| `tw-` | 9 | Taiwan-specific knowledge (stock, tax, e-invoice, ...) |
+| `tw-` | 38 | Taiwan-specific knowledge (e-commerce, stock, tax, e-invoice, fintech, ...) |
 | `ecom-` | 7 | E-commerce practical |
 | `econ-` | 6 | Economics fundamentals |
 | `meta-` | 6 | Interdisciplinary mental models |
@@ -259,7 +259,7 @@ Every skill below is a directory at the repo root. Click the name to open its `S
 </details>
 
 <details>
-<summary><b><code>tw-</code></b> — Taiwan-specific knowledge (9)</summary>
+<summary><b><code>tw-</code></b> — Taiwan-specific knowledge (38)</summary>
 
 - [`tw-einvoice-guide`](tw-einvoice-guide/SKILL.md) — Implement Taiwan's e-invoice (電子發票) system including platform integration, B2B vs B2C formats, carrier consolidation, and tax filing reconciliation.
 - [`tw-fintech-compliance`](tw-fintech-compliance/SKILL.md) — Navigate Taiwan fintech regulations including FSC oversight, electronic payment laws, VASP rules, AML/KYC requirements, and the regulatory sandbox.
@@ -270,6 +270,35 @@ Every skill below is a directory at the repo root. Click the name to open its `S
 - [`tw-startup-legal`](tw-startup-legal/SKILL.md) — Guide Taiwan company registration and legal setup including business entity selection, commercial registration, company registration, and tax ID application.
 - [`tw-stock-analysis`](tw-stock-analysis/SKILL.md) — Analyze Taiwan-listed stocks using fundamental analysis including EPS, P/E ratio, dividend yield, and financial statement review.
 - [`tw-tax-basics`](tw-tax-basics/SKILL.md) — Navigate Taiwan's tax system including corporate income tax (營所稅), business tax (營業稅), personal income tax, withholding obligations, and startup tax incentives.
+- [`tw-ecom-analytics-benchmarks`](tw-ecom-analytics-benchmarks/SKILL.md) — Taiwan e-commerce benchmark ranges for CVR, ROAS, LTV, AOV, and repeat rate — for diagnosing performance gaps.
+- [`tw-ecom-analytics-ga4`](tw-ecom-analytics-ga4/SKILL.md) — Implement GA4 Enhanced Ecommerce tracking for Taiwan e-commerce stores including event setup and conversion configuration.
+- [`tw-ecom-channel-strategy`](tw-ecom-channel-strategy/SKILL.md) — Choose the right e-commerce platform mix for a Taiwan business — DTC (91APP, Shopline, Shopify) vs marketplace (momo, Shopee).
+- [`tw-ecom-compliance-consumer`](tw-ecom-compliance-consumer/SKILL.md) — Comply with Taiwan consumer protection law (消保法) — 7-day 鑑賞期 scope, exceptions, and return/refund workflows.
+- [`tw-ecom-compliance-cross-border`](tw-ecom-compliance-cross-border/SKILL.md) — Tax and regulatory compliance for cross-border e-commerce involving Taiwan — import duties, tariffs, and B2C filing rules.
+- [`tw-ecom-compliance-pdpa`](tw-ecom-compliance-pdpa/SKILL.md) — E-commerce-specific PDPA (個資法) compliance — member consent at signup, cookie consent, and data protection practices.
+- [`tw-ecom-compliance-product`](tw-ecom-compliance-product/SKILL.md) — Comply with Taiwan product regulations covering food (食安法), pharmaceuticals (藥事法), and cosmetics — registration and labeling requirements.
+- [`tw-ecom-dtc-91app`](tw-ecom-dtc-91app/SKILL.md) — Integrate and operate 91APP in Taiwan e-commerce context via mcp-91app — listings, member system, and O2O features.
+- [`tw-ecom-dtc-shopify-localization`](tw-ecom-dtc-shopify-localization/SKILL.md) — Run Shopify stores for Taiwan market — NT$ pricing, Traditional Chinese localization, and payment gateway integration.
+- [`tw-ecom-dtc-shopline`](tw-ecom-dtc-shopline/SKILL.md) — Integrate and operate Shopline via mcp-shopline — product management, orders, and promotion setup.
+- [`tw-ecom-invoice-carrier`](tw-ecom-invoice-carrier/SKILL.md) — Handle Taiwan e-invoice carriers — 手機條碼, 自然人憑證, member carriers, and 捐贈碼 donation flows.
+- [`tw-ecom-invoice-ezpay`](tw-ecom-invoice-ezpay/SKILL.md) — Issue and manage Taiwan e-invoices via ezPay (加值服務中心) through mcp-ezpay-einvoice.
+- [`tw-ecom-invoice-universalec`](tw-ecom-invoice-universalec/SKILL.md) — Issue Taiwan e-invoices via UniversalEC (汎宇電商) using mcp-universalec-e-invoice.
+- [`tw-ecom-invoice-void`](tw-ecom-invoice-void/SKILL.md) — Void Taiwan e-invoices within the same bimonthly window, or issue allowances (折讓單).
+- [`tw-ecom-logistics-cold-chain`](tw-ecom-logistics-cold-chain/SKILL.md) — Ship refrigerated / frozen products in Taiwan — 宅配通 冷藏 / 黑貓宅急便 低溫, packaging, and regulatory requirements.
+- [`tw-ecom-logistics-cross-border`](tw-ecom-logistics-cross-border/SKILL.md) — Select carriers and manage cross-border shipping operations for Taiwan export e-commerce.
+- [`tw-ecom-logistics-cvs`](tw-ecom-logistics-cvs/SKILL.md) — Ship via Taiwan convenience store pickup (7-11 賣貨便 / 全家 / 萊爾富 / OK) — store selection and cash-on-delivery setup.
+- [`tw-ecom-logistics-home`](tw-ecom-logistics-home/SKILL.md) — Ship via Taiwan home delivery carriers — 黑貓宅急便, 宅配通, 新竹物流, 郵局 — pricing rules and delivery SLA.
+- [`tw-ecom-marketplace-momo`](tw-ecom-marketplace-momo/SKILL.md) — Operate on momo購物網 — listing approval workflow, price-matching rules, and advertising.
+- [`tw-ecom-marketplace-shopee`](tw-ecom-marketplace-shopee/SKILL.md) — Operate a Shopee Taiwan store — listings, promotions, flash sales, and SIP (Shopee Preferred) qualification.
+- [`tw-ecom-operations-customer-service`](tw-ecom-operations-customer-service/SKILL.md) — Taiwan e-commerce customer service — LINE / Messenger / email / phone channel mix and response SOPs.
+- [`tw-ecom-operations-line-oa`](tw-ecom-operations-line-oa/SKILL.md) — Run CRM and member retention via LINE Official Account — broadcast cost model, segmentation, and Messaging API.
+- [`tw-ecom-operations-pricing`](tw-ecom-operations-pricing/SKILL.md) — Set prices for Taiwan e-commerce — 含稅 vs 未稅 presentation, price-ending conventions, and marketplace price-match strategy.
+- [`tw-ecom-operations-promotion`](tw-ecom-operations-promotion/SKILL.md) — Run Taiwan e-commerce promotional campaigns — 雙11, 618, 年中慶, 雙12, 週年慶, 母親節 — discount design and ROI calculation.
+- [`tw-ecom-payment-dispute`](tw-ecom-payment-dispute/SKILL.md) — Handle Taiwan e-commerce payment disputes — credit card chargebacks, CVS cash-on-delivery disputes, and appeal workflows.
+- [`tw-ecom-payment-ecpay`](tw-ecom-payment-ecpay/SKILL.md) — Integrate 綠界 (ECPay) for Taiwan e-commerce — credit card, ATM, CVS code, and cash-on-delivery.
+- [`tw-ecom-payment-jkopay`](tw-ecom-payment-jkopay/SKILL.md) — Integrate 街口支付 (JKOPay) for Taiwan e-commerce — web/app flow and JKO 幣 rewards.
+- [`tw-ecom-payment-newebpay`](tw-ecom-payment-newebpay/SKILL.md) — Integrate NewebPay (藍新金流) for Taiwan e-commerce via mcp-newebpay — multi-method payment setup.
+- [`tw-ecom-payment-tappay`](tw-ecom-payment-tappay/SKILL.md) — Integrate TapPay for Taiwan e-commerce — Web/iOS/Android SDK, 3DS 2.0, and recurring billing.
 
 </details>
 
@@ -510,7 +539,7 @@ See [`CLAUDE.md`](CLAUDE.md) for full design rules and quality standards.
 | Phase | Status |
 |-------|:-:|
 | Phase 1: Generate 263 skills across 4 sections | ✅ |
-| Phase 1.5: Auto lint (frontmatter, length, IRON LAW) | ✅ 264/264 |
+| Phase 1.5: Auto lint (frontmatter, length, IRON LAW) | ✅ 293/293 |
 | Phase 1.7: With/without skill eval (4 samples) | ✅ 4/4 with_skill wins |
 | Phase 2-3: Quality audit (28 sampled) | ✅ 14 PASS / 13 MINOR / 1 MAJOR |
 | Phase 3.5: P0 + P1 remediation | ✅ |

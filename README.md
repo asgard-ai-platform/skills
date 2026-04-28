@@ -1,6 +1,6 @@
 # Asgard Skills
 
-開源的 **264 個 coding agent skills** 知識庫，分成 22 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
+開源的 **293 個 coding agent skills** 知識庫，分成 22 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
 
 [English](README.en.md)
 
@@ -22,7 +22,7 @@
 └── ...
 ```
 
-## 類別（22 個前綴，264 個 skills）
+## 類別（22 個前綴，293 個 skills）
 
 | 前綴 | 數量 | 主題 |
 |--------|------:|-------|
@@ -30,7 +30,7 @@
 | `algo-` | 62 | 演算法（PageRank、BM25、ARIMA、EOQ…） |
 | `biz-` | 22 | 商學院框架（SWOT、Porter 五力、DCF…） |
 | `hum-` | 9 | 人文 / 批判性推理 |
-| `tw-` | 9 | 台灣在地知識（股市、稅務、電子發票…） |
+| `tw-` | 38 | 台灣在地知識（電商、股市、稅務、電子發票、金融科技…） |
 | `ecom-` | 7 | 電商實務 |
 | `econ-` | 6 | 經濟學基礎 |
 | `meta-` | 6 | 跨領域思維模型 |
@@ -51,7 +51,7 @@
 
 ## Skill 目錄
 
-以下列出全部 264 個 skills，依前綴分組。點擊名稱開啟其 `SKILL.md`。簡介為各 skill frontmatter `description` 的中文摘要（WHAT + WHEN）。
+以下列出全部 293 個 skills，依前綴分組。點擊名稱開啟其 `SKILL.md`。簡介為各 skill frontmatter `description` 的中文摘要（WHAT + WHEN）。
 
 <details>
 <summary><b><code>grad-</code></b>　研究所級理論模型（87）</summary>
@@ -258,7 +258,7 @@
 </details>
 
 <details>
-<summary><b><code>tw-</code></b>　台灣在地知識（9）</summary>
+<summary><b><code>tw-</code></b>　台灣在地知識（38）</summary>
 
 - [`tw-einvoice-guide`](tw-einvoice-guide/SKILL.md) — 導入台灣電子發票系統，含平台介接、B2B/B2C 格式、載具歸戶與報稅對帳。
 - [`tw-fintech-compliance`](tw-fintech-compliance/SKILL.md) — 處理台灣金融科技法規，含金管會監理、電子支付法、VASP、AML/KYC 與監理沙盒。
@@ -269,6 +269,35 @@
 - [`tw-startup-legal`](tw-startup-legal/SKILL.md) — 指引台灣公司登記與法務設立，含商業組織選擇、商業／公司登記與稅籍申請。
 - [`tw-stock-analysis`](tw-stock-analysis/SKILL.md) — 用基本面分析台股，含 EPS、本益比、殖利率與財報檢視。
 - [`tw-tax-basics`](tw-tax-basics/SKILL.md) — 處理台灣稅制，含營所稅、營業稅、綜所稅、扣繳義務與新創租稅優惠。
+- [`tw-ecom-analytics-benchmarks`](tw-ecom-analytics-benchmarks/SKILL.md) — 台灣電商 KPI 基準值（CVR、ROAS、LTV、AOV、回購率）對標與診斷。
+- [`tw-ecom-analytics-ga4`](tw-ecom-analytics-ga4/SKILL.md) — 為台灣電商實作 GA4 電商追蹤，含 Enhanced Ecommerce 事件與轉換設定。
+- [`tw-ecom-channel-strategy`](tw-ecom-channel-strategy/SKILL.md) — 選擇台灣電商平台組合，含 DTC（91APP、Shopline、Shopify）與市集（momo、Shopee）策略。
+- [`tw-ecom-compliance-consumer`](tw-ecom-compliance-consumer/SKILL.md) — 台灣消保法合規，含七天鑑賞期範圍、例外與退換貨流程。
+- [`tw-ecom-compliance-cross-border`](tw-ecom-compliance-cross-border/SKILL.md) — 涉台跨境電商的稅務與法規合規，含進口稅、關稅與 B2C 申報規則。
+- [`tw-ecom-compliance-pdpa`](tw-ecom-compliance-pdpa/SKILL.md) — 台灣電商個資法（PDPA）合規，含會員同意、Cookie 政策與資料保護。
+- [`tw-ecom-compliance-product`](tw-ecom-compliance-product/SKILL.md) — 台灣商品法規合規，涵蓋食品（食安法）、藥品（藥事法）、化妝品的查驗登記與標示規定。
+- [`tw-ecom-dtc-91app`](tw-ecom-dtc-91app/SKILL.md) — 透過 mcp-91app 整合並操作 91APP，含商品上架、會員系統與 O2O 功能。
+- [`tw-ecom-dtc-shopify-localization`](tw-ecom-dtc-shopify-localization/SKILL.md) — 為台灣市場優化 Shopify 商店，含 NT$ 定價、繁體中文在地化與金流介接。
+- [`tw-ecom-dtc-shopline`](tw-ecom-dtc-shopline/SKILL.md) — 透過 mcp-shopline 整合並操作 Shopline，含商品管理、訂單與促銷設定。
+- [`tw-ecom-invoice-carrier`](tw-ecom-invoice-carrier/SKILL.md) — 處理台灣電子發票載具（手機條碼、自然人憑證、會員載具）與捐贈碼流程。
+- [`tw-ecom-invoice-ezpay`](tw-ecom-invoice-ezpay/SKILL.md) — 透過 mcp-ezpay-einvoice 介接 ezPay（加值服務中心）開立與管理台灣電子發票。
+- [`tw-ecom-invoice-universalec`](tw-ecom-invoice-universalec/SKILL.md) — 透過 mcp-universalec-e-invoice 介接汎宇電商開立台灣電子發票。
+- [`tw-ecom-invoice-void`](tw-ecom-invoice-void/SKILL.md) — 在同期內作廢台灣電子發票，或開立折讓單。
+- [`tw-ecom-logistics-cold-chain`](tw-ecom-logistics-cold-chain/SKILL.md) — 台灣低溫宅配（宅配通冷藏 / 黑貓低溫），含冷鏈包裝、溫層選擇與法規要求。
+- [`tw-ecom-logistics-cross-border`](tw-ecom-logistics-cross-border/SKILL.md) — 台灣跨境出口物流，含承運商選擇與跨境出貨作業管理。
+- [`tw-ecom-logistics-cvs`](tw-ecom-logistics-cvs/SKILL.md) — 透過台灣超商取貨（7-11 賣貨便 / 全家 / 萊爾富 / OK）出貨，含門市選擇與取貨付款設定。
+- [`tw-ecom-logistics-home`](tw-ecom-logistics-home/SKILL.md) — 介接台灣宅配業者（黑貓宅急便、宅配通、新竹物流、郵局），含計費規則與時效設定。
+- [`tw-ecom-marketplace-momo`](tw-ecom-marketplace-momo/SKILL.md) — 在 momo 購物網上架與操作，含商品審核流程、比價規則與廣告投放。
+- [`tw-ecom-marketplace-shopee`](tw-ecom-marketplace-shopee/SKILL.md) — 經營蝦皮台灣賣場，含商品上架、促銷、閃購與 SIP（蝦皮優選）資格。
+- [`tw-ecom-operations-customer-service`](tw-ecom-operations-customer-service/SKILL.md) — 台灣電商客服，含 LINE / Messenger / Email / 電話多管道整合與回覆 SOP。
+- [`tw-ecom-operations-line-oa`](tw-ecom-operations-line-oa/SKILL.md) — 透過 LINE 官方帳號經營 CRM 與會員留存，含廣播成本、分眾推播與 Messaging API。
+- [`tw-ecom-operations-pricing`](tw-ecom-operations-pricing/SKILL.md) — 台灣電商定價，含含稅 / 未稅呈現、尾數慣例與市集比價策略。
+- [`tw-ecom-operations-promotion`](tw-ecom-operations-promotion/SKILL.md) — 執行台灣電商促銷活動（雙11、618、年中慶、雙12、週年慶、母親節），含折扣設計與 ROI 計算。
+- [`tw-ecom-payment-dispute`](tw-ecom-payment-dispute/SKILL.md) — 處理台灣電商金流爭議，含信用卡退款、超商取貨付款糾紛與申訴流程。
+- [`tw-ecom-payment-ecpay`](tw-ecom-payment-ecpay/SKILL.md) — 介接綠界（ECPay）金流，含信用卡、ATM、超商代碼與超商取貨付款。
+- [`tw-ecom-payment-jkopay`](tw-ecom-payment-jkopay/SKILL.md) — 介接街口支付（JKOPay）電商收款，含 Web / App 流程與街口幣回饋機制。
+- [`tw-ecom-payment-newebpay`](tw-ecom-payment-newebpay/SKILL.md) — 透過 mcp-newebpay 介接藍新金流（NewebPay），含多元支付方式設定。
+- [`tw-ecom-payment-tappay`](tw-ecom-payment-tappay/SKILL.md) — 介接 TapPay，含 Web / iOS / Android SDK、3DS 2.0 與定期定額扣款。
 
 </details>
 
@@ -509,7 +538,7 @@ python biz-cac-ltv/scripts/cac_ltv.py --marketing-cost 100000 --new-customers 50
 | 階段 | 狀態 |
 |-------|:-:|
 | Phase 1：四個 section 共 263 個 skills 生成 | ✅ |
-| Phase 1.5：自動 lint（frontmatter、長度、IRON LAW） | ✅ 264/264 |
+| Phase 1.5：自動 lint（frontmatter、長度、IRON LAW） | ✅ 293/293 |
 | Phase 1.7：with/without skill 評估（4 份樣本） | ✅ 4/4 with_skill 勝 |
 | Phase 2-3：品質審計（抽樣 28 份） | ✅ 14 PASS / 13 MINOR / 1 MAJOR |
 | Phase 3.5：P0 + P1 修補 | ✅ |
