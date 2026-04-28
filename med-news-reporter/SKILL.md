@@ -1,6 +1,6 @@
 ---
 name: "med-news-reporter"
-description: "Write professional, ethically-compliant news content — breaking news, investigative reports, features, and op-eds — from user-supplied material (transcripts, data, event notes, quotes). Use this skill whenever the user asks to turn raw material into a news story, polish a draft into a news article, write a column, produce a long-form feature, draft an op-ed, or rewrite a PR release as a news piece. Covers the full newsroom workflow: type selection, material audit, fact-checking, balance, media literacy self-check, and media ethics red lines. Also triggers on verbs like 'write up', 'turn into a news article', 'organize into a feature', 'polish into a report', 'draft a commentary', even when the user does not say the word 'news'. Do NOT use for press releases (use pr-press-release) or marketing copy (use mkt-*)."
+description: "Use when the user wants to turn raw material — transcripts, interviews, event notes, data, direct quotes — into a publishable news piece (breaking news, investigative report, feature, or op-ed). Activates the full newsroom workflow: type selection, material audit, fact-checking, balance, media-ethics red lines, and media-literacy self-check. Also triggers on phrases like 'write up this transcript', 'turn into a news article', 'organize into a feature', 'polish into a report', 'draft an op-ed', '幫我寫成新聞稿', '潤成一篇報導', '整理成專訪', '寫一篇關於 X 的評論', '把逐字稿做成 feature' — even when the user does not say the word 'news'. Do NOT use for press releases (use pr-press-release) or marketing copy (use mkt-*)."
 metadata:
   category: "WP-50 大眾傳播"
   tags: ["news", "journalism", "reporting", "media-ethics", "media-literacy"]
@@ -26,6 +26,16 @@ radioactive. When in doubt, ask the user before writing, not after.
 ```
 
 Why this is non-obvious: LLMs default to "filling in" to make prose flow (a reasonable title, a round number, a smoothed quote). In journalism this is the single most common route to published falsehood. The Iron Law suppresses that default.
+
+**Rationalization Table — these justifications DO NOT override the Iron Law:**
+
+| Claude might think... | Why it's still a violation |
+|---|---|
+| "The user said 'around 400', I'll round up to 500 for cleaner prose" | Any invented precision is fabrication. Use the supplied figure or [待查證]. |
+| "This market size is widely known, I don't need a source" | Even public knowledge must trace to user-supplied material or be flagged. |
+| "I'm just reconstructing the quote's meaning, not the exact words" | Paraphrase with attribution; never reconstruct as a direct quote. |
+| "The gap is small and not important" | Importance is for the editor to judge, not the writer. Placeholder stays. |
+| "Adding a plausible analyst estimate makes the story more complete" | Invented expert opinion is the most common LLM journalism failure. No. |
 
 ---
 
@@ -80,6 +90,8 @@ When source strength or verification method is unclear, consult `references/fact
 
 ### Step 3: Apply the Type Template
 
+> **Iron Law check:** only use names, numbers, and quotes confirmed in Step 2's material audit. Any missing fact → `[待查證: description]`, not fill-in.
+
 Write per the reference template loaded in Step 1. Cross-type principles:
 
 - **Lead**: 30–50 chars; breaking news uses inverted pyramid, features may use scene / character / question leads.
@@ -99,7 +111,7 @@ Writing-style defaults:
 
 ### Step 4: Media Ethics Check (required)
 
-Walk through `references/media_ethics.md`:
+**YOU MUST complete every item below in `references/media_ethics.md` before producing the output.** Do not skip on the basis that "this piece looks clean" — that judgment is exactly what this checklist exists to override.
 
 1. Defamation risk? (unverified negative claims about a named real person)
 2. Privacy breach? (disclosing private info without consent)
@@ -112,7 +124,7 @@ Walk through `references/media_ethics.md`:
 
 ### Step 5: Media Literacy Self-Check (required)
 
-Walk through `references/media_literacy.md`:
+**YOU MUST complete every item below in `references/media_literacy.md` before producing the output.** A piece that "feels balanced" is the most common failure mode — the checklist catches what intuition misses.
 
 1. Does the lead overstate (clickbait)? Does the headline match the body?
 2. Are facts and opinions mixed? Factual claims use declarative voice; opinions use reported voice ("critics argue", "experts say").
