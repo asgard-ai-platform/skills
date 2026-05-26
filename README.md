@@ -1,6 +1,6 @@
 # Asgard Skills
 
-開源的 **293 個 coding agent skills** 知識庫，分成 22 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
+開源的 **301 個 coding agent skills** 知識庫，分成 22 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
 
 [English](README.en.md)
 
@@ -22,7 +22,7 @@
 └── ...
 ```
 
-## 類別（22 個前綴，293 個 skills）
+## 類別（22 個前綴，301 個 skills）
 
 | 前綴 | 數量 | 主題 |
 |--------|------:|-------|
