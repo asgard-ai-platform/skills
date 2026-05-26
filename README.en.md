@@ -1,6 +1,6 @@
 # Asgard Skills
 
-Open-source library of **293 coding agent skills** across 22 topic-based categories. Each skill is a self-contained Markdown file (`SKILL.md`) following the [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) standard, with optional Python scripts for deterministic calculations.
+Open-source library of **301 coding agent skills** across 22 topic-based categories. Each skill is a self-contained Markdown file (`SKILL.md`) following the [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) standard, with optional Python scripts for deterministic calculations.
 
 [繁體中文](README.md)
 
@@ -22,7 +22,7 @@ A skill encodes **methodology + judgment + gotchas** for one well-defined task �
 └── ...
 ```
 
-## Categories (22 prefixes, 293 skills)
+## Categories (22 prefixes, 301 skills)
 
 | Prefix | Count | Topic |
 |--------|------:|-------|
@@ -47,7 +47,7 @@ A skill encodes **methodology + judgment + gotchas** for one well-defined task �
 | `ux-` | 4 | Design / UX methodology |
 | `fin-` | 2 | Finance practical (modeling, earnings) |
 | `xborder-` | 2 | Cross-border commerce |
-| `med-` | 1 | Mass communication / journalism |
+| `med-` | 9 | Mass communication / journalism |
 
 ## Skill Catalog
 
@@ -473,9 +473,17 @@ Every skill below is a directory at the repo root. Click the name to open its `S
 </details>
 
 <details>
-<summary><b><code>med-</code></b> — Mass communication / journalism (1)</summary>
+<summary><b><code>med-</code></b> — Mass communication / journalism (9)</summary>
 
+- [`med-business`](med-business/SKILL.md) — Turn earnings reports, IPO/M&A announcements, regulatory changes, and industry-trend material into financial news, enforcing financial-figure provenance, analyst-stake disclosure, securities-law risk audit, and number stewardship.
+- [`med-culture`](med-culture/SKILL.md) — Turn exhibitions, performances, artist interviews, cultural policy, and art-market material into culture-and-arts news, with cultural-appropriation audit, indigenous-knowledge protection, source-credibility vetting, and translation/cross-cultural framing discipline.
+- [`med-education`](med-education/SKILL.md) — Turn school policy, research findings, student data, teacher issues, and curriculum reform into education news, enforcing research-methodology discipline, demographic verification, effect-size auditing, and education-law red lines.
+- [`med-entertainment`](med-entertainment/SKILL.md) — Turn film reviews, box-office analysis, streaming reports, festival coverage, and casting news into entertainment journalism, enforcing press-junket disclosure, review-embargo compliance, PR-vs-news separation, and entertainment-law discipline.
+- [`med-health`](med-health/SKILL.md) — Turn clinical research, public-health alerts, drug approvals, epidemiology, and health-policy material into medical and health news, with relative-risk framing, absolute-baseline disclosure, evidence-hierarchy verification, deidentification protocol, and WHO suicide-reporting compliance.
+- [`med-international`](med-international/SKILL.md) — Turn foreign affairs, cross-border conflict, UN/multilateral updates, international development, and geopolitical material into international news, with primary-source verification for distant claims, translation accuracy, conflict-side balance, and source-chain auditing.
 - [`med-news-reporter`](med-news-reporter/SKILL.md) — Turn user-supplied raw material (transcripts, event notes, data, direct quotes) into a publishable news piece across four types — breaking news, investigative report, feature, and op-ed — with mandatory media-ethics and media-literacy self-checks.
+- [`med-political`](med-political/SKILL.md) — Turn elections, legislation, policy, official statements, polling, and political profiles into political news, enforcing stance tagging, poll-reading discipline, defamation/election-law red lines, and frame-neutrality audit.
+- [`med-sports`](med-sports/SKILL.md) — Turn game recaps, athlete profiles, league/rule changes, injury reports, trade announcements, and doping/discipline coverage into sports journalism, with era-adjusted stats, sports-data source vetting, injury-disclosure limits, and sports-betting sensitivity.
 
 </details>
 

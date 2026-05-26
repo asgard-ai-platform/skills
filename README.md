@@ -1,6 +1,6 @@
 # Asgard Skills
 
-開源的 **293 個 coding agent skills** 知識庫，分成 22 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
+開源的 **301 個 coding agent skills** 知識庫，分成 22 個主題類別。每個 skill 都是獨立的 Markdown 檔案（`SKILL.md`），遵循 [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) 規範，部分附帶純 Python 腳本做確定性計算。
 
 [English](README.en.md)
 
@@ -22,7 +22,7 @@
 └── ...
 ```
 
-## 類別（22 個前綴，293 個 skills）
+## 類別（22 個前綴，301 個 skills）
 
 | 前綴 | 數量 | 主題 |
 |--------|------:|-------|
@@ -47,11 +47,11 @@
 | `ux-` | 4 | 設計 / UX 方法論 |
 | `fin-` | 2 | 金融實務（modeling、earnings） |
 | `xborder-` | 2 | 跨境電商 |
-| `med-` | 1 | 大眾傳播 / 新聞寫作 |
+| `med-` | 9 | 大眾傳播 / 新聞寫作 |
 
 ## Skill 目錄
 
-以下列出全部 293 個 skills，依前綴分組。點擊名稱開啟其 `SKILL.md`。簡介為各 skill frontmatter `description` 的中文摘要（WHAT + WHEN）。
+以下列出全部 301 個 skills，依前綴分組。點擊名稱開啟其 `SKILL.md`。簡介為各 skill frontmatter `description` 的中文摘要（WHAT + WHEN）。
 
 <details>
 <summary><b><code>grad-</code></b>　研究所級理論模型（87）</summary>
@@ -472,9 +472,17 @@
 </details>
 
 <details>
-<summary><b><code>med-</code></b>　大眾傳播 / 新聞寫作（1）</summary>
+<summary><b><code>med-</code></b>　大眾傳播 / 新聞寫作（9）</summary>
 
+- [`med-business`](med-business/SKILL.md) — 將財報、IPO/併購、法規變動、產業趨勢等財經素材寫成新聞稿件，強制執行財務數字溯源、分析師利益揭露、證券交易法風險與數字治理紀律。
+- [`med-culture`](med-culture/SKILL.md) — 將展覽、表演、藝術家訪談、文化政策或藝術市場素材寫成文化藝術新聞，涵蓋文化挪用稽核、原民知識保護、來源公信力辨識與翻譯/跨文化框架紀律。
+- [`med-education`](med-education/SKILL.md) — 將校園政策、研究發現、學生數據、師資議題或課綱改革素材寫成教育新聞，涵蓋研究方法論紀律、人口統計查核、效應量稽核與教育法紅線。
+- [`med-entertainment`](med-entertainment/SKILL.md) — 將影評、票房分析、串流報告、影展與選角等娛樂素材寫成新聞稿件，強制執行 press junket 揭露、評論解禁合規、PR-vs-news 區分與娛樂法紀律。
+- [`med-health`](med-health/SKILL.md) — 將臨床研究、公衛警示、藥物核可、流行病學或健康政策素材寫成醫療健康新聞，涵蓋相對風險框架、絕對基線揭露、證據層級查核、去識別化協議與 WHO 自殺報導合規。
+- [`med-international`](med-international/SKILL.md) — 將外交、跨境衝突、聯合國/多邊組織、國際發展或地緣政治素材寫成國際新聞，涵蓋境外消息原始來源查核、翻譯精準度、衝突各方平衡與來源鏈稽核。
 - [`med-news-reporter`](med-news-reporter/SKILL.md) — 將使用者提供的原始素材（逐字稿、事件紀錄、數據、直接引言）寫成可發表的新聞稿件，涵蓋即時新聞、深度調查、特稿與評論四種類型，並強制執行媒體倫理與識讀自我檢核。
+- [`med-political`](med-political/SKILL.md) — 將選舉、立法、政策、官方聲明、民調或政治人物特寫素材寫成政治新聞，強制執行立場標記、民調解讀紀律、誹謗/選罷法紅線與框架中立性稽核。
+- [`med-sports`](med-sports/SKILL.md) — 將賽事回顧、選手特寫、聯盟/規則變動、傷兵名單、交易公告、禁藥/紀律事件等運動素材寫成新聞，涵蓋年代調整數據、運動資料來源檢核、傷勢揭露邊界與運動博弈敏感性。
 
 </details>
 
