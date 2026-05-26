@@ -1,10 +1,10 @@
 # Contributing to Asgard Skills
 
-Thanks for contributing. This repo is a versioned library of coding-agent methodology — 263+ flat `{category}-{slug}/` skill directories at the repo root. Read [`CLAUDE.md`](CLAUDE.md) first; it is the source of truth for repo conventions.
+Thanks for contributing. This repo is a versioned library of coding-agent methodology — 263+ flat `{category}-{slug}/` skill directories at the repo root. Read [`AGENTS.md`](AGENTS.md) first; it is the source of truth for repo conventions.
 
 ## Quick start — add a new skill
 
-1. Pick a name: `{category}-{slug}`, all lowercase, hyphen-separated. Categories are listed in `CLAUDE.md`.
+1. Pick a name: `{category}-{slug}`, all lowercase, hyphen-separated. Categories are listed in `AGENTS.md`.
 2. Create the directory with the required sub-structure:
    ```bash
    mkdir -p <category>-<slug>/{references,examples}
@@ -21,7 +21,7 @@ Thanks for contributing. This repo is a versioned library of coding-agent method
 
 ## Quality bar
 
-Skills are reviewed against the 8 anti-patterns documented in `CLAUDE.md` §"Quality Audit Anti-Patterns to Avoid":
+Skills are reviewed against the 8 anti-patterns documented in `AGENTS.md` §"Quality Audit Anti-Patterns to Avoid":
 
 1. Phantom Trigger — description over-matches
 2. Kitchen Sink — body crammed with everything
@@ -68,7 +68,7 @@ Skeletons are acceptable in a PR if they belong to an approved domain roadmap. O
 
 ## Deterministic scripts
 
-If a skill ships a calculator script, follow `CLAUDE.md` §"Scripts":
+If a skill ships a calculator script, follow `AGENTS.md` §"Scripts":
 
 - Single file in `<skill>/scripts/`
 - `--help`, `--input <json>`, `--verify` flags

@@ -531,7 +531,7 @@ python biz-cac-ltv/scripts/cac_ltv.py --marketing-cost 100000 --new-customers 50
 4. **具體驗證**：範例必須可精確計算，不接受「大概落在某範圍」
 5. **不過度教學**：假設 agent 已懂基礎，只強調它會**做錯**的地方
 
-完整設計規則與品質標準見 [`CLAUDE.md`](CLAUDE.md)。
+完整設計規則與品質標準見 [`AGENTS.md`](AGENTS.md)。
 
 ## 狀態
 
@@ -560,7 +560,7 @@ python biz-cac-ltv/scripts/cac_ltv.py --marketing-cost 100000 --new-customers 50
 
 ## 貢獻指南
 
-請見 [`CONTRIBUTING.md`](CONTRIBUTING.md)。提交新 skill 前務必先讀 [`CLAUDE.md`](CLAUDE.md) 了解目錄與品質標準。
+請見 [`CONTRIBUTING.md`](CONTRIBUTING.md)。提交新 skill 前務必先讀 [`AGENTS.md`](AGENTS.md) 了解目錄與品質標準。
 
 ## 授權
 
