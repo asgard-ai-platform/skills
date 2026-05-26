@@ -532,7 +532,7 @@ python biz-cac-ltv/scripts/cac_ltv.py --marketing-cost 100000 --new-customers 50
 4. **Concrete Verification**: examples must be exact and computable, not approximate ranges
 5. **No Over-Teaching**: assume the agent knows fundamentals; focus on what it would get WRONG
 
-See [`CLAUDE.md`](CLAUDE.md) for full design rules and quality standards.
+See [`AGENTS.md`](AGENTS.md) for full design rules and quality standards.
 
 ## Status
 
@@ -561,7 +561,7 @@ Curated skill indexes for specific workflows live in [`docs/domains/`](docs/doma
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Before submitting a new skill, read [`CLAUDE.md`](CLAUDE.md) for directory layout and quality standards.
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). Before submitting a new skill, read [`AGENTS.md`](AGENTS.md) for directory layout and quality standards.
 
 ## License
 
