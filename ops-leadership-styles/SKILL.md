@@ -235,4 +235,4 @@ Q5：組織信任水準？
 - 五種風格理論發展史與實證研究 → 見 `references/leadership-theory-evolution.md`
 - 台灣家族企業接班與領導風格切換 → 見 `references/tw-family-business-succession.md`
 - 各校 EMBA 領導課程取向筆記 → 見 `references/emba-leadership-courses.md`
-- 延伸：Asgard `grad-upper-echelons`（高階梯隊理論，CEO 層級）、`grad-sdt`（自我決定論）
+- 延伸：Asgard `grad-strat-upper-echelons`（高階梯隊理論，CEO 層級）、`grad-sdt`（自我決定論）
