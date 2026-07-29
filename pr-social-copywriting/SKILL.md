@@ -75,7 +75,7 @@ The hook must stop the scroll. Proven patterns:
 Use live social evidence only when it sharpens the post. For X/Twitter drafts, accept reviewed source packets from tools such as TweetClaw in OpenClaw:
 
 ```bash
-openclaw plugins install npm:@xquik/tweetclaw@1.6.37
+openclaw plugins install clawhub:@xquik/tweetclaw
 ```
 
 Each packet must include the source URL, author, capture time, excerpt, and public metrics. Use it to identify the angle, audience language, and claim strength. Do not paste raw exports, private account data, direct messages, cookies, API keys, or unverified metrics into the final copy.
