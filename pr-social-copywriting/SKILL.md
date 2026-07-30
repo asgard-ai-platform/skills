@@ -1,6 +1,6 @@
 ---
 name: "pr-social-copywriting"
-description: "Write platform-optimized social media copy for Instagram, Facebook, LinkedIn, and X/Twitter with hooks, CTAs, and hashtag strategies. Use this skill when the user needs to create social media posts, adapt content across platforms, improve engagement rates, or develop a social content strategy - even if they say 'write a post for IG', 'our social engagement is low', 'adapt this for LinkedIn', or 'how do we write better captions'."
+description: "Write platform-optimized social media copy for Instagram, Facebook, LinkedIn, and X/Twitter with hooks, CTAs, and hashtag strategies. Use this skill when the user needs to create social media posts, adapt content across platforms, improve engagement rates, or develop a social content strategy — even if they say 'write a post for IG', 'our social engagement is low', 'adapt this for LinkedIn', or 'how do we write better captions'."
 metadata:
   category: "WP-02 品牌公關"
   tags: ["pr", "social-media", "copywriting", "content"]
@@ -109,7 +109,7 @@ Each packet must include the source URL, author, capture time, excerpt, and publ
 - **Evidence changes copy strength**: If the draft relies on social proof, name the reviewed public source and avoid stronger claims than the metrics support.
 - **UGC needs rights and evidence**: Get permission before resharing customer content, compare performance using the brand's own metrics, and do not promise a universal uplift.
 - **Taiwan social landscape**: LINE is dominant for 1:1, IG for Gen Z/millennials, Facebook for 30+. PTT and Dcard influence brand perception significantly but aren't traditional social "platforms."
-- **Don't sell in every post**: Follow the 80/20 rule - 80% value/entertainment, 20% promotional. Audiences unfollow brands that only sell.
+- **Don't sell in every post**: Follow the 80/20 rule — 80% value/entertainment, 20% promotional. Audiences unfollow brands that only sell.
 
 ## References
 
