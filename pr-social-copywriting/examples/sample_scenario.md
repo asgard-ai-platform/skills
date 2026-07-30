@@ -21,27 +21,27 @@
 
 ### Step 1：診斷問題
 
-互動率 1.2% 是警訊（電商 SaaS IG 的行業均值約 2.5-3.5%）。根本原因是**每篇貼文都在賣功能**，違反 80/20 法則。這次改從**痛點故事**切入，不要從產品切入。
+互動率 1.2% 是使用者提供的內部數據，代表近期貼文表現需要改善。沒有經查證的產業基準，因此不把它和外部平均值比較。這次改從**痛點故事**切入，不要從產品切入。
 
 ### Step 2：確認 Iron Law
 
 「智慧補貨預測」這個訊息，不能直接跨貼。三個平台的受眾心理完全不同：
 - **Instagram**：賣家在刷手機，想要的是感同身受（我也有這個問題！）→ 情緒共鳴先行
-- **LinkedIn**：採購或電商主管，想看數字與可信度 → 商業價值 + 具體數字
-- **X/Twitter**：科技社群，想看觀點或有趣角度 → 利用 AI 做的反直覺洞察
+- **LinkedIn**：採購或電商主管，想看可信度 → 商業價值 + 可查證的產品資訊
+- **X/Twitter**：科技社群，想看清楚的觀點 → 用簡潔角度說明產品解決的問題
 
 ### Step 3：選 Hook 技術
 
 | 平台 | 技術 | 理由 |
 |------|------|------|
 | Instagram | Story（真實情境）| 建立共鳴，降低廣告感 |
-| LinkedIn | Bold claim（數字）| 決策者要證明 ROI |
-| X/Twitter | Contrarian（打破迷思）| 科技圈愛反直覺觀點 |
+| LinkedIn | Question（問題）| 從決策者熟悉的補貨取捨切入 |
+| X/Twitter | Observation（觀察）| 只使用使用者提供且可查證的產品行為 |
 
 ### Step 4：確認 CTA 設計
 
-- Instagram：問問題 → 誘發留言 → 演算法推播
-- LinkedIn：Link in comment（非 post body，避免降觸及）
+- Instagram：問問題 → 邀請賣家分享可供團隊回覆的實際痛點
+- LinkedIn：Link in comment（符合這次發文格式，不聲稱會提高觸及）
 - X/Twitter：@tag 或 thread 引流，不放連結在推文中
 
 ### Step 5：Hashtag 配置
@@ -71,13 +71,10 @@
 你看著 Google 試算表、上週的銷售截圖、還有明天到期的批貨報價——
 然後猜。
 
-我們花了 8 個月，讓 Flowra 學會幫你算。
-
 「智慧補貨預測」上線了。
 它會讀你的 30 天銷售趨勢，告訴你：
 ✅ 什麼時候該補
 ✅ 補多少量才不會壓錢
-✅ 哪個 SKU 是地雷（賣不動但一直補）
 
 不是叫你信 AI。
 是讓你有數字可以依據，不用再賭。
@@ -89,26 +86,19 @@
 #電商 #網路賣家 #Shopify台灣 #庫存管理 #補貨 #電商創業 #Flowra #91App #中小企業 #賣家日常
 
 **CTA**: 留言分享你的補貨痛點（誘發互動，鋪墊 Q&A）
-**Visual**: Carousel — 第 1 張：「囤多 vs 囤少」對比視覺；第 2 張：功能介面截圖；第 3 張：一位賣家的實際使用數據前後對比
+**Visual**: Carousel — 第 1 張：「囤多 vs 囤少」對比視覺；第 2 張：功能介面截圖；第 3 張：30 天銷售趨勢與補貨建議的示意圖
 
 ---
 
 ## LinkedIn
 
 **Hook**:
-電商庫存決策有 62% 仍依賴人工判斷——這是最常見的隱性成本來源。
+補貨最難的，不只是買多少，而是什麼時候買。
 
 **Post**:
-Flowra 分析了平台上 200+ 台灣電商賣家的補貨模式，發現一個規律：
-
-**囤貨失誤的最高峰，不是旺季，是旺季前 3 週。**
-
-這時候需求還沒爆，賣家估不準，決策靠感覺。
-補多了，現金流卡住；補少了，錯過爆量。
+旺季前，需求訊號還不明確，賣家常要在現金流和缺貨風險之間做決定。
 
 今天我們上線「智慧補貨預測」：根據 30 天滾動銷售趨勢，自動計算建議補貨時機與數量。
-
-早期測試賣家的庫存周轉率平均改善 28%，現金流壓力顯著下降。
 
 歡迎對庫存自動化有興趣的電商團隊交流。
 完整功能說明放在留言 👇
@@ -116,27 +106,28 @@ Flowra 分析了平台上 200+ 台灣電商賣家的補貨模式，發現一個�
 **Hashtags**:
 #ecommerce #inventorymanagement #saas #digitaltransformation
 
-**Note**: 連結放留言區，不放在 post body，避免 LinkedIn 演算法降觸及。
+**Note**: 連結放留言區，不放在 post body。發布前確認這仍符合品牌的 LinkedIn 慣例。
 
 ---
 
 ## X/Twitter
 
 **Tweet**:
-Most ecom sellers think their inventory problem is "buying wrong."
+Inventory planning is not only about how much you buy.
 
-It's not. It's timing.
+Timing matters just as much.
 
-Our data: 78% of overstock happens in the 3 weeks *before* peak season — when demand signals are still ambiguous.
+When demand signals are unclear before a peak, restock decisions carry more risk.
 
-We built a restock predictor for exactly that window. 🧵
+We built Smart Restock to turn the latest 30 days of sales into a suggested restock time and quantity. 🧵
 
 **Thread 延伸（選用）**:
-Tweet 2: Here's what "too early" looks like in the data: [圖表]
+Tweet 2: Here's what the 30-day sales input covers: [示意圖]
 Tweet 3: And here's the fix we shipped today → [功能截圖]
-Tweet 4: If you're a Shopify or 91App seller in Taiwan, DM me — first 20 get a free setup call.
+Tweet 4: If you're a Shopify or 91App seller in Taiwan, tell us which restock decision is hardest today.
 
 **Hashtags**: #ecommerce #AI
+**Source Notes**: No reviewed source packet used. Product name and 30-day trend behavior came from the user brief; performance claims were omitted pending evidence.
 ```
 
 ---
@@ -145,8 +136,8 @@ Tweet 4: If you're a Shopify or 91App seller in Taiwan, DM me — first 20 get a
 
 | 項目 | 行動 |
 |------|------|
-| 發文時間 | 週二 10:00（IG）、09:30（LinkedIn）、配合台灣 Tech Twitter 作息 19:00（X） |
-| 前 30 分鐘 | Vivian 本人親自回覆前 5 則留言，觸發演算法早期加速 |
-| IG UGC 鋪陳 | 私訊 3 位已在用測試版的賣家，請他們當天發限動並 @Flowra |
-| 下一篇 | 週四發賣家見證（Thursday = social proof 日），實現 80/20：本篇推功能，下篇讓客戶說話 |
+| 發文時間 | 依品牌自己的受眾分析資料排程；沒有資料時先做小規模測試 |
+| 留言回覆 | 指定 Vivian 回覆產品問題；不把回覆速度描述成演算法保證 |
+| IG UGC 鋪陳 | 取得測試版賣家明確同意後，才能轉發或引用他們的內容 |
+| 下一篇 | 只有取得客戶同意與可查證素材後，才發布賣家見證 |
 ```
